@@ -9,7 +9,7 @@ The output was:
 Microsoft (R) Build Engine версии 16.10.2+857e5a733 для .NET Framework
 (C) Корпорация Майкрософт (Microsoft Corporation). Все права защищены.
 
-Сборка начата 16.05.2022 9:38:39.
+Сборка начата 16.05.2022 14:13:37.
 Проект "C:\Users\Elisey\Games on C++\Minecraft\build\CMakeFiles\3.23.1\CompilerIdC\CompilerIdC.vcxproj" в узле 1 (целевые объекты по умолчанию).
 PrepareForBuild:
   Создание каталога "Debug\".
@@ -35,7 +35,7 @@ FinalizeBuildStatus:
     Предупреждений: 0
     Ошибок: 0
 
-Прошло времени 00:00:01.34
+Прошло времени 00:00:00.92
 
 
 Compilation of the C compiler identification source "CMakeCCompilerId.c" produced "CompilerIdC.exe"
@@ -54,7 +54,7 @@ The output was:
 Microsoft (R) Build Engine версии 16.10.2+857e5a733 для .NET Framework
 (C) Корпорация Майкрософт (Microsoft Corporation). Все права защищены.
 
-Сборка начата 16.05.2022 9:38:41.
+Сборка начата 16.05.2022 14:13:38.
 Проект "C:\Users\Elisey\Games on C++\Minecraft\build\CMakeFiles\3.23.1\CompilerIdCXX\CompilerIdCXX.vcxproj" в узле 1 (целевые объекты по умолчанию).
 PrepareForBuild:
   Создание каталога "Debug\".
@@ -80,7 +80,7 @@ FinalizeBuildStatus:
     Предупреждений: 0
     Ошибок: 0
 
-Прошло времени 00:00:00.83
+Прошло времени 00:00:00.67
 
 
 Compilation of the CXX compiler identification source "CMakeCXXCompilerId.cpp" produced "CompilerIdCXX.exe"
@@ -92,28 +92,28 @@ The CXX compiler identification is MSVC, found in "C:/Users/Elisey/Games on C++/
 Detecting C compiler ABI info compiled with the following output:
 Change Dir: C:/Users/Elisey/Games on C++/Minecraft/build/CMakeFiles/CMakeTmp
 
-Run Build Command(s):C:/Program Files (x86)/Microsoft Visual Studio/2019/Community/MSBuild/Current/Bin/MSBuild.exe cmTC_4689b.vcxproj /p:Configuration=Debug /p:Platform=x64 /p:VisualStudioVersion=16.0 /v:m && Microsoft (R) Build Engine версии 16.10.2+857e5a733 для .NET Framework
+Run Build Command(s):C:/Program Files (x86)/Microsoft Visual Studio/2019/Community/MSBuild/Current/Bin/MSBuild.exe cmTC_f3c85.vcxproj /p:Configuration=Debug /p:Platform=x64 /p:VisualStudioVersion=16.0 /v:m && Microsoft (R) Build Engine версии 16.10.2+857e5a733 для .NET Framework
 (C) Корпорация Майкрософт (Microsoft Corporation). Все права защищены.
 
   Оптимизирующий компилятор Microsoft (R) C/C++ версии 19.29.30040 для x64
   (C) Корпорация Майкрософт (Microsoft Corporation).  Все права защищены.
   CMakeCCompilerABI.c
-  cl /c /Zi /W3 /WX- /diagnostics:column /Od /Ob0 /D _MBCS /D WIN32 /D _WINDOWS /D "CMAKE_INTDIR=\"Debug\"" /Gm- /RTC1 /MDd /GS /fp:precise /Zc:wchar_t /Zc:forScope /Zc:inline /Fo"cmTC_4689b.dir\Debug\\" /Fd"cmTC_4689b.dir\Debug\vc142.pdb" /external:W3 /Gd /TC /errorReport:queue "C:\Program Files\CMake\share\cmake-3.23\Modules\CMakeCCompilerABI.c"
-  cmTC_4689b.vcxproj -> C:\Users\Elisey\Games on C++\Minecraft\build\CMakeFiles\CMakeTmp\Debug\cmTC_4689b.exe
+  cl /c /Zi /W3 /WX- /diagnostics:column /Od /Ob0 /D _MBCS /D WIN32 /D _WINDOWS /D "CMAKE_INTDIR=\"Debug\"" /Gm- /RTC1 /MDd /GS /fp:precise /Zc:wchar_t /Zc:forScope /Zc:inline /Fo"cmTC_f3c85.dir\Debug\\" /Fd"cmTC_f3c85.dir\Debug\vc142.pdb" /external:W3 /Gd /TC /errorReport:queue "C:\Program Files\CMake\share\cmake-3.23\Modules\CMakeCCompilerABI.c"
+  cmTC_f3c85.vcxproj -> C:\Users\Elisey\Games on C++\Minecraft\build\CMakeFiles\CMakeTmp\Debug\cmTC_f3c85.exe
 
 
 
 Detecting CXX compiler ABI info compiled with the following output:
 Change Dir: C:/Users/Elisey/Games on C++/Minecraft/build/CMakeFiles/CMakeTmp
 
-Run Build Command(s):C:/Program Files (x86)/Microsoft Visual Studio/2019/Community/MSBuild/Current/Bin/MSBuild.exe cmTC_af82a.vcxproj /p:Configuration=Debug /p:Platform=x64 /p:VisualStudioVersion=16.0 /v:m && Microsoft (R) Build Engine версии 16.10.2+857e5a733 для .NET Framework
+Run Build Command(s):C:/Program Files (x86)/Microsoft Visual Studio/2019/Community/MSBuild/Current/Bin/MSBuild.exe cmTC_6f1fb.vcxproj /p:Configuration=Debug /p:Platform=x64 /p:VisualStudioVersion=16.0 /v:m && Microsoft (R) Build Engine версии 16.10.2+857e5a733 для .NET Framework
 (C) Корпорация Майкрософт (Microsoft Corporation). Все права защищены.
 
   Оптимизирующий компилятор Microsoft (R) C/C++ версии 19.29.30040 для x64
   (C) Корпорация Майкрософт (Microsoft Corporation).  Все права защищены.
   CMakeCXXCompilerABI.cpp
-  cl /c /Zi /W3 /WX- /diagnostics:column /Od /Ob0 /D _MBCS /D WIN32 /D _WINDOWS /D "CMAKE_INTDIR=\"Debug\"" /Gm- /EHsc /RTC1 /MDd /GS /fp:precise /Zc:wchar_t /Zc:forScope /Zc:inline /GR /Fo"cmTC_af82a.dir\Debug\\" /Fd"cmTC_af82a.dir\Debug\vc142.pdb" /external:W3 /Gd /TP /errorReport:queue "C:\Program Files\CMake\share\cmake-3.23\Modules\CMakeCXXCompilerABI.cpp"
-  cmTC_af82a.vcxproj -> C:\Users\Elisey\Games on C++\Minecraft\build\CMakeFiles\CMakeTmp\Debug\cmTC_af82a.exe
+  cl /c /Zi /W3 /WX- /diagnostics:column /Od /Ob0 /D _MBCS /D WIN32 /D _WINDOWS /D "CMAKE_INTDIR=\"Debug\"" /Gm- /EHsc /RTC1 /MDd /GS /fp:precise /Zc:wchar_t /Zc:forScope /Zc:inline /GR /Fo"cmTC_6f1fb.dir\Debug\\" /Fd"cmTC_6f1fb.dir\Debug\vc142.pdb" /external:W3 /Gd /TP /errorReport:queue "C:\Program Files\CMake\share\cmake-3.23\Modules\CMakeCXXCompilerABI.cpp"
+  cmTC_6f1fb.vcxproj -> C:\Users\Elisey\Games on C++\Minecraft\build\CMakeFiles\CMakeTmp\Debug\cmTC_6f1fb.exe
 
 
 

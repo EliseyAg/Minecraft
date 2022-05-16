@@ -1,0 +1,15 @@
+﻿  Checking Build System
+  CMake is re-running because C:/Users/Elisey/Games on C++/Minecraft/build/CMakeFiles/generate.stamp is out-of-date.
+    the file 'C:/Users/Elisey/Games on C++/Minecraft/CMakeLists.txt'
+    is newer than 'C:/Users/Elisey/Games on C++/Minecraft/build/CMakeFiles/generate.stamp.depend'
+    result='-1'
+  -- Selecting Windows SDK version 10.0.19041.0 to target Windows 10.0.19043.
+  CMake Warning (dev) at CMakeLists.txt:10 (add_library):
+    Policy CMP0002 is not set: Logical target names must be globally unique.
+    Run "cmake --help-policy CMP0002" for policy details.  Use the cmake_policy
+    command to set the policy and suppress this warning.
+  This warning is for project developers.  Use -Wno-dev to suppress it.
+  
+  -- Configuring done
+  -- Generating done
+  -- Build files have been written to: C:/Users/Elisey/Games on C++/Minecraft/build
