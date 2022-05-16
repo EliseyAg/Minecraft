@@ -1,0 +1,13 @@
+﻿<?xml version="1.0" encoding="utf-8"?>
+<Project ToolsVersion="16.0" xmlns="http://schemas.microsoft.com/developer/msbuild/2003">
+  <ItemGroup>
+    <CustomBuild Include="C:\Users\Elisey\Games on C++\Minecraft\build\CMakeFiles\0a4d32948086a59343f2f3a789c58b2b\INSTALL_force.rule">
+      <Filter>CMake Rules</Filter>
+    </CustomBuild>
+  </ItemGroup>
+  <ItemGroup>
+    <Filter Include="CMake Rules">
+      <UniqueIdentifier>{2E09C2C2-5841-3A62-A4E1-87F837DEEED2}</UniqueIdentifier>
+    </Filter>
+  </ItemGroup>
+</Project>
