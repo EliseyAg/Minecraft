@@ -5,32 +5,47 @@
       <Filter>Source Files</Filter>
     </ClCompile>
     <ClCompile Include="C:\Users\Elisey\Games on C++\Minecraft\source\Application.cpp">
-      <Filter>Source Files</Filter>
+      <Filter>source</Filter>
     </ClCompile>
     <ClCompile Include="C:\Users\Elisey\Games on C++\Minecraft\source\Window.cpp">
-      <Filter>Source Files</Filter>
+      <Filter>source</Filter>
+    </ClCompile>
+    <ClCompile Include="C:\Users\Elisey\Games on C++\Minecraft\source\Renderer\ShaderProgram.cpp">
+      <Filter>source\Renderer</Filter>
+    </ClCompile>
+    <ClCompile Include="C:\Users\Elisey\Games on C++\Minecraft\source\Renderer\VertexBuffer.cpp">
+      <Filter>source\Renderer</Filter>
     </ClCompile>
   </ItemGroup>
   <ItemGroup>
     <ClInclude Include="C:\Users\Elisey\Games on C++\Minecraft\source\Application.hpp">
-      <Filter>Header Files</Filter>
+      <Filter>source</Filter>
     </ClInclude>
     <ClInclude Include="C:\Users\Elisey\Games on C++\Minecraft\source\Window.hpp">
-      <Filter>Header Files</Filter>
+      <Filter>source</Filter>
     </ClInclude>
     <ClInclude Include="C:\Users\Elisey\Games on C++\Minecraft\source\Event.hpp">
-      <Filter>Header Files</Filter>
+      <Filter>source</Filter>
+    </ClInclude>
+    <ClInclude Include="C:\Users\Elisey\Games on C++\Minecraft\source\Renderer\ShaderProgram.hpp">
+      <Filter>source\Renderer</Filter>
+    </ClInclude>
+    <ClInclude Include="C:\Users\Elisey\Games on C++\Minecraft\source\Renderer\VertexBuffer.hpp">
+      <Filter>source\Renderer</Filter>
     </ClInclude>
   </ItemGroup>
   <ItemGroup>
     <CustomBuild Include="C:\Users\Elisey\Games on C++\Minecraft\CMakeLists.txt" />
   </ItemGroup>
   <ItemGroup>
-    <Filter Include="Header Files">
-      <UniqueIdentifier>{6EF861DD-112A-3598-AF83-45A484612ED3}</UniqueIdentifier>
-    </Filter>
     <Filter Include="Source Files">
       <UniqueIdentifier>{34ED2B16-AC64-3D91-8744-A0924A3B05C7}</UniqueIdentifier>
+    </Filter>
+    <Filter Include="source">
+      <UniqueIdentifier>{6412BD38-37B9-38FF-94A1-8F23656EC45A}</UniqueIdentifier>
+    </Filter>
+    <Filter Include="source\Renderer">
+      <UniqueIdentifier>{7AD4DADA-DC8D-3E77-AFE6-DE91F41B1377}</UniqueIdentifier>
     </Filter>
   </ItemGroup>
 </Project>

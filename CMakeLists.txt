@@ -11,16 +11,29 @@ set(PUBLIC_INCLUDES
 	source/Application.hpp
 	source/Window.hpp
 	source/Event.hpp
+	source/Renderer/ShaderProgram.hpp
+	source/Renderer/VertexBuffer.hpp
 )
 set(PUBLIC_SOURCES
 	source/Application.cpp
 	source/Window.cpp
+	source/Renderer/ShaderProgram.cpp
+	source/Renderer/VertexBuffer.cpp
 )
-add_library(${PROJECT_NAME} STATIC
+set(ALL_SOURCES
 	${PUBLIC_INCLUDES}
 	${PUBLIC_SOURCES}
 )
 
+add_library(${PROJECT_NAME} STATIC
+	${ALL_SOURCES}
+)
+
+source_group(TREE ${CMAKE_CURRENT_SOURCE_DIR} FILES
+	${ALL_SOURCES}
+)
+
+target_include_directories(${PROJECT_NAME} PUBLIC source)
 target_compile_features(${PROJECT_NAME} PUBLIC cxx_std_17)
 
 add_subdirectory(../Minecraft/external/glfw ${CMAKE_CURRENT_BINARY_DIR}/glfw)
