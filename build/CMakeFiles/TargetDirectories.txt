@@ -8,3 +8,6 @@ C:/Users/Elisey/Games on C++/Minecraft/build/glfw/CMakeFiles/ALL_BUILD.dir
 C:/Users/Elisey/Games on C++/Minecraft/build/glfw/src/CMakeFiles/glfw.dir
 C:/Users/Elisey/Games on C++/Minecraft/build/glfw/src/CMakeFiles/update_mappings.dir
 C:/Users/Elisey/Games on C++/Minecraft/build/glfw/src/CMakeFiles/INSTALL.dir
+C:/Users/Elisey/Games on C++/Minecraft/build/glad/CMakeFiles/glad.dir
+C:/Users/Elisey/Games on C++/Minecraft/build/glad/CMakeFiles/INSTALL.dir
+C:/Users/Elisey/Games on C++/Minecraft/build/glad/CMakeFiles/ALL_BUILD.dir
