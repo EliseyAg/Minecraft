@@ -13,12 +13,14 @@ set(PUBLIC_INCLUDES
 	source/Event.hpp
 	source/Renderer/ShaderProgram.hpp
 	source/Renderer/VertexBuffer.hpp
+	source/Renderer/VertexArray.hpp
 )
 set(PUBLIC_SOURCES
 	source/Application.cpp
 	source/Window.cpp
 	source/Renderer/ShaderProgram.cpp
 	source/Renderer/VertexBuffer.cpp
+	source/Renderer/VertexArray.cpp
 )
 set(ALL_SOURCES
 	${PUBLIC_INCLUDES}
