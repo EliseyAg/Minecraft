@@ -5,6 +5,11 @@
 #include <fstream>
 #include <iostream>
 
+#define STB_IMAGE_IMPLEMENTATION
+#define STBI_ONLY_JPEG
+#define STBI_ONLY_PNG
+#include "../external/stb_image/stb_image.h"
+
 namespace Game {
 	ResourceManager::ResourceManager(const std::string& executablePath) {
 		size_t found = executablePath.find_last_of("/\\");
@@ -55,5 +60,20 @@ namespace Game {
 			return it->second;
 		std::cerr << "Can`t find the shader program: " << shaderName << std::endl;
 		return nullptr;
+	}
+
+	void ResourceManager::loadTexture(const std::string& textureName, const std::string& texturePath) {
+		int channels = 0;
+		int width = 0;
+		int height = 0;
+
+		stbi_set_flip_vertically_on_load(true);
+		unsigned char* pixels = stbi_load(std::string(m_path + "/" + texturePath).c_str(), &width, &height, &channels, 0);
+
+		if (!pixels) {
+			std::cerr << "Can`t load image:" << texturePath << std::endl;
+		}
+
+		stbi_image_free(pixels);
 	}
 }

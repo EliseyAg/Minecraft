@@ -27,6 +27,9 @@
     </ClCompile>
   </ItemGroup>
   <ItemGroup>
+    <ClInclude Include="C:\Users\Elisey\Games on C++\Minecraft\external\stb_image\stb_image.h">
+      <Filter>external\stb_image</Filter>
+    </ClInclude>
     <ClInclude Include="C:\Users\Elisey\Games on C++\Minecraft\source\Application.hpp">
       <Filter>source</Filter>
     </ClInclude>
@@ -58,6 +61,12 @@
   <ItemGroup>
     <Filter Include="Source Files">
       <UniqueIdentifier>{34ED2B16-AC64-3D91-8744-A0924A3B05C7}</UniqueIdentifier>
+    </Filter>
+    <Filter Include="external">
+      <UniqueIdentifier>{A5CA11A8-5727-315D-BEA2-D41093C4C0BF}</UniqueIdentifier>
+    </Filter>
+    <Filter Include="external\stb_image">
+      <UniqueIdentifier>{93791694-CEA1-3AEB-9120-B28903524CCE}</UniqueIdentifier>
     </Filter>
     <Filter Include="source">
       <UniqueIdentifier>{6412BD38-37B9-38FF-94A1-8F23656EC45A}</UniqueIdentifier>

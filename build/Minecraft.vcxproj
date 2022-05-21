@@ -366,6 +366,7 @@ if %errorlevel% neq 0 goto :VCEnd</Command>
   </ItemGroup>
   <ItemGroup>
     <ClCompile Include="C:\Users\Elisey\Games on C++\Minecraft\source\main.cpp" />
+    <ClInclude Include="C:\Users\Elisey\Games on C++\Minecraft\external\stb_image\stb_image.h" />
     <ClInclude Include="C:\Users\Elisey\Games on C++\Minecraft\source\Application.hpp" />
     <ClInclude Include="C:\Users\Elisey\Games on C++\Minecraft\source\Window.hpp" />
     <ClInclude Include="C:\Users\Elisey\Games on C++\Minecraft\source\Event.hpp" />

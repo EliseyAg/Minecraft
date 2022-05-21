@@ -8,6 +8,7 @@ add_executable(${PROJECT_NAME}
 )
 
 set(PUBLIC_INCLUDES
+	external/stb_image/stb_image.h
 	source/Application.hpp
 	source/Window.hpp
 	source/Event.hpp

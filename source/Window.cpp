@@ -27,28 +27,6 @@ namespace Game {
         0, 1, 2, 3, 2, 1
     };
 
-    const char* vertex_shader =
-    R"(
-        #version 460
-        layout(location = 0) in vec3 vertex_position;
-        layout(location = 1) in vec3 vertex_color;
-        out vec3 color;
-        void main() {
-           color = vertex_color;
-           gl_Position = vec4(vertex_position, 1.0);
-        }
-    )";
-
-    const char* fragment_shader =
-    R"(
-        #version 460
-        in vec3 color;
-        out vec4 frag_color;
-        void main() {
-           frag_color = vec4(color, 1.0);
-        }
-    )";
-
     std::unique_ptr<ResourceManager> p_resourceManager;
     std::unique_ptr<VertexBuffer> p_positions_colors_vbo;
     std::unique_ptr<IndexBuffer> p_index_buffer;
@@ -141,6 +119,8 @@ namespace Game {
             ShaderDataType::Float3,
             ShaderDataType::Float3
         };
+
+        p_resourceManager->loadTexture("DefaultTexture", "res/textures/Test.png");
 
         p_vao = std::make_unique<VertexArray>();
         p_positions_colors_vbo = std::make_unique<VertexBuffer>(positions_colors, sizeof(positions_colors), buffer_layout_2vec3);
