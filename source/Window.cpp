@@ -4,6 +4,7 @@
 #include "Renderer/IndexBuffer.hpp"
 #include "Renderer/VertexBuffer.hpp"
 #include "Renderer/VertexArray.hpp"
+#include "Resources/ResourceManager.hpp"
 
 #include <iostream>
 #include <memory>
@@ -48,15 +49,15 @@ namespace Game {
         }
     )";
 
-    std::unique_ptr<ShaderProgram> p_shader_program;
+    std::unique_ptr<ResourceManager> p_resourceManager;
     std::unique_ptr<VertexBuffer> p_positions_colors_vbo;
     std::unique_ptr<IndexBuffer> p_index_buffer;
     std::unique_ptr<VertexArray> p_vao;
 
-    Window::Window(std::string title, const unsigned int width, const unsigned int height)
+    Window::Window(std::string title, const unsigned int width, const unsigned int height, char** argv)
         : m_data({ std::move(title), width, height })
     {
-        int resultCode = init();
+        int resultCode = init(argv);
     }
 
     Window::~Window()
@@ -64,7 +65,7 @@ namespace Game {
         shutdown();
     }
 
-    int Window::init()
+    int Window::init(char** argv)
     {
         if (!s_GLFW_initialized)
         {
@@ -128,10 +129,11 @@ namespace Game {
             }
         );
 
-        p_shader_program = std::make_unique<ShaderProgram>(vertex_shader, fragment_shader);
-        if (!p_shader_program->isCompiled())
-        {
-            return false;
+        p_resourceManager = std::make_unique<ResourceManager>(argv[0]);
+        pDefaultShaderProgram = p_resourceManager->loadShader("DefaultShader", "res/shaders/vertex.txt", "res/shaders/fragment.txt");
+        if (!pDefaultShaderProgram) {
+            std::cerr << "Can`t create shader program: " << "DefaultShader" << std::endl;
+            return -5;
         }
 
         BufferLayout buffer_layout_2vec3
@@ -161,7 +163,7 @@ namespace Game {
         glClearColor(0, 0.5, 1, 0);
         glClear(GL_COLOR_BUFFER_BIT);
 
-        p_shader_program->bind();
+        pDefaultShaderProgram->bind();
         p_vao->bind();
         glDrawElements(GL_TRIANGLES, static_cast<GLsizei>(p_vao->get_indices_count()), GL_UNSIGNED_INT, nullptr);
 

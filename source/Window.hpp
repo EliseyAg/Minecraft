@@ -1,8 +1,10 @@
 #pragma once
 
 #include "Event.hpp"
+#include "Renderer/ShaderProgram.hpp"
 
 #include <string>
+#include <memory>
 
 struct GLFWwindow;
 
@@ -13,7 +15,7 @@ namespace Game {
     public:
         using EventCallbackFn = std::function<void(BaseEvent&)>;
 
-        Window(std::string title, const unsigned int width, const unsigned int height);
+        Window(std::string title, const unsigned int width, const unsigned int height, char** argv);
         ~Window();
 
         Window(const Window&) = delete;
@@ -35,8 +37,9 @@ namespace Game {
             unsigned int height;
             EventCallbackFn eventCallbackFn;
         };
-        int init();
+        int init(char** argv);
         void shutdown();
+        std::shared_ptr<ShaderProgram> pDefaultShaderProgram;
         GLFWwindow* m_pWindow = nullptr;
         WindowData m_data;
     };

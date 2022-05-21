@@ -1,29 +1,32 @@
 #include "ShaderProgram.hpp"
 
+#include <iostream>
+
 #include <glad/glad.h>
 
 namespace Game
 {
-    bool create_shader(const char* source, const GLenum shader_type, GLuint& shader_id)
+    bool create_shader(const std::string& source, const GLenum shader_type, GLuint& shader_id)
     {
         shader_id = glCreateShader(shader_type);
-        glShaderSource(shader_id, 1, &source, nullptr);
+        const char* code = source.c_str();
+        glShaderSource(shader_id, 1, &code, nullptr);
         glCompileShader(shader_id);
 
         GLint success;
         glGetShaderiv(shader_id, GL_COMPILE_STATUS, &success);
-        if (success == GL_FALSE)
+        if (!success)
         {
-            char info_log[1024];
-            glGetShaderInfoLog(shader_id, 1024, nullptr, info_log);
-
+            GLchar infoLog[1024];
+            glGetShaderInfoLog(shader_id, 1024, nullptr, infoLog);
+            std::cerr << "ERROR::SHADER: Compile-time error:\n" << infoLog << std::endl;
             return false;
         }
         return true;
     }
 
 
-    ShaderProgram::ShaderProgram(const char* vertex_shader_src, const char* fragment_shader_src)
+    ShaderProgram::ShaderProgram(const std::string& vertex_shader_src, const std::string& fragment_shader_src)
     {
         GLuint vertex_shader_id = 0;
         if (!create_shader(vertex_shader_src, GL_VERTEX_SHADER, vertex_shader_id))

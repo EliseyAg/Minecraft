@@ -1,11 +1,13 @@
 #pragma once
 
+#include <string>
+
 namespace Game {
 
     class ShaderProgram
     {
     public:
-        ShaderProgram(const char* vertex_shader_src, const char* fragment_shader_src);
+        ShaderProgram(const std::string& vertex_shader_src, const std::string& fragment_shader_src);
         ShaderProgram(ShaderProgram&&);
         ShaderProgram& operator=(ShaderProgram&&);
         ~ShaderProgram();

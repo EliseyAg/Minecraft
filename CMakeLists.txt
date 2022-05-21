@@ -15,6 +15,7 @@ set(PUBLIC_INCLUDES
 	source/Renderer/IndexBuffer.hpp
 	source/Renderer/VertexBuffer.hpp
 	source/Renderer/VertexArray.hpp
+	source/Resources/ResourceManager.hpp
 )
 set(PUBLIC_SOURCES
 	source/Application.cpp
@@ -23,6 +24,7 @@ set(PUBLIC_SOURCES
 	source/Renderer/IndexBuffer.cpp
 	source/Renderer/VertexBuffer.cpp
 	source/Renderer/VertexArray.cpp
+	source/Resources/ResourceManager.cpp
 )
 set(ALL_SOURCES
 	${PUBLIC_INCLUDES}
@@ -45,3 +47,9 @@ target_link_libraries(${PROJECT_NAME} PRIVATE glfw)
 
 add_subdirectory(../Minecraft/external/glad ${CMAKE_CURRENT_BINARY_DIR}/glad)
 target_link_libraries(${PROJECT_NAME} PRIVATE glad)
+
+set_target_properties(${PROJECT_NAME} PROPERTIES RUNTIME_OUTPUT_DIRECTORY ${CMAKE_BINARY_DIR}/bin/)
+
+add_custom_command(TARGET ${PROJECT_NAME} POST_BUILD
+					COMMAND ${CMAKE_COMMAND} -E copy_directory
+					${CMAKE_SOURCE_DIR}/Resources $<TARGET_FILE_DIR:${PROJECT_NAME}>/res)

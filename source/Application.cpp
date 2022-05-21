@@ -14,8 +14,8 @@ namespace Game {
 
     }
 
-    int Application::start(unsigned int window_width, unsigned int window_height, const char* title) {
-        m_pWindow = std::make_unique<Window>(title, window_width, window_height);
+    int Application::start(unsigned int window_width, unsigned int window_height, const char* title, char** argv) {
+        m_pWindow = std::make_unique<Window>(title, window_width, window_height, argv);
 
         m_event_dispatcher.add_event_listener<EventWindowResize>(
             [](EventWindowResize& event)

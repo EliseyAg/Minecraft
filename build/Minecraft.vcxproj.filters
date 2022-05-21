@@ -22,6 +22,9 @@
     <ClCompile Include="C:\Users\Elisey\Games on C++\Minecraft\source\Renderer\VertexArray.cpp">
       <Filter>source\Renderer</Filter>
     </ClCompile>
+    <ClCompile Include="C:\Users\Elisey\Games on C++\Minecraft\source\Resources\ResourceManager.cpp">
+      <Filter>source\Resources</Filter>
+    </ClCompile>
   </ItemGroup>
   <ItemGroup>
     <ClInclude Include="C:\Users\Elisey\Games on C++\Minecraft\source\Application.hpp">
@@ -45,6 +48,9 @@
     <ClInclude Include="C:\Users\Elisey\Games on C++\Minecraft\source\Renderer\VertexArray.hpp">
       <Filter>source\Renderer</Filter>
     </ClInclude>
+    <ClInclude Include="C:\Users\Elisey\Games on C++\Minecraft\source\Resources\ResourceManager.hpp">
+      <Filter>source\Resources</Filter>
+    </ClInclude>
   </ItemGroup>
   <ItemGroup>
     <CustomBuild Include="C:\Users\Elisey\Games on C++\Minecraft\CMakeLists.txt" />
@@ -58,6 +64,9 @@
     </Filter>
     <Filter Include="source\Renderer">
       <UniqueIdentifier>{7AD4DADA-DC8D-3E77-AFE6-DE91F41B1377}</UniqueIdentifier>
+    </Filter>
+    <Filter Include="source\Resources">
+      <UniqueIdentifier>{AD6EFDD1-DF30-3206-9FDC-5271463F4AB9}</UniqueIdentifier>
     </Filter>
   </ItemGroup>
 </Project>
