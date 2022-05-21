@@ -10,6 +10,9 @@
     <ClCompile Include="C:\Users\Elisey\Games on C++\Minecraft\source\Window.cpp">
       <Filter>source</Filter>
     </ClCompile>
+    <ClCompile Include="C:\Users\Elisey\Games on C++\Minecraft\source\Renderer\Texture2D.cpp">
+      <Filter>source\Renderer</Filter>
+    </ClCompile>
     <ClCompile Include="C:\Users\Elisey\Games on C++\Minecraft\source\Renderer\ShaderProgram.cpp">
       <Filter>source\Renderer</Filter>
     </ClCompile>
@@ -38,6 +41,9 @@
     </ClInclude>
     <ClInclude Include="C:\Users\Elisey\Games on C++\Minecraft\source\Event.hpp">
       <Filter>source</Filter>
+    </ClInclude>
+    <ClInclude Include="C:\Users\Elisey\Games on C++\Minecraft\source\Renderer\Texture2D.hpp">
+      <Filter>source\Renderer</Filter>
     </ClInclude>
     <ClInclude Include="C:\Users\Elisey\Games on C++\Minecraft\source\Renderer\ShaderProgram.hpp">
       <Filter>source\Renderer</Filter>

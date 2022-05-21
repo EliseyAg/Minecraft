@@ -1,6 +1,7 @@
 #include "ShaderProgram.hpp"
 
 #include <iostream>
+#include <string>
 
 #include <glad/glad.h>
 
@@ -104,5 +105,9 @@ namespace Game
 
         shaderProgram.m_id = 0;
         shaderProgram.m_isCompiled = false;
+    }
+
+    void ShaderProgram::setInt(const std::string& name, const GLuint value) {
+        glUniform1i(glGetUniformLocation(m_id, name.c_str()), value);
     }
 }

@@ -62,7 +62,7 @@ namespace Game {
 		return nullptr;
 	}
 
-	void ResourceManager::loadTexture(const std::string& textureName, const std::string& texturePath) {
+	std::shared_ptr<Texture2D>  ResourceManager::loadTexture(const std::string& textureName, const std::string& texturePath) {
 		int channels = 0;
 		int width = 0;
 		int height = 0;
@@ -72,8 +72,21 @@ namespace Game {
 
 		if (!pixels) {
 			std::cerr << "Can`t load image:" << texturePath << std::endl;
+			return nullptr;
 		}
 
+		std::shared_ptr<Texture2D> newTexture = m_textures.emplace(textureName, std::make_shared<Texture2D>(width, height, pixels, channels, GL_NEAREST, GL_CLAMP_TO_EDGE)).first->second;
+
 		stbi_image_free(pixels);
+
+		return newTexture;
+	}
+
+	std::shared_ptr<Texture2D> ResourceManager::getTexture(const std::string& textureName) {
+		TexturesMap::const_iterator it = m_textures.find(textureName);
+		if (it != m_textures.end())
+			return it->second;
+		std::cerr << "Can`t find the texture: " << textureName << std::endl;
+		return nullptr;
 	}
 }

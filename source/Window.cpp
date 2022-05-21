@@ -5,6 +5,7 @@
 #include "Renderer/VertexBuffer.hpp"
 #include "Renderer/VertexArray.hpp"
 #include "Resources/ResourceManager.hpp"
+#include "Renderer/Texture2D.hpp"
 
 #include <iostream>
 #include <memory>
@@ -23,12 +24,19 @@ namespace Game {
         0.5f,  0.5f, 0.0f,   1.0f, 0.0f, 0.0f
     };
 
+    GLfloat texture_points[] = {
+       -0.5f, -0.5f,
+        0.5f, -0.5f,
+       -0.5f,  0.5f
+    };
+
     GLuint indices[] = {
         0, 1, 2, 3, 2, 1
     };
 
     std::unique_ptr<ResourceManager> p_resourceManager;
     std::unique_ptr<VertexBuffer> p_positions_colors_vbo;
+    std::unique_ptr<VertexBuffer> p_texture_points_vbo;
     std::unique_ptr<IndexBuffer> p_index_buffer;
     std::unique_ptr<VertexArray> p_vao;
 
@@ -119,15 +127,25 @@ namespace Game {
             ShaderDataType::Float3,
             ShaderDataType::Float3
         };
+        BufferLayout buffer_layout_1vec2
+        {
+            ShaderDataType::Float2
+        };
 
-        p_resourceManager->loadTexture("DefaultTexture", "res/textures/Test.png");
+        p_resourceManager->loadTexture("DefaultTexture", "res/textures/Test64x64.png");
+        tex = p_resourceManager->loadTexture("DefaultTexture", "res/textures/Test64x64.png");
 
         p_vao = std::make_unique<VertexArray>();
         p_positions_colors_vbo = std::make_unique<VertexBuffer>(positions_colors, sizeof(positions_colors), buffer_layout_2vec3);
+        p_texture_points_vbo = std::make_unique<VertexBuffer>(texture_points, sizeof(texture_points), buffer_layout_1vec2);
         p_index_buffer = std::make_unique<IndexBuffer>(indices, sizeof(indices) / sizeof(GLuint));
 
         p_vao->add_vertex_buffer(*p_positions_colors_vbo);
+        p_vao->add_vertex_buffer(*p_texture_points_vbo);
         p_vao->set_index_buffer(*p_index_buffer);
+
+        pDefaultShaderProgram->bind();
+        pDefaultShaderProgram->setInt("tex", 0);
 
         return 0;
     }
@@ -145,6 +163,7 @@ namespace Game {
 
         pDefaultShaderProgram->bind();
         p_vao->bind();
+        tex->bind();
         glDrawElements(GL_TRIANGLES, static_cast<GLsizei>(p_vao->get_indices_count()), GL_UNSIGNED_INT, nullptr);
 
         glfwSwapBuffers(m_pWindow);

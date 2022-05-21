@@ -2,6 +2,8 @@
 
 #include <string>
 
+#include <glad/glad.h>
+
 namespace Game {
 
     class ShaderProgram
@@ -18,6 +20,7 @@ namespace Game {
 
         void bind() const;
         static void unbind();
+        void setInt(const std::string& name, const GLuint value);
         bool isCompiled() const { return m_isCompiled; }
 
     private:
