@@ -12,28 +12,15 @@
 
 #include <glad/glad.h>
 #include <GLFW/glfw3.h>
+#include <../external/glm/glm/mat3x3.hpp> 
 
 namespace Game {
 
     static bool s_GLFW_initialized = false;
 
-    /*GLfloat positions_colors[] = {
-       -0.5f, -0.5f, 0.0f,   1.0f, 0.0f, 0.0f,
-        0.5f, -0.5f, 0.0f,   0.0f, 1.0f, 0.0f,
-       -0.5f,  0.5f, 0.0f,   0.0f, 0.0f, 1.0f,
-        0.5f,  0.5f, 0.0f,   1.0f, 0.0f, 0.0f
-    };
-
-    GLfloat texture_points[] = {
-        0.0f, 0.0f,
-        0.0f, 1.0f,
-        1.0f, 1.0f,
-        1.0f, 0.0f
-    };
-
     GLuint indices[] = {
         0, 1, 2, 3, 2, 1
-    };*/
+    };
 
     GLfloat points[] = {
        -0.5f, -0.5f, 0.0f,
@@ -202,6 +189,15 @@ namespace Game {
 
         pDefaultShaderProgram->bind();
         pDefaultShaderProgram->setInt("tex", 0);
+
+        glm::mat3 mat_1(4, 0, 0, 2, 8, 1, 0, 1, 0);
+        glm::mat3 mat_2(4, 2, 9, 2, 0, 4, 1, 4, 2);
+
+        glm::mat3 result_mat = mat_1 * mat_2;
+
+        std::cout << result_mat[0][0]; std::cout << result_mat[1][0]; std::cout << result_mat[2][0]; std::cout << std::endl;
+        std::cout << result_mat[0][1]; std::cout << result_mat[1][1]; std::cout << result_mat[2][1]; std::cout << std::endl;
+        std::cout << result_mat[0][2]; std::cout << result_mat[1][2]; std::cout << result_mat[2][2]; std::cout << std::endl;
 
         return 0;
     }

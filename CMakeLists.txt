@@ -46,10 +46,13 @@ target_include_directories(${PROJECT_NAME} PUBLIC source)
 target_compile_features(${PROJECT_NAME} PUBLIC cxx_std_17)
 
 add_subdirectory(../Minecraft/external/glfw ${CMAKE_CURRENT_BINARY_DIR}/glfw)
-target_link_libraries(${PROJECT_NAME} PRIVATE glfw)
+target_link_libraries(${PROJECT_NAME} PUBLIC glfw)
 
 add_subdirectory(../Minecraft/external/glad ${CMAKE_CURRENT_BINARY_DIR}/glad)
-target_link_libraries(${PROJECT_NAME} PRIVATE glad)
+target_link_libraries(${PROJECT_NAME} PUBLIC glad)
+
+add_subdirectory(../Minecraft/external/glm ${CMAKE_CURRENT_BINARY_DIR}/glm)
+target_link_libraries(${PROJECT_NAME} PUBLIC glm)
 
 set_target_properties(${PROJECT_NAME} PROPERTIES RUNTIME_OUTPUT_DIRECTORY ${CMAKE_BINARY_DIR}/bin/)
 

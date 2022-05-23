@@ -191,7 +191,7 @@ if %errorlevel% neq 0 goto :VCEnd</Command>
       <ReferenceOutputAssembly>false</ReferenceOutputAssembly>
       <CopyToOutputDirectory>Never</CopyToOutputDirectory>
     </ProjectReference>
-    <ProjectReference Include="C:\Users\Elisey\Games on C++\Minecraft\build\glad\ALL_BUILD.vcxproj">
+    <ProjectReference Include="C:\Users\Elisey\Games on C++\Minecraft\build\glm\ALL_BUILD.vcxproj">
       <Project>{C5267E73-6DEC-3DD5-B4A3-00CFC5604D50}</Project>
       <Name>ALL_BUILD</Name>
       <ReferenceOutputAssembly>false</ReferenceOutputAssembly>

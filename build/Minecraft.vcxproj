@@ -86,7 +86,7 @@
   </PropertyGroup>
   <ItemDefinitionGroup Condition="'$(Configuration)|$(Platform)'=='Debug|x64'">
     <ClCompile>
-      <AdditionalIncludeDirectories>C:\Users\Elisey\Games on C++\Minecraft\source;C:\Users\Elisey\Games on C++\Minecraft\external\glfw\include;C:\Users\Elisey\Games on C++\Minecraft\external\glad\include;%(AdditionalIncludeDirectories)</AdditionalIncludeDirectories>
+      <AdditionalIncludeDirectories>C:\Users\Elisey\Games on C++\Minecraft\source;C:\Users\Elisey\Games on C++\Minecraft\external\glfw\include;C:\Users\Elisey\Games on C++\Minecraft\external\glad\include;C:\Users\Elisey\Games on C++\Minecraft\external\glm;%(AdditionalIncludeDirectories)</AdditionalIncludeDirectories>
       <AssemblerListingLocation>$(IntDir)</AssemblerListingLocation>
       <BasicRuntimeChecks>EnableFastChecks</BasicRuntimeChecks>
       <DebugInformationFormat>ProgramDatabase</DebugInformationFormat>
@@ -104,10 +104,10 @@
     </ClCompile>
     <ResourceCompile>
       <PreprocessorDefinitions>%(PreprocessorDefinitions);WIN32;_DEBUG;_WINDOWS;CMAKE_INTDIR=\"Debug\"</PreprocessorDefinitions>
-      <AdditionalIncludeDirectories>C:\Users\Elisey\Games on C++\Minecraft\source;C:\Users\Elisey\Games on C++\Minecraft\external\glfw\include;C:\Users\Elisey\Games on C++\Minecraft\external\glad\include;%(AdditionalIncludeDirectories)</AdditionalIncludeDirectories>
+      <AdditionalIncludeDirectories>C:\Users\Elisey\Games on C++\Minecraft\source;C:\Users\Elisey\Games on C++\Minecraft\external\glfw\include;C:\Users\Elisey\Games on C++\Minecraft\external\glad\include;C:\Users\Elisey\Games on C++\Minecraft\external\glm;%(AdditionalIncludeDirectories)</AdditionalIncludeDirectories>
     </ResourceCompile>
     <Midl>
-      <AdditionalIncludeDirectories>C:\Users\Elisey\Games on C++\Minecraft\source;C:\Users\Elisey\Games on C++\Minecraft\external\glfw\include;C:\Users\Elisey\Games on C++\Minecraft\external\glad\include;%(AdditionalIncludeDirectories)</AdditionalIncludeDirectories>
+      <AdditionalIncludeDirectories>C:\Users\Elisey\Games on C++\Minecraft\source;C:\Users\Elisey\Games on C++\Minecraft\external\glfw\include;C:\Users\Elisey\Games on C++\Minecraft\external\glad\include;C:\Users\Elisey\Games on C++\Minecraft\external\glm;%(AdditionalIncludeDirectories)</AdditionalIncludeDirectories>
       <OutputDirectory>$(ProjectDir)/$(IntDir)</OutputDirectory>
       <HeaderFileName>%(Filename).h</HeaderFileName>
       <TypeLibraryName>%(Filename).tlb</TypeLibraryName>
@@ -142,7 +142,7 @@ if %errorlevel% neq 0 goto :VCEnd</Command>
   </ItemDefinitionGroup>
   <ItemDefinitionGroup Condition="'$(Configuration)|$(Platform)'=='Release|x64'">
     <ClCompile>
-      <AdditionalIncludeDirectories>C:\Users\Elisey\Games on C++\Minecraft\source;C:\Users\Elisey\Games on C++\Minecraft\external\glfw\include;C:\Users\Elisey\Games on C++\Minecraft\external\glad\include;%(AdditionalIncludeDirectories)</AdditionalIncludeDirectories>
+      <AdditionalIncludeDirectories>C:\Users\Elisey\Games on C++\Minecraft\source;C:\Users\Elisey\Games on C++\Minecraft\external\glfw\include;C:\Users\Elisey\Games on C++\Minecraft\external\glad\include;C:\Users\Elisey\Games on C++\Minecraft\external\glm;%(AdditionalIncludeDirectories)</AdditionalIncludeDirectories>
       <AssemblerListingLocation>$(IntDir)</AssemblerListingLocation>
       <ExceptionHandling>Sync</ExceptionHandling>
       <InlineFunctionExpansion>AnySuitable</InlineFunctionExpansion>
@@ -160,10 +160,10 @@ if %errorlevel% neq 0 goto :VCEnd</Command>
     </ClCompile>
     <ResourceCompile>
       <PreprocessorDefinitions>%(PreprocessorDefinitions);WIN32;_WINDOWS;NDEBUG;CMAKE_INTDIR=\"Release\"</PreprocessorDefinitions>
-      <AdditionalIncludeDirectories>C:\Users\Elisey\Games on C++\Minecraft\source;C:\Users\Elisey\Games on C++\Minecraft\external\glfw\include;C:\Users\Elisey\Games on C++\Minecraft\external\glad\include;%(AdditionalIncludeDirectories)</AdditionalIncludeDirectories>
+      <AdditionalIncludeDirectories>C:\Users\Elisey\Games on C++\Minecraft\source;C:\Users\Elisey\Games on C++\Minecraft\external\glfw\include;C:\Users\Elisey\Games on C++\Minecraft\external\glad\include;C:\Users\Elisey\Games on C++\Minecraft\external\glm;%(AdditionalIncludeDirectories)</AdditionalIncludeDirectories>
     </ResourceCompile>
     <Midl>
-      <AdditionalIncludeDirectories>C:\Users\Elisey\Games on C++\Minecraft\source;C:\Users\Elisey\Games on C++\Minecraft\external\glfw\include;C:\Users\Elisey\Games on C++\Minecraft\external\glad\include;%(AdditionalIncludeDirectories)</AdditionalIncludeDirectories>
+      <AdditionalIncludeDirectories>C:\Users\Elisey\Games on C++\Minecraft\source;C:\Users\Elisey\Games on C++\Minecraft\external\glfw\include;C:\Users\Elisey\Games on C++\Minecraft\external\glad\include;C:\Users\Elisey\Games on C++\Minecraft\external\glm;%(AdditionalIncludeDirectories)</AdditionalIncludeDirectories>
       <OutputDirectory>$(ProjectDir)/$(IntDir)</OutputDirectory>
       <HeaderFileName>%(Filename).h</HeaderFileName>
       <TypeLibraryName>%(Filename).tlb</TypeLibraryName>
@@ -198,7 +198,7 @@ if %errorlevel% neq 0 goto :VCEnd</Command>
   </ItemDefinitionGroup>
   <ItemDefinitionGroup Condition="'$(Configuration)|$(Platform)'=='MinSizeRel|x64'">
     <ClCompile>
-      <AdditionalIncludeDirectories>C:\Users\Elisey\Games on C++\Minecraft\source;C:\Users\Elisey\Games on C++\Minecraft\external\glfw\include;C:\Users\Elisey\Games on C++\Minecraft\external\glad\include;%(AdditionalIncludeDirectories)</AdditionalIncludeDirectories>
+      <AdditionalIncludeDirectories>C:\Users\Elisey\Games on C++\Minecraft\source;C:\Users\Elisey\Games on C++\Minecraft\external\glfw\include;C:\Users\Elisey\Games on C++\Minecraft\external\glad\include;C:\Users\Elisey\Games on C++\Minecraft\external\glm;%(AdditionalIncludeDirectories)</AdditionalIncludeDirectories>
       <AssemblerListingLocation>$(IntDir)</AssemblerListingLocation>
       <ExceptionHandling>Sync</ExceptionHandling>
       <InlineFunctionExpansion>OnlyExplicitInline</InlineFunctionExpansion>
@@ -216,10 +216,10 @@ if %errorlevel% neq 0 goto :VCEnd</Command>
     </ClCompile>
     <ResourceCompile>
       <PreprocessorDefinitions>%(PreprocessorDefinitions);WIN32;_WINDOWS;NDEBUG;CMAKE_INTDIR=\"MinSizeRel\"</PreprocessorDefinitions>
-      <AdditionalIncludeDirectories>C:\Users\Elisey\Games on C++\Minecraft\source;C:\Users\Elisey\Games on C++\Minecraft\external\glfw\include;C:\Users\Elisey\Games on C++\Minecraft\external\glad\include;%(AdditionalIncludeDirectories)</AdditionalIncludeDirectories>
+      <AdditionalIncludeDirectories>C:\Users\Elisey\Games on C++\Minecraft\source;C:\Users\Elisey\Games on C++\Minecraft\external\glfw\include;C:\Users\Elisey\Games on C++\Minecraft\external\glad\include;C:\Users\Elisey\Games on C++\Minecraft\external\glm;%(AdditionalIncludeDirectories)</AdditionalIncludeDirectories>
     </ResourceCompile>
     <Midl>
-      <AdditionalIncludeDirectories>C:\Users\Elisey\Games on C++\Minecraft\source;C:\Users\Elisey\Games on C++\Minecraft\external\glfw\include;C:\Users\Elisey\Games on C++\Minecraft\external\glad\include;%(AdditionalIncludeDirectories)</AdditionalIncludeDirectories>
+      <AdditionalIncludeDirectories>C:\Users\Elisey\Games on C++\Minecraft\source;C:\Users\Elisey\Games on C++\Minecraft\external\glfw\include;C:\Users\Elisey\Games on C++\Minecraft\external\glad\include;C:\Users\Elisey\Games on C++\Minecraft\external\glm;%(AdditionalIncludeDirectories)</AdditionalIncludeDirectories>
       <OutputDirectory>$(ProjectDir)/$(IntDir)</OutputDirectory>
       <HeaderFileName>%(Filename).h</HeaderFileName>
       <TypeLibraryName>%(Filename).tlb</TypeLibraryName>
@@ -254,7 +254,7 @@ if %errorlevel% neq 0 goto :VCEnd</Command>
   </ItemDefinitionGroup>
   <ItemDefinitionGroup Condition="'$(Configuration)|$(Platform)'=='RelWithDebInfo|x64'">
     <ClCompile>
-      <AdditionalIncludeDirectories>C:\Users\Elisey\Games on C++\Minecraft\source;C:\Users\Elisey\Games on C++\Minecraft\external\glfw\include;C:\Users\Elisey\Games on C++\Minecraft\external\glad\include;%(AdditionalIncludeDirectories)</AdditionalIncludeDirectories>
+      <AdditionalIncludeDirectories>C:\Users\Elisey\Games on C++\Minecraft\source;C:\Users\Elisey\Games on C++\Minecraft\external\glfw\include;C:\Users\Elisey\Games on C++\Minecraft\external\glad\include;C:\Users\Elisey\Games on C++\Minecraft\external\glm;%(AdditionalIncludeDirectories)</AdditionalIncludeDirectories>
       <AssemblerListingLocation>$(IntDir)</AssemblerListingLocation>
       <DebugInformationFormat>ProgramDatabase</DebugInformationFormat>
       <ExceptionHandling>Sync</ExceptionHandling>
@@ -271,10 +271,10 @@ if %errorlevel% neq 0 goto :VCEnd</Command>
     </ClCompile>
     <ResourceCompile>
       <PreprocessorDefinitions>%(PreprocessorDefinitions);WIN32;_WINDOWS;NDEBUG;CMAKE_INTDIR=\"RelWithDebInfo\"</PreprocessorDefinitions>
-      <AdditionalIncludeDirectories>C:\Users\Elisey\Games on C++\Minecraft\source;C:\Users\Elisey\Games on C++\Minecraft\external\glfw\include;C:\Users\Elisey\Games on C++\Minecraft\external\glad\include;%(AdditionalIncludeDirectories)</AdditionalIncludeDirectories>
+      <AdditionalIncludeDirectories>C:\Users\Elisey\Games on C++\Minecraft\source;C:\Users\Elisey\Games on C++\Minecraft\external\glfw\include;C:\Users\Elisey\Games on C++\Minecraft\external\glad\include;C:\Users\Elisey\Games on C++\Minecraft\external\glm;%(AdditionalIncludeDirectories)</AdditionalIncludeDirectories>
     </ResourceCompile>
     <Midl>
-      <AdditionalIncludeDirectories>C:\Users\Elisey\Games on C++\Minecraft\source;C:\Users\Elisey\Games on C++\Minecraft\external\glfw\include;C:\Users\Elisey\Games on C++\Minecraft\external\glad\include;%(AdditionalIncludeDirectories)</AdditionalIncludeDirectories>
+      <AdditionalIncludeDirectories>C:\Users\Elisey\Games on C++\Minecraft\source;C:\Users\Elisey\Games on C++\Minecraft\external\glfw\include;C:\Users\Elisey\Games on C++\Minecraft\external\glad\include;C:\Users\Elisey\Games on C++\Minecraft\external\glm;%(AdditionalIncludeDirectories)</AdditionalIncludeDirectories>
       <OutputDirectory>$(ProjectDir)/$(IntDir)</OutputDirectory>
       <HeaderFileName>%(Filename).h</HeaderFileName>
       <TypeLibraryName>%(Filename).tlb</TypeLibraryName>
