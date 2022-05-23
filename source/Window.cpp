@@ -17,7 +17,7 @@ namespace Game {
 
     static bool s_GLFW_initialized = false;
 
-    GLfloat positions_colors[] = {
+    /*GLfloat positions_colors[] = {
        -0.5f, -0.5f, 0.0f,   1.0f, 0.0f, 0.0f,
         0.5f, -0.5f, 0.0f,   0.0f, 1.0f, 0.0f,
        -0.5f,  0.5f, 0.0f,   0.0f, 0.0f, 1.0f,
@@ -25,13 +25,41 @@ namespace Game {
     };
 
     GLfloat texture_points[] = {
-       -0.5f, -0.5f,
-        0.5f, -0.5f,
-       -0.5f,  0.5f
+        0.0f, 0.0f,
+        0.0f, 1.0f,
+        1.0f, 1.0f,
+        1.0f, 0.0f
     };
 
     GLuint indices[] = {
         0, 1, 2, 3, 2, 1
+    };*/
+
+    GLfloat points[] = {
+       -0.5f, -0.5f, 0.0f,
+        0.5f, -0.5f, 0.0f,
+       -0.5f,  0.5f, 0.0f,
+        0.5f,  0.5f, 0.0f,
+        0.5f, -0.5f, 0.0f,
+       -0.5f,  0.5f, 0.0f
+    };
+
+    GLfloat colors[] = {
+        1.0f, 0.0f, 0.0f,
+        0.0f, 1.0f, 0.0f,
+        0.0f, 0.0f, 1.0f,
+        1.0f, 0.0f, 0.0f,
+        0.0f, 1.0f, 0.0f,
+        0.0f, 0.0f, 1.0f
+    };
+
+    GLfloat texture_points[] = {
+        0.0f, 0.0f,
+        1.0f, 0.0f,
+        0.0f, 1.0f,
+        1.0f, 1.0f,
+        1.0f, 0.0f,
+        0.0f, 1.0f
     };
 
     std::unique_ptr<ResourceManager> p_resourceManager;
@@ -131,18 +159,46 @@ namespace Game {
         {
             ShaderDataType::Float2
         };
+        tex = p_resourceManager->loadTexture("Test_64x64", "res/textures/Test_64x64.png");
 
-        p_resourceManager->loadTexture("DefaultTexture", "res/textures/Test64x64.png");
-        tex = p_resourceManager->loadTexture("DefaultTexture", "res/textures/Test64x64.png");
-
-        p_vao = std::make_unique<VertexArray>();
+        /*p_vao = std::make_unique<VertexArray>();
         p_positions_colors_vbo = std::make_unique<VertexBuffer>(positions_colors, sizeof(positions_colors), buffer_layout_2vec3);
         p_texture_points_vbo = std::make_unique<VertexBuffer>(texture_points, sizeof(texture_points), buffer_layout_1vec2);
         p_index_buffer = std::make_unique<IndexBuffer>(indices, sizeof(indices) / sizeof(GLuint));
 
         p_vao->add_vertex_buffer(*p_positions_colors_vbo);
         p_vao->add_vertex_buffer(*p_texture_points_vbo);
-        p_vao->set_index_buffer(*p_index_buffer);
+        p_vao->set_index_buffer(*p_index_buffer);*/
+        GLuint points_vbo = 0;
+        glGenBuffers(1, &points_vbo);
+        glBindBuffer(GL_ARRAY_BUFFER, points_vbo);
+        glBufferData(GL_ARRAY_BUFFER, sizeof(points), points, GL_STATIC_DRAW);
+
+        GLuint colors_vbo = 0;
+        glGenBuffers(1, &colors_vbo);
+        glBindBuffer(GL_ARRAY_BUFFER, colors_vbo);
+        glBufferData(GL_ARRAY_BUFFER, sizeof(colors), colors, GL_STATIC_DRAW);
+
+        GLuint points_texture_vbo = 0;
+        glGenBuffers(1, &points_texture_vbo);
+        glBindBuffer(GL_ARRAY_BUFFER, points_texture_vbo);
+        glBufferData(GL_ARRAY_BUFFER, sizeof(texture_points), texture_points, GL_STATIC_DRAW);
+
+        vao = 0;
+        glGenVertexArrays(1, &vao);
+        glBindVertexArray(vao);
+
+        glEnableVertexAttribArray(0);
+        glBindBuffer(GL_ARRAY_BUFFER, points_vbo);
+        glVertexAttribPointer(0, 3, GL_FLOAT, GL_FALSE, 0, nullptr);
+
+        glEnableVertexAttribArray(1);
+        glBindBuffer(GL_ARRAY_BUFFER, colors_vbo);
+        glVertexAttribPointer(1, 3, GL_FLOAT, GL_FALSE, 0, nullptr);
+
+        glEnableVertexAttribArray(2);
+        glBindBuffer(GL_ARRAY_BUFFER, points_texture_vbo);
+        glVertexAttribPointer(2, 2, GL_FLOAT, GL_FALSE, 0, nullptr);
 
         pDefaultShaderProgram->bind();
         pDefaultShaderProgram->setInt("tex", 0);
@@ -162,9 +218,11 @@ namespace Game {
         glClear(GL_COLOR_BUFFER_BIT);
 
         pDefaultShaderProgram->bind();
-        p_vao->bind();
+        //p_vao->bind();
+        glBindVertexArray(vao);
         tex->bind();
-        glDrawElements(GL_TRIANGLES, static_cast<GLsizei>(p_vao->get_indices_count()), GL_UNSIGNED_INT, nullptr);
+        glDrawArrays(GL_TRIANGLES, 0, 6);
+        //glDrawElements(GL_TRIANGLES, static_cast<GLsizei>(p_vao->get_indices_count()), GL_UNSIGNED_INT, nullptr);
 
         glfwSwapBuffers(m_pWindow);
         glfwPollEvents();

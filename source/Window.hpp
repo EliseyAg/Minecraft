@@ -44,5 +44,6 @@ namespace Game {
         std::shared_ptr<Texture2D> tex;
         GLFWwindow* m_pWindow = nullptr;
         WindowData m_data;
+        GLuint vao;
     };
 }

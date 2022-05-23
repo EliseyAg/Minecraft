@@ -20,7 +20,7 @@ namespace Game {
 
         void bind() const;
         static void unbind();
-        void setInt(const std::string& name, const GLuint value);
+        void setInt(const std::string& name, const GLint value);
         bool isCompiled() const { return m_isCompiled; }
 
     private:

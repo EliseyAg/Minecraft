@@ -107,7 +107,8 @@ namespace Game
         shaderProgram.m_isCompiled = false;
     }
 
-    void ShaderProgram::setInt(const std::string& name, const GLuint value) {
+    void ShaderProgram::setInt(const std::string& name, const GLint value)
+    {
         glUniform1i(glGetUniformLocation(m_id, name.c_str()), value);
     }
 }

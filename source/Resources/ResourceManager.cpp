@@ -6,7 +6,7 @@
 #include <iostream>
 
 #define STB_IMAGE_IMPLEMENTATION
-#define STBI_ONLY_JPEG
+//#define STBI_ONLY_JPEG
 #define STBI_ONLY_PNG
 #include "../external/stb_image/stb_image.h"
 
@@ -66,19 +66,22 @@ namespace Game {
 		int channels = 0;
 		int width = 0;
 		int height = 0;
-
 		stbi_set_flip_vertically_on_load(true);
 		unsigned char* pixels = stbi_load(std::string(m_path + "/" + texturePath).c_str(), &width, &height, &channels, 0);
 
-		if (!pixels) {
-			std::cerr << "Can`t load image:" << texturePath << std::endl;
+		if (!pixels)
+		{
+			std::cerr << "Can't load image: " << texturePath << std::endl;
 			return nullptr;
 		}
 
-		std::shared_ptr<Texture2D> newTexture = m_textures.emplace(textureName, std::make_shared<Texture2D>(width, height, pixels, channels, GL_NEAREST, GL_CLAMP_TO_EDGE)).first->second;
-
+		std::shared_ptr<Texture2D> newTexture = m_textures.emplace(textureName, std::make_shared<Texture2D>(width,
+			height,
+			pixels,
+			channels,
+			GL_NEAREST,
+			GL_CLAMP_TO_EDGE)).first->second;
 		stbi_image_free(pixels);
-
 		return newTexture;
 	}
 
