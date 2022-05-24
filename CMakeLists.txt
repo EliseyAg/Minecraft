@@ -12,6 +12,7 @@ set(PUBLIC_INCLUDES
 	source/Application.hpp
 	source/Window.hpp
 	source/Event.hpp
+	source/Polygon2D.hpp
 	source/Renderer/Texture2D.hpp
 	source/Renderer/ShaderProgram.hpp
 	source/Renderer/IndexBuffer.hpp
@@ -22,6 +23,7 @@ set(PUBLIC_INCLUDES
 set(PUBLIC_SOURCES
 	source/Application.cpp
 	source/Window.cpp
+	source/Polygon2D.cpp
 	source/Renderer/Texture2D.cpp
 	source/Renderer/ShaderProgram.cpp
 	source/Renderer/IndexBuffer.cpp

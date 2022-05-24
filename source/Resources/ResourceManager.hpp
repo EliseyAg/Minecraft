@@ -6,6 +6,7 @@
 
 #include <Renderer/ShaderProgram.hpp>
 #include <Renderer/Texture2D.hpp>
+#include <Polygon2D.hpp>
 
 namespace Game {
 	class ResourceManager {
@@ -22,6 +23,8 @@ namespace Game {
 		std::shared_ptr<ShaderProgram> getShader(const std::string& shaderName);
 		std::shared_ptr<Texture2D> loadTexture(const std::string& textureName, const std::string& texturePath);
 		std::shared_ptr<Texture2D> getTexture(const std::string& textureName);
+		std::shared_ptr<Polygon2D> loadPolygon(const std::string& PolygonName, const std::string& textureName, const std::string& shaderName, const unsigned int polygonWidth, const unsigned int polygonHeight);
+		std::shared_ptr<Polygon2D> getPolygon(const std::string& PolygonName);
 
 	private:
 		std::string getFileString(const std::string& relativeFilePath);
@@ -31,6 +34,9 @@ namespace Game {
 
 		typedef std::map<const std::string, std::shared_ptr<Texture2D>> TexturesMap;
 		TexturesMap m_textures;
+
+		typedef std::map<const std::string, std::shared_ptr<Polygon2D>> PolygonesMap;
+		PolygonesMap m_polygones;
 
 		std::string m_path;
 	};

@@ -3,6 +3,7 @@
 #include "Event.hpp"
 #include "Renderer/ShaderProgram.hpp"
 #include "Renderer/Texture2D.hpp"
+#include "Polygon2D.hpp"
 
 #include <string>
 #include <memory>
@@ -41,7 +42,9 @@ namespace Game {
         int init(char** argv);
         void shutdown();
         std::shared_ptr<ShaderProgram> pDefaultShaderProgram;
+        std::shared_ptr<ShaderProgram> pPolygonShaderProgram;
         std::shared_ptr<Texture2D> tex;
+        std::shared_ptr<Polygon2D> pPolygon;
         GLFWwindow* m_pWindow = nullptr;
         WindowData m_data;
         GLuint vao;

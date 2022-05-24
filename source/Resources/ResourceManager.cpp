@@ -92,4 +92,41 @@ namespace Game {
 		std::cerr << "Can`t find the texture: " << textureName << std::endl;
 		return nullptr;
 	}
+
+	std::shared_ptr<Polygon2D> ResourceManager::loadPolygon(const std::string& PolygonName,
+		const std::string& textureName,
+		const std::string& shaderName,
+		const unsigned int PolygonWidth,
+		const unsigned int PolygonHeight)
+	{
+		auto pTexture = getTexture(textureName);
+		if (!pTexture)
+		{
+			std::cerr << "Can't find the texture: " << textureName << " for the sprite: " << PolygonName << std::endl;
+		}
+
+		auto pShader = getShader(shaderName);
+		if (!pShader)
+		{
+			std::cerr << "Can't find the shader: " << shaderName << " for the sprite: " << PolygonName << std::endl;
+		}
+
+		std::shared_ptr<Polygon2D> newPolygon = m_polygones.emplace(textureName, std::make_shared<Polygon2D>(pTexture,
+																											 pShader,
+																											 glm::vec2(0.f, 0.f),
+																											 glm::vec2(PolygonWidth, PolygonHeight))).first->second;
+
+		return newPolygon;
+	}
+
+	std::shared_ptr<Polygon2D> ResourceManager::getPolygon(const std::string& PolygonName)
+	{
+		PolygonesMap::const_iterator it = m_polygones.find(PolygonName);
+		if (it != m_polygones.end())
+		{
+			return it->second;
+		}
+		std::cerr << "Can't find the sprite: " << PolygonName << std::endl;
+		return nullptr;
+	}
 }

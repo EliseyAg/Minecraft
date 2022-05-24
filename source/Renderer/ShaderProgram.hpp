@@ -3,6 +3,8 @@
 #include <string>
 
 #include <glad/glad.h>
+#include <glm/mat4x4.hpp>
+#include <glm/gtc/type_ptr.hpp>
 
 namespace Game {
 
@@ -22,6 +24,7 @@ namespace Game {
         static void unbind();
         void setInt(const std::string& name, const GLint value);
         bool isCompiled() const { return m_isCompiled; }
+        void setMatrix4(const char* name, const glm::mat4& matrix) const;
 
     private:
         bool m_isCompiled = false;

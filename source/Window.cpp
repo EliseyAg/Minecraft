@@ -12,7 +12,7 @@
 
 #include <glad/glad.h>
 #include <GLFW/glfw3.h>
-#include <../external/glm/glm/mat3x3.hpp> 
+#include <../external/glm/glm/mat4x4.hpp>  
 
 namespace Game {
 
@@ -54,6 +54,8 @@ namespace Game {
     std::unique_ptr<VertexBuffer> p_texture_points_vbo;
     std::unique_ptr<IndexBuffer> p_index_buffer;
     std::unique_ptr<VertexArray> p_vao;
+
+    float scale[3];
 
     Window::Window(std::string title, const unsigned int width, const unsigned int height, char** argv)
         : m_data({ std::move(title), width, height })
@@ -132,8 +134,14 @@ namespace Game {
 
         p_resourceManager = std::make_unique<ResourceManager>(argv[0]);
         pDefaultShaderProgram = p_resourceManager->loadShader("DefaultShader", "res/shaders/vertex.txt", "res/shaders/fragment.txt");
+        pPolygonShaderProgram = p_resourceManager->loadShader("PolygonShader", "res/shaders/vPolygon.txt", "res/shaders/fPolygon.txt");
         if (!pDefaultShaderProgram) {
             std::cerr << "Can`t create shader program: " << "DefaultShader" << std::endl;
+            return -5;
+        }
+
+        if (!pPolygonShaderProgram) {
+            std::cerr << "Can`t create shader program: " << "PolygonShader" << std::endl;
             return -5;
         }
 
@@ -147,6 +155,9 @@ namespace Game {
             ShaderDataType::Float2
         };
         tex = p_resourceManager->loadTexture("Test_64x64", "res/textures/Test_64x64.png");
+
+        pPolygon = p_resourceManager->loadPolygon("NewPolygon", "Test_64x64", "PolygonShader", 50, 100);
+        pPolygon->setPosition(glm::vec2(300, 100));
 
         /*p_vao = std::make_unique<VertexArray>();
         p_positions_colors_vbo = std::make_unique<VertexBuffer>(positions_colors, sizeof(positions_colors), buffer_layout_2vec3);
@@ -190,15 +201,6 @@ namespace Game {
         pDefaultShaderProgram->bind();
         pDefaultShaderProgram->setInt("tex", 0);
 
-        glm::mat3 mat_1(4, 0, 0, 2, 8, 1, 0, 1, 0);
-        glm::mat3 mat_2(4, 2, 9, 2, 0, 4, 1, 4, 2);
-
-        glm::mat3 result_mat = mat_1 * mat_2;
-
-        std::cout << result_mat[0][0]; std::cout << result_mat[1][0]; std::cout << result_mat[2][0]; std::cout << std::endl;
-        std::cout << result_mat[0][1]; std::cout << result_mat[1][1]; std::cout << result_mat[2][1]; std::cout << std::endl;
-        std::cout << result_mat[0][2]; std::cout << result_mat[1][2]; std::cout << result_mat[2][2]; std::cout << std::endl;
-
         return 0;
     }
 
@@ -217,8 +219,28 @@ namespace Game {
         //p_vao->bind();
         glBindVertexArray(vao);
         tex->bind();
+
+        scale[0] = 1;
+        scale[1] = 1;
+        scale[2] = 1;
+
+        glm::mat4 scale_matrix(scale[0], 0, 0, 0,
+            0, scale[1], 0, 0,
+            0, 0, scale[2], 0,
+            0, 0, 0, 1);
+
+        //glm::mat4 projectionMatrix = glm::ortho(0.f, static_cast<float>(m_data.width), 0.f, static_cast<float>(m_data.height), -100.f, 100.f);
+
+        glm::mat4 model_matrix = scale_matrix;//projectionMatrix * scale_matrix;
+
+        pPolygonShaderProgram->bind();
+        pPolygonShaderProgram->setInt("tex", 0);
+        pPolygonShaderProgram->setMatrix4("model_matrix", model_matrix);
+
         glDrawArrays(GL_TRIANGLES, 0, 6);
         //glDrawElements(GL_TRIANGLES, static_cast<GLsizei>(p_vao->get_indices_count()), GL_UNSIGNED_INT, nullptr);
+
+        pPolygon->render();
 
         glfwSwapBuffers(m_pWindow);
         glfwPollEvents();

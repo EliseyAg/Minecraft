@@ -4,7 +4,6 @@
 #include <string>
 
 #include <glad/glad.h>
-
 namespace Game
 {
     bool create_shader(const std::string& source, const GLenum shader_type, GLuint& shader_id)
@@ -110,5 +109,10 @@ namespace Game
     void ShaderProgram::setInt(const std::string& name, const GLint value)
     {
         glUniform1i(glGetUniformLocation(m_id, name.c_str()), value);
+    }
+
+    void ShaderProgram::setMatrix4(const char* name, const glm::mat4& matrix) const
+    {
+        glUniformMatrix4fv(glGetUniformLocation(m_id, name), 1, GL_FALSE, glm::value_ptr(matrix));
     }
 }
