@@ -12,7 +12,9 @@
 
 #include <glad/glad.h>
 #include <GLFW/glfw3.h>
+#include <../external/glm/glm/vec2.hpp>
 #include <../external/glm/glm/mat4x4.hpp>  
+#include <glm/gtc/matrix_transform.hpp>
 
 namespace Game {
 
@@ -23,30 +25,21 @@ namespace Game {
     };
 
     GLfloat points[] = {
-       -0.5f, -0.5f, 0.0f,
-        0.5f, -0.5f, 0.0f,
-       -0.5f,  0.5f, 0.0f,
-        0.5f,  0.5f, 0.0f,
-        0.5f, -0.5f, 0.0f,
-       -0.5f,  0.5f, 0.0f
+       0.0f,  50.f, 0.0f,
+       50.f, -50.f, 0.0f,
+      -50.f, -50.f, 0.0f
     };
 
     GLfloat colors[] = {
-        1.0f, 0.0f, 0.0f,
-        0.0f, 1.0f, 0.0f,
-        0.0f, 0.0f, 1.0f,
         1.0f, 0.0f, 0.0f,
         0.0f, 1.0f, 0.0f,
         0.0f, 0.0f, 1.0f
     };
 
     GLfloat texture_points[] = {
-        0.0f, 0.0f,
+        0.5f, 1.0f,
         1.0f, 0.0f,
-        0.0f, 1.0f,
-        1.0f, 1.0f,
-        1.0f, 0.0f,
-        0.0f, 1.0f
+        0.0f, 0.0f
     };
 
     std::unique_ptr<ResourceManager> p_resourceManager;
@@ -82,7 +75,7 @@ namespace Game {
         m_pWindow = glfwCreateWindow(m_data.width, m_data.height, m_data.title.c_str(), nullptr, nullptr);
         if (!m_pWindow)
         {
-            std::cout << "Can't create window {0} with size {1}x{2}", m_data.title, m_data.width, m_data.height, "\n";
+            std::cout << "Can't create window\n";
             glfwTerminate();
             return -2;
         }
@@ -157,16 +150,8 @@ namespace Game {
         tex = p_resourceManager->loadTexture("Test_64x64", "res/textures/Test_64x64.png");
 
         pPolygon = p_resourceManager->loadPolygon("NewPolygon", "Test_64x64", "PolygonShader", 50, 100);
-        pPolygon->setPosition(glm::vec2(300, 100));
+        pPolygon->setPosition(glm::vec2(100, 100));
 
-        /*p_vao = std::make_unique<VertexArray>();
-        p_positions_colors_vbo = std::make_unique<VertexBuffer>(positions_colors, sizeof(positions_colors), buffer_layout_2vec3);
-        p_texture_points_vbo = std::make_unique<VertexBuffer>(texture_points, sizeof(texture_points), buffer_layout_1vec2);
-        p_index_buffer = std::make_unique<IndexBuffer>(indices, sizeof(indices) / sizeof(GLuint));
-
-        p_vao->add_vertex_buffer(*p_positions_colors_vbo);
-        p_vao->add_vertex_buffer(*p_texture_points_vbo);
-        p_vao->set_index_buffer(*p_index_buffer);*/
         GLuint points_vbo = 0;
         glGenBuffers(1, &points_vbo);
         glBindBuffer(GL_ARRAY_BUFFER, points_vbo);
@@ -215,30 +200,28 @@ namespace Game {
         glClearColor(0, 0.5, 1, 0);
         glClear(GL_COLOR_BUFFER_BIT);
 
+        glm::mat4 modelMatrix_1 = glm::mat4(1.f);
+        modelMatrix_1 = glm::translate(modelMatrix_1, glm::vec3(100.f, 50.f, 0.f));
+        glm::mat4 modelMatrix_2 = glm::mat4(1.f);
+        modelMatrix_2 = glm::translate(modelMatrix_2, glm::vec3(590.f, 50.f, 0.f));
+        glm::mat4 projectionMatrix = glm::ortho(0.f, static_cast<float>(m_data.width), 0.f, static_cast<float>(m_data.height), -100.f, 100.f);
+
+        pDefaultShaderProgram->setMatrix4("projectionMat", projectionMatrix);
+
         pDefaultShaderProgram->bind();
-        //p_vao->bind();
+        pDefaultShaderProgram->setInt("tex", 0);
         glBindVertexArray(vao);
         tex->bind();
 
-        scale[0] = 1;
-        scale[1] = 1;
-        scale[2] = 1;
+        pDefaultShaderProgram->setMatrix4("modelMat", modelMatrix_1);
+        glDrawArrays(GL_TRIANGLES, 0, 3);
 
-        glm::mat4 scale_matrix(scale[0], 0, 0, 0,
-            0, scale[1], 0, 0,
-            0, 0, scale[2], 0,
-            0, 0, 0, 1);
-
-        //glm::mat4 projectionMatrix = glm::ortho(0.f, static_cast<float>(m_data.width), 0.f, static_cast<float>(m_data.height), -100.f, 100.f);
-
-        glm::mat4 model_matrix = scale_matrix;//projectionMatrix * scale_matrix;
+        pDefaultShaderProgram->setMatrix4("modelMat", modelMatrix_2);
+        glDrawArrays(GL_TRIANGLES, 0, 3);
 
         pPolygonShaderProgram->bind();
         pPolygonShaderProgram->setInt("tex", 0);
-        pPolygonShaderProgram->setMatrix4("model_matrix", model_matrix);
-
-        glDrawArrays(GL_TRIANGLES, 0, 6);
-        //glDrawElements(GL_TRIANGLES, static_cast<GLsizei>(p_vao->get_indices_count()), GL_UNSIGNED_INT, nullptr);
+        pPolygonShaderProgram->setMatrix4("projectionMat", projectionMatrix);
 
         pPolygon->render();
 

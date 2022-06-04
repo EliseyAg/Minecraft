@@ -5,27 +5,36 @@
 
 namespace Game 
 {
-	Polygon2D::Polygon2D(const std::shared_ptr<Texture2D> pTexture, const std::shared_ptr<ShaderProgram> pShaderProgram, const glm::vec2& position, const glm::vec2& size) 
+	Polygon2D::Polygon2D(const std::shared_ptr<Texture2D> pTexture, const std::shared_ptr<ShaderProgram> pShaderProgram, const glm::vec2& position, const glm::vec2& size, const float rotation)
 		: m_pTexture(std::move(pTexture))
 		, m_pShaderProgram(std::move(pShaderProgram))
 		, m_size(size)
+		, m_rotation(rotation)
 	{
-		GLfloat vertexCoords[] = {
-		   -0.5f, -0.5f,
-			0.5f, -0.5f,
-		   -0.5f,  0.5f,
-			0.5f,  0.5f,
-			0.5f, -0.5f,
-		   -0.5f,  0.5f,
+		const GLfloat vertexCoords[] = {
+			// 2--3    1
+			// | /   / |
+			// 1    3--2
+
+			// X  Y
+			0.f, 0.f,
+			0.f, 1.f,
+			1.f, 1.f,
+
+			1.f, 1.f,
+			1.f, 0.f,
+			0.f, 0.f
 		};
 
-		GLfloat textureCoords[] = {
-		   0.0f, 0.0f,
-		   1.0f, 0.0f,
-		   0.0f, 1.0f,
-		   1.0f, 1.0f,
-		   1.0f, 0.0f,
-		   0.0f, 1.0f
+		const GLfloat textureCoords[] = {
+			// U  V
+			0.f, 0.f,
+			0.f, 1.f,
+			1.f, 1.f,
+
+			1.f, 1.f,
+			1.f, 0.f,
+			0.f, 0.f
 		};
 
 		glGenVertexArrays(1, &m_vao);
@@ -34,14 +43,12 @@ namespace Game
 		glGenBuffers(1, &m_vertexCoords_vbo);
 		glBindBuffer(GL_ARRAY_BUFFER, m_vertexCoords_vbo);
 		glBufferData(GL_ARRAY_BUFFER, sizeof(vertexCoords), &vertexCoords, GL_STATIC_DRAW);
-
 		glEnableVertexAttribArray(0);
-		glVertexAttribPointer(0, 3, GL_FLOAT, GL_FALSE, 0, nullptr);
+		glVertexAttribPointer(0, 2, GL_FLOAT, GL_FALSE, 0, nullptr);
 
 		glGenBuffers(1, &m_textureCoords_vbo);
 		glBindBuffer(GL_ARRAY_BUFFER, m_textureCoords_vbo);
 		glBufferData(GL_ARRAY_BUFFER, sizeof(textureCoords), &textureCoords, GL_STATIC_DRAW);
-
 		glEnableVertexAttribArray(1);
 		glVertexAttribPointer(1, 2, GL_FLOAT, GL_FALSE, 0, nullptr);
 
@@ -62,11 +69,12 @@ namespace Game
 
 		model = glm::translate(model, glm::vec3(m_position, 0.f));
 		model = glm::translate(model, glm::vec3(0.5f * m_size.x, 0.5f * m_size.y, 0.f));
+		model = glm::rotate(model, glm::radians(m_rotation), glm::vec3(0.f, 0.f, 1.f));
 		model = glm::translate(model, glm::vec3(-0.5f * m_size.x, 0.5f * m_size.y, 0.f));
 		model = glm::scale(model, glm::vec3(m_size, 1.f));
 
 		glBindVertexArray(m_vao);
-		m_pShaderProgram->setMatrix4("model_matrix", model);
+		m_pShaderProgram->setMatrix4("modelMat", model);
 
 		glActiveTexture(GL_TEXTURE0);
 		m_pTexture->bind();
@@ -81,5 +89,9 @@ namespace Game
 
 	void Polygon2D::setSize(const glm::vec2& size) {
 		m_size = size;
+	}
+	void Polygon2D::setRotation(const float rotation)
+	{
+		m_rotation = rotation;
 	}
 }
