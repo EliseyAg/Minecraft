@@ -7,13 +7,20 @@
 #include "Renderer/ShaderProgram.hpp"
 
 #include <memory>
+#include <string>
 
 namespace Game
 {
 	class Polygon2D
 	{
 	public:
-		Polygon2D(const std::shared_ptr<Texture2D> pTexture, const std::shared_ptr<ShaderProgram> pShaderProgram, const glm::vec2& position = glm::vec2(0.f), const glm::vec2& size = glm::vec2(1.f), const float rotation = 0.f);
+		Polygon2D(const std::shared_ptr<Texture2D> pTexture,
+				  const std::string initialSubTexture,
+				  const std::shared_ptr<ShaderProgram> pShaderProgram,
+				  const glm::vec2& position = glm::vec2(0.f),
+				  const glm::vec2& size = glm::vec2(1.f),
+				  const float rotation = 0.f);
+
 		~Polygon2D();
 
 		Polygon2D(const Polygon2D&) = delete;

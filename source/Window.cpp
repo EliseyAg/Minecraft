@@ -149,8 +149,11 @@ namespace Game {
         };
         tex = p_resourceManager->loadTexture("Test_64x64", "res/textures/Test_64x64.png");
 
-        pPolygon = p_resourceManager->loadPolygon("NewPolygon", "Test_64x64", "PolygonShader", 50, 100);
-        pPolygon->setPosition(glm::vec2(100, 100));
+        std::vector<std::string> subTexturesNames = { "grass" };
+        auto pTextureAtlas = p_resourceManager->loadTextureAtlas("DefaultTextureAtlas", "res/textures/Test_64x64.png", std::move(subTexturesNames), 64, 64);
+
+        pPolygon = p_resourceManager->loadPolygon("NewPolygon", "DefaultTextureAtlas", "PolygonShader", 100, 100, "grass");
+        pPolygon->setPosition(glm::vec2(300, 100));
 
         GLuint points_vbo = 0;
         glGenBuffers(1, &points_vbo);
@@ -228,5 +231,4 @@ namespace Game {
         glfwSwapBuffers(m_pWindow);
         glfwPollEvents();
     }
-
 }

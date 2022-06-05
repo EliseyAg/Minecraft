@@ -1,6 +1,7 @@
 #pragma once
 
 #include <string>
+#include <vector>
 #include <memory>
 #include <map>
 
@@ -23,8 +24,9 @@ namespace Game {
 		std::shared_ptr<ShaderProgram> getShader(const std::string& shaderName);
 		std::shared_ptr<Texture2D> loadTexture(const std::string& textureName, const std::string& texturePath);
 		std::shared_ptr<Texture2D> getTexture(const std::string& textureName);
-		std::shared_ptr<Polygon2D> loadPolygon(const std::string& PolygonName, const std::string& textureName, const std::string& shaderName, const unsigned int polygonWidth, const unsigned int polygonHeight);
+		std::shared_ptr<Polygon2D> loadPolygon(const std::string& PolygonName, const std::string& textureName, const std::string& shaderName, const unsigned int polygonWidth, const unsigned int polygonHeight, const std::string& subTextureName = "default");
 		std::shared_ptr<Polygon2D> getPolygon(const std::string& PolygonName);
+		std::shared_ptr<Texture2D> loadTextureAtlas(const std::string textureName, const std::string texturePath, std::vector<std::string> subTextures, const unsigned int width, const unsigned int height);
 
 	private:
 		std::string getFileString(const std::string& relativeFilePath);

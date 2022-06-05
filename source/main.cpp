@@ -18,6 +18,5 @@ int main(int argc, char** argv)
 
     int returnCode = myApp->start(640, 480, "Minecraft", argv);
 
-    std::cin.get();
     return returnCode;
 }
