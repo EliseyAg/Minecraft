@@ -4,6 +4,7 @@
 #include "Renderer/ShaderProgram.hpp"
 #include "Renderer/Texture2D.hpp"
 #include "Polygon2D.hpp"
+#include "Animated_Polygon2D.hpp"
 
 #include <string>
 #include <memory>
@@ -45,6 +46,7 @@ namespace Game {
         std::shared_ptr<ShaderProgram> pPolygonShaderProgram;
         std::shared_ptr<Texture2D> tex;
         std::shared_ptr<Polygon2D> pPolygon;
+        std::shared_ptr<Animated_Polygon2D> pAnimatedPolygon;
         GLFWwindow* m_pWindow = nullptr;
         WindowData m_data;
         GLuint vao;

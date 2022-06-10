@@ -1,8 +1,11 @@
 #pragma once
 
 #include "Event.hpp"
+#include "Resources/ResourceManager.hpp"
 
 #include <memory>
+#include <array>
+#include <glm/vec2.hpp>
 
 namespace Game {
 
@@ -26,6 +29,27 @@ namespace Game {
 
         EventDispatcher m_event_dispatcher;
         bool m_bCloseWindow = false;
+    };
+
+    class Game {
+    public:
+        Game(const glm::ivec2& windowSize);
+        ~Game();
+
+        void render();
+        void update(const uint64_t delta);
+        bool init();
+
+    private:
+        std::array<bool, 349> m_keys;
+
+        enum class EGameState {
+            Active,
+            Pause
+        };
+
+        glm::ivec2 m_windowSize;
+        EGameState m_eCurrentGameState;
     };
 
 }

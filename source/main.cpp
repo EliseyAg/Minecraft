@@ -1,15 +1,14 @@
 #include <iostream>
 #include <memory>
 #include "Application.hpp"
+#include "Resources/ResourceManager.hpp"
+
+#include <glm/vec2.hpp>
 
 class MyApp : public Game::Application
 {
-    virtual void on_update() override
-    {
-        //std::cout << "Update frame: " << frame++ << std::endl;
+    void on_update() override {
     }
-
-    int frame = 0;
 };
 
 int main(int argc, char** argv)

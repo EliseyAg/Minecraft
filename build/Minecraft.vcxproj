@@ -371,6 +371,7 @@ if %errorlevel% neq 0 goto :VCEnd</Command>
     <ClInclude Include="C:\Users\Elisey\Games on C++\Minecraft\source\Window.hpp" />
     <ClInclude Include="C:\Users\Elisey\Games on C++\Minecraft\source\Event.hpp" />
     <ClInclude Include="C:\Users\Elisey\Games on C++\Minecraft\source\Polygon2D.hpp" />
+    <ClInclude Include="C:\Users\Elisey\Games on C++\Minecraft\source\Animated_Polygon2D.hpp" />
     <ClInclude Include="C:\Users\Elisey\Games on C++\Minecraft\source\Renderer\Texture2D.hpp" />
     <ClInclude Include="C:\Users\Elisey\Games on C++\Minecraft\source\Renderer\ShaderProgram.hpp" />
     <ClInclude Include="C:\Users\Elisey\Games on C++\Minecraft\source\Renderer\IndexBuffer.hpp" />
@@ -380,6 +381,7 @@ if %errorlevel% neq 0 goto :VCEnd</Command>
     <ClCompile Include="C:\Users\Elisey\Games on C++\Minecraft\source\Application.cpp" />
     <ClCompile Include="C:\Users\Elisey\Games on C++\Minecraft\source\Window.cpp" />
     <ClCompile Include="C:\Users\Elisey\Games on C++\Minecraft\source\Polygon2D.cpp" />
+    <ClCompile Include="C:\Users\Elisey\Games on C++\Minecraft\source\Animated_Polygon2D.cpp" />
     <ClCompile Include="C:\Users\Elisey\Games on C++\Minecraft\source\Renderer\Texture2D.cpp" />
     <ClCompile Include="C:\Users\Elisey\Games on C++\Minecraft\source\Renderer\ShaderProgram.cpp" />
     <ClCompile Include="C:\Users\Elisey\Games on C++\Minecraft\source\Renderer\IndexBuffer.cpp" />

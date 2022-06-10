@@ -5,17 +5,17 @@
 
 namespace Game 
 {
-	Polygon2D::Polygon2D(const std::shared_ptr<Texture2D> pTexture,
-						 const std::string initialSubTexture,
-						 const std::shared_ptr<ShaderProgram> pShaderProgram,
-						 const glm::vec2& position,
-						 const glm::vec2& size,
-						 const float rotation)
+	Polygon2D::Polygon2D(std::shared_ptr<Texture2D> pTexture,
+						 std::string initialSubTexture,
+						 std::shared_ptr<ShaderProgram> pShaderProgram,
+						 glm::vec2& position,
+						 glm::vec2& size,
+						 float rotation)
 						 : m_pTexture(std::move(pTexture))
 						 , m_pShaderProgram(std::move(pShaderProgram))
-						 , m_position(position)
-						 , m_size(size)
-						 , m_rotation(rotation)
+						 , m_position(std::move(position))
+						 , m_size(std::move(size))
+						 , m_rotation(std::move(rotation))
 	{
 		const GLfloat vertexCoords[] = {
 			// 2--3    1
@@ -32,7 +32,7 @@ namespace Game
 			0.f, 0.f
 		};
 
-		auto subTexture = pTexture->getSubTexture(std::move(initialSubTexture));
+		auto subTexture = m_pTexture->getSubTexture(std::move(initialSubTexture));
 
 		const GLfloat textureCoords[] = {
 			// U  V
@@ -88,6 +88,7 @@ namespace Game
 		m_pTexture->bind();
 
 		glDrawArrays(GL_TRIANGLES, 0, 6);
+		GLenum ErrorCheckValue = glGetError();
 		glBindVertexArray(0);
 	}
 

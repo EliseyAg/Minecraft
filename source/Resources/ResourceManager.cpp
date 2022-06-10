@@ -11,7 +11,22 @@
 #include "../external/stb_image/stb_image.h"
 
 namespace Game {
-	ResourceManager::ResourceManager(const std::string& executablePath) {
+	ResourceManager::ShaderProgramsMap ResourceManager::m_shaderPrograms;
+	ResourceManager::TexturesMap ResourceManager::m_textures;
+	ResourceManager::PolygonesMap ResourceManager::m_polygones;
+	ResourceManager::Animated_PolygonesMap ResourceManager::m_animated_polygones;
+	std::string ResourceManager::m_path;
+
+
+	void ResourceManager::unloadAllResources()
+	{
+		m_shaderPrograms.clear();
+		m_textures.clear();
+		m_polygones.clear();
+		m_animated_polygones.clear();
+	}
+
+	void ResourceManager::setExecutablePath(const std::string& executablePath) {
 		size_t found = executablePath.find_last_of("/\\");
 		m_path = executablePath.substr(0, found);
 	}
@@ -103,16 +118,16 @@ namespace Game {
 		auto pTexture = getTexture(textureName);
 		if (!pTexture)
 		{
-			std::cerr << "Can't find the texture: " << textureName << " for the sprite: " << PolygonName << std::endl;
+			std::cerr << "Can't find the texture: " << textureName << " for the Polygon: " << PolygonName << std::endl;
 		}
 
 		auto pShader = getShader(shaderName);
 		if (!pShader)
 		{
-			std::cerr << "Can't find the shader: " << shaderName << " for the sprite: " << PolygonName << std::endl;
+			std::cerr << "Can't find the shader: " << shaderName << " for the Polygon: " << PolygonName << std::endl;
 		}
 
-		std::shared_ptr<Polygon2D> newPolygon = m_polygones.emplace(textureName, std::make_shared<Polygon2D>(pTexture,
+		std::shared_ptr<Polygon2D> newPolygon = m_polygones.emplace(PolygonName, std::make_shared<Polygon2D>(pTexture,
 																											 subTextureName,
 																											 pShader,
 																											 glm::vec2(0.f, 0.f),
@@ -128,11 +143,43 @@ namespace Game {
 		{
 			return it->second;
 		}
-		std::cerr << "Can't find the sprite: " << PolygonName << std::endl;
+		std::cerr << "Can't find the Polygon: " << PolygonName << std::endl;
 		return nullptr;
 	}
 
-	std::shared_ptr<Texture2D> ResourceManager::loadTextureAtlas(const std::string textureName, const std::string texturePath, std::vector<std::string> subTextures, const unsigned int subTextureWidth, const unsigned int subTextureHeight) {
+	std::shared_ptr<Animated_Polygon2D> ResourceManager::loadAnimatedPolygon(const std::string& PolygonName, const std::string& textureName, const std::string& shaderName, const unsigned int polygonWidth, const unsigned int polygonHeight, const std::string& subTextureName) {
+		auto pTexture = getTexture(textureName);
+		if (!pTexture)
+		{
+			std::cerr << "Can't find the texture: " << textureName << " for the Polygon: " << PolygonName << std::endl;
+		}
+
+		auto pShader = getShader(shaderName);
+		if (!pShader)
+		{
+			std::cerr << "Can't find the shader: " << shaderName << " for the Polygon: " << PolygonName << std::endl;
+		}
+
+		std::shared_ptr<Animated_Polygon2D> newPolygon = m_animated_polygones.emplace(PolygonName, std::make_shared<Animated_Polygon2D>(pTexture,
+																																		subTextureName,
+																																		pShader,
+																																		glm::vec2(0.f, 0.f),
+																																		glm::vec2(polygonWidth, polygonHeight))).first->second;
+
+		return newPolygon;
+	}
+
+	std::shared_ptr<Animated_Polygon2D> ResourceManager::getAnimatedPolygon(const std::string& PolygonName) {
+		Animated_PolygonesMap::const_iterator it = m_animated_polygones.find(PolygonName);
+		if (it != m_animated_polygones.end())
+		{
+			return it->second;
+		}
+		std::cerr << "Can't find animated Polygon: " << PolygonName << std::endl;
+		return nullptr;
+	}
+
+	std::shared_ptr<Texture2D> ResourceManager::loadTextureAtlas(std::string textureName, std::string texturePath, std::vector<std::string> subTextures, const unsigned int subTextureWidth, const unsigned int subTextureHeight) {
 		auto pTexture = loadTexture(std::move(textureName), std::move(texturePath));
 		if (pTexture)
 		{
@@ -140,7 +187,7 @@ namespace Game {
 			const unsigned int textureHeight = pTexture->height();
 			unsigned int currentTextureOffsetX = 0;
 			unsigned int currentTextureOffsetY = textureHeight;
-			for (const auto& currentSubTextureName : subTextures) {
+			for (auto& currentSubTextureName : subTextures) {
 				glm::vec2 leftBottomUV(static_cast<float>(currentTextureOffsetX) / textureWidth, static_cast<float>(currentTextureOffsetY - subTextureHeight) / textureHeight);
 				glm::vec2 rightTopUV(static_cast<float>(currentTextureOffsetX + subTextureWidth) / textureWidth, static_cast<float>(currentTextureOffsetY) / textureHeight);
 				pTexture->addSubTexture(std::move(currentSubTextureName), leftBottomUV, rightTopUV);

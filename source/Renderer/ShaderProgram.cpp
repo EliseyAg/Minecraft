@@ -6,7 +6,7 @@
 #include <glad/glad.h>
 namespace Game
 {
-    bool create_shader(const std::string& source, const GLenum shader_type, GLuint& shader_id)
+    bool create_shader(const std::string& source, const GLenum shader_type, GLuint &shader_id)
     {
         shader_id = glCreateShader(shader_type);
         const char* code = source.c_str();
