@@ -1,1 +1,44 @@
 ﻿  Building Custom Rule C:/Users/Elisey/Games on C++/Minecraft/CMakeLists.txt
+  CMake is re-running because C:/Users/Elisey/Games on C++/Minecraft/build/CMakeFiles/generate.stamp is out-of-date.
+    the file 'C:/Users/Elisey/Games on C++/Minecraft/CMakeLists.txt'
+    is newer than 'C:/Users/Elisey/Games on C++/Minecraft/build/CMakeFiles/generate.stamp.depend'
+    result='-1'
+  CMake Warning (dev) at CMakeLists.txt:4 (project):
+    Policy CMP0048 is not set: project() command manages VERSION variables.
+    Run "cmake --help-policy CMP0048" for policy details.  Use the cmake_policy
+    command to set the policy and suppress this warning.
+  
+    The following variable(s) would be set to empty:
+  
+      CMAKE_PROJECT_VERSION
+      CMAKE_PROJECT_VERSION_MAJOR
+      CMAKE_PROJECT_VERSION_MINOR
+      CMAKE_PROJECT_VERSION_PATCH
+  This warning is for project developers.  Use -Wno-dev to suppress it.
+  
+  -- Selecting Windows SDK version 10.0.19041.0 to target Windows 10.0.19043.
+  CMake Warning (dev) at CMakeLists.txt:41 (add_library):
+    Policy CMP0002 is not set: Logical target names must be globally unique.
+    Run "cmake --help-policy CMP0002" for policy details.  Use the cmake_policy
+    command to set the policy and suppress this warning.
+  This warning is for project developers.  Use -Wno-dev to suppress it.
+  
+  -- Could NOT find Doxygen (missing: DOXYGEN_EXECUTABLE) 
+  -- Including Win32 support
+  -- GLM: Version 0.9.9.9
+  -- Configuring done
+  CMake Error at CMakeLists.txt:6 (add_executable):
+    Cannot find source file:
+  
+      source/main.cpp
+  
+    Tried extensions .c .C .c++ .cc .cpp .cxx .cu .mpp .m .M .mm .ixx .cppm .h
+    .hh .h++ .hm .hpp .hxx .in .txx .f .F .for .f77 .f90 .f95 .f03 .hip .ispc
+  
+  
+  CMake Error at CMakeLists.txt:6 (add_executable):
+    No SOURCES given to target: Minecraft
+  
+  
+  CMake Generate step failed.  Build files cannot be regenerated correctly.
+C:\Program Files (x86)\Microsoft Visual Studio\2019\Community\MSBuild\Microsoft\VC\v160\Microsoft.CppCommon.targets(241,5): error MSB8066: пользовательская сборка для "C:\Users\Elisey\Games on C++\Minecraft\CMakeLists.txt" завершила работу с кодом 1.

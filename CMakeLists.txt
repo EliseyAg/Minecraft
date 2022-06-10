@@ -4,34 +4,39 @@ set(PROJECT_NAME Minecraft)
 project(${PROJECT_NAME})
 
 add_executable(${PROJECT_NAME} 
-	source/main.cpp
+	src/main.cpp
 )
 
 set(PUBLIC_INCLUDES
 	external/stb_image/stb_image.h
-	source/Application.hpp
-	source/Window.hpp
-	source/Event.hpp
-	source/Polygon2D.hpp
-	source/Animated_Polygon2D.hpp
-	source/Renderer/Texture2D.hpp
-	source/Renderer/ShaderProgram.hpp
-	source/Renderer/IndexBuffer.hpp
-	source/Renderer/VertexBuffer.hpp
-	source/Renderer/VertexArray.hpp
-	source/Resources/ResourceManager.hpp
+	src/Application.hpp
+	src/Window.hpp
+	src/Polygon2D.hpp
+	src/Animated_Polygon2D.hpp
+	src/Events/Event.hpp
+	src/Events/Keys.hpp
+	src/Events/Input.hpp
+	src/Player/Camera.hpp
+	src/Renderer/Texture2D.hpp
+	src/Renderer/ShaderProgram.hpp
+	src/Renderer/IndexBuffer.hpp
+	src/Renderer/VertexBuffer.hpp
+	src/Renderer/VertexArray.hpp
+	src/Resources/ResourceManager.hpp
 )
 set(PUBLIC_SOURCES
-	source/Application.cpp
-	source/Window.cpp
-	source/Polygon2D.cpp
-	source/Animated_Polygon2D.cpp
-	source/Renderer/Texture2D.cpp
-	source/Renderer/ShaderProgram.cpp
-	source/Renderer/IndexBuffer.cpp
-	source/Renderer/VertexBuffer.cpp
-	source/Renderer/VertexArray.cpp
-	source/Resources/ResourceManager.cpp
+	src/Application.cpp
+	src/Window.cpp
+	src/Polygon2D.cpp
+	src/Animated_Polygon2D.cpp
+	src/Events/Input.cpp
+	src/Player/Camera.cpp
+	src/Renderer/Texture2D.cpp
+	src/Renderer/ShaderProgram.cpp
+	src/Renderer/IndexBuffer.cpp
+	src/Renderer/VertexBuffer.cpp
+	src/Renderer/VertexArray.cpp
+	src/Resources/ResourceManager.cpp
 )
 set(ALL_SOURCES
 	${PUBLIC_INCLUDES}
@@ -62,4 +67,4 @@ set_target_properties(${PROJECT_NAME} PROPERTIES RUNTIME_OUTPUT_DIRECTORY ${CMAK
 
 add_custom_command(TARGET ${PROJECT_NAME} POST_BUILD
 					COMMAND ${CMAKE_COMMAND} -E copy_directory
-					${CMAKE_SOURCE_DIR}/Resources $<TARGET_FILE_DIR:${PROJECT_NAME}>/res)
+					${CMAKE_SOURCE_DIR}/res $<TARGET_FILE_DIR:${PROJECT_NAME}>/res)

@@ -1,76 +1,91 @@
 ﻿<?xml version="1.0" encoding="utf-8"?>
 <Project ToolsVersion="16.0" xmlns="http://schemas.microsoft.com/developer/msbuild/2003">
   <ItemGroup>
-    <ClCompile Include="C:\Users\Elisey\Games on C++\Minecraft\source\main.cpp">
+    <ClCompile Include="C:\Users\Elisey\Games on C++\Minecraft\src\main.cpp">
       <Filter>Source Files</Filter>
     </ClCompile>
-    <ClCompile Include="C:\Users\Elisey\Games on C++\Minecraft\source\Application.cpp">
-      <Filter>source</Filter>
+    <ClCompile Include="C:\Users\Elisey\Games on C++\Minecraft\src\Application.cpp">
+      <Filter>src</Filter>
     </ClCompile>
-    <ClCompile Include="C:\Users\Elisey\Games on C++\Minecraft\source\Window.cpp">
-      <Filter>source</Filter>
+    <ClCompile Include="C:\Users\Elisey\Games on C++\Minecraft\src\Window.cpp">
+      <Filter>src</Filter>
     </ClCompile>
-    <ClCompile Include="C:\Users\Elisey\Games on C++\Minecraft\source\Polygon2D.cpp">
-      <Filter>source</Filter>
+    <ClCompile Include="C:\Users\Elisey\Games on C++\Minecraft\src\Polygon2D.cpp">
+      <Filter>src</Filter>
     </ClCompile>
-    <ClCompile Include="C:\Users\Elisey\Games on C++\Minecraft\source\Animated_Polygon2D.cpp">
-      <Filter>source</Filter>
+    <ClCompile Include="C:\Users\Elisey\Games on C++\Minecraft\src\Animated_Polygon2D.cpp">
+      <Filter>src</Filter>
     </ClCompile>
-    <ClCompile Include="C:\Users\Elisey\Games on C++\Minecraft\source\Renderer\Texture2D.cpp">
-      <Filter>source\Renderer</Filter>
+    <ClCompile Include="C:\Users\Elisey\Games on C++\Minecraft\src\Events\Input.cpp">
+      <Filter>src\Events</Filter>
     </ClCompile>
-    <ClCompile Include="C:\Users\Elisey\Games on C++\Minecraft\source\Renderer\ShaderProgram.cpp">
-      <Filter>source\Renderer</Filter>
+    <ClCompile Include="C:\Users\Elisey\Games on C++\Minecraft\src\Player\Camera.cpp">
+      <Filter>src\Player</Filter>
     </ClCompile>
-    <ClCompile Include="C:\Users\Elisey\Games on C++\Minecraft\source\Renderer\IndexBuffer.cpp">
-      <Filter>source\Renderer</Filter>
+    <ClCompile Include="C:\Users\Elisey\Games on C++\Minecraft\src\Renderer\Texture2D.cpp">
+      <Filter>src\Renderer</Filter>
     </ClCompile>
-    <ClCompile Include="C:\Users\Elisey\Games on C++\Minecraft\source\Renderer\VertexBuffer.cpp">
-      <Filter>source\Renderer</Filter>
+    <ClCompile Include="C:\Users\Elisey\Games on C++\Minecraft\src\Renderer\ShaderProgram.cpp">
+      <Filter>src\Renderer</Filter>
     </ClCompile>
-    <ClCompile Include="C:\Users\Elisey\Games on C++\Minecraft\source\Renderer\VertexArray.cpp">
-      <Filter>source\Renderer</Filter>
+    <ClCompile Include="C:\Users\Elisey\Games on C++\Minecraft\src\Renderer\IndexBuffer.cpp">
+      <Filter>src\Renderer</Filter>
     </ClCompile>
-    <ClCompile Include="C:\Users\Elisey\Games on C++\Minecraft\source\Resources\ResourceManager.cpp">
-      <Filter>source\Resources</Filter>
+    <ClCompile Include="C:\Users\Elisey\Games on C++\Minecraft\src\Renderer\VertexBuffer.cpp">
+      <Filter>src\Renderer</Filter>
+    </ClCompile>
+    <ClCompile Include="C:\Users\Elisey\Games on C++\Minecraft\src\Renderer\VertexArray.cpp">
+      <Filter>src\Renderer</Filter>
+    </ClCompile>
+    <ClCompile Include="C:\Users\Elisey\Games on C++\Minecraft\src\Resources\ResourceManager.cpp">
+      <Filter>src\Resources</Filter>
     </ClCompile>
   </ItemGroup>
   <ItemGroup>
     <ClInclude Include="C:\Users\Elisey\Games on C++\Minecraft\external\stb_image\stb_image.h">
       <Filter>external\stb_image</Filter>
     </ClInclude>
-    <ClInclude Include="C:\Users\Elisey\Games on C++\Minecraft\source\Application.hpp">
-      <Filter>source</Filter>
+    <ClInclude Include="C:\Users\Elisey\Games on C++\Minecraft\src\Application.hpp">
+      <Filter>src</Filter>
     </ClInclude>
-    <ClInclude Include="C:\Users\Elisey\Games on C++\Minecraft\source\Window.hpp">
-      <Filter>source</Filter>
+    <ClInclude Include="C:\Users\Elisey\Games on C++\Minecraft\src\Window.hpp">
+      <Filter>src</Filter>
     </ClInclude>
-    <ClInclude Include="C:\Users\Elisey\Games on C++\Minecraft\source\Event.hpp">
-      <Filter>source</Filter>
+    <ClInclude Include="C:\Users\Elisey\Games on C++\Minecraft\src\Polygon2D.hpp">
+      <Filter>src</Filter>
     </ClInclude>
-    <ClInclude Include="C:\Users\Elisey\Games on C++\Minecraft\source\Polygon2D.hpp">
-      <Filter>source</Filter>
+    <ClInclude Include="C:\Users\Elisey\Games on C++\Minecraft\src\Animated_Polygon2D.hpp">
+      <Filter>src</Filter>
     </ClInclude>
-    <ClInclude Include="C:\Users\Elisey\Games on C++\Minecraft\source\Animated_Polygon2D.hpp">
-      <Filter>source</Filter>
+    <ClInclude Include="C:\Users\Elisey\Games on C++\Minecraft\src\Events\Event.hpp">
+      <Filter>src\Events</Filter>
     </ClInclude>
-    <ClInclude Include="C:\Users\Elisey\Games on C++\Minecraft\source\Renderer\Texture2D.hpp">
-      <Filter>source\Renderer</Filter>
+    <ClInclude Include="C:\Users\Elisey\Games on C++\Minecraft\src\Events\Keys.hpp">
+      <Filter>src\Events</Filter>
     </ClInclude>
-    <ClInclude Include="C:\Users\Elisey\Games on C++\Minecraft\source\Renderer\ShaderProgram.hpp">
-      <Filter>source\Renderer</Filter>
+    <ClInclude Include="C:\Users\Elisey\Games on C++\Minecraft\src\Events\Input.hpp">
+      <Filter>src\Events</Filter>
     </ClInclude>
-    <ClInclude Include="C:\Users\Elisey\Games on C++\Minecraft\source\Renderer\IndexBuffer.hpp">
-      <Filter>source\Renderer</Filter>
+    <ClInclude Include="C:\Users\Elisey\Games on C++\Minecraft\src\Player\Camera.hpp">
+      <Filter>src\Player</Filter>
     </ClInclude>
-    <ClInclude Include="C:\Users\Elisey\Games on C++\Minecraft\source\Renderer\VertexBuffer.hpp">
-      <Filter>source\Renderer</Filter>
+    <ClInclude Include="C:\Users\Elisey\Games on C++\Minecraft\src\Renderer\Texture2D.hpp">
+      <Filter>src\Renderer</Filter>
     </ClInclude>
-    <ClInclude Include="C:\Users\Elisey\Games on C++\Minecraft\source\Renderer\VertexArray.hpp">
-      <Filter>source\Renderer</Filter>
+    <ClInclude Include="C:\Users\Elisey\Games on C++\Minecraft\src\Renderer\ShaderProgram.hpp">
+      <Filter>src\Renderer</Filter>
     </ClInclude>
-    <ClInclude Include="C:\Users\Elisey\Games on C++\Minecraft\source\Resources\ResourceManager.hpp">
-      <Filter>source\Resources</Filter>
+    <ClInclude Include="C:\Users\Elisey\Games on C++\Minecraft\src\Renderer\IndexBuffer.hpp">
+      <Filter>src\Renderer</Filter>
+    </ClInclude>
+    <ClInclude Include="C:\Users\Elisey\Games on C++\Minecraft\src\Renderer\VertexBuffer.hpp">
+      <Filter>src\Renderer</Filter>
+    </ClInclude>
+    <ClInclude Include="C:\Users\Elisey\Games on C++\Minecraft\src\Renderer\VertexArray.hpp">
+      <Filter>src\Renderer</Filter>
+    </ClInclude>
+    <ClInclude Include="C:\Users\Elisey\Games on C++\Minecraft\src\Resources\ResourceManager.hpp">
+      <Filter>src\Resources</Filter>
     </ClInclude>
   </ItemGroup>
   <ItemGroup>
@@ -86,14 +101,20 @@
     <Filter Include="external\stb_image">
       <UniqueIdentifier>{93791694-CEA1-3AEB-9120-B28903524CCE}</UniqueIdentifier>
     </Filter>
-    <Filter Include="source">
-      <UniqueIdentifier>{6412BD38-37B9-38FF-94A1-8F23656EC45A}</UniqueIdentifier>
+    <Filter Include="src">
+      <UniqueIdentifier>{CC52659C-6AE6-3BEC-81AA-AADC9F2030FA}</UniqueIdentifier>
     </Filter>
-    <Filter Include="source\Renderer">
-      <UniqueIdentifier>{7AD4DADA-DC8D-3E77-AFE6-DE91F41B1377}</UniqueIdentifier>
+    <Filter Include="src\Events">
+      <UniqueIdentifier>{53AB9DE4-7B78-38A9-A6FA-FDC4AD6EAD46}</UniqueIdentifier>
     </Filter>
-    <Filter Include="source\Resources">
-      <UniqueIdentifier>{AD6EFDD1-DF30-3206-9FDC-5271463F4AB9}</UniqueIdentifier>
+    <Filter Include="src\Player">
+      <UniqueIdentifier>{BEDE7DE3-B4CC-3B6E-B280-EA59F91489A0}</UniqueIdentifier>
+    </Filter>
+    <Filter Include="src\Renderer">
+      <UniqueIdentifier>{A387BF3B-FAE4-36E3-9C63-222443CA12D0}</UniqueIdentifier>
+    </Filter>
+    <Filter Include="src\Resources">
+      <UniqueIdentifier>{FB86D747-323B-3D5D-8E04-A26F198671BE}</UniqueIdentifier>
     </Filter>
   </ItemGroup>
 </Project>

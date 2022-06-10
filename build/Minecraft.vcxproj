@@ -117,7 +117,7 @@
     <PostBuildEvent>
       <Message></Message>
       <Command>setlocal
-"C:\Program Files\CMake\bin\cmake.exe" -E copy_directory "C:/Users/Elisey/Games on C++/Minecraft/Resources" "C:/Users/Elisey/Games on C++/Minecraft/build/bin/Debug/res"
+"C:\Program Files\CMake\bin\cmake.exe" -E copy_directory "C:/Users/Elisey/Games on C++/Minecraft/res" "C:/Users/Elisey/Games on C++/Minecraft/build/bin/Debug/res"
 if %errorlevel% neq 0 goto :cmEnd
 :cmEnd
 endlocal &amp; call :cmErrorLevel %errorlevel% &amp; goto :cmDone
@@ -173,7 +173,7 @@ if %errorlevel% neq 0 goto :VCEnd</Command>
     <PostBuildEvent>
       <Message></Message>
       <Command>setlocal
-"C:\Program Files\CMake\bin\cmake.exe" -E copy_directory "C:/Users/Elisey/Games on C++/Minecraft/Resources" "C:/Users/Elisey/Games on C++/Minecraft/build/bin/Release/res"
+"C:\Program Files\CMake\bin\cmake.exe" -E copy_directory "C:/Users/Elisey/Games on C++/Minecraft/res" "C:/Users/Elisey/Games on C++/Minecraft/build/bin/Release/res"
 if %errorlevel% neq 0 goto :cmEnd
 :cmEnd
 endlocal &amp; call :cmErrorLevel %errorlevel% &amp; goto :cmDone
@@ -229,7 +229,7 @@ if %errorlevel% neq 0 goto :VCEnd</Command>
     <PostBuildEvent>
       <Message></Message>
       <Command>setlocal
-"C:\Program Files\CMake\bin\cmake.exe" -E copy_directory "C:/Users/Elisey/Games on C++/Minecraft/Resources" "C:/Users/Elisey/Games on C++/Minecraft/build/bin/MinSizeRel/res"
+"C:\Program Files\CMake\bin\cmake.exe" -E copy_directory "C:/Users/Elisey/Games on C++/Minecraft/res" "C:/Users/Elisey/Games on C++/Minecraft/build/bin/MinSizeRel/res"
 if %errorlevel% neq 0 goto :cmEnd
 :cmEnd
 endlocal &amp; call :cmErrorLevel %errorlevel% &amp; goto :cmDone
@@ -284,7 +284,7 @@ if %errorlevel% neq 0 goto :VCEnd</Command>
     <PostBuildEvent>
       <Message></Message>
       <Command>setlocal
-"C:\Program Files\CMake\bin\cmake.exe" -E copy_directory "C:/Users/Elisey/Games on C++/Minecraft/Resources" "C:/Users/Elisey/Games on C++/Minecraft/build/bin/RelWithDebInfo/res"
+"C:\Program Files\CMake\bin\cmake.exe" -E copy_directory "C:/Users/Elisey/Games on C++/Minecraft/res" "C:/Users/Elisey/Games on C++/Minecraft/build/bin/RelWithDebInfo/res"
 if %errorlevel% neq 0 goto :cmEnd
 :cmEnd
 endlocal &amp; call :cmErrorLevel %errorlevel% &amp; goto :cmDone
@@ -365,29 +365,34 @@ if %errorlevel% neq 0 goto :VCEnd</Command>
     </CustomBuild>
   </ItemGroup>
   <ItemGroup>
-    <ClCompile Include="C:\Users\Elisey\Games on C++\Minecraft\source\main.cpp" />
+    <ClCompile Include="C:\Users\Elisey\Games on C++\Minecraft\src\main.cpp" />
     <ClInclude Include="C:\Users\Elisey\Games on C++\Minecraft\external\stb_image\stb_image.h" />
-    <ClInclude Include="C:\Users\Elisey\Games on C++\Minecraft\source\Application.hpp" />
-    <ClInclude Include="C:\Users\Elisey\Games on C++\Minecraft\source\Window.hpp" />
-    <ClInclude Include="C:\Users\Elisey\Games on C++\Minecraft\source\Event.hpp" />
-    <ClInclude Include="C:\Users\Elisey\Games on C++\Minecraft\source\Polygon2D.hpp" />
-    <ClInclude Include="C:\Users\Elisey\Games on C++\Minecraft\source\Animated_Polygon2D.hpp" />
-    <ClInclude Include="C:\Users\Elisey\Games on C++\Minecraft\source\Renderer\Texture2D.hpp" />
-    <ClInclude Include="C:\Users\Elisey\Games on C++\Minecraft\source\Renderer\ShaderProgram.hpp" />
-    <ClInclude Include="C:\Users\Elisey\Games on C++\Minecraft\source\Renderer\IndexBuffer.hpp" />
-    <ClInclude Include="C:\Users\Elisey\Games on C++\Minecraft\source\Renderer\VertexBuffer.hpp" />
-    <ClInclude Include="C:\Users\Elisey\Games on C++\Minecraft\source\Renderer\VertexArray.hpp" />
-    <ClInclude Include="C:\Users\Elisey\Games on C++\Minecraft\source\Resources\ResourceManager.hpp" />
-    <ClCompile Include="C:\Users\Elisey\Games on C++\Minecraft\source\Application.cpp" />
-    <ClCompile Include="C:\Users\Elisey\Games on C++\Minecraft\source\Window.cpp" />
-    <ClCompile Include="C:\Users\Elisey\Games on C++\Minecraft\source\Polygon2D.cpp" />
-    <ClCompile Include="C:\Users\Elisey\Games on C++\Minecraft\source\Animated_Polygon2D.cpp" />
-    <ClCompile Include="C:\Users\Elisey\Games on C++\Minecraft\source\Renderer\Texture2D.cpp" />
-    <ClCompile Include="C:\Users\Elisey\Games on C++\Minecraft\source\Renderer\ShaderProgram.cpp" />
-    <ClCompile Include="C:\Users\Elisey\Games on C++\Minecraft\source\Renderer\IndexBuffer.cpp" />
-    <ClCompile Include="C:\Users\Elisey\Games on C++\Minecraft\source\Renderer\VertexBuffer.cpp" />
-    <ClCompile Include="C:\Users\Elisey\Games on C++\Minecraft\source\Renderer\VertexArray.cpp" />
-    <ClCompile Include="C:\Users\Elisey\Games on C++\Minecraft\source\Resources\ResourceManager.cpp" />
+    <ClInclude Include="C:\Users\Elisey\Games on C++\Minecraft\src\Application.hpp" />
+    <ClInclude Include="C:\Users\Elisey\Games on C++\Minecraft\src\Window.hpp" />
+    <ClInclude Include="C:\Users\Elisey\Games on C++\Minecraft\src\Polygon2D.hpp" />
+    <ClInclude Include="C:\Users\Elisey\Games on C++\Minecraft\src\Animated_Polygon2D.hpp" />
+    <ClInclude Include="C:\Users\Elisey\Games on C++\Minecraft\src\Events\Event.hpp" />
+    <ClInclude Include="C:\Users\Elisey\Games on C++\Minecraft\src\Events\Keys.hpp" />
+    <ClInclude Include="C:\Users\Elisey\Games on C++\Minecraft\src\Events\Input.hpp" />
+    <ClInclude Include="C:\Users\Elisey\Games on C++\Minecraft\src\Player\Camera.hpp" />
+    <ClInclude Include="C:\Users\Elisey\Games on C++\Minecraft\src\Renderer\Texture2D.hpp" />
+    <ClInclude Include="C:\Users\Elisey\Games on C++\Minecraft\src\Renderer\ShaderProgram.hpp" />
+    <ClInclude Include="C:\Users\Elisey\Games on C++\Minecraft\src\Renderer\IndexBuffer.hpp" />
+    <ClInclude Include="C:\Users\Elisey\Games on C++\Minecraft\src\Renderer\VertexBuffer.hpp" />
+    <ClInclude Include="C:\Users\Elisey\Games on C++\Minecraft\src\Renderer\VertexArray.hpp" />
+    <ClInclude Include="C:\Users\Elisey\Games on C++\Minecraft\src\Resources\ResourceManager.hpp" />
+    <ClCompile Include="C:\Users\Elisey\Games on C++\Minecraft\src\Application.cpp" />
+    <ClCompile Include="C:\Users\Elisey\Games on C++\Minecraft\src\Window.cpp" />
+    <ClCompile Include="C:\Users\Elisey\Games on C++\Minecraft\src\Polygon2D.cpp" />
+    <ClCompile Include="C:\Users\Elisey\Games on C++\Minecraft\src\Animated_Polygon2D.cpp" />
+    <ClCompile Include="C:\Users\Elisey\Games on C++\Minecraft\src\Events\Input.cpp" />
+    <ClCompile Include="C:\Users\Elisey\Games on C++\Minecraft\src\Player\Camera.cpp" />
+    <ClCompile Include="C:\Users\Elisey\Games on C++\Minecraft\src\Renderer\Texture2D.cpp" />
+    <ClCompile Include="C:\Users\Elisey\Games on C++\Minecraft\src\Renderer\ShaderProgram.cpp" />
+    <ClCompile Include="C:\Users\Elisey\Games on C++\Minecraft\src\Renderer\IndexBuffer.cpp" />
+    <ClCompile Include="C:\Users\Elisey\Games on C++\Minecraft\src\Renderer\VertexBuffer.cpp" />
+    <ClCompile Include="C:\Users\Elisey\Games on C++\Minecraft\src\Renderer\VertexArray.cpp" />
+    <ClCompile Include="C:\Users\Elisey\Games on C++\Minecraft\src\Resources\ResourceManager.cpp" />
   </ItemGroup>
   <ItemGroup>
     <ProjectReference Include="C:\Users\Elisey\Games on C++\Minecraft\build\ZERO_CHECK.vcxproj">
