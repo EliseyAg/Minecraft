@@ -10,6 +10,9 @@
     <ClCompile Include="C:\Users\Elisey\Games on C++\Minecraft\src\Window.cpp">
       <Filter>src</Filter>
     </ClCompile>
+    <ClCompile Include="C:\Users\Elisey\Games on C++\Minecraft\src\Cube.cpp">
+      <Filter>src</Filter>
+    </ClCompile>
     <ClCompile Include="C:\Users\Elisey\Games on C++\Minecraft\src\Polygon2D.cpp">
       <Filter>src</Filter>
     </ClCompile>
@@ -49,6 +52,9 @@
       <Filter>src</Filter>
     </ClInclude>
     <ClInclude Include="C:\Users\Elisey\Games on C++\Minecraft\src\Window.hpp">
+      <Filter>src</Filter>
+    </ClInclude>
+    <ClInclude Include="C:\Users\Elisey\Games on C++\Minecraft\src\Cube.hpp">
       <Filter>src</Filter>
     </ClInclude>
     <ClInclude Include="C:\Users\Elisey\Games on C++\Minecraft\src\Polygon2D.hpp">

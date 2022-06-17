@@ -7,10 +7,10 @@ namespace Game
 	Animated_Polygon2D::Animated_Polygon2D(std::shared_ptr<Texture2D> pTexture,
 										   std::string initialSubTexture,
 										   std::shared_ptr<ShaderProgram> pShaderProgram,
-										   glm::vec2& position,
+										   glm::vec3& position,
 										   glm::vec2& size,
-										   float rotation)
-										   : Polygon2D(std::move(pTexture), std::move(initialSubTexture), std::move(pShaderProgram), position, size, rotation)
+										   glm::vec4& rotation)
+										   : Polygon2D(std::move(pTexture), std::move(initialSubTexture), std::move(pShaderProgram), std::move(position), std::move(size), std::move(rotation))
 	{
 		m_pCurrentAnimationDurations = m_statesMap.end();
 	}

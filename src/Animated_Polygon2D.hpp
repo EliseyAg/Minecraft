@@ -14,9 +14,9 @@ namespace Game
 		Animated_Polygon2D(std::shared_ptr<Texture2D> pTexture,
 						   std::string initialSubTexture,
 						   std::shared_ptr<ShaderProgram> pShaderProgram,
-						   glm::vec2& position = glm::vec2(0.f),
+						   glm::vec3& position = glm::vec3(0.f),
 						   glm::vec2& size = glm::vec2(1.f),
-						   float rotation = 0.f);
+						   glm::vec4& rotation = glm::vec4(0.f));
 
 		void insertState(std::string state, std::vector<std::pair<std::string, uint64_t>> subTextureDuration);
 

@@ -3,6 +3,7 @@
 #include "Events/Event.hpp"
 #include "Resources/ResourceManager.hpp"
 #include "Player/Camera.hpp"
+#include "Cube.hpp"
 
 #include <memory>
 #include <array>
@@ -42,7 +43,7 @@ namespace Game {
         Game(const glm::ivec2& windowSize);
         ~Game();
 
-        void render(glm::mat4 projectionMat);
+        void render(glm::mat4 projectionMat, glm::vec3& camera_position);
         void update(const uint64_t delta);
         bool init();
 

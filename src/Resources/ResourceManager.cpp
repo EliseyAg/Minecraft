@@ -129,7 +129,7 @@ namespace Game {
 		std::shared_ptr<Polygon2D> newPolygon = m_polygones.emplace(PolygonName, std::make_shared<Polygon2D>(pTexture,
 																											 subTextureName,
 																											 pShader,
-																											 glm::vec2(0.f, 0.f),
+																											 glm::vec3(0.f, 0.f, 0.f),
 																											 glm::vec2(PolygonWidth, PolygonHeight))).first->second;
 
 		return newPolygon;
@@ -162,8 +162,9 @@ namespace Game {
 		std::shared_ptr<Animated_Polygon2D> newPolygon = m_animated_polygones.emplace(PolygonName, std::make_shared<Animated_Polygon2D>(pTexture,
 																																		subTextureName,
 																																		pShader,
-																																		glm::vec2(0.f, 0.f),
-																																		glm::vec2(polygonWidth, polygonHeight))).first->second;
+																																		glm::vec3(0.f, 0.f, 0.f),
+																																		glm::vec2(polygonWidth, polygonHeight),
+																																		glm::vec4(0.f, 0.f, 0.f, 0.f))).first->second;
 
 		return newPolygon;
 	}

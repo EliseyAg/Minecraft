@@ -11,6 +11,7 @@ set(PUBLIC_INCLUDES
 	external/stb_image/stb_image.h
 	src/Application.hpp
 	src/Window.hpp
+	src/Cube.hpp
 	src/Polygon2D.hpp
 	src/Animated_Polygon2D.hpp
 	src/Events/Event.hpp
@@ -27,6 +28,7 @@ set(PUBLIC_INCLUDES
 set(PUBLIC_SOURCES
 	src/Application.cpp
 	src/Window.cpp
+	src/Cube.cpp
 	src/Polygon2D.cpp
 	src/Animated_Polygon2D.cpp
 	src/Events/Input.cpp

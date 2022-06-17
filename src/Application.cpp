@@ -12,9 +12,11 @@
 #include <chrono>
 
 namespace Game {
-    glm::ivec2 g_windowSize(1024, 1024);
+    glm::ivec2 g_windowSize(512, 512);
 
     Game m_game(g_windowSize);
+
+    std::unique_ptr<Cube> cube;
 
     Application::Application() {
 
@@ -85,7 +87,7 @@ namespace Game {
             camera.set_position_rotation(glm::vec3(camera_position[0], camera_position[1], camera_position[2]),
                                          glm::vec3(camera_rotation[0], camera_rotation[1], camera_rotation[2]));
             camera.set_projection_mode(perspective_camera ? Player::Camera::ProjectionMode::Perspective : Player::Camera::ProjectionMode::Orthographic);
-            m_game.render(camera.get_projection_matrix() * camera.get_view_matrix());
+            m_game.render(camera.get_projection_matrix() * camera.get_view_matrix(), glm::vec3(camera_position[0], camera_position[1], camera_position[2]));
 
             m_pWindow->on_update();
             on_update();
@@ -134,16 +136,39 @@ namespace Game {
 
         auto pTextureAtlas = ResourceManager::loadTextureAtlas("DefaultTextureAtlas", "res/textures/Blocks.png", std::move(subTexturesNames), 64, 64);
 
-        auto pAnimatedPolygon = ResourceManager::loadAnimatedPolygon("NewAnimatedPolygon", "DefaultTextureAtlas", "PolygonShader", 8, 8, "Grass_Top");
-        pAnimatedPolygon->setPosition(glm::vec2(0, 0));
-        std::vector<std::pair<std::string, uint64_t>> grassState;
-        grassState.emplace_back(std::make_pair<std::string, uint64_t>("Grass_Top", 1000000000));
-        grassState.emplace_back(std::make_pair<std::string, uint64_t>("Grass_Left", 1000000000));
-        grassState.emplace_back(std::make_pair<std::string, uint64_t>("Grass_Bottom", 1000000000));
+        auto pAnimatedPolygon1 = ResourceManager::loadAnimatedPolygon("NewAnimatedPolygon1", "DefaultTextureAtlas", "PolygonShader", 4, 4, "Grass_Top");
+        auto pAnimatedPolygon2 = ResourceManager::loadAnimatedPolygon("NewAnimatedPolygon2", "DefaultTextureAtlas", "PolygonShader", 4, 4, "Grass_Left");
+        pAnimatedPolygon1->setPosition(glm::vec3(0, 0, 0));
+        pAnimatedPolygon1->setRotation(glm::vec4(90, 0, 0, 0));
+        pAnimatedPolygon2->setPosition(glm::vec3(0, 0, 0));
+        pAnimatedPolygon2->setRotation(glm::vec4(0, 0, 0, 0));
+        std::vector<std::pair<std::string, uint64_t>> grassState11;
+        grassState11.emplace_back(std::make_pair<std::string, uint64_t>("Grass_Top", 1000000000));
 
-        pAnimatedPolygon->insertState("grassState", std::move(grassState));
+        std::vector<std::pair<std::string, uint64_t>> grassState12;
+        grassState12.emplace_back(std::make_pair<std::string, uint64_t>("Grass_Top", 1000000000));
+        grassState12.emplace_back(std::make_pair<std::string, uint64_t>("Grass_Left", 1000000000));
+        grassState12.emplace_back(std::make_pair<std::string, uint64_t>("Grass_Bottom", 1000000000));
 
-        pAnimatedPolygon->setState("grassState");
+        std::vector<std::pair<std::string, uint64_t>> grassState21;
+        grassState21.emplace_back(std::make_pair<std::string, uint64_t>("Grass_Left", 1000000000));
+
+        std::vector<std::pair<std::string, uint64_t>> grassState22;
+        grassState22.emplace_back(std::make_pair<std::string, uint64_t>("Grass_Top", 1000000000));
+        grassState22.emplace_back(std::make_pair<std::string, uint64_t>("Grass_Left", 1000000000));
+        grassState22.emplace_back(std::make_pair<std::string, uint64_t>("Grass_Bottom", 1000000000));
+
+        pAnimatedPolygon1->insertState("grassState11", std::move(grassState11));
+        pAnimatedPolygon1->insertState("grassState12", std::move(grassState12));
+
+        pAnimatedPolygon1->setState("grassState11");
+
+        pAnimatedPolygon2->insertState("grassState21", std::move(grassState21));
+        pAnimatedPolygon2->insertState("grassState22", std::move(grassState22));
+
+        pAnimatedPolygon2->setState("grassState21");
+
+        cube = std::make_unique<Cube>(pTextureAtlas, "Grass_Top", pPolygonShaderProgram, glm::vec3(0, 0, 0), glm::vec3(4, 4, 4));
 
         pDefaultShaderProgram->bind();
         pDefaultShaderProgram->setInt("tex", 0);
@@ -154,14 +179,16 @@ namespace Game {
         return true;
     }
 
-    void Game::render(glm::mat4 projectionMat)
+    void Game::render(glm::mat4 projectionMat, glm::vec3& camera_position)
     {
         ResourceManager::getShader("PolygonShader")->setMatrix4("projectionMat", projectionMat);
-        ResourceManager::getAnimatedPolygon("NewAnimatedPolygon")->render();
+        ResourceManager::getShader("PolygonShader")->bind();
+        cube->render(camera_position);
     }
 
     void Game::update(const uint64_t delta)
     {
-        ResourceManager::getAnimatedPolygon("NewAnimatedPolygon")->update(delta);
+        ResourceManager::getAnimatedPolygon("NewAnimatedPolygon1")->update(delta);
+        ResourceManager::getAnimatedPolygon("NewAnimatedPolygon2")->update(delta);
     }
 }
