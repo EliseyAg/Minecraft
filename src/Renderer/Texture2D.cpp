@@ -1,6 +1,6 @@
 #include "Texture2D.hpp"
 
-namespace Game {
+namespace Renderer {
     Texture2D::Texture2D(const GLuint width, GLuint height,
         const unsigned char* data,
         const unsigned int channels,

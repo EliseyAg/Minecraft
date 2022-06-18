@@ -4,9 +4,9 @@
 
 namespace Game 
 {
-	Animated_Polygon2D::Animated_Polygon2D(std::shared_ptr<Texture2D> pTexture,
+	Animated_Polygon2D::Animated_Polygon2D(std::shared_ptr<Renderer::Texture2D> pTexture,
 										   std::string initialSubTexture,
-										   std::shared_ptr<ShaderProgram> pShaderProgram,
+										   std::shared_ptr<Renderer::ShaderProgram> pShaderProgram,
 										   glm::vec3& position,
 										   glm::vec2& size,
 										   glm::vec4& rotation)

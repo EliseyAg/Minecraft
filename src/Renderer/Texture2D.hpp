@@ -6,7 +6,7 @@
 
 #include <../external/glm/glm/vec2.hpp>
 
-namespace Game {
+namespace Renderer {
     class Texture2D
     {
     public:

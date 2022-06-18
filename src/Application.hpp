@@ -26,7 +26,7 @@ namespace Game {
 
         virtual void on_update() {};
 
-        float camera_position[3] = { 0.f, 0.f, 15.f };
+        float camera_position[3] = { 0.f, 2.f, 0.f };
         float camera_rotation[3] = { 0.f, 0.f, 0.f };
         bool perspective_camera = true;
         Player::Camera camera;

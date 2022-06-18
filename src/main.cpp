@@ -56,7 +56,7 @@ class MyApp : public Game::Application
         {
             camera_rotation[1] += 0.25f;
         }
-        std::cout << "x: " << camera_position[2] << " y: " << camera_position[0] << std::endl;
+        std::cout << "x: " << camera_position[0] << " z: " << camera_position[2] << std::endl;
     }
 };
 

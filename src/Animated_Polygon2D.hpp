@@ -11,9 +11,9 @@ namespace Game
 	class Animated_Polygon2D : public Polygon2D
 	{
 	public:
-		Animated_Polygon2D(std::shared_ptr<Texture2D> pTexture,
+		Animated_Polygon2D(std::shared_ptr<Renderer::Texture2D> pTexture,
 						   std::string initialSubTexture,
-						   std::shared_ptr<ShaderProgram> pShaderProgram,
+						   std::shared_ptr<Renderer::ShaderProgram> pShaderProgram,
 						   glm::vec3& position = glm::vec3(0.f),
 						   glm::vec2& size = glm::vec2(1.f),
 						   glm::vec4& rotation = glm::vec4(0.f));

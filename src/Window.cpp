@@ -1,5 +1,4 @@
 #include "Window.hpp"
-#include "Renderer/ShaderProgram.hpp"
 #include "Resources/ResourceManager.hpp"
 
 #include <iostream>

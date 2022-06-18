@@ -4,7 +4,7 @@
 
 #include <glad/glad.h>
 
-namespace Game {
+namespace Renderer {
     class VertexBuffer {
     public:
         VertexBuffer();

@@ -1,6 +1,6 @@
 #include "IndexBuffer.hpp"
 
-namespace Game {
+namespace Renderer {
     IndexBuffer::IndexBuffer()
         : m_id(0)
     {

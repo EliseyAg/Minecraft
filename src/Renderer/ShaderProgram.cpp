@@ -4,7 +4,7 @@
 #include <string>
 
 #include <glad/glad.h>
-namespace Game
+namespace Renderer
 {
     bool create_shader(const std::string& source, const GLenum shader_type, GLuint &shader_id)
     {

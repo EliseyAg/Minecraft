@@ -3,7 +3,7 @@
 
 #include <glad/glad.h>
 
-namespace Game {
+namespace Renderer {
 
     class IndexBuffer {
     public:

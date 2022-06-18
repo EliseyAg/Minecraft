@@ -34,6 +34,9 @@
     <ClCompile Include="C:\Users\Elisey\Games on C++\Minecraft\src\Renderer\VertexBuffer.cpp">
       <Filter>src\Renderer</Filter>
     </ClCompile>
+    <ClCompile Include="C:\Users\Elisey\Games on C++\Minecraft\src\Renderer\VertexBufferLayout.cpp">
+      <Filter>src\Renderer</Filter>
+    </ClCompile>
     <ClCompile Include="C:\Users\Elisey\Games on C++\Minecraft\src\Renderer\IndexBuffer.cpp">
       <Filter>src\Renderer</Filter>
     </ClCompile>
@@ -82,6 +85,9 @@
       <Filter>src\Renderer</Filter>
     </ClInclude>
     <ClInclude Include="C:\Users\Elisey\Games on C++\Minecraft\src\Renderer\VertexBuffer.hpp">
+      <Filter>src\Renderer</Filter>
+    </ClInclude>
+    <ClInclude Include="C:\Users\Elisey\Games on C++\Minecraft\src\Renderer\VertexBufferLayout.hpp">
       <Filter>src\Renderer</Filter>
     </ClInclude>
     <ClInclude Include="C:\Users\Elisey\Games on C++\Minecraft\src\Renderer\IndexBuffer.hpp">

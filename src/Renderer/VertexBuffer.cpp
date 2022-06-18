@@ -1,6 +1,6 @@
 #include "VertexBuffer.hpp"
 
-namespace Game {
+namespace Renderer {
     VertexBuffer::VertexBuffer()
         : m_id(0)
     {

@@ -379,6 +379,7 @@ if %errorlevel% neq 0 goto :VCEnd</Command>
     <ClInclude Include="C:\Users\Elisey\Games on C++\Minecraft\src\Renderer\Texture2D.hpp" />
     <ClInclude Include="C:\Users\Elisey\Games on C++\Minecraft\src\Renderer\ShaderProgram.hpp" />
     <ClInclude Include="C:\Users\Elisey\Games on C++\Minecraft\src\Renderer\VertexBuffer.hpp" />
+    <ClInclude Include="C:\Users\Elisey\Games on C++\Minecraft\src\Renderer\VertexBufferLayout.hpp" />
     <ClInclude Include="C:\Users\Elisey\Games on C++\Minecraft\src\Renderer\IndexBuffer.hpp" />
     <ClInclude Include="C:\Users\Elisey\Games on C++\Minecraft\src\Renderer\VertexArray.hpp" />
     <ClInclude Include="C:\Users\Elisey\Games on C++\Minecraft\src\Resources\ResourceManager.hpp" />
@@ -392,6 +393,7 @@ if %errorlevel% neq 0 goto :VCEnd</Command>
     <ClCompile Include="C:\Users\Elisey\Games on C++\Minecraft\src\Renderer\Texture2D.cpp" />
     <ClCompile Include="C:\Users\Elisey\Games on C++\Minecraft\src\Renderer\ShaderProgram.cpp" />
     <ClCompile Include="C:\Users\Elisey\Games on C++\Minecraft\src\Renderer\VertexBuffer.cpp" />
+    <ClCompile Include="C:\Users\Elisey\Games on C++\Minecraft\src\Renderer\VertexBufferLayout.cpp" />
     <ClCompile Include="C:\Users\Elisey\Games on C++\Minecraft\src\Renderer\IndexBuffer.cpp" />
     <ClCompile Include="C:\Users\Elisey\Games on C++\Minecraft\src\Renderer\VertexArray.cpp" />
     <ClCompile Include="C:\Users\Elisey\Games on C++\Minecraft\src\Resources\ResourceManager.cpp" />

@@ -8,9 +8,9 @@
 
 namespace Game 
 {
-	Polygon2D::Polygon2D(std::shared_ptr<Texture2D> pTexture,
+	Polygon2D::Polygon2D(std::shared_ptr<Renderer::Texture2D> pTexture,
 						 std::string initialSubTexture,
-						 std::shared_ptr<ShaderProgram> pShaderProgram,
+						 std::shared_ptr<Renderer::ShaderProgram> pShaderProgram,
 						 glm::vec3& position,
 						 glm::vec2& size,
 						 glm::vec4& rotation)
@@ -38,8 +38,8 @@ namespace Game
 			// U  V
 			subTexture.leftBottomUV.x, subTexture.leftBottomUV.y,
 			subTexture.leftBottomUV.x, subTexture.rightTopUV.y,
-			subTexture.rightTopUV.x, subTexture.rightTopUV.y,
-			subTexture.rightTopUV.x, subTexture.leftBottomUV.y,
+			subTexture.rightTopUV.x,   subTexture.rightTopUV.y,
+			subTexture.rightTopUV.x,   subTexture.leftBottomUV.y,
 		};
 
 		const GLuint indices[] = {
@@ -47,26 +47,23 @@ namespace Game
 			2, 3, 0
 		};
 
-		glGenVertexArrays(1, &m_vao);
-		glBindVertexArray(m_vao);
-
 		m_vertexCoordsBuffer.init(vertexCoords, 3 * 4 * sizeof(GLfloat));
-		glEnableVertexAttribArray(0);
-		glVertexAttribPointer(0, 3, GL_FLOAT, GL_FALSE, 0, nullptr);
+		Renderer::VertexBufferLayout vertexCoordsLayout;
+		vertexCoordsLayout.addElementLayoutFloat(3, false);
+		m_vertexArray.addBuffer(m_vertexCoordsBuffer, vertexCoordsLayout);
 
 		m_textureCoordsBuffer.init(textureCoords, 2 * 4 * sizeof(GLfloat));
-		glEnableVertexAttribArray(1);
-		glVertexAttribPointer(1, 2, GL_FLOAT, GL_FALSE, 0, nullptr);
+		Renderer::VertexBufferLayout textureCoordsLayout;
+		textureCoordsLayout.addElementLayoutFloat(2, false);
+		m_vertexArray.addBuffer(m_textureCoordsBuffer, textureCoordsLayout);
 
 		m_indexBuffer.init(indices, 6 * sizeof(GLuint));
 
-		glBindBuffer(GL_ARRAY_BUFFER, 0);
-		glBindVertexArray(0);
-		glBindBuffer(GL_ELEMENT_ARRAY_BUFFER, 0);
+		m_vertexArray.unbind();
+		m_indexBuffer.unbind();
 	}
 
 	Polygon2D::~Polygon2D() {
-		glDeleteVertexArrays(1, &m_vao);
 	}
 
 	void Polygon2D::render() const {
@@ -89,7 +86,7 @@ namespace Game
 		model = glm::translate(model, glm::vec3(-0.5f * m_size.x, -0.5f * m_size.y, 0.f));
 		model = glm::scale(model, glm::vec3(m_size, 1.f));
 
-		glBindVertexArray(m_vao);
+		m_vertexArray.bind();
 		m_pShaderProgram->setMatrix4("modelMat", model);
 
 		glActiveTexture(GL_TEXTURE0);
@@ -97,7 +94,7 @@ namespace Game
 
 		glDrawElements(GL_TRIANGLES, 6, GL_UNSIGNED_INT, nullptr);
 
-		glBindVertexArray(0);
+		m_vertexArray.unbind();
 	}
 
 	void Polygon2D::setPosition(const glm::vec3& position) {

@@ -21,6 +21,7 @@ set(PUBLIC_INCLUDES
 	src/Renderer/Texture2D.hpp
 	src/Renderer/ShaderProgram.hpp
 	src/Renderer/VertexBuffer.hpp
+	src/Renderer/VertexBufferLayout.hpp
 	src/Renderer/IndexBuffer.hpp
 	src/Renderer/VertexArray.hpp
 	src/Resources/ResourceManager.hpp
@@ -36,6 +37,7 @@ set(PUBLIC_SOURCES
 	src/Renderer/Texture2D.cpp
 	src/Renderer/ShaderProgram.cpp
 	src/Renderer/VertexBuffer.cpp
+	src/Renderer/VertexBufferLayout.cpp
 	src/Renderer/IndexBuffer.cpp
 	src/Renderer/VertexArray.cpp
 	src/Resources/ResourceManager.cpp
