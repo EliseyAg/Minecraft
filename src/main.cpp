@@ -13,31 +13,31 @@ class MyApp : public Game::Application
     void on_update() override {
         if (Game::Input::IsKeyPressed(Game::KeyCode::KEY_W))
         {
-            camera_position[2] += cos((camera_rotation[1] * PI) / 180) * -0.05f;
-            camera_position[0] += sin((camera_rotation[1] * PI) / 180) * -0.05f;
-        }
-        if (Game::Input::IsKeyPressed(Game::KeyCode::KEY_S))
-        {
-            camera_position[2] += cos((camera_rotation[1] * PI) / 180) * 0.05f;
-            camera_position[0] += sin((camera_rotation[1] * PI) / 180) * 0.05f;
-        }
-        if (Game::Input::IsKeyPressed(Game::KeyCode::KEY_A))
-        {
-            camera_position[2] += -sin((camera_rotation[1] * PI) / 180) * -0.05f;
-            camera_position[0] += cos((camera_rotation[1] * PI) / 180) * -0.05f;
-        }
-        if (Game::Input::IsKeyPressed(Game::KeyCode::KEY_D))
-        {
-            camera_position[2] += -sin((camera_rotation[1] * PI) / 180) * 0.05f;
-            camera_position[0] += cos((camera_rotation[1] * PI) / 180) * 0.05f;
+            camera_position[2] +=  cos((camera_rotation[1] * PI) / 180) * -0.005f;
+            camera_position[0] +=  sin((camera_rotation[1] * PI) / 180) * -0.005f;
+        }                                                                    
+        if (Game::Input::IsKeyPressed(Game::KeyCode::KEY_S))                 
+        {                                                                    
+            camera_position[2] +=  cos((camera_rotation[1] * PI) / 180) *  0.005f;
+            camera_position[0] +=  sin((camera_rotation[1] * PI) / 180) *  0.005f;
+        }                                                                    
+        if (Game::Input::IsKeyPressed(Game::KeyCode::KEY_A))                 
+        {                                                                    
+            camera_position[2] += -sin((camera_rotation[1] * PI) / 180) * -0.005f;
+            camera_position[0] +=  cos((camera_rotation[1] * PI) / 180) * -0.005f;
+        }                                                                    
+        if (Game::Input::IsKeyPressed(Game::KeyCode::KEY_D))                 
+        {                                                                    
+            camera_position[2] += -sin((camera_rotation[1] * PI) / 180) *  0.005f;
+            camera_position[0] +=  cos((camera_rotation[1] * PI) / 180) *  0.005f;
         }
         if (Game::Input::IsKeyPressed(Game::KeyCode::KEY_E))
         {
-            camera_position[1] += 0.05f;
+            camera_position[1] += 0.005f;
         }
         if (Game::Input::IsKeyPressed(Game::KeyCode::KEY_Q))
         {
-            camera_position[1] -= 0.05f;
+            camera_position[1] -= 0.005f;
         }
 
         if (Game::Input::IsKeyPressed(Game::KeyCode::KEY_UP))

@@ -1,10 +1,2 @@
-﻿  main.cpp
-C:\Users\Elisey\Games on C++\Minecraft\src\main.cpp(16,1): warning C4244: +=: преобразование "double" в "float", возможна потеря данных
-C:\Users\Elisey\Games on C++\Minecraft\src\main.cpp(17,1): warning C4244: +=: преобразование "double" в "float", возможна потеря данных
-C:\Users\Elisey\Games on C++\Minecraft\src\main.cpp(21,1): warning C4244: +=: преобразование "double" в "float", возможна потеря данных
-C:\Users\Elisey\Games on C++\Minecraft\src\main.cpp(22,1): warning C4244: +=: преобразование "double" в "float", возможна потеря данных
-C:\Users\Elisey\Games on C++\Minecraft\src\main.cpp(26,1): warning C4244: +=: преобразование "double" в "float", возможна потеря данных
-C:\Users\Elisey\Games on C++\Minecraft\src\main.cpp(27,1): warning C4244: +=: преобразование "double" в "float", возможна потеря данных
-C:\Users\Elisey\Games on C++\Minecraft\src\main.cpp(31,1): warning C4244: +=: преобразование "double" в "float", возможна потеря данных
-C:\Users\Elisey\Games on C++\Minecraft\src\main.cpp(32,1): warning C4244: +=: преобразование "double" в "float", возможна потеря данных
+﻿  Polygon2D.cpp
   Minecraft.vcxproj -> C:\Users\Elisey\Games on C++\Minecraft\build\bin\Debug\Minecraft.exe

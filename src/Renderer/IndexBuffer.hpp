@@ -1,26 +1,26 @@
 #pragma once
 #include "VertexBuffer.hpp"
 
+#include <glad/glad.h>
+
 namespace Game {
 
     class IndexBuffer {
     public:
-
-        IndexBuffer(const void* data, const size_t count, const VertexBuffer::EUsage usage = VertexBuffer::EUsage::Static);
+        IndexBuffer();
         ~IndexBuffer();
 
         IndexBuffer(const IndexBuffer&) = delete;
         IndexBuffer& operator=(const IndexBuffer&) = delete;
-        IndexBuffer& operator=(IndexBuffer&& index_buffer) noexcept;
-        IndexBuffer(IndexBuffer&& index_buffer) noexcept;
+        IndexBuffer& operator=(IndexBuffer&& indexBuffer) noexcept;
+        IndexBuffer(IndexBuffer&& indexBuffer) noexcept;
 
+        void init(const void* data, const unsigned int size);
         void bind() const;
-        static void unbind();
-        size_t get_count() const { return m_count; }
+        void unbind() const;
 
     private:
-        unsigned int m_id = 0;
-        size_t m_count;
+        GLuint m_id;
     };
 
 }

@@ -5,6 +5,8 @@
 
 #include "Renderer/Texture2D.hpp"
 #include "Renderer/ShaderProgram.hpp"
+#include "Renderer/VertexBuffer.hpp"
+#include "Renderer/IndexBuffer.hpp"
 
 #include <memory>
 #include <string>
@@ -37,7 +39,8 @@ namespace Game
 		glm::vec2 m_size;
 		glm::vec4 m_rotation;
 		GLuint m_vao;
-		GLuint m_vertexCoords_vbo;
-		GLuint m_textureCoords_vbo;
+		VertexBuffer m_vertexCoordsBuffer;
+		VertexBuffer m_textureCoordsBuffer;
+		IndexBuffer m_indexBuffer;
 	};
 }

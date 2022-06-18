@@ -31,10 +31,10 @@
     <ClCompile Include="C:\Users\Elisey\Games on C++\Minecraft\src\Renderer\ShaderProgram.cpp">
       <Filter>src\Renderer</Filter>
     </ClCompile>
-    <ClCompile Include="C:\Users\Elisey\Games on C++\Minecraft\src\Renderer\IndexBuffer.cpp">
+    <ClCompile Include="C:\Users\Elisey\Games on C++\Minecraft\src\Renderer\VertexBuffer.cpp">
       <Filter>src\Renderer</Filter>
     </ClCompile>
-    <ClCompile Include="C:\Users\Elisey\Games on C++\Minecraft\src\Renderer\VertexBuffer.cpp">
+    <ClCompile Include="C:\Users\Elisey\Games on C++\Minecraft\src\Renderer\IndexBuffer.cpp">
       <Filter>src\Renderer</Filter>
     </ClCompile>
     <ClCompile Include="C:\Users\Elisey\Games on C++\Minecraft\src\Renderer\VertexArray.cpp">
@@ -81,10 +81,10 @@
     <ClInclude Include="C:\Users\Elisey\Games on C++\Minecraft\src\Renderer\ShaderProgram.hpp">
       <Filter>src\Renderer</Filter>
     </ClInclude>
-    <ClInclude Include="C:\Users\Elisey\Games on C++\Minecraft\src\Renderer\IndexBuffer.hpp">
+    <ClInclude Include="C:\Users\Elisey\Games on C++\Minecraft\src\Renderer\VertexBuffer.hpp">
       <Filter>src\Renderer</Filter>
     </ClInclude>
-    <ClInclude Include="C:\Users\Elisey\Games on C++\Minecraft\src\Renderer\VertexBuffer.hpp">
+    <ClInclude Include="C:\Users\Elisey\Games on C++\Minecraft\src\Renderer\IndexBuffer.hpp">
       <Filter>src\Renderer</Filter>
     </ClInclude>
     <ClInclude Include="C:\Users\Elisey\Games on C++\Minecraft\src\Renderer\VertexArray.hpp">

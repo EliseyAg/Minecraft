@@ -12,7 +12,7 @@ namespace Game
 			 std::string initialSubTexture,
 			 std::shared_ptr<ShaderProgram> pShaderProgram,
 			 glm::vec3& position = glm::vec3(0.f),
-			 glm::vec3& size = glm::vec3(1.f));
+			 glm::vec3& size = glm::vec3(8.f));
 		void render(glm::vec3& camera_position);
 
 		std::pair<std::string, float> arr[6];

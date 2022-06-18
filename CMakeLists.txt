@@ -20,8 +20,8 @@ set(PUBLIC_INCLUDES
 	src/Player/Camera.hpp
 	src/Renderer/Texture2D.hpp
 	src/Renderer/ShaderProgram.hpp
-	src/Renderer/IndexBuffer.hpp
 	src/Renderer/VertexBuffer.hpp
+	src/Renderer/IndexBuffer.hpp
 	src/Renderer/VertexArray.hpp
 	src/Resources/ResourceManager.hpp
 )
@@ -35,8 +35,8 @@ set(PUBLIC_SOURCES
 	src/Player/Camera.cpp
 	src/Renderer/Texture2D.cpp
 	src/Renderer/ShaderProgram.cpp
-	src/Renderer/IndexBuffer.cpp
 	src/Renderer/VertexBuffer.cpp
+	src/Renderer/IndexBuffer.cpp
 	src/Renderer/VertexArray.cpp
 	src/Resources/ResourceManager.cpp
 )
