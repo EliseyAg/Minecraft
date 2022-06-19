@@ -8,9 +8,9 @@
 
 namespace Game 
 {
-	Polygon2D::Polygon2D(std::shared_ptr<Renderer::Texture2D> pTexture,
+	Polygon2D::Polygon2D(std::shared_ptr<RenderEngine::Texture2D> pTexture,
 						 std::string initialSubTexture,
-						 std::shared_ptr<Renderer::ShaderProgram> pShaderProgram,
+						 std::shared_ptr<RenderEngine::ShaderProgram> pShaderProgram,
 						 glm::vec3& position,
 						 glm::vec2& size,
 						 glm::vec4& rotation)
@@ -48,16 +48,16 @@ namespace Game
 		};
 
 		m_vertexCoordsBuffer.init(vertexCoords, 3 * 4 * sizeof(GLfloat));
-		Renderer::VertexBufferLayout vertexCoordsLayout;
+		RenderEngine::VertexBufferLayout vertexCoordsLayout;
 		vertexCoordsLayout.addElementLayoutFloat(3, false);
 		m_vertexArray.addBuffer(m_vertexCoordsBuffer, vertexCoordsLayout);
 
 		m_textureCoordsBuffer.init(textureCoords, 2 * 4 * sizeof(GLfloat));
-		Renderer::VertexBufferLayout textureCoordsLayout;
+		RenderEngine::VertexBufferLayout textureCoordsLayout;
 		textureCoordsLayout.addElementLayoutFloat(2, false);
 		m_vertexArray.addBuffer(m_textureCoordsBuffer, textureCoordsLayout);
 
-		m_indexBuffer.init(indices, 6 * sizeof(GLuint));
+		m_indexBuffer.init(indices, 6);
 
 		m_vertexArray.unbind();
 		m_indexBuffer.unbind();
@@ -86,15 +86,12 @@ namespace Game
 		model = glm::translate(model, glm::vec3(-0.5f * m_size.x, -0.5f * m_size.y, 0.f));
 		model = glm::scale(model, glm::vec3(m_size, 1.f));
 
-		m_vertexArray.bind();
 		m_pShaderProgram->setMatrix4("modelMat", model);
 
 		glActiveTexture(GL_TEXTURE0);
 		m_pTexture->bind();
 
-		glDrawElements(GL_TRIANGLES, 6, GL_UNSIGNED_INT, nullptr);
-
-		m_vertexArray.unbind();
+		RenderEngine::Renderer::draw(m_vertexArray, m_indexBuffer, *m_pShaderProgram);
 	}
 
 	void Polygon2D::setPosition(const glm::vec3& position) {

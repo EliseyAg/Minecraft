@@ -7,8 +7,8 @@
     <ClCompile Include="C:\Users\Elisey\Games on C++\Minecraft\src\Application.cpp">
       <Filter>src</Filter>
     </ClCompile>
-    <ClCompile Include="C:\Users\Elisey\Games on C++\Minecraft\src\Window.cpp">
-      <Filter>src</Filter>
+    <ClCompile Include="C:\Users\Elisey\Games on C++\Minecraft\src\Window\Window.cpp">
+      <Filter>src\Window</Filter>
     </ClCompile>
     <ClCompile Include="C:\Users\Elisey\Games on C++\Minecraft\src\Cube.cpp">
       <Filter>src</Filter>
@@ -25,23 +25,26 @@
     <ClCompile Include="C:\Users\Elisey\Games on C++\Minecraft\src\Player\Camera.cpp">
       <Filter>src\Player</Filter>
     </ClCompile>
-    <ClCompile Include="C:\Users\Elisey\Games on C++\Minecraft\src\Renderer\Texture2D.cpp">
-      <Filter>src\Renderer</Filter>
+    <ClCompile Include="C:\Users\Elisey\Games on C++\Minecraft\src\RenderEngine\OpenGL\Texture2D.cpp">
+      <Filter>src\RenderEngine\OpenGL</Filter>
     </ClCompile>
-    <ClCompile Include="C:\Users\Elisey\Games on C++\Minecraft\src\Renderer\ShaderProgram.cpp">
-      <Filter>src\Renderer</Filter>
+    <ClCompile Include="C:\Users\Elisey\Games on C++\Minecraft\src\RenderEngine\OpenGL\ShaderProgram.cpp">
+      <Filter>src\RenderEngine\OpenGL</Filter>
     </ClCompile>
-    <ClCompile Include="C:\Users\Elisey\Games on C++\Minecraft\src\Renderer\VertexBuffer.cpp">
-      <Filter>src\Renderer</Filter>
+    <ClCompile Include="C:\Users\Elisey\Games on C++\Minecraft\src\RenderEngine\OpenGL\VertexBuffer.cpp">
+      <Filter>src\RenderEngine\OpenGL</Filter>
     </ClCompile>
-    <ClCompile Include="C:\Users\Elisey\Games on C++\Minecraft\src\Renderer\VertexBufferLayout.cpp">
-      <Filter>src\Renderer</Filter>
+    <ClCompile Include="C:\Users\Elisey\Games on C++\Minecraft\src\RenderEngine\OpenGL\VertexBufferLayout.cpp">
+      <Filter>src\RenderEngine\OpenGL</Filter>
     </ClCompile>
-    <ClCompile Include="C:\Users\Elisey\Games on C++\Minecraft\src\Renderer\IndexBuffer.cpp">
-      <Filter>src\Renderer</Filter>
+    <ClCompile Include="C:\Users\Elisey\Games on C++\Minecraft\src\RenderEngine\OpenGL\IndexBuffer.cpp">
+      <Filter>src\RenderEngine\OpenGL</Filter>
     </ClCompile>
-    <ClCompile Include="C:\Users\Elisey\Games on C++\Minecraft\src\Renderer\VertexArray.cpp">
-      <Filter>src\Renderer</Filter>
+    <ClCompile Include="C:\Users\Elisey\Games on C++\Minecraft\src\RenderEngine\OpenGL\VertexArray.cpp">
+      <Filter>src\RenderEngine\OpenGL</Filter>
+    </ClCompile>
+    <ClCompile Include="C:\Users\Elisey\Games on C++\Minecraft\src\RenderEngine\OpenGL\Renderer.cpp">
+      <Filter>src\RenderEngine\OpenGL</Filter>
     </ClCompile>
     <ClCompile Include="C:\Users\Elisey\Games on C++\Minecraft\src\Resources\ResourceManager.cpp">
       <Filter>src\Resources</Filter>
@@ -54,8 +57,8 @@
     <ClInclude Include="C:\Users\Elisey\Games on C++\Minecraft\src\Application.hpp">
       <Filter>src</Filter>
     </ClInclude>
-    <ClInclude Include="C:\Users\Elisey\Games on C++\Minecraft\src\Window.hpp">
-      <Filter>src</Filter>
+    <ClInclude Include="C:\Users\Elisey\Games on C++\Minecraft\src\Window\Window.hpp">
+      <Filter>src\Window</Filter>
     </ClInclude>
     <ClInclude Include="C:\Users\Elisey\Games on C++\Minecraft\src\Cube.hpp">
       <Filter>src</Filter>
@@ -78,23 +81,26 @@
     <ClInclude Include="C:\Users\Elisey\Games on C++\Minecraft\src\Player\Camera.hpp">
       <Filter>src\Player</Filter>
     </ClInclude>
-    <ClInclude Include="C:\Users\Elisey\Games on C++\Minecraft\src\Renderer\Texture2D.hpp">
-      <Filter>src\Renderer</Filter>
+    <ClInclude Include="C:\Users\Elisey\Games on C++\Minecraft\src\RenderEngine\OpenGL\Texture2D.hpp">
+      <Filter>src\RenderEngine\OpenGL</Filter>
     </ClInclude>
-    <ClInclude Include="C:\Users\Elisey\Games on C++\Minecraft\src\Renderer\ShaderProgram.hpp">
-      <Filter>src\Renderer</Filter>
+    <ClInclude Include="C:\Users\Elisey\Games on C++\Minecraft\src\RenderEngine\OpenGL\ShaderProgram.hpp">
+      <Filter>src\RenderEngine\OpenGL</Filter>
     </ClInclude>
-    <ClInclude Include="C:\Users\Elisey\Games on C++\Minecraft\src\Renderer\VertexBuffer.hpp">
-      <Filter>src\Renderer</Filter>
+    <ClInclude Include="C:\Users\Elisey\Games on C++\Minecraft\src\RenderEngine\OpenGL\VertexBuffer.hpp">
+      <Filter>src\RenderEngine\OpenGL</Filter>
     </ClInclude>
-    <ClInclude Include="C:\Users\Elisey\Games on C++\Minecraft\src\Renderer\VertexBufferLayout.hpp">
-      <Filter>src\Renderer</Filter>
+    <ClInclude Include="C:\Users\Elisey\Games on C++\Minecraft\src\RenderEngine\OpenGL\VertexBufferLayout.hpp">
+      <Filter>src\RenderEngine\OpenGL</Filter>
     </ClInclude>
-    <ClInclude Include="C:\Users\Elisey\Games on C++\Minecraft\src\Renderer\IndexBuffer.hpp">
-      <Filter>src\Renderer</Filter>
+    <ClInclude Include="C:\Users\Elisey\Games on C++\Minecraft\src\RenderEngine\OpenGL\IndexBuffer.hpp">
+      <Filter>src\RenderEngine\OpenGL</Filter>
     </ClInclude>
-    <ClInclude Include="C:\Users\Elisey\Games on C++\Minecraft\src\Renderer\VertexArray.hpp">
-      <Filter>src\Renderer</Filter>
+    <ClInclude Include="C:\Users\Elisey\Games on C++\Minecraft\src\RenderEngine\OpenGL\VertexArray.hpp">
+      <Filter>src\RenderEngine\OpenGL</Filter>
+    </ClInclude>
+    <ClInclude Include="C:\Users\Elisey\Games on C++\Minecraft\src\RenderEngine\OpenGL\Renderer.hpp">
+      <Filter>src\RenderEngine\OpenGL</Filter>
     </ClInclude>
     <ClInclude Include="C:\Users\Elisey\Games on C++\Minecraft\src\Resources\ResourceManager.hpp">
       <Filter>src\Resources</Filter>
@@ -122,11 +128,17 @@
     <Filter Include="src\Player">
       <UniqueIdentifier>{BEDE7DE3-B4CC-3B6E-B280-EA59F91489A0}</UniqueIdentifier>
     </Filter>
-    <Filter Include="src\Renderer">
-      <UniqueIdentifier>{A387BF3B-FAE4-36E3-9C63-222443CA12D0}</UniqueIdentifier>
+    <Filter Include="src\RenderEngine">
+      <UniqueIdentifier>{8C598B78-D795-3540-9D35-1B2E1847A125}</UniqueIdentifier>
+    </Filter>
+    <Filter Include="src\RenderEngine\OpenGL">
+      <UniqueIdentifier>{DCC60672-2F83-33CC-95D2-8EECD8CD35AF}</UniqueIdentifier>
     </Filter>
     <Filter Include="src\Resources">
       <UniqueIdentifier>{FB86D747-323B-3D5D-8E04-A26F198671BE}</UniqueIdentifier>
+    </Filter>
+    <Filter Include="src\Window">
+      <UniqueIdentifier>{A24DA3D9-1D77-3F00-AA21-E0E4FC280028}</UniqueIdentifier>
     </Filter>
   </ItemGroup>
 </Project>

@@ -1,14 +1,14 @@
 #include "Cube.hpp"
 #include "Resources/ResourceManager.hpp"
-#include "Renderer/ShaderProgram.hpp"
+#include "RenderEngine/OpenGL/ShaderProgram.hpp"
 
 #include <iostream>
 
 namespace Game
 {
-	Cube::Cube(std::shared_ptr<Renderer::Texture2D> pTexture,
+	Cube::Cube(std::shared_ptr<RenderEngine::Texture2D> pTexture,
 			   std::string initialSubTexture,
-			   std::shared_ptr<Renderer::ShaderProgram> pShaderProgram,
+			   std::shared_ptr<RenderEngine::ShaderProgram> pShaderProgram,
 			   glm::vec3& position,
 			   glm::vec3& size)
 			   : m_pTexture(std::move(pTexture))

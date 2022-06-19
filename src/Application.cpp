@@ -1,7 +1,8 @@
 #include "Application.hpp"
-#include "Window.hpp"
-#include "Renderer/ShaderProgram.hpp"
-#include "Renderer/Texture2D.hpp"
+#include "Window/Window.hpp"
+#include "RenderEngine/OpenGL/ShaderProgram.hpp"
+#include "RenderEngine/OpenGL/Texture2D.hpp"
+#include "RenderEngine/OpenGL/Renderer.hpp"
 #include "Polygon2D.hpp"
 #include "Events/Input.hpp"
 #include "Animated_Polygon2D.hpp"
@@ -27,7 +28,7 @@ namespace Game {
     }
 
     int Application::start(unsigned int window_width, unsigned int window_height, const char* title, char** argv) {
-        m_pWindow = std::make_unique<Window>(title, window_width, window_height, argv);
+        m_pWindow = std::make_unique<Window>(title, window_width, window_height);
         ResourceManager::setExecutablePath(argv[0]);
 
         m_event_dispatcher.add_event_listener<EventKeyPressed>(
@@ -82,8 +83,8 @@ namespace Game {
             lastTime = currentTime;
             m_game.update(duration);
 
-            glClearColor(0, 0.5, 1, 0);
-            glClear(GL_COLOR_BUFFER_BIT);
+            RenderEngine::Renderer::setClearColor(0, 0.5, 1, 0);
+            RenderEngine::Renderer::clear();
             camera.set_position_rotation(glm::vec3(camera_position[0], camera_position[1], camera_position[2]),
                                          glm::vec3(camera_rotation[0], camera_rotation[1], camera_rotation[2]));
             camera.set_projection_mode(perspective_camera ? Player::Camera::ProjectionMode::Perspective : Player::Camera::ProjectionMode::Orthographic);

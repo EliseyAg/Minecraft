@@ -10,7 +10,7 @@ add_executable(${PROJECT_NAME}
 set(PUBLIC_INCLUDES
 	external/stb_image/stb_image.h
 	src/Application.hpp
-	src/Window.hpp
+	src/Window/Window.hpp
 	src/Cube.hpp
 	src/Polygon2D.hpp
 	src/Animated_Polygon2D.hpp
@@ -18,28 +18,30 @@ set(PUBLIC_INCLUDES
 	src/Events/Keys.hpp
 	src/Events/Input.hpp
 	src/Player/Camera.hpp
-	src/Renderer/Texture2D.hpp
-	src/Renderer/ShaderProgram.hpp
-	src/Renderer/VertexBuffer.hpp
-	src/Renderer/VertexBufferLayout.hpp
-	src/Renderer/IndexBuffer.hpp
-	src/Renderer/VertexArray.hpp
+	src/RenderEngine/OpenGL/Texture2D.hpp
+	src/RenderEngine/OpenGL/ShaderProgram.hpp
+	src/RenderEngine/OpenGL/VertexBuffer.hpp
+	src/RenderEngine/OpenGL/VertexBufferLayout.hpp
+	src/RenderEngine/OpenGL/IndexBuffer.hpp
+	src/RenderEngine/OpenGL/VertexArray.hpp
+	src/RenderEngine/OpenGL/Renderer.hpp
 	src/Resources/ResourceManager.hpp
 )
 set(PUBLIC_SOURCES
 	src/Application.cpp
-	src/Window.cpp
+	src/Window/Window.cpp
 	src/Cube.cpp
 	src/Polygon2D.cpp
 	src/Animated_Polygon2D.cpp
 	src/Events/Input.cpp
 	src/Player/Camera.cpp
-	src/Renderer/Texture2D.cpp
-	src/Renderer/ShaderProgram.cpp
-	src/Renderer/VertexBuffer.cpp
-	src/Renderer/VertexBufferLayout.cpp
-	src/Renderer/IndexBuffer.cpp
-	src/Renderer/VertexArray.cpp
+	src/RenderEngine/OpenGL/Texture2D.cpp
+	src/RenderEngine/OpenGL/ShaderProgram.cpp
+	src/RenderEngine/OpenGL/VertexBuffer.cpp
+	src/RenderEngine/OpenGL/VertexBufferLayout.cpp
+	src/RenderEngine/OpenGL/IndexBuffer.cpp
+	src/RenderEngine/OpenGL/VertexArray.cpp
+	src/RenderEngine/OpenGL/Renderer.cpp
 	src/Resources/ResourceManager.cpp
 )
 set(ALL_SOURCES

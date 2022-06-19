@@ -1,8 +1,8 @@
 #include <iostream>
 #include <memory>
 #include "Application.hpp"
-#include "Events/Input.hpp"
 #include "Resources/ResourceManager.hpp"
+#include "Events/Input.hpp"
 
 #include <glm/vec2.hpp>
 
