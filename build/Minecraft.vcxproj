@@ -367,9 +367,10 @@ if %errorlevel% neq 0 goto :VCEnd</Command>
   <ItemGroup>
     <ClCompile Include="C:\Users\Elisey\Games on C++\Minecraft\src\main.cpp" />
     <ClInclude Include="C:\Users\Elisey\Games on C++\Minecraft\external\stb_image\stb_image.h" />
-    <ClInclude Include="C:\Users\Elisey\Games on C++\Minecraft\src\Application.hpp" />
+    <ClInclude Include="C:\Users\Elisey\Games on C++\Minecraft\src\Game\Application.hpp" />
     <ClInclude Include="C:\Users\Elisey\Games on C++\Minecraft\src\Window\Window.hpp" />
-    <ClInclude Include="C:\Users\Elisey\Games on C++\Minecraft\src\Cube.hpp" />
+    <ClInclude Include="C:\Users\Elisey\Games on C++\Minecraft\src\Game\GameObjects\Cube.hpp" />
+    <ClInclude Include="C:\Users\Elisey\Games on C++\Minecraft\src\Game\GameObjects\Block.hpp" />
     <ClInclude Include="C:\Users\Elisey\Games on C++\Minecraft\src\Polygon2D.hpp" />
     <ClInclude Include="C:\Users\Elisey\Games on C++\Minecraft\src\Animated_Polygon2D.hpp" />
     <ClInclude Include="C:\Users\Elisey\Games on C++\Minecraft\src\Events\Event.hpp" />
@@ -384,9 +385,10 @@ if %errorlevel% neq 0 goto :VCEnd</Command>
     <ClInclude Include="C:\Users\Elisey\Games on C++\Minecraft\src\RenderEngine\OpenGL\VertexArray.hpp" />
     <ClInclude Include="C:\Users\Elisey\Games on C++\Minecraft\src\RenderEngine\OpenGL\Renderer.hpp" />
     <ClInclude Include="C:\Users\Elisey\Games on C++\Minecraft\src\Resources\ResourceManager.hpp" />
-    <ClCompile Include="C:\Users\Elisey\Games on C++\Minecraft\src\Application.cpp" />
+    <ClCompile Include="C:\Users\Elisey\Games on C++\Minecraft\src\Game\Application.cpp" />
     <ClCompile Include="C:\Users\Elisey\Games on C++\Minecraft\src\Window\Window.cpp" />
-    <ClCompile Include="C:\Users\Elisey\Games on C++\Minecraft\src\Cube.cpp" />
+    <ClCompile Include="C:\Users\Elisey\Games on C++\Minecraft\src\Game\GameObjects\Cube.cpp" />
+    <ClCompile Include="C:\Users\Elisey\Games on C++\Minecraft\src\Game\GameObjects\Block.cpp" />
     <ClCompile Include="C:\Users\Elisey\Games on C++\Minecraft\src\Polygon2D.cpp" />
     <ClCompile Include="C:\Users\Elisey\Games on C++\Minecraft\src\Animated_Polygon2D.cpp" />
     <ClCompile Include="C:\Users\Elisey\Games on C++\Minecraft\src\Events\Input.cpp" />

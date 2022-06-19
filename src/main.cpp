@@ -1,6 +1,6 @@
 #include <iostream>
 #include <memory>
-#include "Application.hpp"
+#include "Game/Application.hpp"
 #include "Resources/ResourceManager.hpp"
 #include "Events/Input.hpp"
 

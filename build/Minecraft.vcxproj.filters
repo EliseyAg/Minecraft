@@ -4,14 +4,17 @@
     <ClCompile Include="C:\Users\Elisey\Games on C++\Minecraft\src\main.cpp">
       <Filter>Source Files</Filter>
     </ClCompile>
-    <ClCompile Include="C:\Users\Elisey\Games on C++\Minecraft\src\Application.cpp">
-      <Filter>src</Filter>
+    <ClCompile Include="C:\Users\Elisey\Games on C++\Minecraft\src\Game\Application.cpp">
+      <Filter>src\Game</Filter>
     </ClCompile>
     <ClCompile Include="C:\Users\Elisey\Games on C++\Minecraft\src\Window\Window.cpp">
       <Filter>src\Window</Filter>
     </ClCompile>
-    <ClCompile Include="C:\Users\Elisey\Games on C++\Minecraft\src\Cube.cpp">
-      <Filter>src</Filter>
+    <ClCompile Include="C:\Users\Elisey\Games on C++\Minecraft\src\Game\GameObjects\Cube.cpp">
+      <Filter>src\Game\GameObjects</Filter>
+    </ClCompile>
+    <ClCompile Include="C:\Users\Elisey\Games on C++\Minecraft\src\Game\GameObjects\Block.cpp">
+      <Filter>src\Game\GameObjects</Filter>
     </ClCompile>
     <ClCompile Include="C:\Users\Elisey\Games on C++\Minecraft\src\Polygon2D.cpp">
       <Filter>src</Filter>
@@ -54,14 +57,17 @@
     <ClInclude Include="C:\Users\Elisey\Games on C++\Minecraft\external\stb_image\stb_image.h">
       <Filter>external\stb_image</Filter>
     </ClInclude>
-    <ClInclude Include="C:\Users\Elisey\Games on C++\Minecraft\src\Application.hpp">
-      <Filter>src</Filter>
+    <ClInclude Include="C:\Users\Elisey\Games on C++\Minecraft\src\Game\Application.hpp">
+      <Filter>src\Game</Filter>
     </ClInclude>
     <ClInclude Include="C:\Users\Elisey\Games on C++\Minecraft\src\Window\Window.hpp">
       <Filter>src\Window</Filter>
     </ClInclude>
-    <ClInclude Include="C:\Users\Elisey\Games on C++\Minecraft\src\Cube.hpp">
-      <Filter>src</Filter>
+    <ClInclude Include="C:\Users\Elisey\Games on C++\Minecraft\src\Game\GameObjects\Cube.hpp">
+      <Filter>src\Game\GameObjects</Filter>
+    </ClInclude>
+    <ClInclude Include="C:\Users\Elisey\Games on C++\Minecraft\src\Game\GameObjects\Block.hpp">
+      <Filter>src\Game\GameObjects</Filter>
     </ClInclude>
     <ClInclude Include="C:\Users\Elisey\Games on C++\Minecraft\src\Polygon2D.hpp">
       <Filter>src</Filter>
@@ -124,6 +130,12 @@
     </Filter>
     <Filter Include="src\Events">
       <UniqueIdentifier>{53AB9DE4-7B78-38A9-A6FA-FDC4AD6EAD46}</UniqueIdentifier>
+    </Filter>
+    <Filter Include="src\Game">
+      <UniqueIdentifier>{D57D0BAE-A238-3D6C-8DEE-0C81027BA3D0}</UniqueIdentifier>
+    </Filter>
+    <Filter Include="src\Game\GameObjects">
+      <UniqueIdentifier>{8519BEF7-50FD-303C-BE8F-BC175595DB4A}</UniqueIdentifier>
     </Filter>
     <Filter Include="src\Player">
       <UniqueIdentifier>{BEDE7DE3-B4CC-3B6E-B280-EA59F91489A0}</UniqueIdentifier>

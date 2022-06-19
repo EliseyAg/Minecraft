@@ -9,9 +9,10 @@ add_executable(${PROJECT_NAME}
 
 set(PUBLIC_INCLUDES
 	external/stb_image/stb_image.h
-	src/Application.hpp
+	src/Game/Application.hpp
 	src/Window/Window.hpp
-	src/Cube.hpp
+	src/Game/GameObjects/Cube.hpp
+	src/Game/GameObjects/Block.hpp
 	src/Polygon2D.hpp
 	src/Animated_Polygon2D.hpp
 	src/Events/Event.hpp
@@ -28,9 +29,10 @@ set(PUBLIC_INCLUDES
 	src/Resources/ResourceManager.hpp
 )
 set(PUBLIC_SOURCES
-	src/Application.cpp
+	src/Game/Application.cpp
 	src/Window/Window.cpp
-	src/Cube.cpp
+	src/Game/GameObjects/Cube.cpp
+	src/Game/GameObjects/Block.cpp
 	src/Polygon2D.cpp
 	src/Animated_Polygon2D.cpp
 	src/Events/Input.cpp
