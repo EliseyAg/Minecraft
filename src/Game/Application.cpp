@@ -17,7 +17,7 @@ namespace Game {
 
     Game m_game(g_windowSize);
 
-    std::unique_ptr<Block> block;
+    std::unique_ptr<Chunk> chunk;
 
     Application::Application() {
 
@@ -135,7 +135,7 @@ namespace Game {
         };
 
         auto pTextureAtlas = ResourceManager::loadTextureAtlas("BlockTextureAtlas", "res/textures/Blocks.png", subTexturesNames, 64, 64);
-        block = std::make_unique<Block>(pTextureAtlas, subTexturesNames, pPolygonShaderProgram, glm::vec3(0, 0, 0), glm::vec3(1, 1, 1), glm::vec4(0, 0, 0, 0));
+        chunk = std::make_unique<Chunk>(pTextureAtlas, pPolygonShaderProgram);
 
         pPolygonShaderProgram->bind();
         pPolygonShaderProgram->setInt("tex", 0);
@@ -147,11 +147,11 @@ namespace Game {
     {
         ResourceManager::getShader("PolygonShader")->setMatrix4("projectionMat", projectionMat);
         ResourceManager::getShader("PolygonShader")->bind();
-        block->render(camera_position);
+        chunk->render(camera_position);
     }
 
     void Game::update(const uint64_t delta)
     {
-        block->update(delta);
+        //chunk->update(delta);
     }
 }

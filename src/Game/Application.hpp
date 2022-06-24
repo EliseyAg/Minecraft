@@ -3,7 +3,7 @@
 #include "../Events/Event.hpp"
 #include "../Resources/ResourceManager.hpp"
 #include "../Player/Camera.hpp"
-#include "GameObjects/Block.hpp"
+#include "GameObjects/Chunk.hpp"
 
 #include <memory>
 #include <array>

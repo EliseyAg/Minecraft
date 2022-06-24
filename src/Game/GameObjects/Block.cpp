@@ -30,5 +30,6 @@ namespace Game
 	void Block::setPosition(glm::vec3 position)
 	{
 		m_position = position;
+		block->setPosition(position);
 	}
 }

@@ -1,6 +1,8 @@
 #pragma once
 #include "glm/vec2.hpp"
 #include "Block.hpp"
+#include <vector>
+#include <string>
 
 namespace Game
 {
@@ -10,10 +12,10 @@ namespace Game
 		Chunk(std::shared_ptr<RenderEngine::Texture2D> pTexture,
 			  std::shared_ptr<RenderEngine::ShaderProgram> pShaderProgram);
 
-		void render();
+		void render(glm::vec3& camera_position);
 	private:
 		glm::vec2 m_position;
 		std::unique_ptr<Block> block;
-		glm::vec3 block_coords[100000];
+		std::vector<std::pair<std::string, glm::vec3>> blocks;
 	};
 }
