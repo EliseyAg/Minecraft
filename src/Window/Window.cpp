@@ -115,7 +115,24 @@ namespace Game {
         glfwSetFramebufferSizeCallback(m_pWindow,
             [](GLFWwindow* pWindow, int width, int height)
             {
-                RenderEngine::Renderer::setVieport(width, height);
+                const float aspect_ratio = 1.f / 1.f;
+                unsigned int viewPortWidth = width;
+                unsigned int viewPortHeight = height;
+                unsigned int viewPortLeftOffset = 0;
+                unsigned int viewPortBottomOffset = 0;
+
+                if (static_cast<float>(width) / height > aspect_ratio)
+                {
+                    viewPortWidth = static_cast<unsigned int>(height * aspect_ratio);
+                    viewPortLeftOffset = (width - viewPortWidth) / 2;
+                }
+                else
+                {
+                    viewPortHeight = static_cast<unsigned int>(width / aspect_ratio);
+                    viewPortBottomOffset = (height - viewPortHeight) / 2;
+                }
+
+                RenderEngine::Renderer::setViewport(viewPortWidth, viewPortHeight, viewPortLeftOffset, viewPortBottomOffset);
             }
         );
 

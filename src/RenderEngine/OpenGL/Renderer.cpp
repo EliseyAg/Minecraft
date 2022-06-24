@@ -20,7 +20,7 @@ namespace RenderEngine {
 		glClear(GL_COLOR_BUFFER_BIT);
 	}
 
-	void Renderer::setVieport(unsigned int width, unsigned int height, unsigned int leftOffset, unsigned int BottomOffset)
+	void Renderer::setViewport(unsigned int width, unsigned int height, unsigned int leftOffset, unsigned int BottomOffset)
 	{
 		glViewport(leftOffset, BottomOffset, width, height);
 	}
