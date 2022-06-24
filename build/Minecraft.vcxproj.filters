@@ -16,6 +16,9 @@
     <ClCompile Include="C:\Users\Elisey\Games on C++\Minecraft\src\Game\GameObjects\Block.cpp">
       <Filter>src\Game\GameObjects</Filter>
     </ClCompile>
+    <ClCompile Include="C:\Users\Elisey\Games on C++\Minecraft\src\Game\GameObjects\Chunk.cpp">
+      <Filter>src\Game\GameObjects</Filter>
+    </ClCompile>
     <ClCompile Include="C:\Users\Elisey\Games on C++\Minecraft\src\Polygon2D.cpp">
       <Filter>src</Filter>
     </ClCompile>
@@ -67,6 +70,9 @@
       <Filter>src\Game\GameObjects</Filter>
     </ClInclude>
     <ClInclude Include="C:\Users\Elisey\Games on C++\Minecraft\src\Game\GameObjects\Block.hpp">
+      <Filter>src\Game\GameObjects</Filter>
+    </ClInclude>
+    <ClInclude Include="C:\Users\Elisey\Games on C++\Minecraft\src\Game\GameObjects\Chunk.hpp">
       <Filter>src\Game\GameObjects</Filter>
     </ClInclude>
     <ClInclude Include="C:\Users\Elisey\Games on C++\Minecraft\src\Polygon2D.hpp">

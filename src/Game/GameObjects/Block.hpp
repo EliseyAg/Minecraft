@@ -18,6 +18,8 @@ namespace Game
 			  glm::vec4& rotation = glm::vec4(0.f));
 		void render(glm::vec3 cam_pos);
 		void update(const uint64_t delta);
+
+		void setPosition(glm::vec3 position);
 	private:
 		std::unique_ptr<Cube> block;
 		std::shared_ptr<RenderEngine::Texture2D> m_pTexture;

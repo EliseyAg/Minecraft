@@ -371,6 +371,7 @@ if %errorlevel% neq 0 goto :VCEnd</Command>
     <ClInclude Include="C:\Users\Elisey\Games on C++\Minecraft\src\Window\Window.hpp" />
     <ClInclude Include="C:\Users\Elisey\Games on C++\Minecraft\src\Game\GameObjects\Cube.hpp" />
     <ClInclude Include="C:\Users\Elisey\Games on C++\Minecraft\src\Game\GameObjects\Block.hpp" />
+    <ClInclude Include="C:\Users\Elisey\Games on C++\Minecraft\src\Game\GameObjects\Chunk.hpp" />
     <ClInclude Include="C:\Users\Elisey\Games on C++\Minecraft\src\Polygon2D.hpp" />
     <ClInclude Include="C:\Users\Elisey\Games on C++\Minecraft\src\Animated_Polygon2D.hpp" />
     <ClInclude Include="C:\Users\Elisey\Games on C++\Minecraft\src\Events\Event.hpp" />
@@ -389,6 +390,7 @@ if %errorlevel% neq 0 goto :VCEnd</Command>
     <ClCompile Include="C:\Users\Elisey\Games on C++\Minecraft\src\Window\Window.cpp" />
     <ClCompile Include="C:\Users\Elisey\Games on C++\Minecraft\src\Game\GameObjects\Cube.cpp" />
     <ClCompile Include="C:\Users\Elisey\Games on C++\Minecraft\src\Game\GameObjects\Block.cpp" />
+    <ClCompile Include="C:\Users\Elisey\Games on C++\Minecraft\src\Game\GameObjects\Chunk.cpp" />
     <ClCompile Include="C:\Users\Elisey\Games on C++\Minecraft\src\Polygon2D.cpp" />
     <ClCompile Include="C:\Users\Elisey\Games on C++\Minecraft\src\Animated_Polygon2D.cpp" />
     <ClCompile Include="C:\Users\Elisey\Games on C++\Minecraft\src\Events\Input.cpp" />

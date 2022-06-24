@@ -13,6 +13,7 @@ set(PUBLIC_INCLUDES
 	src/Window/Window.hpp
 	src/Game/GameObjects/Cube.hpp
 	src/Game/GameObjects/Block.hpp
+	src/Game/GameObjects/Chunk.hpp
 	src/Polygon2D.hpp
 	src/Animated_Polygon2D.hpp
 	src/Events/Event.hpp
@@ -33,6 +34,7 @@ set(PUBLIC_SOURCES
 	src/Window/Window.cpp
 	src/Game/GameObjects/Cube.cpp
 	src/Game/GameObjects/Block.cpp
+	src/Game/GameObjects/Chunk.cpp
 	src/Polygon2D.cpp
 	src/Animated_Polygon2D.cpp
 	src/Events/Input.cpp
