@@ -3,9 +3,9 @@
 #include "../RenderEngine/OpenGL/ShaderProgram.hpp"
 #include "../RenderEngine/OpenGL/Texture2D.hpp"
 #include "../RenderEngine/OpenGL/Renderer.hpp"
-#include "../Polygon2D.hpp"
+#include "../RenderEngine/OpenGL/Polygon2D.hpp"
+#include "../RenderEngine/OpenGL/Animated_Polygon2D.hpp"
 #include "../Events/Input.hpp"
-#include "../Animated_Polygon2D.hpp"
 
 #include <glm/mat4x4.hpp>
 #include <glm/gtc/matrix_transform.hpp>

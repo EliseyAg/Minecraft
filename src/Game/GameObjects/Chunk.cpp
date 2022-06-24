@@ -17,7 +17,8 @@ namespace Game
 	{
 		for (int i = 0; i < 100000; i++)
 		{
-			block->setPosition(block_coords[i]);
+			if (block_coords[i] != glm::vec3(-1))
+				block->setPosition(block_coords[i]);
 		}
 	}
 }

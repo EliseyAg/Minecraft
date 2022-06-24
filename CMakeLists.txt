@@ -14,8 +14,8 @@ set(PUBLIC_INCLUDES
 	src/Game/GameObjects/Cube.hpp
 	src/Game/GameObjects/Block.hpp
 	src/Game/GameObjects/Chunk.hpp
-	src/Polygon2D.hpp
-	src/Animated_Polygon2D.hpp
+	src/RenderEngine/OpenGL/Polygon2D.hpp
+	src/RenderEngine/OpenGL/Animated_Polygon2D.hpp
 	src/Events/Event.hpp
 	src/Events/Keys.hpp
 	src/Events/Input.hpp
@@ -35,8 +35,8 @@ set(PUBLIC_SOURCES
 	src/Game/GameObjects/Cube.cpp
 	src/Game/GameObjects/Block.cpp
 	src/Game/GameObjects/Chunk.cpp
-	src/Polygon2D.cpp
-	src/Animated_Polygon2D.cpp
+	src/RenderEngine/OpenGL/Polygon2D.cpp
+	src/RenderEngine/OpenGL/Animated_Polygon2D.cpp
 	src/Events/Input.cpp
 	src/Player/Camera.cpp
 	src/RenderEngine/OpenGL/Texture2D.cpp

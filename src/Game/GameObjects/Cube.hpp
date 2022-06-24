@@ -1,5 +1,5 @@
 #pragma once
-#include "../../Animated_Polygon2D.hpp"
+#include "../../RenderEngine/OpenGL/Animated_Polygon2D.hpp"
 
 #include "glm/vec3.hpp"
 #include "string"

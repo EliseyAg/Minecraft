@@ -3,12 +3,12 @@
 #include <glad/glad.h>
 #include <../external/glm/glm/vec2.hpp>
 
-#include "RenderEngine/OpenGL/Texture2D.hpp"
-#include "RenderEngine/OpenGL/ShaderProgram.hpp"
-#include "RenderEngine/OpenGL/VertexBuffer.hpp"
-#include "RenderEngine/OpenGL/IndexBuffer.hpp"
-#include "RenderEngine/OpenGL/VertexArray.hpp"
-#include "RenderEngine/OpenGL/Renderer.hpp"
+#include "Texture2D.hpp"
+#include "ShaderProgram.hpp"
+#include "VertexBuffer.hpp"
+#include "IndexBuffer.hpp"
+#include "VertexArray.hpp"
+#include "Renderer.hpp"
 
 #include <memory>
 #include <string>

@@ -19,11 +19,11 @@
     <ClCompile Include="C:\Users\Elisey\Games on C++\Minecraft\src\Game\GameObjects\Chunk.cpp">
       <Filter>src\Game\GameObjects</Filter>
     </ClCompile>
-    <ClCompile Include="C:\Users\Elisey\Games on C++\Minecraft\src\Polygon2D.cpp">
-      <Filter>src</Filter>
+    <ClCompile Include="C:\Users\Elisey\Games on C++\Minecraft\src\RenderEngine\OpenGL\Polygon2D.cpp">
+      <Filter>src\RenderEngine\OpenGL</Filter>
     </ClCompile>
-    <ClCompile Include="C:\Users\Elisey\Games on C++\Minecraft\src\Animated_Polygon2D.cpp">
-      <Filter>src</Filter>
+    <ClCompile Include="C:\Users\Elisey\Games on C++\Minecraft\src\RenderEngine\OpenGL\Animated_Polygon2D.cpp">
+      <Filter>src\RenderEngine\OpenGL</Filter>
     </ClCompile>
     <ClCompile Include="C:\Users\Elisey\Games on C++\Minecraft\src\Events\Input.cpp">
       <Filter>src\Events</Filter>
@@ -75,11 +75,11 @@
     <ClInclude Include="C:\Users\Elisey\Games on C++\Minecraft\src\Game\GameObjects\Chunk.hpp">
       <Filter>src\Game\GameObjects</Filter>
     </ClInclude>
-    <ClInclude Include="C:\Users\Elisey\Games on C++\Minecraft\src\Polygon2D.hpp">
-      <Filter>src</Filter>
+    <ClInclude Include="C:\Users\Elisey\Games on C++\Minecraft\src\RenderEngine\OpenGL\Polygon2D.hpp">
+      <Filter>src\RenderEngine\OpenGL</Filter>
     </ClInclude>
-    <ClInclude Include="C:\Users\Elisey\Games on C++\Minecraft\src\Animated_Polygon2D.hpp">
-      <Filter>src</Filter>
+    <ClInclude Include="C:\Users\Elisey\Games on C++\Minecraft\src\RenderEngine\OpenGL\Animated_Polygon2D.hpp">
+      <Filter>src\RenderEngine\OpenGL</Filter>
     </ClInclude>
     <ClInclude Include="C:\Users\Elisey\Games on C++\Minecraft\src\Events\Event.hpp">
       <Filter>src\Events</Filter>

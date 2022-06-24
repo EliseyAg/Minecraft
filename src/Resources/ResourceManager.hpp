@@ -7,8 +7,8 @@
 
 #include <../src/RenderEngine/OpenGL/ShaderProgram.hpp>
 #include <../src/RenderEngine/OpenGL/Texture2D.hpp>
-#include <../src/Animated_Polygon2D.hpp>
-#include <../src/Polygon2D.hpp>
+#include <../src/RenderEngine/OpenGL/Animated_Polygon2D.hpp>
+#include <../src/RenderEngine/OpenGL/Polygon2D.hpp>
 
 namespace Game {
 	class ResourceManager {
