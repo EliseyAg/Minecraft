@@ -13,6 +13,7 @@ namespace Game
 			  std::shared_ptr<RenderEngine::ShaderProgram> pShaderProgram);
 
 		void render(glm::vec3& camera_position);
+		void update(const uint64_t delta);
 	private:
 		glm::vec2 m_position;
 		std::unique_ptr<Block> block;

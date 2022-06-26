@@ -34,6 +34,7 @@ namespace Game
 		void setPosition(const glm::vec3& position);
 		void setSize(const glm::vec2& size);
 		void setRotation(const glm::vec4& rotation);
+		void setTexture(std::string subTextureName);
 	protected:
 		std::shared_ptr<RenderEngine::Texture2D> m_pTexture;
 		std::shared_ptr<RenderEngine::ShaderProgram> m_pShaderProgram;

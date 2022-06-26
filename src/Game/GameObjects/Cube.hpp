@@ -20,6 +20,7 @@ namespace Game
 		void update(uint64_t delta);
 		void setPosition(const glm::vec3 position);
 		void setSize(const glm::vec3 size);
+		void setTexture(std::vector<std::string>& SubTextures);
 
 		std::pair<std::string, float> arr[6];
 	private:

@@ -32,4 +32,17 @@ namespace Game
 		m_position = position;
 		block->setPosition(position);
 	}
+
+	void Block::setType(std::string type)
+	{
+		m_type = type;
+		for (int i = 0; i < 3; i++)
+		{
+			if (types[i].first == m_type)
+			{
+				block->setTexture(types[i].second);
+				break;
+			}
+		}
+	}
 }

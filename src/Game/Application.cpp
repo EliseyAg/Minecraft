@@ -125,13 +125,8 @@ namespace Game {
         std::vector<std::string> subTexturesNames = {
                                                      "Grass_Top",
                                                      "Grass_Left",
-                                                     "Dirt"
-        };
-
-        std::vector<std::string> DirtBlock = {
                                                      "Dirt",
-                                                     "Dirt",
-                                                     "Dirt"
+                                                     "Coblestone"
         };
 
         auto pTextureAtlas = ResourceManager::loadTextureAtlas("BlockTextureAtlas", "res/textures/Blocks.png", subTexturesNames, 64, 64);
@@ -152,6 +147,6 @@ namespace Game {
 
     void Game::update(const uint64_t delta)
     {
-        //chunk->update(delta);
+        chunk->update(delta);
     }
 }

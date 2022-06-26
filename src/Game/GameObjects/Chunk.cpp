@@ -7,27 +7,27 @@ namespace Game
 	Chunk::Chunk(std::shared_ptr<RenderEngine::Texture2D> pTexture,
 				 std::shared_ptr<RenderEngine::ShaderProgram> pShaderProgram)
 	{
-		std::vector<std::string> subTexturesNames = {
+		std::vector<std::string> GrassBlock = {
 													 "Grass_Top",
 													 "Grass_Left",
 													 "Dirt"
 		};
-		block = std::make_unique<Block>(pTexture, subTexturesNames, pShaderProgram);
-		blocks.push_back(std::make_pair("Grass", glm::vec3(0.f)));
-		blocks.push_back(std::make_pair("Grass", glm::vec3(0.f, 0.f, -1.f)));
-		blocks.push_back(std::make_pair("Grass", glm::vec3(-1.f, 0.f, 0.f)));
-		blocks.push_back(std::make_pair("Grass", glm::vec3(0.f, 0.f, 1.f)));
-		blocks.push_back(std::make_pair("Grass", glm::vec3(1.f, 0.f, 0.f)));
+		block = std::make_unique<Block>(pTexture, GrassBlock, pShaderProgram);
+		blocks.push_back(std::make_pair("Coblestone", glm::vec3(0.f)));
+		blocks.push_back(std::make_pair("Grass", glm::vec3( 0.f, 0.f, -1.f)));
+		blocks.push_back(std::make_pair("Grass", glm::vec3(-1.f, 0.f,  0.f)));
+		blocks.push_back(std::make_pair("Grass", glm::vec3( 0.f, 0.f,  1.f)));
+		blocks.push_back(std::make_pair("Grass", glm::vec3( 1.f, 0.f,  0.f)));
 		blocks.push_back(std::make_pair("Grass", glm::vec3(-1.f, 0.f, -1.f)));
-		blocks.push_back(std::make_pair("Grass", glm::vec3(1.f, 0.f, -1.f)));
-		blocks.push_back(std::make_pair("Grass", glm::vec3(-1.f, 0.f, 1.f)));
-		blocks.push_back(std::make_pair("Grass", glm::vec3(1.f, 0.f, 1.f)));
+		blocks.push_back(std::make_pair("Grass", glm::vec3( 1.f, 0.f, -1.f)));
+		blocks.push_back(std::make_pair("Grass", glm::vec3(-1.f, 0.f,  1.f)));
+		blocks.push_back(std::make_pair("Grass", glm::vec3( 1.f, 0.f,  1.f)));
 	}
 
 	void Chunk::render(glm::vec3& camera_position)
 	{
 		for (int i = 0; i < 9; i++) {
-			arr[i] = std::pair<int, float>(i, ((blocks[i].second.x - camera_position.x) * (blocks[i].second.y - camera_position.y) * (blocks[i].second.z - camera_position.z)) / 3);
+			arr[i] = std::pair<int, float>(i, ((blocks[i].second.x - camera_position.x) + (blocks[i].second.y - camera_position.y) * (blocks[i].second.z - camera_position.z)) / 3);
 		}
 
 		for (int i = 0; i < 9; i++) {
@@ -48,7 +48,16 @@ namespace Game
 		for (int i = 0; i < 9; i++)
 		{
 			block->setPosition(blocks[arr[i].first].second);
+			block->setType(blocks[arr[i].first].first);
 			block->render(camera_position);
+		}
+	}
+
+	void Chunk::update(const uint64_t delta)
+	{
+		for (int i = 0; i < 9; i++)
+		{
+			block->update(delta);
 		}
 	}
 }

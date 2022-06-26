@@ -6,19 +6,19 @@
 
 #define PI 3.14
 
-namespace Game 
+namespace Game
 {
 	Polygon2D::Polygon2D(std::shared_ptr<RenderEngine::Texture2D> pTexture,
-						 std::string initialSubTexture,
-						 std::shared_ptr<RenderEngine::ShaderProgram> pShaderProgram,
-						 glm::vec3& position,
-						 glm::vec2& size,
-						 glm::vec4& rotation)
-						 : m_pTexture(std::move(pTexture))
-						 , m_pShaderProgram(std::move(pShaderProgram))
-						 , m_position(std::move(position))
-						 , m_size(std::move(size))
-						 , m_rotation(std::move(rotation))
+		std::string initialSubTexture,
+		std::shared_ptr<RenderEngine::ShaderProgram> pShaderProgram,
+		glm::vec3& position,
+		glm::vec2& size,
+		glm::vec4& rotation)
+		: m_pTexture(std::move(pTexture))
+		, m_pShaderProgram(std::move(pShaderProgram))
+		, m_position(std::move(position))
+		, m_size(std::move(size))
+		, m_rotation(std::move(rotation))
 	{
 		const GLfloat vertexCoords[] = {
 			// 1---2
@@ -101,8 +101,24 @@ namespace Game
 	void Polygon2D::setSize(const glm::vec2& size) {
 		m_size = size;
 	}
+
 	void Polygon2D::setRotation(const glm::vec4& rotation)
 	{
 		m_rotation = rotation;
+	}
+
+	void Polygon2D::setTexture(std::string subTextureName)
+	{
+		auto subTexture = m_pTexture->getSubTexture(subTextureName);
+
+		const GLfloat textureCoords[] = {
+			// U  V
+			subTexture.leftBottomUV.x, subTexture.leftBottomUV.y,
+			subTexture.leftBottomUV.x, subTexture.rightTopUV.y,
+			subTexture.rightTopUV.x, subTexture.rightTopUV.y,
+			subTexture.rightTopUV.x, subTexture.leftBottomUV.y,
+		};
+
+		m_textureCoordsBuffer.update(textureCoords, 2 * 4 * sizeof(GLfloat));
 	}
 }

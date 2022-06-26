@@ -94,4 +94,14 @@ namespace Game
 	{
 		m_size = size;
 	}
+
+	void Cube::setTexture(std::vector<std::string>& SubTextures)
+	{
+		ResourceManager::getAnimatedPolygon("Top"   )->setTexture(SubTextures[0]);
+		ResourceManager::getAnimatedPolygon("Bottom")->setTexture(SubTextures[2]);
+		ResourceManager::getAnimatedPolygon("Front" )->setTexture(SubTextures[1]);
+		ResourceManager::getAnimatedPolygon("Back"  )->setTexture(SubTextures[1]);
+		ResourceManager::getAnimatedPolygon("Right" )->setTexture(SubTextures[1]);
+		ResourceManager::getAnimatedPolygon("Left"  )->setTexture(SubTextures[1]);
+	}
 }
