@@ -4,8 +4,6 @@
 #include <../external/glm/glm/mat4x4.hpp>
 #include <../external/glm/glm/gtc/matrix_transform.hpp>
 
-#define PI 3.14
-
 namespace Game
 {
 	Polygon2D::Polygon2D(std::shared_ptr<RenderEngine::Texture2D> pTexture,

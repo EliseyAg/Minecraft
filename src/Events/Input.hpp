@@ -6,6 +6,7 @@ namespace Game {
 
     class Input {
     public:
+        static void setFalse();
         static bool IsKeyPressed(const KeyCode key_code);
         static void PressKey(const KeyCode key_code);
         static void ReleaseKey(const KeyCode key_code);

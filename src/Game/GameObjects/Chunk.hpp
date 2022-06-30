@@ -17,6 +17,6 @@ namespace Game
 	private:
 		glm::vec2 m_position;
 		std::unique_ptr<Block> block;
-		std::vector<std::pair<std::string, glm::vec3>> blocks;
+		std::vector<std::shared_ptr<std::pair<std::string, glm::vec3>>> blocks;
 	};
 }

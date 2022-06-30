@@ -56,6 +56,13 @@ class MyApp : public Game::Application
         {
             camera_rotation[1] += 0.25f;
         }
+        if (Game::Input::IsKeyPressed(Game::KeyCode::KEY_R))
+        {
+            camera_position[0] = 0.f;
+            camera_position[1] = 0.f;
+            camera_position[2] = 0.f;
+        }
+        Game::Input::setFalse();
         std::cout << "x: " << camera_position[0] << " z: " << camera_position[2] << std::endl;
     }
 };
@@ -63,7 +70,6 @@ class MyApp : public Game::Application
 int main(int argc, char** argv)
 {
     auto myApp = std::make_unique<MyApp>();
-
     int returnCode = myApp->start(512, 512, "Minecraft", argv);
 
     return returnCode;

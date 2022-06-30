@@ -25,12 +25,14 @@ namespace Game {
 		m_animated_polygones.clear();
 	}
 
-	void ResourceManager::setExecutablePath(const std::string& executablePath) {
+	void ResourceManager::setExecutablePath(const std::string& executablePath)
+	{
 		size_t found = executablePath.find_last_of("/\\");
 		m_path = executablePath.substr(0, found);
 	}
 
-	std::string ResourceManager::getFileString(const std::string& relativeFilePath) {
+	std::string ResourceManager::getFileString(const std::string& relativeFilePath)
+	{
 		std::ifstream f;
 		f.open(m_path + "/" + relativeFilePath.c_str(), std::ios::in | std::ios::binary);
 		if (!f.is_open()) {
@@ -43,7 +45,28 @@ namespace Game {
 		return buffer.str();
 	}
 
-	std::shared_ptr<RenderEngine::ShaderProgram> ResourceManager::loadShader(const std::string& shaderName, const std::string& vertexPath, const std::string& fragmentPath) {
+	std::vector<std::shared_ptr<std::pair<std::string, glm::vec3>>> ResourceManager::Synchronize(std::vector<std::shared_ptr<std::pair<std::string, glm::vec3>>> blocks, const std::string& filePath)
+	{
+		const std::string fileString = getFileString(filePath);
+		int a = 0;
+		blocks.clear();
+		for (int i = 0; i < 25; i++)
+		{
+			std::string block_name = fileString.substr(a, fileString.find(',', a) - a);
+			a = fileString.find(',', a) + 1;
+			int x = atoi(fileString.substr(a, fileString.find(',', a) - a).c_str());
+			a = fileString.find(',', a) + 1;
+			int y = atoi(fileString.substr(a, fileString.find(',', a) - a).c_str());
+			a = fileString.find(',', a) + 1;
+			int z = atoi(fileString.substr(a, fileString.find(',', a) - a).c_str());
+			blocks.push_back(std::make_shared<std::pair<std::string, glm::vec3>>(std::make_pair(block_name, glm::vec3(x, y, z))));
+			a = fileString.find(',', a) + 3;
+		}
+		return blocks;
+	}
+
+	std::shared_ptr<RenderEngine::ShaderProgram> ResourceManager::loadShader(const std::string& shaderName, const std::string& vertexPath, const std::string& fragmentPath)
+	{
 		const std::string vertexString = getFileString(vertexPath);
 		if (vertexString.empty()) {
 			std::cerr << "No vertex shader!" << std::endl;
@@ -68,7 +91,8 @@ namespace Game {
 		return nullptr;
 	}
 
-	std::shared_ptr<RenderEngine::ShaderProgram> ResourceManager::getShader(const std::string& shaderName) {
+	std::shared_ptr<RenderEngine::ShaderProgram> ResourceManager::getShader(const std::string& shaderName)
+	{
 		ShaderProgramsMap::const_iterator it = m_shaderPrograms.find(shaderName);
 		if (it != m_shaderPrograms.end())
 			return it->second;
@@ -76,7 +100,8 @@ namespace Game {
 		return nullptr;
 	}
 
-	std::shared_ptr<RenderEngine::Texture2D>  ResourceManager::loadTexture(const std::string& textureName, const std::string& texturePath) {
+	std::shared_ptr<RenderEngine::Texture2D>  ResourceManager::loadTexture(const std::string& textureName, const std::string& texturePath)
+	{
 		int channels = 0;
 		int width = 0;
 		int height = 0;
@@ -99,7 +124,8 @@ namespace Game {
 		return newTexture;
 	}
 
-	std::shared_ptr<RenderEngine::Texture2D> ResourceManager::getTexture(const std::string& textureName) {
+	std::shared_ptr<RenderEngine::Texture2D> ResourceManager::getTexture(const std::string& textureName)
+	{
 		TexturesMap::const_iterator it = m_textures.find(textureName);
 		if (it != m_textures.end())
 			return it->second;
