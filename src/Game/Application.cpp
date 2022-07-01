@@ -5,7 +5,6 @@
 #include "../RenderEngine/OpenGL/Renderer.hpp"
 #include "../RenderEngine/OpenGL/Polygon2D.hpp"
 #include "../RenderEngine/OpenGL/Animated_Polygon2D.hpp"
-#include "../Events/Input.hpp"
 
 #include <glm/mat4x4.hpp>
 #include <glm/gtc/matrix_transform.hpp>
@@ -18,6 +17,8 @@ namespace Game {
     Game m_game(g_windowSize);
 
     std::unique_ptr<Chunk> chunk;
+
+    bool Game::m_keys_pressed[static_cast<size_t>(KeyCode::KEY_LAST)] = {};
 
     Application::Application() {
 
@@ -34,28 +35,13 @@ namespace Game {
         m_event_dispatcher.add_event_listener<EventKeyPressed>(
             [&](EventKeyPressed& event)
             {
-                if (event.key_code <= KeyCode::KEY_Z)
-                {
-                    if (event.repeated)
-                    {
-                        //std::cout << "Key pressed, repeated: " << static_cast<char>(event.key_code) << std::endl;
-                    }
-                    else
-                    {
-                        //std::cout << "Key pressed: " << static_cast<char>(event.key_code) << std::endl;
-                    }
-                }
-                Input::PressKey(event.key_code);
+                Game::m_keys_pressed[static_cast<size_t>(event.key_code)] = true;
             });
 
         m_event_dispatcher.add_event_listener<EventKeyReleased>(
             [&](EventKeyReleased& event)
             {
-                if (event.key_code <= KeyCode::KEY_Z)
-                {
-                    //std::cout << "Key released: " << static_cast<char>(event.key_code) << std::endl;
-                }
-                Input::ReleaseKey(event.key_code);
+                Game::m_keys_pressed[static_cast<size_t>(event.key_code)] = false;
             });
 
         m_event_dispatcher.add_event_listener<EventWindowClose>(
@@ -83,6 +69,8 @@ namespace Game {
             lastTime = currentTime;
             m_game.update(duration);
 
+            on_update();
+
             RenderEngine::Renderer::setClearColor(0, 0.5, 1, 0);
             RenderEngine::Renderer::clear();
             camera.set_position_rotation(glm::vec3(camera_position[0], camera_position[1], camera_position[2]),
@@ -91,7 +79,6 @@ namespace Game {
             m_game.render(camera.get_projection_matrix() * camera.get_view_matrix(), glm::vec3(camera_position[0], camera_position[1], camera_position[2]));
 
             m_pWindow->on_update();
-            on_update();
         }
         ResourceManager::unloadAllResources();
 

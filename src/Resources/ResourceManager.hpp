@@ -23,7 +23,7 @@ namespace Game {
 		ResourceManager& operator=(const ResourceManager&) = delete;
 		ResourceManager& operator=(ResourceManager&&) = delete;
 
-		static std::vector<std::shared_ptr<std::pair<std::string, glm::vec3>>> Synchronize(std::vector<std::shared_ptr<std::pair<std::string, glm::vec3>>> blocks, const std::string& filePath);
+		static std::vector<std::shared_ptr<std::pair<std::string, glm::vec3>>> loadWorld(std::vector<std::shared_ptr<std::pair<std::string, glm::vec3>>> blocks, const std::string& filePath);
 
 		static std::shared_ptr<RenderEngine::ShaderProgram> loadShader(const std::string& shaderName, const std::string& vertexPath, const std::string& fragmentPath);
 		static std::shared_ptr<RenderEngine::ShaderProgram> getShader(const std::string& shaderName);

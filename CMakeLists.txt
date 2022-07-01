@@ -14,11 +14,11 @@ set(PUBLIC_INCLUDES
 	src/Game/GameObjects/Cube.hpp
 	src/Game/GameObjects/Block.hpp
 	src/Game/GameObjects/Chunk.hpp
+	src/Game/Renderer/ChunkRenderer.hpp
 	src/RenderEngine/OpenGL/Polygon2D.hpp
 	src/RenderEngine/OpenGL/Animated_Polygon2D.hpp
 	src/Events/Event.hpp
 	src/Events/Keys.hpp
-	src/Events/Input.hpp
 	src/Player/Camera.hpp
 	src/RenderEngine/OpenGL/Texture2D.hpp
 	src/RenderEngine/OpenGL/ShaderProgram.hpp
@@ -35,9 +35,9 @@ set(PUBLIC_SOURCES
 	src/Game/GameObjects/Cube.cpp
 	src/Game/GameObjects/Block.cpp
 	src/Game/GameObjects/Chunk.cpp
+	src/Game/Renderer/ChunkRenderer.cpp
 	src/RenderEngine/OpenGL/Polygon2D.cpp
 	src/RenderEngine/OpenGL/Animated_Polygon2D.cpp
-	src/Events/Input.cpp
 	src/Player/Camera.cpp
 	src/RenderEngine/OpenGL/Texture2D.cpp
 	src/RenderEngine/OpenGL/ShaderProgram.cpp
@@ -78,3 +78,7 @@ set_target_properties(${PROJECT_NAME} PROPERTIES RUNTIME_OUTPUT_DIRECTORY ${CMAK
 add_custom_command(TARGET ${PROJECT_NAME} POST_BUILD
 					COMMAND ${CMAKE_COMMAND} -E copy_directory
 					${CMAKE_SOURCE_DIR}/res $<TARGET_FILE_DIR:${PROJECT_NAME}>/res)
+
+add_custom_command(TARGET ${PROJECT_NAME} POST_BUILD
+					COMMAND ${CMAKE_COMMAND} -E copy_directory
+					${CMAKE_SOURCE_DIR}/saved_worlds $<TARGET_FILE_DIR:${PROJECT_NAME}>/saved_worlds)

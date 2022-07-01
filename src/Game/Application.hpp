@@ -47,6 +47,7 @@ namespace Game {
         void update(const uint64_t delta);
         bool init();
 
+        static bool m_keys_pressed[static_cast<size_t>(KeyCode::KEY_LAST)];
     private:
         enum class EGameState {
             Active,

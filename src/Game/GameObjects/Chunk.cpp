@@ -15,7 +15,9 @@ namespace Game
 		};
 		block = std::make_unique<Block>(pTexture, GrassBlock, pShaderProgram);
 
-		blocks = ResourceManager::Synchronize(blocks, "res/data/blocks.txt");
+		blocks = ResourceManager::loadWorld(blocks, "saved_worlds/world1.txt");
+
+		m_position = glm::vec2(0.f);
 	}
 
 	void Chunk::render(glm::vec3& camera_position)
@@ -41,7 +43,7 @@ namespace Game
 
 		for (int i = 0; i < size(blocks); i++)
 		{
-			block->setPosition(blocks[arr[i].first]->second);
+			block->setPosition(blocks[arr[i].first]->second + glm::vec3(m_position.x * 16, 0, m_position.y * 16));
 			block->setType(blocks[arr[i].first]->first);
 			block->render(camera_position);
 		}
@@ -53,5 +55,10 @@ namespace Game
 		{
 			block->update(delta);
 		}
+	}
+
+	void Chunk::setPosition(glm::vec2 position)
+	{
+		m_position = position;
 	}
 }

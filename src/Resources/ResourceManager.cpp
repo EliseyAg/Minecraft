@@ -45,12 +45,12 @@ namespace Game {
 		return buffer.str();
 	}
 
-	std::vector<std::shared_ptr<std::pair<std::string, glm::vec3>>> ResourceManager::Synchronize(std::vector<std::shared_ptr<std::pair<std::string, glm::vec3>>> blocks, const std::string& filePath)
+	std::vector<std::shared_ptr<std::pair<std::string, glm::vec3>>> ResourceManager::loadWorld(std::vector<std::shared_ptr<std::pair<std::string, glm::vec3>>> blocks, const std::string& filePath)
 	{
 		const std::string fileString = getFileString(filePath);
 		int a = 0;
 		blocks.clear();
-		for (int i = 0; i < 25; i++)
+		for (int i = 0; i < 36; i++)
 		{
 			std::string block_name = fileString.substr(a, fileString.find(',', a) - a);
 			a = fileString.find(',', a) + 1;
