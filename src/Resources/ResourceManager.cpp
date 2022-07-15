@@ -50,7 +50,7 @@ namespace Game {
 		const std::string fileString = getFileString(filePath);
 		int a = 0;
 		blocks.clear();
-		for (int i = 0; i < 36; i++)
+		for (int i = 0; i < 25; i++)
 		{
 			std::string block_name = fileString.substr(a, fileString.find(',', a) - a);
 			a = fileString.find(',', a) + 1;
@@ -79,7 +79,9 @@ namespace Game {
 			return nullptr;
 		}
 
-		const std::shared_ptr<RenderEngine::ShaderProgram>& newShader = m_shaderPrograms.emplace(shaderName, std::make_shared<RenderEngine::ShaderProgram>(vertexString, fragmentString)).first->second;
+		const std::shared_ptr<RenderEngine::ShaderProgram> newShader = std::make_shared<RenderEngine::ShaderProgram>(vertexString, fragmentString);
+		auto p1 = std::make_pair(shaderName, newShader);
+		m_shaderPrograms.emplace(p1);
 		if (newShader->isCompiled()) {
 			return newShader;
 		}
@@ -114,12 +116,13 @@ namespace Game {
 			return nullptr;
 		}
 
-		std::shared_ptr<RenderEngine::Texture2D> newTexture = m_textures.emplace(textureName, std::make_shared<RenderEngine::Texture2D>(width,
-			height,
-			pixels,
-			channels,
-			GL_NEAREST,
-			GL_CLAMP_TO_EDGE)).first->second;
+		std::shared_ptr<RenderEngine::Texture2D> newTexture = std::make_shared<RenderEngine::Texture2D>(width,
+																									height,
+																									pixels,
+																									channels,
+																									GL_NEAREST,
+																									GL_CLAMP_TO_EDGE);
+		m_textures.insert(std::make_pair(textureName, newTexture));
 		stbi_image_free(pixels);
 		return newTexture;
 	}
@@ -152,11 +155,12 @@ namespace Game {
 			std::cerr << "Can't find the shader: " << shaderName << " for the Polygon: " << PolygonName << std::endl;
 		}
 
-		std::shared_ptr<Polygon2D> newPolygon = m_polygones.emplace(PolygonName, std::make_shared<Polygon2D>(pTexture,
-																											 subTextureName,
-																											 pShader,
-																											 glm::vec3(0.f, 0.f, 0.f),
-																											 glm::vec2(PolygonWidth, PolygonHeight))).first->second;
+		std::shared_ptr<Polygon2D> newPolygon = std::make_shared<Polygon2D>(pTexture,
+			subTextureName,
+			pShader,
+			glm::vec3(0.f, 0.f, 0.f),
+			glm::vec2(PolygonWidth, PolygonHeight));
+		m_polygones.insert(std::make_pair(PolygonName, newPolygon));
 
 		return newPolygon;
 	}
@@ -185,12 +189,13 @@ namespace Game {
 			std::cerr << "Can't find the shader: " << shaderName << " for the Polygon: " << PolygonName << std::endl;
 		}
 
-		std::shared_ptr<Animated_Polygon2D> newPolygon = m_animated_polygones.emplace(PolygonName, std::make_shared<Animated_Polygon2D>(pTexture,
-																																		subTextureName,
-																																		pShader,
-																																		glm::vec3(0.f, 0.f, 0.f),
-																																		glm::vec2(polygonWidth, polygonHeight),
-																																		glm::vec4(0.f, 0.f, 0.f, 0.f))).first->second;
+		std::shared_ptr<Animated_Polygon2D> newPolygon = std::make_shared<Animated_Polygon2D>(pTexture,
+			subTextureName,
+			pShader,
+			glm::vec3(0.f, 0.f, 0.f),
+			glm::vec2(polygonWidth, polygonHeight),
+			glm::vec4(0.f, 0.f, 0.f, 0.f));
+		m_animated_polygones.insert(std::make_pair(PolygonName, newPolygon));
 
 		return newPolygon;
 	}

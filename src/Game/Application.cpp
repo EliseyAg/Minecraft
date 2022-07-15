@@ -16,7 +16,7 @@ namespace Game {
 
     Game m_game(g_windowSize);
 
-    std::unique_ptr<Chunk> chunk;
+    std::unique_ptr<Renderer::ChunkRenderer> ChunkRenderer;
 
     bool Game::m_keys_pressed[static_cast<size_t>(KeyCode::KEY_LAST)] = {};
 
@@ -69,8 +69,6 @@ namespace Game {
             lastTime = currentTime;
             m_game.update(duration);
 
-            on_update();
-
             RenderEngine::Renderer::setClearColor(0, 0.5, 1, 0);
             RenderEngine::Renderer::clear();
             camera.set_position_rotation(glm::vec3(camera_position[0], camera_position[1], camera_position[2]),
@@ -79,6 +77,7 @@ namespace Game {
             m_game.render(camera.get_projection_matrix() * camera.get_view_matrix(), glm::vec3(camera_position[0], camera_position[1], camera_position[2]));
 
             m_pWindow->on_update();
+            on_update();
         }
         ResourceManager::unloadAllResources();
 
@@ -117,7 +116,7 @@ namespace Game {
         };
 
         auto pTextureAtlas = ResourceManager::loadTextureAtlas("BlockTextureAtlas", "res/textures/Blocks.png", subTexturesNames, 64, 64);
-        chunk = std::make_unique<Chunk>(pTextureAtlas, pPolygonShaderProgram);
+        ChunkRenderer = std::make_unique<Renderer::ChunkRenderer>(pTextureAtlas, pPolygonShaderProgram);
 
         pPolygonShaderProgram->bind();
         pPolygonShaderProgram->setInt("tex", 0);
@@ -129,11 +128,11 @@ namespace Game {
     {
         ResourceManager::getShader("PolygonShader")->setMatrix4("projectionMat", projectionMat);
         ResourceManager::getShader("PolygonShader")->bind();
-        chunk->render(camera_position);
+        ChunkRenderer->render(camera_position);
     }
 
     void Game::update(const uint64_t delta)
     {
-        chunk->update(delta);
+        //chunk->update(delta);
     }
 }

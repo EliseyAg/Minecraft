@@ -38,16 +38,16 @@ namespace Game {
 	private:
 		static std::string getFileString(const std::string& relativeFilePath);
 
-		typedef std::map<const std::string, std::shared_ptr<RenderEngine::ShaderProgram>> ShaderProgramsMap;
+		using  ShaderProgramsMap = std::map<const std::string, const std::shared_ptr<RenderEngine::ShaderProgram>>;
 		static ShaderProgramsMap m_shaderPrograms;
 
-		typedef std::map<const std::string, std::shared_ptr<RenderEngine::Texture2D>> TexturesMap;
+		using TexturesMap = std::map<const std::string, std::shared_ptr<RenderEngine::Texture2D>>;
 		static TexturesMap m_textures;
 
-		typedef std::map<const std::string, std::shared_ptr<Polygon2D>> PolygonesMap;
+		using PolygonesMap = std::map<const std::string, std::shared_ptr<Polygon2D>>;
 		static PolygonesMap m_polygones;
 
-		typedef std::map<const std::string, std::shared_ptr<Animated_Polygon2D>> Animated_PolygonesMap;
+		using Animated_PolygonesMap = std::map<const std::string, std::shared_ptr<Animated_Polygon2D>>;
 		static Animated_PolygonesMap m_animated_polygones;
 
 		static std::string m_path;
