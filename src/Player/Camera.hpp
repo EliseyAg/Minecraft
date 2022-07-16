@@ -25,8 +25,8 @@ namespace Player {
 		void move_right(const float delta);
 		void move_up(const float delta);
 
-		const glm::vec3& get_camera_position() const { return m_position; }
-		const glm::vec3& get_camera_rotation() const { return m_rotation; }
+		glm::vec3& get_camera_position() { return m_position; }
+		glm::vec3& get_camera_rotation() { return m_rotation; }
 
 		void add_movement_and_rotatition(const glm::vec3& movement_delta,
 			const glm::vec3& rotation_delta);

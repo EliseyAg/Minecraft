@@ -8,8 +8,8 @@ namespace Renderer
 	{
 		chunk = std::make_unique<Game::Chunk>(std::move(pTexture), std::move(pShaderProgram));
 		chunks_coords.push_back(glm::vec2(0.f));
-		chunks_coords.push_back(glm::vec2(0.f, 1.f));
-		chunks_coords.push_back(glm::vec2(0.f, -1.f));
+		//chunks_coords.push_back(glm::vec2(0.f, 1.f));
+		//chunks_coords.push_back(glm::vec2(0.f, -1.f));
 	}
 
 	void ChunkRenderer::render(glm::vec3& camera_position)

@@ -24,10 +24,8 @@ namespace Game {
 
         virtual int start(unsigned int window_width, unsigned int window_height, const char* title, char** argv);
 
-        virtual void on_update() {};
+        virtual void on_update(uint64_t duration) {};
 
-        float camera_position[3] = { 0.f, 2.f, 0.f };
-        float camera_rotation[3] = { 0.f, 0.f, 0.f };
         bool perspective_camera = true;
         Player::Camera camera{ glm::vec3(0.f, 2.f, 0.f), glm::vec3(0.f, 0.f, 0.f) };
 
