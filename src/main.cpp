@@ -9,58 +9,76 @@
 
 class MyApp : public Game::Application
 {
-    void on_update() override {
+    void on_update() override
+    {
+        bool move_camera = false;
+        glm::vec3 movement_delta{ 0, 0, 0 };
+        glm::vec3 rotation_delta{ 0, 0, 0 };
+
         if (Game::Game::m_keys_pressed[static_cast<size_t>(Game::KeyCode::KEY_W)])
         {
-            camera_position[2] +=  cos((camera_rotation[1] * PI) / 180) * -0.05f;
-            camera_position[0] +=  sin((camera_rotation[1] * PI) / 180) * -0.05f;
+            movement_delta.x +=  0.05f;
+            move_camera = true;
         }                                                                    
         if (Game::Game::m_keys_pressed[static_cast<size_t>(Game::KeyCode::KEY_S)])
         {                                                                    
-            camera_position[2] +=  cos((camera_rotation[1] * PI) / 180) *  0.05f;
-            camera_position[0] +=  sin((camera_rotation[1] * PI) / 180) *  0.05f;
+            movement_delta.x += -0.05f;
+            move_camera = true;
         }                                                                    
         if (Game::Game::m_keys_pressed[static_cast<size_t>(Game::KeyCode::KEY_A)])
         {                                                                    
-            camera_position[2] += -sin((camera_rotation[1] * PI) / 180) * -0.05f;
-            camera_position[0] +=  cos((camera_rotation[1] * PI) / 180) * -0.05f;
+            movement_delta.y += -0.05f;
+            move_camera = true;
         }                                                                    
         if (Game::Game::m_keys_pressed[static_cast<size_t>(Game::KeyCode::KEY_D)])
         {                                                                    
-            camera_position[2] += -sin((camera_rotation[1] * PI) / 180) *  0.05f;
-            camera_position[0] +=  cos((camera_rotation[1] * PI) / 180) *  0.05f;
+            movement_delta.y +=  0.05f;
+            move_camera = true;
         }
         if (Game::Game::m_keys_pressed[static_cast<size_t>(Game::KeyCode::KEY_E)])
         {
-            camera_position[1] += 0.05f;
+            movement_delta.z +=  0.05f;
+            move_camera = true;
         }
         if (Game::Game::m_keys_pressed[static_cast<size_t>(Game::KeyCode::KEY_Q)])
         {
-            camera_position[1] -= 0.05f;
+            movement_delta.z += -0.05f;
+            move_camera = true;
         }
         if (Game::Game::m_keys_pressed[static_cast<size_t>(Game::KeyCode::KEY_UP)])
         {
-            camera_rotation[0] += 0.5f;
+            rotation_delta.x += -0.5f;
+            move_camera = true;
         }
         if (Game::Game::m_keys_pressed[static_cast<size_t>(Game::KeyCode::KEY_DOWN)])
         {
-            camera_rotation[0] -= 0.5f;
+            rotation_delta.x +=  0.5f;
+            move_camera = true;
         }
         if (Game::Game::m_keys_pressed[static_cast<size_t>(Game::KeyCode::KEY_RIGHT)])
         {
-            camera_rotation[1] -= 0.5f;
+            rotation_delta.y += -0.5f;
+            move_camera = true;
         }
         if (Game::Game::m_keys_pressed[static_cast<size_t>(Game::KeyCode::KEY_LEFT)])
         {
-            camera_rotation[1] += 0.5f;
+            rotation_delta.y +=  0.5f;
+            move_camera = true;
         }
-        if (Game::Game::m_keys_pressed[static_cast<size_t>(Game::KeyCode::KEY_R)])
+        if (Game::Game::m_keys_pressed[static_cast<size_t>(Game::KeyCode::KEY_P)])
         {
-            camera_position[0] = 0.f;
-            camera_position[1] = 0.f;
-            camera_position[2] = 0.f;
+            rotation_delta.z += -0.5f;
+            move_camera = true;
         }
-        std::cout << "x: " << camera_position[0] << " z: " << camera_position[2] << std::endl;
+        if (Game::Game::m_keys_pressed[static_cast<size_t>(Game::KeyCode::KEY_O)])
+        {
+            rotation_delta.z +=  0.5f;
+            move_camera = true;
+        }
+        if (move_camera)
+        {
+            camera.add_movement_and_rotatition(movement_delta, rotation_delta);
+        }
     }
 };
 

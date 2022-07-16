@@ -1,2 +1,5 @@
-﻿  Chunk.cpp
+﻿  Application.cpp
+  Camera.cpp
+  main.cpp
+  Создание кода...
   Minecraft.vcxproj -> C:\Users\Elisey\Games on C++\Minecraft\build\bin\Debug\Minecraft.exe

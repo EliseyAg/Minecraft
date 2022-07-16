@@ -71,8 +71,6 @@ namespace Game {
 
             RenderEngine::Renderer::setClearColor(0, 0.5, 1, 0);
             RenderEngine::Renderer::clear();
-            camera.set_position_rotation(glm::vec3(camera_position[0], camera_position[1], camera_position[2]),
-                                         glm::vec3(camera_rotation[0], camera_rotation[1], camera_rotation[2]));
             camera.set_projection_mode(perspective_camera ? Player::Camera::ProjectionMode::Perspective : Player::Camera::ProjectionMode::Orthographic);
             m_game.render(camera.get_projection_matrix() * camera.get_view_matrix(), glm::vec3(camera_position[0], camera_position[1], camera_position[2]));
 
