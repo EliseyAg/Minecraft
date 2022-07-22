@@ -115,6 +115,7 @@ namespace Game {
 
         auto pTextureAtlas = ResourceManager::loadTextureAtlas("BlockTextureAtlas", "res/textures/Blocks.png", subTexturesNames, 64, 64);
         ChunkRenderer = std::make_unique<Renderer::ChunkRenderer>(pTextureAtlas, pPolygonShaderProgram);
+        ChunkRenderer->generate_world();
 
         pPolygonShaderProgram->bind();
         pPolygonShaderProgram->setInt("tex", 0);

@@ -1,5 +1,4 @@
 #include "Chunk.hpp"
-#include "../../Resources/ResourceManager.hpp"
 
 namespace Game
 {
@@ -14,21 +13,6 @@ namespace Game
 													 "Dirt"
 		};
 		block = std::make_unique<Block>(pTexture, GrassBlock, pShaderProgram);
-
-		for (int i = 0; i < 256; i++)
-		{
-			m_blocks.push_back(std::make_shared<std::pair<std::string, glm::vec3>>(std::make_pair("Grass", glm::vec3(m_vec2_blocks_positions[i]->x, 0, m_vec2_blocks_positions[i]->y))));
-		}
-		for (int j = -1; j >= -4; j--)
-		{
-			for (int i = 0; i < 256; i++)
-			{
-				m_blocks.push_back(std::make_shared<std::pair<std::string, glm::vec3>>(std::make_pair("Dirt", glm::vec3(m_vec2_blocks_positions[i]->x, j, m_vec2_blocks_positions[i]->y))));
-			}
-		}
-
-		//m_blocks = ResourceManager::loadWorld(m_blocks, "saved_worlds/world1.txt");
-
 		m_position = glm::vec2(0.f);
 	}
 

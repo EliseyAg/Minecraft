@@ -67,21 +67,11 @@ class MyApp : public Game::Application
             rotation_delta.y +=  0.5f * duration / 10000000;
             move_camera = true;
         }
-        if (Game::Game::m_keys_pressed[static_cast<size_t>(Game::KeyCode::KEY_P)])
-        {
-            rotation_delta.z += -0.5f * duration / 10000000;
-            move_camera = true;
-        }
-        if (Game::Game::m_keys_pressed[static_cast<size_t>(Game::KeyCode::KEY_O)])
-        {
-            rotation_delta.z +=  0.5f * duration / 10000000;
-            move_camera = true;
-        }
         if (move_camera)
         {
             camera.add_movement_and_rotatition(movement_delta, rotation_delta);
         }
-        std::cout << camera.get_camera_position().x << camera.get_camera_position().z << std::endl;
+        std::cout << "x: " << camera.get_camera_position().x << " z: " << camera.get_camera_position().z << std::endl;
     }
 };
 

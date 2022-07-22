@@ -15,10 +15,13 @@ namespace Renderer
 					  std::shared_ptr<RenderEngine::ShaderProgram> pShaderProgram);
 
 		void render(glm::vec3& camera_position);
+		void generate_world();
 		void saveworld();
 		void loadworld();
 	private:
 		std::vector<glm::vec2> chunks_coords;
 		std::unique_ptr<Game::Chunk> chunk;
+		std::vector<std::shared_ptr<std::pair<std::string, glm::vec3>>> m_blocks;
+		std::vector<std::shared_ptr<std::pair<std::string, glm::vec3>>> blocks;
 	};
 }
