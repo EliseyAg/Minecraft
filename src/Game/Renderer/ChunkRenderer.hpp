@@ -18,6 +18,8 @@ namespace Renderer
 		void generate_world();
 		void saveworld();
 		void loadworld();
+
+		std::vector<Game::Chunk::s_blocks_polygones> blocks_polygones;
 	private:
 		std::vector<glm::vec2> chunks_coords;
 		std::unique_ptr<Game::Chunk> chunk;

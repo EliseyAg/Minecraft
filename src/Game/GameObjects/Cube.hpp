@@ -21,6 +21,7 @@ namespace Game
 		void setPosition(const glm::vec3 position);
 		void setSize(const glm::vec3 size);
 		void setTexture(std::vector<std::string>& SubTextures);
+		void setPolygones(bool polygones[6]);
 
 		std::pair<std::string, float> arr[6];
 	private:
@@ -30,5 +31,6 @@ namespace Game
 		glm::vec3 m_size;
 		glm::vec4 m_rotation;
 		glm::vec3 m_polygones_positions[6];
+		bool m_polygones[6];
 	};
 }

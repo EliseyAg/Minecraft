@@ -42,6 +42,7 @@ namespace Game
 		{
 			block->setPosition(m_blocks[arr[i].first]->second + glm::vec3(m_position.x * 16, 0, m_position.y * 16));
 			block->setType(m_blocks[arr[i].first]->first);
+			block->setPolygones(m_blocks_polygones[arr[i].first].blocks_polygones);
 			block->render(camera_position);
 		}
 	}
@@ -62,5 +63,10 @@ namespace Game
 	void Chunk::setBlocksPositions(std::vector<std::shared_ptr<std::pair<std::string, glm::vec3>>> blocks)
 	{
 		m_blocks = blocks;
+	}
+
+	void Chunk::setBlocksPolygones(std::vector<s_blocks_polygones> blocks_polygones)
+	{
+		m_blocks_polygones = blocks_polygones;
 	}
 }

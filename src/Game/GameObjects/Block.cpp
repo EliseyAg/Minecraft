@@ -36,7 +36,7 @@ namespace Game
 	void Block::setType(std::string type)
 	{
 		m_type = type;
-		for (int i = 0; i < 3; i++)
+		for (int i = 0; i < size(types); i++)
 		{
 			if (types[i].first == m_type)
 			{
@@ -44,5 +44,10 @@ namespace Game
 				break;
 			}
 		}
+	}
+
+	void Block::setPolygones(bool polygones[6])
+	{
+		block->setPolygones(polygones);
 	}
 }
