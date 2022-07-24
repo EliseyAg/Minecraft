@@ -11,7 +11,8 @@
 
 class MyApp : public Game::Application
 {
-    void on_update(uint64_t duration) override
+    int frame = 1;
+    void on_update(uint64_t duration, float horizontalAngleRad, float verticalAngleRad) override
     {
         bool move_camera = false;
         glm::vec3 movement_delta{ 0, 0, 0 };
@@ -67,18 +68,28 @@ class MyApp : public Game::Application
             rotation_delta.y +=  0.5f * duration / 10000000;
             move_camera = true;
         }
+        if (Game::Game::m_keys_pressed[static_cast<size_t>(Game::KeyCode::KEY_L)])
+        {
+            isLockCursor = !isLockCursor;
+        }
+        if (Game::Game::m_keys_pressed[static_cast<size_t>(Game::KeyCode::KEY_ESCAPE)])
+        {
+            CloseWindow();
+        }
+        camera.set_rotation(glm::vec3(verticalAngleRad * 180 / 3.14, horizontalAngleRad * 180 / 3.14, 0));
         if (move_camera)
         {
             camera.add_movement_and_rotatition(movement_delta, rotation_delta);
         }
-        std::cout << "x: " << camera.get_camera_position().x << " z: " << camera.get_camera_position().z << std::endl;
+        std::cout << "Coords:" << "x: " << camera.get_camera_position().x << " z: " << camera.get_camera_position().z << " FPS: " << 10000000000 / duration << std::endl;
+        frame++;
     }
 };
 
 int main(int argc, char** argv)
 {
     auto myApp = std::make_unique<MyApp>();
-    int returnCode = myApp->start(512, 512, "Minecraft", argv);
+    int returnCode = myApp->start(1024, 1024, "Minecraft", argv);
 
     return returnCode;
 }

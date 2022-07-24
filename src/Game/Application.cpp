@@ -36,19 +36,39 @@ namespace Game {
             [&](EventKeyPressed& event)
             {
                 Game::m_keys_pressed[static_cast<size_t>(event.key_code)] = true;
-            });
+            }
+        );
 
         m_event_dispatcher.add_event_listener<EventKeyReleased>(
             [&](EventKeyReleased& event)
             {
                 Game::m_keys_pressed[static_cast<size_t>(event.key_code)] = false;
-            });
+            }
+        );
 
         m_event_dispatcher.add_event_listener<EventWindowClose>(
             [&](EventWindowClose& event)
             {
                 m_bCloseWindow = true;
-            });
+            }
+        );
+
+        m_event_dispatcher.add_event_listener<EventMouseMoved>(
+            [&](EventMouseMoved& event)
+            {
+                if (isLockCursor)
+                {
+                    horizontalAngleRad += 0.005f * (m_pWindow->get_width()  / 2 - event.x);
+                    verticalAngleRad   += 0.005f * (m_pWindow->get_height() / 2 - event.y);
+                    m_pWindow->LockCursor();
+                }
+                else
+                {
+                    horizontalAngleRad = 0.005f * (m_pWindow->get_width()  / 2 - event.x);
+                    verticalAngleRad   = 0.005f * (m_pWindow->get_height() / 2 - event.y);
+                }
+            }
+        );
 
         m_pWindow->set_event_callback(
             [&](BaseEvent& event)
@@ -75,7 +95,7 @@ namespace Game {
             m_game.render(camera.get_projection_matrix() * camera.get_view_matrix(), camera.get_camera_position());
 
             m_pWindow->on_update();
-            on_update(duration);
+            on_update(duration, horizontalAngleRad, verticalAngleRad);
         }
         ResourceManager::unloadAllResources();
 

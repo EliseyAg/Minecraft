@@ -24,13 +24,19 @@ namespace Game {
 
         virtual int start(unsigned int window_width, unsigned int window_height, const char* title, char** argv);
 
-        virtual void on_update(uint64_t duration) {};
+        virtual void on_update(uint64_t duration, float horizontalAngleRad, float verticalAngleRad) {};
+        virtual void CloseWindow() { m_bCloseWindow = true; };
 
         bool perspective_camera = true;
         Player::Camera camera{ glm::vec3(0.f, 2.f, 0.f), glm::vec3(0.f, 0.f, 0.f) };
 
+        bool isLockCursor = true;
+
     private:
         std::unique_ptr<class Window> m_pWindow;
+
+        float horizontalAngleRad = 0;
+        float verticalAngleRad   = 0;
 
         EventDispatcher m_event_dispatcher;
         bool m_bCloseWindow = false;

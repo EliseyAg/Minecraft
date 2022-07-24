@@ -25,6 +25,11 @@ namespace Game {
         shutdown();
     }
 
+    void Window::LockCursor()
+    {
+        glfwSetCursorPos(m_pWindow, m_data.width / 2, m_data.height / 2);
+    }
+
     int Window::init()
     {
         if (!s_GLFW_initialized)
