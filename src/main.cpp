@@ -81,7 +81,7 @@ class MyApp : public Game::Application
         {
             camera.add_movement_and_rotatition(movement_delta, rotation_delta);
         }
-        std::cout << "Coords:" << "x: " << camera.get_camera_position().x << " z: " << camera.get_camera_position().z << " FPS: " << 10000000000 / duration << std::endl;
+        std::cout << "Coords:" << "x: " << camera.get_camera_position().x << " z: " << camera.get_camera_position().z << " FPS: " << 1000000000 / duration << std::endl;
         frame++;
     }
 };

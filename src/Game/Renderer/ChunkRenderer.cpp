@@ -8,9 +8,6 @@ namespace Renderer
 		std::shared_ptr<RenderEngine::ShaderProgram> pShaderProgram)
 	{
 		chunk = std::make_unique<Game::Chunk>(std::move(pTexture), std::move(pShaderProgram));
-		chunks_coords.push_back(glm::vec2(0.f));
-		//chunks_coords.push_back(glm::vec2(0.f, 1.f));
-		//chunks_coords.push_back(glm::vec2(0.f, -1.f));
 	}
 
 	void ChunkRenderer::render(glm::vec3& camera_position)
@@ -38,8 +35,8 @@ namespace Renderer
 		for (int i = 0; i < size(chunks_coords); i++)
 		{
 			chunk->setPosition(chunks_coords[arr[i]->first]);
-			chunk->setBlocksPositions(blocks);
-			chunk->setBlocksPolygones(blocks_polygones);
+			chunk->setBlocksPositions(blocks[i]);
+			chunk->setBlocksPolygones(blocks_polygones[i]);
 			chunk->render(camera_position);
 		}
 	}
@@ -49,64 +46,102 @@ namespace Renderer
 		blocks.clear();
 		m_blocks.clear();
 		blocks_polygones.clear();
-		for (int x = -8; x <= 7; x++)
+		std::vector<std::shared_ptr<std::pair<std::string, glm::vec3>>> bl_pos;
+		std::vector<Game::Chunk::s_blocks_polygones> bl_pol;
+		for (int u = 0; u <= 0; u++)
 		{
-			for (int y = -8; y <= 7; y++)
+			for (int v = -1; v <= 0; v++)
 			{
-				m_blocks.push_back(std::make_shared<std::pair<std::string, glm::vec3>>(std::make_pair("Grass", glm::vec3(x, 0, y))));
-				m_blocks.push_back(std::make_shared<std::pair<std::string, glm::vec3>>(std::make_pair("Dirt", glm::vec3(x, -1, y))));
-				m_blocks.push_back(std::make_shared<std::pair<std::string, glm::vec3>>(std::make_pair("Dirt", glm::vec3(x, -2, y))));
-				m_blocks.push_back(std::make_shared<std::pair<std::string, glm::vec3>>(std::make_pair("Dirt", glm::vec3(x, -3, y))));
-				m_blocks.push_back(std::make_shared<std::pair<std::string, glm::vec3>>(std::make_pair("Coblestone", glm::vec3(x, -4, y))));
-				m_blocks.push_back(std::make_shared<std::pair<std::string, glm::vec3>>(std::make_pair("Coblestone", glm::vec3(x, -5, y))));
-				m_blocks.push_back(std::make_shared<std::pair<std::string, glm::vec3>>(std::make_pair("Coblestone", glm::vec3(x, -6, y))));
-				m_blocks.push_back(std::make_shared<std::pair<std::string, glm::vec3>>(std::make_pair("Coblestone", glm::vec3(x, -7, y))));
+				chunks_coords.push_back(glm::vec2(u, v));
+				bl_pos.clear();
+				for (int x = -8; x <= 7; x++)
+				{
+					for (int y = -8; y <= 7; y++)
+					{
+						int _u, _v = 0;
+						if (u >= 0)
+						{
+							_u = x * (u + 1);
+						}
+						else
+						{
+							_u = x * u;
+						}
+						if (v >= 0)
+						{
+							_v = y * (v + 1);
+						}
+						else
+						{
+							_v = y * v;
+						}
+						bl_pos.push_back(std::make_shared<std::pair<std::string, glm::vec3>>(std::make_pair("Grass", glm::vec3(_u,  0, _v))));
+						bl_pos.push_back(std::make_shared<std::pair<std::string, glm::vec3>>(std::make_pair("Dirt",	glm::vec3(_u, -1, _v))));
+						bl_pos.push_back(std::make_shared<std::pair<std::string, glm::vec3>>(std::make_pair("Dirt",	glm::vec3(_u, -2, _v))));
+						bl_pos.push_back(std::make_shared<std::pair<std::string, glm::vec3>>(std::make_pair("Dirt",	glm::vec3(_u, -3, _v))));
+						bl_pos.push_back(std::make_shared<std::pair<std::string, glm::vec3>>(std::make_pair("Coblestone", glm::vec3(_u, -4, _v))));
+						bl_pos.push_back(std::make_shared<std::pair<std::string, glm::vec3>>(std::make_pair("Coblestone", glm::vec3(_u, -5, _v))));
+						bl_pos.push_back(std::make_shared<std::pair<std::string, glm::vec3>>(std::make_pair("Coblestone", glm::vec3(_u, -6, _v))));
+						bl_pos.push_back(std::make_shared<std::pair<std::string, glm::vec3>>(std::make_pair("Coblestone", glm::vec3(_u, -7, _v))));
+					}
+				}
+				m_blocks.push_back(bl_pos);
 			}
 		}
-		for (int i = 0; i < size(m_blocks); i++)
+		for (int k = 0; k < size(m_blocks); k++)
 		{
-			bool f[6];
-			for (int c = 0; c < 6; c++)
+			bl_pos.clear();
+			bl_pol.clear();
+			for (int i = 0; i < size(m_blocks[k]); i++)
 			{
-				f[c] = false;
-			}
-			for (int j = 0; j < size(m_blocks); j++)
-			{
-				if ((m_blocks[i]->second == m_blocks[j]->second - glm::vec3(0,  1, 0)))
-				{
-					f[0] = true;
-				}
-				if ((m_blocks[i]->second == m_blocks[j]->second - glm::vec3(0, -1, 0)))
-				{
-					f[1] = true;
-				}
-				if ((m_blocks[i]->second == m_blocks[j]->second - glm::vec3(0, 0,  1)))
-				{
-					f[2] = true;
-				}
-				if ((m_blocks[i]->second == m_blocks[j]->second - glm::vec3(0, 0, -1)))
-				{
-					f[3] = true;
-				}
-				if ((m_blocks[i]->second == m_blocks[j]->second - glm::vec3( 1, 0, 0)))
-				{
-					f[4] = true;
-				}
-				if ((m_blocks[i]->second == m_blocks[j]->second - glm::vec3(-1, 0, 0)))
-				{
-					f[5] = true;
-				}
-			}
-			if (!(f[0] && f[1] && f[2] && f[3] && f[4] && f[5]))
-			{
-				blocks.push_back(m_blocks[i]);
-				Game::Chunk::s_blocks_polygones _f;
+				bool f[6];
 				for (int c = 0; c < 6; c++)
 				{
-					_f.blocks_polygones[c] = f[c];
+					f[c] = false;
 				}
-				blocks_polygones.push_back(_f);
+				for (int b = 0; b < size(m_blocks); b++)
+				{
+					for (int j = 0; j < size(m_blocks[k]); j++)
+					{
+						if ((m_blocks[k][i]->second == m_blocks[b][j]->second - glm::vec3(0, 1, 0)))
+						{
+							f[0] = true;
+						}
+						if ((m_blocks[k][i]->second == m_blocks[b][j]->second - glm::vec3(0, -1, 0)))
+						{
+							f[1] = true;
+						}
+						if ((m_blocks[k][i]->second == m_blocks[b][j]->second - glm::vec3(0, 0, 1)))
+						{
+							f[2] = true;
+						}
+						if ((m_blocks[k][i]->second == m_blocks[b][j]->second - glm::vec3(0, 0, -1)))
+						{
+							f[3] = true;
+						}
+						if ((m_blocks[k][i]->second == m_blocks[b][j]->second - glm::vec3(1, 0, 0)))
+						{
+							f[4] = true;
+						}
+						if ((m_blocks[k][i]->second == m_blocks[b][j]->second - glm::vec3(-1, 0, 0)))
+						{
+							f[5] = true;
+						}
+					}
+					if (!(f[0] && f[1] && f[2] && f[3] && f[4] && f[5]))
+					{
+						bl_pos.push_back(m_blocks[k][i]);
+						Game::Chunk::s_blocks_polygones _f;
+						for (int c = 0; c < 6; c++)
+						{
+							_f.blocks_polygones[c] = f[c];
+						}
+						bl_pol.push_back(_f);
+					}
+				}
 			}
+			blocks.push_back(bl_pos);
+			blocks_polygones.push_back(bl_pol);
 		}
 	}
 }

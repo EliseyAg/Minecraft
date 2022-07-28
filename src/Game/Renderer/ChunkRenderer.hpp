@@ -19,11 +19,11 @@ namespace Renderer
 		void saveworld();
 		void loadworld();
 
-		std::vector<Game::Chunk::s_blocks_polygones> blocks_polygones;
+		std::vector<std::vector<Game::Chunk::s_blocks_polygones>> blocks_polygones;
 	private:
 		std::vector<glm::vec2> chunks_coords;
 		std::unique_ptr<Game::Chunk> chunk;
-		std::vector<std::shared_ptr<std::pair<std::string, glm::vec3>>> m_blocks;
-		std::vector<std::shared_ptr<std::pair<std::string, glm::vec3>>> blocks;
+		std::vector<std::vector<std::shared_ptr<std::pair<std::string, glm::vec3>>>> m_blocks;
+		std::vector<std::vector<std::shared_ptr<std::pair<std::string, glm::vec3>>>> blocks;
 	};
 }
