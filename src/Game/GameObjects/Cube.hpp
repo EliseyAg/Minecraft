@@ -23,7 +23,7 @@ namespace Game
 		void setTexture(std::vector<std::string>& SubTextures);
 		void setPolygones(bool polygones[6]);
 
-		std::pair<std::string, float> arr[6];
+		std::pair<int, float> arr[6];
 	private:
 		std::shared_ptr<RenderEngine::Texture2D> m_pTexture;
 		std::shared_ptr<RenderEngine::ShaderProgram> m_pShaderProgram;
@@ -31,6 +31,8 @@ namespace Game
 		glm::vec3 m_size;
 		glm::vec4 m_rotation;
 		glm::vec3 m_polygones_positions[6];
+		glm::vec3 m_polygones_rotations[6];
 		bool m_polygones[6];
+		std::vector<std::string> m_SubTextures;
 	};
 }

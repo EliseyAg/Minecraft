@@ -35,8 +35,8 @@ namespace Renderer
 		for (int i = 0; i < size(chunks_coords); i++)
 		{
 			chunk->setPosition(chunks_coords[arr[i]->first]);
-			chunk->setBlocksPositions(blocks[i]);
-			chunk->setBlocksPolygones(blocks_polygones[i]);
+			chunk->setBlocksPositions(blocks[arr[i]->first]);
+			chunk->setBlocksPolygones(blocks_polygones[arr[i]->first]);
 			chunk->render(camera_position);
 		}
 	}
@@ -48,7 +48,7 @@ namespace Renderer
 		blocks_polygones.clear();
 		std::vector<std::shared_ptr<std::pair<std::string, glm::vec3>>> bl_pos;
 		std::vector<Game::Chunk::s_blocks_polygones> bl_pol;
-		for (int u = 0; u <= 0; u++)
+		for (int u = -1; u <= 0; u++)
 		{
 			for (int v = -1; v <= 0; v++)
 			{
@@ -59,7 +59,7 @@ namespace Renderer
 					for (int y = -8; y <= 7; y++)
 					{
 						int _u, _v = 0;
-						if (u >= 0)
+						if (u == 0)
 						{
 							_u = x * (u + 1);
 						}
@@ -67,7 +67,7 @@ namespace Renderer
 						{
 							_u = x * u;
 						}
-						if (v >= 0)
+						if (v == 0)
 						{
 							_v = y * (v + 1);
 						}
@@ -101,43 +101,43 @@ namespace Renderer
 				}
 				for (int b = 0; b < size(m_blocks); b++)
 				{
-					for (int j = 0; j < size(m_blocks[k]); j++)
+					for (int j = 0; j < size(m_blocks[b]); j++)
 					{
-						if ((m_blocks[k][i]->second == m_blocks[b][j]->second - glm::vec3(0, 1, 0)))
+						if ((m_blocks[k][i]->second == m_blocks[b][j]->second - glm::vec3( 0,  1, 0)))
 						{
 							f[0] = true;
 						}
-						if ((m_blocks[k][i]->second == m_blocks[b][j]->second - glm::vec3(0, -1, 0)))
+						if ((m_blocks[k][i]->second == m_blocks[b][j]->second - glm::vec3( 0, -1, 0)))
 						{
 							f[1] = true;
 						}
-						if ((m_blocks[k][i]->second == m_blocks[b][j]->second - glm::vec3(0, 0, 1)))
+						if ((m_blocks[k][i]->second == m_blocks[b][j]->second - glm::vec3( 0,  0,  1)))
 						{
 							f[2] = true;
 						}
-						if ((m_blocks[k][i]->second == m_blocks[b][j]->second - glm::vec3(0, 0, -1)))
+						if ((m_blocks[k][i]->second == m_blocks[b][j]->second - glm::vec3( 0,  0, -1)))
 						{
 							f[3] = true;
 						}
-						if ((m_blocks[k][i]->second == m_blocks[b][j]->second - glm::vec3(1, 0, 0)))
+						if ((m_blocks[k][i]->second == m_blocks[b][j]->second - glm::vec3( 1,  0,  0)))
 						{
 							f[4] = true;
 						}
-						if ((m_blocks[k][i]->second == m_blocks[b][j]->second - glm::vec3(-1, 0, 0)))
+						if ((m_blocks[k][i]->second == m_blocks[b][j]->second - glm::vec3(-1,  0,  0)))
 						{
 							f[5] = true;
 						}
 					}
-					if (!(f[0] && f[1] && f[2] && f[3] && f[4] && f[5]))
+				}
+				if (!(f[0] && f[1] && f[2] && f[3] && f[4] && f[5]))
+				{
+					bl_pos.push_back(m_blocks[k][i]);
+					Game::Chunk::s_blocks_polygones _f;
+					for (int c = 0; c < 6; c++)
 					{
-						bl_pos.push_back(m_blocks[k][i]);
-						Game::Chunk::s_blocks_polygones _f;
-						for (int c = 0; c < 6; c++)
-						{
-							_f.blocks_polygones[c] = f[c];
-						}
-						bl_pol.push_back(_f);
+						_f.blocks_polygones[c] = f[c];
 					}
+					bl_pol.push_back(_f);
 				}
 			}
 			blocks.push_back(bl_pos);
