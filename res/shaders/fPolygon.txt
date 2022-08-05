@@ -7,4 +7,8 @@ uniform sampler2D tex;
 void main()
 {
    texColor = texture(tex, texCoords);
+   if (texColor.rgb == vec3(1.0, 1.0, 1.0))
+   {
+		discard;
+   }
 }

@@ -37,34 +37,12 @@ namespace Game
 		m_polygones_rotations[4] = glm::vec3( 0,  90,   0);
 		m_polygones_rotations[5] = glm::vec3( 0, -90,   0);
 
-		arr[0] = std::pair<int, float>(0, ((m_polygones_positions[0].x - camera_position.x) * (m_polygones_positions[0].y - camera_position.y) * (m_polygones_positions[0].z - camera_position.z)) / 3);
-		arr[1] = std::pair<int, float>(1, ((m_polygones_positions[1].x - camera_position.x) * (m_polygones_positions[1].y - camera_position.y) * (m_polygones_positions[1].z - camera_position.z)) / 3);
-		arr[2] = std::pair<int, float>(2, ((m_polygones_positions[2].x - camera_position.x) * (m_polygones_positions[2].y - camera_position.y) * (m_polygones_positions[2].z - camera_position.z)) / 3);
-		arr[3] = std::pair<int, float>(3, ((m_polygones_positions[3].x - camera_position.x) * (m_polygones_positions[3].y - camera_position.y) * (m_polygones_positions[3].z - camera_position.z)) / 3);
-		arr[4] = std::pair<int, float>(4, ((m_polygones_positions[4].x - camera_position.x) * (m_polygones_positions[4].y - camera_position.y) * (m_polygones_positions[4].z - camera_position.z)) / 3);
-		arr[5] = std::pair<int, float>(5, ((m_polygones_positions[5].x - camera_position.x) * (m_polygones_positions[5].y - camera_position.y) * (m_polygones_positions[5].z - camera_position.z)) / 3);
-
-		for (int i = 0; i < 6; i++) {
-			for (int j = 0; j < 5; j++) {
-				if (arr[j].second < arr[j + 1].second && arr[j].second > 0) {
-					std::pair<int, float> mem = arr[j];
-					arr[j] = arr[j + 1];
-					arr[j + 1] = mem;
-				}
-				if (arr[j].second > arr[j + 1].second && arr[j].second < 0) {
-					std::pair<int, float> mem = arr[j];
-					arr[j] = arr[j + 1];
-					arr[j + 1] = mem;
-				}
-			}
-		}
-
 		for (int k = 0; k < 6; k++) {
-			if (!m_polygones[arr[k].first])
+			if (!m_polygones[k])
 			{
-				ResourceManager::getAnimatedPolygon("Polygon")->setPosition(m_polygones_positions[arr[k].first]);
-				ResourceManager::getAnimatedPolygon("Polygon")->setRotation(glm::vec4(m_polygones_rotations[arr[k].first], 0));
-				ResourceManager::getAnimatedPolygon("Polygon")->setTexture(m_SubTextures[arr[k].first]);
+				ResourceManager::getAnimatedPolygon("Polygon")->setPosition(m_polygones_positions[k]);
+				ResourceManager::getAnimatedPolygon("Polygon")->setRotation(glm::vec4(m_polygones_rotations[k], 0));
+				ResourceManager::getAnimatedPolygon("Polygon")->setTexture(m_SubTextures[k]);
 				ResourceManager::getAnimatedPolygon("Polygon")->render();
 			}
 		}

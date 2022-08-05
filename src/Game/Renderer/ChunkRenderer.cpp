@@ -3,7 +3,6 @@
 
 namespace Renderer
 {
-	std::vector<std::shared_ptr<std::pair<int, float>>> arr;
 	ChunkRenderer::ChunkRenderer(std::shared_ptr<RenderEngine::Texture2D> pTexture,
 		std::shared_ptr<RenderEngine::ShaderProgram> pShaderProgram)
 	{
@@ -12,31 +11,11 @@ namespace Renderer
 
 	void ChunkRenderer::render(glm::vec3& camera_position)
 	{
-		arr.clear();
-		for (int i = 0; i < size(chunks_coords); i++) {
-			arr.push_back(std::make_shared<std::pair<int, float>>(i, ((chunks_coords[i].x - camera_position.x) + (chunks_coords[i].y - camera_position.y)) / 2));
-		}
-
-		for (int i = 0; i < size(chunks_coords); i++) {
-			for (int j = 0; j < size(chunks_coords) - 1; j++) {
-				if (arr[j]->second < arr[j + 1]->second && arr[j]->second > 0) {
-					std::shared_ptr<std::pair<int, float>> mem = arr[j];
-					arr[j] = arr[j + 1];
-					arr[j + 1] = mem;
-				}
-				if (arr[j]->second > arr[j + 1]->second && arr[j]->second < 0) {
-					std::shared_ptr<std::pair<int, float>> mem = arr[j];
-					arr[j] = arr[j + 1];
-					arr[j + 1] = mem;
-				}
-			}
-		}
-
 		for (int i = 0; i < size(chunks_coords); i++)
 		{
-			chunk->setPosition(chunks_coords[arr[i]->first]);
-			chunk->setBlocksPositions(blocks[arr[i]->first]);
-			chunk->setBlocksPolygones(blocks_polygones[arr[i]->first]);
+			chunk->setPosition(chunks_coords[i]);
+			chunk->setBlocksPositions(blocks[i]);
+			chunk->setBlocksPolygones(blocks_polygones[i]);
 			chunk->render(camera_position);
 		}
 	}

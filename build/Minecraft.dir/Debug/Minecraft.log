@@ -1,2 +1,39 @@
-﻿  ChunkRenderer.cpp
+﻿  Building Custom Rule C:/Users/Elisey/Games on C++/Minecraft/CMakeLists.txt
+  main.cpp
+  Application.cpp
+C:\Users\Elisey\Games on C++\Minecraft\src\Game\Application.cpp(61,50): warning C4244: +=: преобразование "double" в "float", возможна потеря данных
+C:\Users\Elisey\Games on C++\Minecraft\src\Game\Application.cpp(62,50): warning C4244: +=: преобразование "double" в "float", возможна потеря данных
+C:\Users\Elisey\Games on C++\Minecraft\src\Game\Application.cpp(67,49): warning C4244: =: преобразование "double" в "float", возможна потеря данных
+C:\Users\Elisey\Games on C++\Minecraft\src\Game\Application.cpp(68,49): warning C4244: =: преобразование "double" в "float", возможна потеря данных
+  Window.cpp
+  Cube.cpp
+C:\Users\Elisey\Games on C++\Minecraft\src\Game\GameObjects\Cube.cpp(22,125): warning C4244: аргумент: преобразование "T" в "const unsigned int", возможна потеря данных
+          with
+          [
+              T=float
+          ]
+C:\Users\Elisey\Games on C++\Minecraft\src\Game\GameObjects\Cube.cpp(22,115): warning C4244: аргумент: преобразование "T" в "const unsigned int", возможна потеря данных
+          with
+          [
+              T=float
+          ]
+  Block.cpp
+  Chunk.cpp
+  ChunkRenderer.cpp
+  Polygon2D.cpp
+  Animated_Polygon2D.cpp
+  Camera.cpp
+  Texture2D.cpp
+  ShaderProgram.cpp
+  VertexBuffer.cpp
+  VertexBufferLayout.cpp
+  IndexBuffer.cpp
+  VertexArray.cpp
+  Renderer.cpp
+  ResourceManager.cpp
+C:\Users\Elisey\Games on C++\Minecraft\src\Resources\ResourceManager.cpp(56,35): warning C4267: =: преобразование из "size_t" в "int"; возможна потеря данных
+C:\Users\Elisey\Games on C++\Minecraft\src\Resources\ResourceManager.cpp(58,35): warning C4267: =: преобразование из "size_t" в "int"; возможна потеря данных
+C:\Users\Elisey\Games on C++\Minecraft\src\Resources\ResourceManager.cpp(60,35): warning C4267: =: преобразование из "size_t" в "int"; возможна потеря данных
+C:\Users\Elisey\Games on C++\Minecraft\src\Resources\ResourceManager.cpp(63,35): warning C4267: =: преобразование из "size_t" в "int"; возможна потеря данных
+  Создание кода...
   Minecraft.vcxproj -> C:\Users\Elisey\Games on C++\Minecraft\build\bin\Debug\Minecraft.exe

@@ -82,6 +82,9 @@ namespace Game {
 
         auto lastTime = std::chrono::high_resolution_clock::now();
 
+        RenderEngine::Renderer::setClearColor(0, 0.5, 1, 0);
+        RenderEngine::Renderer::setDepth(true);
+
         while (!m_bCloseWindow)
         {
             auto currentTime = std::chrono::high_resolution_clock::now();
@@ -89,7 +92,6 @@ namespace Game {
             lastTime = currentTime;
             m_game.update(duration);
 
-            RenderEngine::Renderer::setClearColor(0, 0.5, 1, 0);
             RenderEngine::Renderer::clear();
             camera.set_projection_mode(perspective_camera ? Player::Camera::ProjectionMode::Perspective : Player::Camera::ProjectionMode::Orthographic);
             m_game.render(camera.get_projection_matrix() * camera.get_view_matrix(), camera.get_camera_position());
