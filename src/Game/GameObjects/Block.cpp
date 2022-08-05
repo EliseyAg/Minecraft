@@ -36,14 +36,30 @@ namespace Game
 	void Block::setType(std::string type)
 	{
 		m_type = type;
+		bool b_types = false;
 		for (int i = 0; i < size(types); i++)
 		{
 			if (types[i].first == m_type)
 			{
 				block->setTexture(types[i].second);
+				b_types = true;
 				break;
 			}
 		}
+		if (!b_types)
+		{
+			m_type = "Grass";
+			for (int i = 0; i < size(types); i++)
+			{
+				if (types[i].first == m_type)
+				{
+					block->setTexture(types[i].second);
+					b_types = true;
+					break;
+				}
+			}
+		}
+		
 	}
 
 	void Block::setPolygones(bool polygones[6])

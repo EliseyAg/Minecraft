@@ -103,11 +103,11 @@ namespace Renderer
 				{
 					for (int j = 0; j < size(m_blocks[b]); j++)
 					{
-						if ((m_blocks[k][i]->second == m_blocks[b][j]->second - glm::vec3( 0,  1, 0)))
+						if ((m_blocks[k][i]->second == m_blocks[b][j]->second - glm::vec3( 0,  1,  0)))
 						{
 							f[0] = true;
 						}
-						if ((m_blocks[k][i]->second == m_blocks[b][j]->second - glm::vec3( 0, -1, 0)))
+						if ((m_blocks[k][i]->second == m_blocks[b][j]->second - glm::vec3( 0, -1,  0)))
 						{
 							f[1] = true;
 						}
