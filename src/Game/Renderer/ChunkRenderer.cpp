@@ -38,29 +38,21 @@ namespace Renderer
 					for (int y = -8; y <= 7; y++)
 					{
 						int _u, _v = 0;
-						if (u == 0)
+						if (u >= 0)
 						{
-							_u = x * (u + 1);
-						}
-						else if (u > 0)
-						{
-							_u = x * u;
+							_u = x + u * 16;
 						}
 						else
 						{
-							_u = x * u - 1;
+							_u = x + u * 16;
 						}
-						if (v == 0)
+						if (v >= 0)
 						{
-							_v = y * (v + 1);
-						}
-						else if (v > 0)
-						{
-							_u = x * u;
+							_v = y + v * 16;
 						}
 						else
 						{
-							_v = y * v -1;
+							_v = y + v * 16;
 						}
 						bl_pos.push_back(std::make_shared<std::pair<std::string, glm::vec3>>(std::make_pair("Grass",      glm::vec3(_u,  0, _v))));
 						bl_pos.push_back(std::make_shared<std::pair<std::string, glm::vec3>>(std::make_pair("Dirt",	      glm::vec3(_u, -1, _v))));
@@ -72,7 +64,6 @@ namespace Renderer
 						bl_pos.push_back(std::make_shared<std::pair<std::string, glm::vec3>>(std::make_pair("Coblestone", glm::vec3(_u, -7, _v))));
 					}
 				}
-				bl_pos.push_back(std::make_shared<std::pair<std::string, glm::vec3>>(std::make_pair("Wood", glm::vec3(0, 1, 1))));
 				m_blocks.push_back(bl_pos);
 			}
 		}

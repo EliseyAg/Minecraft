@@ -21,6 +21,8 @@ namespace Game {
 
     bool Game::m_keys_pressed[static_cast<size_t>(KeyCode::KEY_LAST)] = {};
 
+    bool menu_is_open = true;
+
     Application::Application() {
 
     }
@@ -57,16 +59,11 @@ namespace Game {
         m_event_dispatcher.add_event_listener<EventMouseMoved>(
             [&](EventMouseMoved& event)
             {
+                horizontalAngleRad = 0.005f * (m_pWindow->get_width()  / 2 - event.x);
+                verticalAngleRad   = 0.005f * (m_pWindow->get_height() / 2 - event.y);
                 if (isLockCursor)
                 {
-                    horizontalAngleRad += 0.005f * (m_pWindow->get_width()  / 2 - event.x);
-                    verticalAngleRad   += 0.005f * (m_pWindow->get_height() / 2 - event.y);
                     m_pWindow->LockCursor();
-                }
-                else
-                {
-                    horizontalAngleRad = 0.005f * (m_pWindow->get_width()  / 2 - event.x);
-                    verticalAngleRad   = 0.005f * (m_pWindow->get_height() / 2 - event.y);
                 }
             }
         );
@@ -93,12 +90,22 @@ namespace Game {
             lastTime = currentTime;
             m_game.update(duration);
 
+            if (menu_is_open)
+            {
+                perspective_camera = false;
+                isLockCursor = false;
+            }
+            else
+            {
+                perspective_camera = true;
+                on_update(duration, horizontalAngleRad, verticalAngleRad);
+            }
+
             RenderEngine::Renderer::clear();
             camera.set_projection_mode(perspective_camera ? Player::Camera::ProjectionMode::Perspective : Player::Camera::ProjectionMode::Orthographic);
             m_game.render(camera.get_projection_matrix() * camera.get_view_matrix());
 
             m_pWindow->on_update();
-            on_update(duration, horizontalAngleRad, verticalAngleRad);
         }
         ResourceManager::unloadAllResources();
 
@@ -155,7 +162,7 @@ namespace Game {
     }
 
     void Game::render(glm::mat4 projectionMat)
-{
+    {
         ResourceManager::getShader("PolygonShader")->setMatrix4("projectionMat", projectionMat);
         ResourceManager::getShader("PolygonShader")->bind();
         switch (m_eCurrentGameState)
@@ -182,6 +189,7 @@ namespace Game {
                 if (Game::Game::m_keys_pressed[static_cast<size_t>(KeyCode::KEY_ENTER)])
                 {
                     m_eCurrentGameState = EGameState::Game;
+                    menu_is_open = false;
                 }
                 break;
             }

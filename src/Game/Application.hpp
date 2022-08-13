@@ -28,7 +28,7 @@ namespace Game {
         virtual void on_update(uint64_t duration, float horizontalAngleRad, float verticalAngleRad) {};
         virtual void CloseWindow() { m_bCloseWindow = true; };
 
-        bool perspective_camera = true;
+        bool perspective_camera = false;
         Player::Camera camera{ glm::vec3(0.f, 2.f, 0.f), glm::vec3(0.f, 0.f, 0.f) };
 
         bool isLockCursor = true;

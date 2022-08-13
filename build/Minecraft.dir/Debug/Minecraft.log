@@ -1,6 +1,4 @@
-﻿  ResourceManager.cpp
-C:\Users\Elisey\Games on C++\Minecraft\src\Resources\ResourceManager.cpp(56,35): warning C4267: =: преобразование из "size_t" в "int"; возможна потеря данных
-C:\Users\Elisey\Games on C++\Minecraft\src\Resources\ResourceManager.cpp(58,35): warning C4267: =: преобразование из "size_t" в "int"; возможна потеря данных
-C:\Users\Elisey\Games on C++\Minecraft\src\Resources\ResourceManager.cpp(60,35): warning C4267: =: преобразование из "size_t" в "int"; возможна потеря данных
-C:\Users\Elisey\Games on C++\Minecraft\src\Resources\ResourceManager.cpp(63,35): warning C4267: =: преобразование из "size_t" в "int"; возможна потеря данных
+﻿  Chunk.cpp
+  ChunkRenderer.cpp
+  Создание кода...
   Minecraft.vcxproj -> C:\Users\Elisey\Games on C++\Minecraft\build\bin\Debug\Minecraft.exe

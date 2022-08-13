@@ -18,7 +18,7 @@ namespace Game
 	{
 		for (int i = 0; i < size(m_blocks); i++)
 		{
-			block->setPosition(m_blocks[i]->second + glm::vec3(m_position.x * 16, 0, m_position.y * 16));
+			block->setPosition(m_blocks[i]->second);
 			block->setType(m_blocks[i]->first);
 			block->setPolygones(m_blocks_polygones[i].blocks_polygones);
 			block->render();
