@@ -12,7 +12,7 @@ namespace Game
 		Chunk(std::shared_ptr<RenderEngine::Texture2D> pTexture,
 			  std::shared_ptr<RenderEngine::ShaderProgram> pShaderProgram);
 
-		void render(glm::vec3& camera_position);
+		void render();
 		void update(const uint64_t delta);
 
 		struct s_blocks_polygones { bool blocks_polygones[6]; };

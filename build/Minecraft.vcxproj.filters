@@ -19,6 +19,9 @@
     <ClCompile Include="C:\Users\Elisey\Games on C++\Minecraft\src\Game\GameObjects\Chunk.cpp">
       <Filter>src\Game\GameObjects</Filter>
     </ClCompile>
+    <ClCompile Include="C:\Users\Elisey\Games on C++\Minecraft\src\Game\GameStates\StartScreen.cpp">
+      <Filter>src\Game\GameStates</Filter>
+    </ClCompile>
     <ClCompile Include="C:\Users\Elisey\Games on C++\Minecraft\src\Game\Renderer\ChunkRenderer.cpp">
       <Filter>src\Game\Renderer</Filter>
     </ClCompile>
@@ -74,6 +77,9 @@
     </ClInclude>
     <ClInclude Include="C:\Users\Elisey\Games on C++\Minecraft\src\Game\GameObjects\Chunk.hpp">
       <Filter>src\Game\GameObjects</Filter>
+    </ClInclude>
+    <ClInclude Include="C:\Users\Elisey\Games on C++\Minecraft\src\Game\GameStates\StartScreen.hpp">
+      <Filter>src\Game\GameStates</Filter>
     </ClInclude>
     <ClInclude Include="C:\Users\Elisey\Games on C++\Minecraft\src\Game\Renderer\ChunkRenderer.hpp">
       <Filter>src\Game\Renderer</Filter>
@@ -142,6 +148,9 @@
     </Filter>
     <Filter Include="src\Game\GameObjects">
       <UniqueIdentifier>{8519BEF7-50FD-303C-BE8F-BC175595DB4A}</UniqueIdentifier>
+    </Filter>
+    <Filter Include="src\Game\GameStates">
+      <UniqueIdentifier>{A064F034-7A5C-300D-A457-94AC63547610}</UniqueIdentifier>
     </Filter>
     <Filter Include="src\Game\Renderer">
       <UniqueIdentifier>{C160DFA1-F353-387E-BF07-C28FD075A8D4}</UniqueIdentifier>

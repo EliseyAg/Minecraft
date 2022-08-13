@@ -7,8 +7,6 @@
 
 #include <glm/vec2.hpp>
 
-#define PI 3.14
-
 class MyApp : public Game::Application
 {
     int frame = 1;

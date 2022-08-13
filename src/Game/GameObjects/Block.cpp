@@ -17,9 +17,9 @@ namespace Game
 		block = std::make_unique<Cube>(m_pTexture, initialSubTexture, m_pShaderProgram, m_position, m_size, m_rotation);
 	}
 
-	void Block::render(glm::vec3 cam_pos)
+	void Block::render()
 	{
-		block->render(cam_pos);
+		block->render();
 	}
 
 	void Block::update(const uint64_t delta)
@@ -36,29 +36,16 @@ namespace Game
 	void Block::setType(std::string type)
 	{
 		m_type = type;
-		bool b_types = false;
 		for (int i = 0; i < size(types); i++)
 		{
 			if (types[i].first == m_type)
 			{
 				block->setTexture(types[i].second);
-				b_types = true;
-				break;
+				return;
 			}
 		}
-		if (!b_types)
-		{
-			m_type = "Grass";
-			for (int i = 0; i < size(types); i++)
-			{
-				if (types[i].first == m_type)
-				{
-					block->setTexture(types[i].second);
-					b_types = true;
-					break;
-				}
-			}
-		}
+		m_type = types[0].first;
+		block->setTexture(types[0].second);
 		
 	}
 

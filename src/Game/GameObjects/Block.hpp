@@ -16,7 +16,7 @@ namespace Game
 			glm::vec3& position = glm::vec3(0.f),
 			glm::vec3& size = glm::vec3(1.f),
 			glm::vec4& rotation = glm::vec4(0.f));
-		void render(glm::vec3 cam_pos);
+		void render();
 		void update(const uint64_t delta);
 
 		void setPosition(glm::vec3 position);

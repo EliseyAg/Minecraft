@@ -3,6 +3,7 @@
 #include "../Events/Event.hpp"
 #include "../Resources/ResourceManager.hpp"
 #include "../Player/Camera.hpp"
+#include "GameStates/StartScreen.hpp"
 #include "Renderer/ChunkRenderer.hpp"
 
 #include <memory>
@@ -47,19 +48,23 @@ namespace Game {
         Game(const glm::ivec2& windowSize);
         ~Game();
 
-        void render(glm::mat4 projectionMat, glm::vec3& camera_position);
+        void render(glm::mat4 projectionMat);
         void update(const uint64_t delta);
         bool init();
 
         static bool m_keys_pressed[static_cast<size_t>(KeyCode::KEY_LAST)];
     private:
         enum class EGameState {
-            Active,
+            Game,
+            StartScreen,
+            Menu,
             Pause
         };
 
         glm::ivec2 m_windowSize;
         EGameState m_eCurrentGameState;
+
+        std::unique_ptr<GameStates::StartScreen> m_pStartScreen;
     };
 
 }

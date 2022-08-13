@@ -112,7 +112,7 @@ namespace Game {
 
 		if (!pixels)
 		{
-			std::cerr << "Can't load image: " << texturePath << std::endl;
+			std::cerr << "Can't load image: " << m_path + "/" + texturePath << std::endl << stbi_failure_reason() << std::endl;
 			return nullptr;
 		}
 

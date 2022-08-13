@@ -5,6 +5,7 @@
 #include "../RenderEngine/OpenGL/Renderer.hpp"
 #include "../RenderEngine/OpenGL/Polygon2D.hpp"
 #include "../RenderEngine/OpenGL/Animated_Polygon2D.hpp"
+#include "../Events/Keys.hpp"
 
 #include <glm/mat4x4.hpp>
 #include <glm/gtc/matrix_transform.hpp>
@@ -94,7 +95,7 @@ namespace Game {
 
             RenderEngine::Renderer::clear();
             camera.set_projection_mode(perspective_camera ? Player::Camera::ProjectionMode::Perspective : Player::Camera::ProjectionMode::Orthographic);
-            m_game.render(camera.get_projection_matrix() * camera.get_view_matrix(), camera.get_camera_position());
+            m_game.render(camera.get_projection_matrix() * camera.get_view_matrix());
 
             m_pWindow->on_update();
             on_update(duration, horizontalAngleRad, verticalAngleRad);
@@ -107,7 +108,7 @@ namespace Game {
     }
 
     Game::Game(const glm::ivec2& windowSize)
-        : m_eCurrentGameState(EGameState::Active)
+        : m_eCurrentGameState(EGameState::StartScreen)
         , m_windowSize(windowSize)
     {
     }
@@ -126,16 +127,24 @@ namespace Game {
             return false;
         }
 
-        auto tex = ResourceManager::loadTexture("DefaultTexture", "res/textures/Blocks.png");
+        //auto tex = ResourceManager::loadTexture("DefaultTexture", "res/textures/Blocks.png");
+        //auto StartScreenTexture = ResourceManager::loadTexture("StartScreenTexture", "res/textures/StartScreen.png");
 
-        std::vector<std::string> subTexturesNames = {
+        std::vector<std::string> BlocksSubTexturesNames = {
                                                      "Grass_Top",
                                                      "Grass_Left",
                                                      "Dirt",
                                                      "Coblestone"
         };
 
-        auto pTextureAtlas = ResourceManager::loadTextureAtlas("BlockTextureAtlas", "res/textures/Blocks.png", subTexturesNames, 64, 64);
+        std::vector<std::string> StartScreenSubTexturesNames = {
+                                                     "StartScreen"
+        };
+
+        auto pTextureAtlas = ResourceManager::loadTextureAtlas("BlockTextureAtlas", "res/textures/Blocks.png", std::move(BlocksSubTexturesNames), 64, 64);
+        auto pStartScreenTextureAtlas = ResourceManager::loadTextureAtlas("StartScreenTextureAtlas", "res/textures/StartScreen.png", std::move(StartScreenSubTexturesNames), 1900, 1600);
+
+        m_pStartScreen = std::make_unique<GameStates::StartScreen>(pStartScreenTextureAtlas, "StartScreen", pPolygonShaderProgram);
         ChunkRenderer = std::make_unique<Renderer::ChunkRenderer>(pTextureAtlas, pPolygonShaderProgram);
         ChunkRenderer->generate_world();
 
@@ -145,15 +154,42 @@ namespace Game {
         return true;
     }
 
-    void Game::render(glm::mat4 projectionMat, glm::vec3& camera_position)
-    {
+    void Game::render(glm::mat4 projectionMat)
+{
         ResourceManager::getShader("PolygonShader")->setMatrix4("projectionMat", projectionMat);
         ResourceManager::getShader("PolygonShader")->bind();
-        ChunkRenderer->render(camera_position);
+        switch (m_eCurrentGameState)
+        {
+            case EGameState::StartScreen:
+            {
+                m_pStartScreen->render();
+                break;
+            }
+            case EGameState::Game:
+            {
+                ChunkRenderer->render();
+                break;
+            }
+        }
     }
 
     void Game::update(const uint64_t delta)
     {
-        //chunk->update(delta);
+        switch (m_eCurrentGameState)
+        {
+            case EGameState::StartScreen:
+            {
+                if (Game::Game::m_keys_pressed[static_cast<size_t>(KeyCode::KEY_ENTER)])
+                {
+                    m_eCurrentGameState = EGameState::Game;
+                }
+                break;
+            }
+            case EGameState::Game:
+            {
+                //ChunkRenderer->update();
+                break;
+            }
+        }
     }
 }

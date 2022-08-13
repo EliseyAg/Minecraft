@@ -22,7 +22,7 @@ namespace Game
 		auto m_pPol = ResourceManager::loadAnimatedPolygon(   "Polygon",    "BlockTextureAtlas", "PolygonShader", m_size.x, m_size.z, initialSubTexture[0]);
 	}
 
-	void Cube::render(glm::vec3& camera_position)
+	void Cube::render()
 	{
 		m_polygones_positions[0] = glm::vec3(0, m_size.y / 2, 0) + m_position;
 		m_polygones_positions[1] = glm::vec3(0, -m_size.y / 2, 0) + m_position;

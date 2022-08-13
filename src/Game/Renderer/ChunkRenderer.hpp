@@ -14,7 +14,7 @@ namespace Renderer
 		ChunkRenderer(std::shared_ptr<RenderEngine::Texture2D> pTexture,
 					  std::shared_ptr<RenderEngine::ShaderProgram> pShaderProgram);
 
-		void render(glm::vec3& camera_position);
+		void render();
 		void generate_world();
 		void saveworld();
 		void loadworld();
