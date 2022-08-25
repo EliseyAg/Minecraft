@@ -3,8 +3,6 @@
 #include <chrono>
 
 #include "Game/Application.hpp"
-#include "Resources/ResourceManager.hpp"
-
 #include <glm/vec2.hpp>
 
 class MyApp : public Game::Application
@@ -64,7 +62,7 @@ class MyApp : public Game::Application
             CloseWindow();
         }
         rotation_delta = glm::vec3(verticalAngleRad * 180 / 3.14, horizontalAngleRad * 180 / 3.14, 0);
-        camera.add_movement_and_rotatition(movement_delta, rotation_delta);
+        camera.add_movement_and_rotation(movement_delta, rotation_delta);
         std::cout << "Coords:" << "x: " << camera.get_camera_position().x << " z: " << camera.get_camera_position().z << " FPS: " << 1000000000 / duration << std::endl;
         frame++;
     }

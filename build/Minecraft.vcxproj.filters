@@ -1,14 +1,14 @@
 ﻿<?xml version="1.0" encoding="utf-8"?>
-<Project ToolsVersion="16.0" xmlns="http://schemas.microsoft.com/developer/msbuild/2003">
+<Project ToolsVersion="17.0" xmlns="http://schemas.microsoft.com/developer/msbuild/2003">
   <ItemGroup>
     <ClCompile Include="C:\Users\Elisey\Games on C++\Minecraft\src\main.cpp">
       <Filter>Source Files</Filter>
     </ClCompile>
-    <ClCompile Include="C:\Users\Elisey\Games on C++\Minecraft\src\Game\Application.cpp">
-      <Filter>src\Game</Filter>
-    </ClCompile>
     <ClCompile Include="C:\Users\Elisey\Games on C++\Minecraft\src\Window\Window.cpp">
       <Filter>src\Window</Filter>
+    </ClCompile>
+    <ClCompile Include="C:\Users\Elisey\Games on C++\Minecraft\src\Game\Application.cpp">
+      <Filter>src\Game</Filter>
     </ClCompile>
     <ClCompile Include="C:\Users\Elisey\Games on C++\Minecraft\src\Game\GameObjects\Cube.cpp">
       <Filter>src\Game\GameObjects</Filter>
@@ -25,14 +25,17 @@
     <ClCompile Include="C:\Users\Elisey\Games on C++\Minecraft\src\Game\Renderer\ChunkRenderer.cpp">
       <Filter>src\Game\Renderer</Filter>
     </ClCompile>
+    <ClCompile Include="C:\Users\Elisey\Games on C++\Minecraft\src\Player\Camera.cpp">
+      <Filter>src\Player</Filter>
+    </ClCompile>
+    <ClCompile Include="C:\Users\Elisey\Games on C++\Minecraft\src\Physics\PhysicsEngine.cpp">
+      <Filter>src\Physics</Filter>
+    </ClCompile>
     <ClCompile Include="C:\Users\Elisey\Games on C++\Minecraft\src\RenderEngine\OpenGL\Polygon2D.cpp">
       <Filter>src\RenderEngine\OpenGL</Filter>
     </ClCompile>
     <ClCompile Include="C:\Users\Elisey\Games on C++\Minecraft\src\RenderEngine\OpenGL\Animated_Polygon2D.cpp">
       <Filter>src\RenderEngine\OpenGL</Filter>
-    </ClCompile>
-    <ClCompile Include="C:\Users\Elisey\Games on C++\Minecraft\src\Player\Camera.cpp">
-      <Filter>src\Player</Filter>
     </ClCompile>
     <ClCompile Include="C:\Users\Elisey\Games on C++\Minecraft\src\RenderEngine\OpenGL\Texture2D.cpp">
       <Filter>src\RenderEngine\OpenGL</Filter>
@@ -63,11 +66,11 @@
     <ClInclude Include="C:\Users\Elisey\Games on C++\Minecraft\external\stb_image\stb_image.h">
       <Filter>external\stb_image</Filter>
     </ClInclude>
-    <ClInclude Include="C:\Users\Elisey\Games on C++\Minecraft\src\Game\Application.hpp">
-      <Filter>src\Game</Filter>
-    </ClInclude>
     <ClInclude Include="C:\Users\Elisey\Games on C++\Minecraft\src\Window\Window.hpp">
       <Filter>src\Window</Filter>
+    </ClInclude>
+    <ClInclude Include="C:\Users\Elisey\Games on C++\Minecraft\src\Game\Application.hpp">
+      <Filter>src\Game</Filter>
     </ClInclude>
     <ClInclude Include="C:\Users\Elisey\Games on C++\Minecraft\src\Game\GameObjects\Cube.hpp">
       <Filter>src\Game\GameObjects</Filter>
@@ -84,12 +87,6 @@
     <ClInclude Include="C:\Users\Elisey\Games on C++\Minecraft\src\Game\Renderer\ChunkRenderer.hpp">
       <Filter>src\Game\Renderer</Filter>
     </ClInclude>
-    <ClInclude Include="C:\Users\Elisey\Games on C++\Minecraft\src\RenderEngine\OpenGL\Polygon2D.hpp">
-      <Filter>src\RenderEngine\OpenGL</Filter>
-    </ClInclude>
-    <ClInclude Include="C:\Users\Elisey\Games on C++\Minecraft\src\RenderEngine\OpenGL\Animated_Polygon2D.hpp">
-      <Filter>src\RenderEngine\OpenGL</Filter>
-    </ClInclude>
     <ClInclude Include="C:\Users\Elisey\Games on C++\Minecraft\src\Events\Event.hpp">
       <Filter>src\Events</Filter>
     </ClInclude>
@@ -98,6 +95,15 @@
     </ClInclude>
     <ClInclude Include="C:\Users\Elisey\Games on C++\Minecraft\src\Player\Camera.hpp">
       <Filter>src\Player</Filter>
+    </ClInclude>
+    <ClInclude Include="C:\Users\Elisey\Games on C++\Minecraft\src\Physics\PhysicsEngine.hpp">
+      <Filter>src\Physics</Filter>
+    </ClInclude>
+    <ClInclude Include="C:\Users\Elisey\Games on C++\Minecraft\src\RenderEngine\OpenGL\Polygon2D.hpp">
+      <Filter>src\RenderEngine\OpenGL</Filter>
+    </ClInclude>
+    <ClInclude Include="C:\Users\Elisey\Games on C++\Minecraft\src\RenderEngine\OpenGL\Animated_Polygon2D.hpp">
+      <Filter>src\RenderEngine\OpenGL</Filter>
     </ClInclude>
     <ClInclude Include="C:\Users\Elisey\Games on C++\Minecraft\src\RenderEngine\OpenGL\Texture2D.hpp">
       <Filter>src\RenderEngine\OpenGL</Filter>
@@ -154,6 +160,9 @@
     </Filter>
     <Filter Include="src\Game\Renderer">
       <UniqueIdentifier>{C160DFA1-F353-387E-BF07-C28FD075A8D4}</UniqueIdentifier>
+    </Filter>
+    <Filter Include="src\Physics">
+      <UniqueIdentifier>{9CB3983F-4D7F-388E-BF60-BCDCA0451A53}</UniqueIdentifier>
     </Filter>
     <Filter Include="src\Player">
       <UniqueIdentifier>{BEDE7DE3-B4CC-3B6E-B280-EA59F91489A0}</UniqueIdentifier>

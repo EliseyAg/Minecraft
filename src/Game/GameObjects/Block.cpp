@@ -14,7 +14,7 @@ namespace Game
 				 , m_size(std::move(size))
 				 , m_rotation(std::move(rotation))
 	{
-		block = std::make_unique<Cube>(m_pTexture, initialSubTexture, m_pShaderProgram, m_position, m_size, m_rotation);
+		block = std::make_shared<Cube>(m_pTexture, initialSubTexture, m_pShaderProgram, m_position, m_size, m_rotation);
 	}
 
 	void Block::render()

@@ -1,9 +1,15 @@
 #pragma once
 #include "../../RenderEngine/OpenGL/Animated_Polygon2D.hpp"
+#include "../../Physics/PhysicsEngine.hpp"
 
 #include "glm/vec3.hpp"
-#include "string"
-#include "vector"
+#include <string>
+#include <vector>
+
+namespace Physics
+{
+	class AABB;
+}
 
 namespace Game
 {
@@ -16,14 +22,16 @@ namespace Game
 			 glm::vec3& position = glm::vec3(0.f),
 			 glm::vec3& size = glm::vec3(1.f),
 			 glm::vec4& rotation = glm::vec4(0.f));
+
 		void render();
 		void update(uint64_t delta);
+
 		void setPosition(const glm::vec3 position);
 		void setSize(const glm::vec3 size);
 		void setTexture(std::vector<std::string>& SubTextures);
 		void setPolygones(bool polygones[6]);
 
-		std::pair<int, float> arr[6];
+		const std::vector<Physics::AABB>& getColiders() const { return m_coliders; };
 	private:
 		std::shared_ptr<RenderEngine::Texture2D> m_pTexture;
 		std::shared_ptr<RenderEngine::ShaderProgram> m_pShaderProgram;
@@ -34,5 +42,6 @@ namespace Game
 		glm::vec3 m_polygones_rotations[6];
 		bool m_polygones[6];
 		std::vector<std::string> m_SubTextures;
+		std::vector<Physics::AABB> m_coliders;
 	};
 }

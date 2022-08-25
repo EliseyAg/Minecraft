@@ -2,9 +2,9 @@
 
 #include "../Events/Event.hpp"
 #include "../Resources/ResourceManager.hpp"
-#include "../Player/Camera.hpp"
 #include "GameStates/StartScreen.hpp"
-#include "Renderer/ChunkRenderer.hpp"
+#include "../Physics/PhysicsEngine.hpp"
+#include "../Player/Camera.hpp"
 
 #include <memory>
 #include <array>
@@ -29,7 +29,7 @@ namespace Game {
         virtual void CloseWindow() { m_bCloseWindow = true; };
 
         bool perspective_camera = false;
-        Player::Camera camera{ glm::vec3(0.f, 2.f, 0.f), glm::vec3(0.f, 0.f, 0.f) };
+        Player::Camera camera;
 
         bool isLockCursor = true;
 

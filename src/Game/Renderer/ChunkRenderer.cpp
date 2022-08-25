@@ -3,10 +3,23 @@
 
 namespace Renderer
 {
-	ChunkRenderer::ChunkRenderer(std::shared_ptr<RenderEngine::Texture2D> pTexture,
-		std::shared_ptr<RenderEngine::ShaderProgram> pShaderProgram)
+	std::vector<std::vector<Game::Chunk::s_blocks_polygones>> ChunkRenderer::blocks_polygones = {};
+	std::vector<glm::vec2> ChunkRenderer::chunks_coords = {};
+	std::unique_ptr<Game::Chunk> ChunkRenderer::chunk = {};
+	std::vector<std::vector<std::shared_ptr<std::pair<std::string, glm::vec3>>>> ChunkRenderer::m_blocks = {};
+	std::vector<std::vector<std::shared_ptr<std::pair<std::string, glm::vec3>>>> ChunkRenderer::blocks = {};
+
+	std::shared_ptr<RenderEngine::Texture2D> ChunkRenderer::m_pTexture = nullptr;
+	std::shared_ptr<RenderEngine::ShaderProgram> ChunkRenderer::m_pShaderProgram = nullptr;
+
+	void ChunkRenderer::setTextureAtlas(std::shared_ptr<RenderEngine::Texture2D> pTexture)
 	{
-		chunk = std::make_unique<Game::Chunk>(std::move(pTexture), std::move(pShaderProgram));
+		m_pTexture = pTexture;
+	}
+
+	void ChunkRenderer::setShaderProgram(std::shared_ptr<RenderEngine::ShaderProgram> pShaderProgram)
+	{
+		m_pShaderProgram = pShaderProgram;
 	}
 
 	void ChunkRenderer::render()
@@ -25,8 +38,9 @@ namespace Renderer
 		blocks.clear();
 		m_blocks.clear();
 		blocks_polygones.clear();
-		std::vector<std::shared_ptr<std::pair<std::string, glm::vec3>>> bl_pos;
-		std::vector<Game::Chunk::s_blocks_polygones> bl_pol;
+		chunk = std::make_unique<Game::Chunk>(std::move(m_pTexture), std::move(m_pShaderProgram));
+		static std::vector<std::shared_ptr<std::pair<std::string, glm::vec3>>> bl_pos;
+		static std::vector<Game::Chunk::s_blocks_polygones> bl_pol;
 		for (int u = -1; u <= 0; u++)
 		{
 			for (int v = -1; v <= 0; v++)
@@ -114,5 +128,10 @@ namespace Renderer
 			blocks.push_back(bl_pos);
 			blocks_polygones.push_back(bl_pol);
 		}
+	}
+
+	std::vector<std::shared_ptr<Game::Cube>> ChunkRenderer::getObjectsInArea(const glm::vec3& BottomLeftFront, const glm::vec3& TopRightFront, const glm::vec3& TopLeftBack)
+	{
+		return chunk->getObjectsInArea(BottomLeftFront, TopRightFront, TopLeftBack);
 	}
 }

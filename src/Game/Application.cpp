@@ -5,6 +5,7 @@
 #include "../RenderEngine/OpenGL/Renderer.hpp"
 #include "../RenderEngine/OpenGL/Polygon2D.hpp"
 #include "../RenderEngine/OpenGL/Animated_Polygon2D.hpp"
+#include "Renderer/ChunkRenderer.hpp"
 #include "../Events/Keys.hpp"
 
 #include <glm/mat4x4.hpp>
@@ -16,8 +17,6 @@ namespace Game {
     glm::ivec2 g_windowSize(512, 512);
 
     Game m_game(g_windowSize);
-
-    std::unique_ptr<Renderer::ChunkRenderer> ChunkRenderer;
 
     bool Game::m_keys_pressed[static_cast<size_t>(KeyCode::KEY_LAST)] = {};
 
@@ -76,6 +75,7 @@ namespace Game {
         );
 
         ResourceManager::setExecutablePath(argv[0]);
+        Physics::PhysicsEngine::init();
         m_game.init();
 
         auto lastTime = std::chrono::high_resolution_clock::now();
@@ -83,12 +83,17 @@ namespace Game {
         RenderEngine::Renderer::setClearColor(0, 0.5, 1, 0);
         RenderEngine::Renderer::setDepth(true);
 
+        camera.set_position(glm::vec3(0.f, 2.f, 0.f));
+
+        Physics::PhysicsEngine::addDynamicGameObject(&camera);
+
         while (!m_bCloseWindow)
         {
             auto currentTime = std::chrono::high_resolution_clock::now();
             uint64_t duration = std::chrono::duration_cast<std::chrono::nanoseconds>(currentTime - lastTime).count();
             lastTime = currentTime;
             m_game.update(duration);
+            Physics::PhysicsEngine::update(duration);
 
             if (menu_is_open)
             {
@@ -134,9 +139,6 @@ namespace Game {
             return false;
         }
 
-        //auto tex = ResourceManager::loadTexture("DefaultTexture", "res/textures/Blocks.png");
-        //auto StartScreenTexture = ResourceManager::loadTexture("StartScreenTexture", "res/textures/StartScreen.png");
-
         std::vector<std::string> BlocksSubTexturesNames = {
                                                      "Grass_Top",
                                                      "Grass_Left",
@@ -152,8 +154,9 @@ namespace Game {
         auto pStartScreenTextureAtlas = ResourceManager::loadTextureAtlas("StartScreenTextureAtlas", "res/textures/StartScreen.png", std::move(StartScreenSubTexturesNames), 1900, 1600);
 
         m_pStartScreen = std::make_unique<GameStates::StartScreen>(pStartScreenTextureAtlas, "StartScreen", pPolygonShaderProgram);
-        ChunkRenderer = std::make_unique<Renderer::ChunkRenderer>(pTextureAtlas, pPolygonShaderProgram);
-        ChunkRenderer->generate_world();
+        Renderer::ChunkRenderer::setTextureAtlas(pTextureAtlas);
+        Renderer::ChunkRenderer::setShaderProgram(pPolygonShaderProgram);
+        Renderer::ChunkRenderer::generate_world();
 
         pPolygonShaderProgram->bind();
         pPolygonShaderProgram->setInt("tex", 0);
@@ -174,7 +177,7 @@ namespace Game {
             }
             case EGameState::Game:
             {
-                ChunkRenderer->render();
+                Renderer::ChunkRenderer::render();
                 break;
             }
         }

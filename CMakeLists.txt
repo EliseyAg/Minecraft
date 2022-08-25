@@ -9,18 +9,25 @@ add_executable(${PROJECT_NAME}
 
 set(PUBLIC_INCLUDES
 	external/stb_image/stb_image.h
-	src/Game/Application.hpp
+
 	src/Window/Window.hpp
+
+	src/Game/Application.hpp
 	src/Game/GameObjects/Cube.hpp
 	src/Game/GameObjects/Block.hpp
 	src/Game/GameObjects/Chunk.hpp
 	src/Game/GameStates/StartScreen.hpp
 	src/Game/Renderer/ChunkRenderer.hpp
-	src/RenderEngine/OpenGL/Polygon2D.hpp
-	src/RenderEngine/OpenGL/Animated_Polygon2D.hpp
+
 	src/Events/Event.hpp
 	src/Events/Keys.hpp
+
 	src/Player/Camera.hpp
+
+	src/Physics/PhysicsEngine.hpp
+
+	src/RenderEngine/OpenGL/Polygon2D.hpp
+	src/RenderEngine/OpenGL/Animated_Polygon2D.hpp
 	src/RenderEngine/OpenGL/Texture2D.hpp
 	src/RenderEngine/OpenGL/ShaderProgram.hpp
 	src/RenderEngine/OpenGL/VertexBuffer.hpp
@@ -28,19 +35,25 @@ set(PUBLIC_INCLUDES
 	src/RenderEngine/OpenGL/IndexBuffer.hpp
 	src/RenderEngine/OpenGL/VertexArray.hpp
 	src/RenderEngine/OpenGL/Renderer.hpp
+
 	src/Resources/ResourceManager.hpp
 )
 set(PUBLIC_SOURCES
-	src/Game/Application.cpp
 	src/Window/Window.cpp
+
+	src/Game/Application.cpp
 	src/Game/GameObjects/Cube.cpp
 	src/Game/GameObjects/Block.cpp
 	src/Game/GameObjects/Chunk.cpp
 	src/Game/GameStates/StartScreen.cpp
 	src/Game/Renderer/ChunkRenderer.cpp
+
+	src/Player/Camera.cpp
+
+	src/Physics/PhysicsEngine.cpp
+
 	src/RenderEngine/OpenGL/Polygon2D.cpp
 	src/RenderEngine/OpenGL/Animated_Polygon2D.cpp
-	src/Player/Camera.cpp
 	src/RenderEngine/OpenGL/Texture2D.cpp
 	src/RenderEngine/OpenGL/ShaderProgram.cpp
 	src/RenderEngine/OpenGL/VertexBuffer.cpp
@@ -48,6 +61,7 @@ set(PUBLIC_SOURCES
 	src/RenderEngine/OpenGL/IndexBuffer.cpp
 	src/RenderEngine/OpenGL/VertexArray.cpp
 	src/RenderEngine/OpenGL/Renderer.cpp
+
 	src/Resources/ResourceManager.cpp
 )
 set(ALL_SOURCES

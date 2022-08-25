@@ -22,8 +22,10 @@ namespace Game
 		void setPosition(glm::vec3 position);
 		void setType(std::string type);
 		void setPolygones(bool polygones[6]);
+
+		std::shared_ptr<Cube> getCube() const { return block; }
 	private:
-		std::unique_ptr<Cube> block;
+		std::shared_ptr<Cube> block;
 		std::shared_ptr<RenderEngine::Texture2D> m_pTexture;
 		std::shared_ptr<RenderEngine::ShaderProgram> m_pShaderProgram;
 		glm::vec3 m_position;

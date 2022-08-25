@@ -1,6 +1,8 @@
 #include "Cube.hpp"
 #include "../../Resources/ResourceManager.hpp"
 #include "../../RenderEngine/OpenGL/ShaderProgram.hpp"
+#include "../../Physics/PhysicsEngine.hpp"
+
 
 #include <iostream>
 
@@ -20,6 +22,7 @@ namespace Game
 	{
 
 		auto m_pPol = ResourceManager::loadAnimatedPolygon(   "Polygon",    "BlockTextureAtlas", "PolygonShader", m_size.x, m_size.z, initialSubTexture[0]);
+		m_coliders.emplace_back(glm::vec3(-m_size.x / 2, -m_size.y / 2, -m_size.z / 2), glm::vec3( m_size.x / 2,  m_size.y / 2, -m_size.z / 2), glm::vec3(-m_size.x / 2,  m_size.y / 2,  m_size.z / 2));
 	}
 
 	void Cube::render()
