@@ -15,27 +15,27 @@ class MyApp : public Game::Application
 
         if (Game::Game::m_keys_pressed[static_cast<size_t>(Game::KeyCode::KEY_W)])
         {
-            movement_delta.x +=  0.05f * duration / 10000000;
+            movement_delta.x +=  0.05f;
         }                                                                    
         if (Game::Game::m_keys_pressed[static_cast<size_t>(Game::KeyCode::KEY_S)])
         {                                                                    
-            movement_delta.x += -0.05f * duration / 10000000;
+            movement_delta.x += -0.05f;
         }                                                                    
         if (Game::Game::m_keys_pressed[static_cast<size_t>(Game::KeyCode::KEY_A)])
         {                                                                    
-            movement_delta.y += -0.05f * duration / 10000000;
+            movement_delta.y += -0.05f;
         }                                                                    
         if (Game::Game::m_keys_pressed[static_cast<size_t>(Game::KeyCode::KEY_D)])
         {                                                                    
-            movement_delta.y +=  0.05f * duration / 10000000;
+            movement_delta.y +=  0.05f;
         }
         if (Game::Game::m_keys_pressed[static_cast<size_t>(Game::KeyCode::KEY_E)])
         {
-            movement_delta.z +=  0.05f * duration / 10000000;
+            movement_delta.z +=  0.05f;
         }
         if (Game::Game::m_keys_pressed[static_cast<size_t>(Game::KeyCode::KEY_Q)])
         {
-            movement_delta.z += -0.05f * duration / 10000000;
+            movement_delta.z += -0.05f;
         }
         if (Game::Game::m_keys_pressed[static_cast<size_t>(Game::KeyCode::KEY_UP)])
         {

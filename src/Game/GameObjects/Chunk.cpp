@@ -53,44 +53,37 @@ namespace Game
 		m_blocks_polygones = blocks_polygones;
 	}
 
-	std::vector<std::shared_ptr<Cube>> Chunk::getObjectsInArea(const glm::vec3& BottomLeftFront, const glm::vec3& TopRightFront, const glm::vec3& TopLeftBack)
+	bool Chunk::getObjectsInArea(const glm::vec3& BottomLeftFront, const glm::vec3& TopRightFront, const glm::vec3& TopLeftBack)
 	{
-		std::vector<std::shared_ptr<Cube>> output;
-
-		std::shared_ptr<Cube> cube;
-		std::vector<std::string> v = { "Grass" };
-		cube = std::make_shared<Cube>(m_pTexture, v, m_pShaderProgram);
-
-		size_t startXY_x = static_cast<size_t>(floor(BottomLeftFront.x));
-		size_t endXY_x   = static_cast<size_t>(ceil (TopRightFront.x  ));
-
-		size_t startXY_y = static_cast<size_t>(floor(TopRightFront.y  ));
-		size_t endXY_y   = static_cast<size_t>(ceil (BottomLeftFront.y));
-
-		size_t startYZ_y = static_cast<size_t>(floor(BottomLeftFront.y));
-		size_t endYZ_y   = static_cast<size_t>(ceil (TopLeftBack.y    ));
-
-		size_t startYZ_z = static_cast<size_t>(floor(TopLeftBack.z    ));
-		size_t endYZ_z   = static_cast<size_t>(ceil (BottomLeftFront.z));
-
-		size_t startXZ_x = static_cast<size_t>(floor(TopRightFront.x));
-		size_t endXZ_x   = static_cast<size_t>(ceil (TopLeftBack.x  ));
-
-		size_t startXZ_z = static_cast<size_t>(floor(TopLeftBack.z  ));
-		size_t endXZ_z   = static_cast<size_t>(ceil (TopRightFront.z));
-
-		for (size_t currentColumn = startXZ_x; currentColumn < endXZ_x; ++currentColumn)
+		bool f = false;
+		for (int i = 0; i < size(m_blocks); i++)
 		{
-			for (size_t currentRow = startXZ_z; currentRow < endXZ_z; ++currentRow)
+			block->setPosition(m_blocks[i]->second);
+			if      (block->getCube()->getColiders()[0].BottomLeftFront.x <= BottomLeftFront.x && block->getCube()->getColiders()[0].TopRightFront.x >= BottomLeftFront.x &&
+				     block->getCube()->getColiders()[0].BottomLeftFront.y <= BottomLeftFront.y && block->getCube()->getColiders()[0].TopLeftBack.y   >= BottomLeftFront.y &&
+				     block->getCube()->getColiders()[0].BottomLeftFront.z <= BottomLeftFront.z && block->getCube()->getColiders()[0].TopLeftBack.z   >= BottomLeftFront.z)
 			{
-				cube->setPosition(m_blocks[(currentRow + currentColumn * 16) * 8]->second);
-				auto& currentObject = cube;
-				output.push_back(currentObject);
+				f = true;
+				std::cout << "Colide BottomLeftFront" << std::endl;
+				break;
+			}
+			else if (block->getCube()->getColiders()[0].BottomLeftFront.x <= TopRightFront.x && block->getCube()->getColiders()[0].TopRightFront.x >= TopRightFront.x &&
+				     block->getCube()->getColiders()[0].BottomLeftFront.y <= TopRightFront.y && block->getCube()->getColiders()[0].TopLeftBack.y >= TopRightFront.y &&
+				     block->getCube()->getColiders()[0].BottomLeftFront.z <= TopRightFront.z && block->getCube()->getColiders()[0].TopLeftBack.z >= TopRightFront.z)
+			{
+				f = true;
+				std::cout << "Colide TopRightFront" << std::endl;
+				break;
+			}
+			else if (block->getCube()->getColiders()[0].BottomLeftFront.x <= TopLeftBack.x && block->getCube()->getColiders()[0].TopRightFront.x >= TopLeftBack.x &&
+				     block->getCube()->getColiders()[0].BottomLeftFront.y <= TopLeftBack.y && block->getCube()->getColiders()[0].TopLeftBack.y >= TopLeftBack.y &&
+				     block->getCube()->getColiders()[0].BottomLeftFront.z <= TopLeftBack.z && block->getCube()->getColiders()[0].TopLeftBack.z >= TopLeftBack.z)
+			{
+				f = true;
+				std::cout << "Colide TopLeftBack" << std::endl;
+				break;
 			}
 		}
-
-		std::cout << output.size() << std::endl;
-
-		return output;
+		return f;
 	}
 }

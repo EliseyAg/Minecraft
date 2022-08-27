@@ -130,8 +130,17 @@ namespace Renderer
 		}
 	}
 
-	std::vector<std::shared_ptr<Game::Cube>> ChunkRenderer::getObjectsInArea(const glm::vec3& BottomLeftFront, const glm::vec3& TopRightFront, const glm::vec3& TopLeftBack)
+	bool ChunkRenderer::getObjectsInArea(const glm::vec3& BottomLeftFront, const glm::vec3& TopRightFront, const glm::vec3& TopLeftBack)
 	{
-		return chunk->getObjectsInArea(BottomLeftFront, TopRightFront, TopLeftBack);
+		for (int i = 0; i < size(chunks_coords); i++)
+		{
+			if (chunks_coords[i].x * 16 - 8 < TopRightFront.x && chunks_coords[i].x * 16 + 7 > TopRightFront.x && chunks_coords[i].y * 16 - 8 < TopRightFront.z && chunks_coords[i].y * 16 + 7 > TopRightFront.z &&
+				chunks_coords[i].x * 16 - 8 < TopLeftBack.x && chunks_coords[i].x * 16 + 7 > TopLeftBack.x && chunks_coords[i].y * 16 - 8 < TopLeftBack.z && chunks_coords[i].y * 16 + 7 > TopLeftBack.z)
+			{
+				chunk->setPosition(chunks_coords[i]);
+				return chunk->getObjectsInArea(BottomLeftFront, TopRightFront, TopLeftBack);
+			}
+		}
+		return false;
 	}
 }

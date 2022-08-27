@@ -27,7 +27,7 @@ namespace Renderer
 		static void saveworld();
 		static void loadworld();
 
-		static std::vector<std::shared_ptr<Game::Cube>> getObjectsInArea(const glm::vec3& BottomLeftFront, const glm::vec3& TopRightFront, const glm::vec3& TopLeftBack);
+		static bool getObjectsInArea(const glm::vec3& BottomLeftFront, const glm::vec3& TopRightFront, const glm::vec3& TopLeftBack);
 
 	private:
 		static std::vector<std::vector<Game::Chunk::s_blocks_polygones>> blocks_polygones;

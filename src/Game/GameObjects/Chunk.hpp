@@ -28,7 +28,7 @@ namespace Game
 		void setBlocksPolygones(std::vector<s_blocks_polygones> blocks_polygones);
 		void setBlocksPositions(std::vector<std::shared_ptr<std::pair<std::string, glm::vec3>>> blocks);
 
-		std::vector<std::shared_ptr<Cube>> getObjectsInArea(const glm::vec3& BottomLeftFront, const glm::vec3& TopRightFront, const glm::vec3& TopLeftBack);
+		bool getObjectsInArea(const glm::vec3& BottomLeftFront, const glm::vec3& TopRightFront, const glm::vec3& TopLeftBack);
 	private:
 		glm::vec2 m_position;
 		std::shared_ptr<Block> block;

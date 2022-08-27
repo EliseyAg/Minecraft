@@ -22,7 +22,7 @@ namespace Game
 	{
 
 		auto m_pPol = ResourceManager::loadAnimatedPolygon(   "Polygon",    "BlockTextureAtlas", "PolygonShader", m_size.x, m_size.z, initialSubTexture[0]);
-		m_coliders.emplace_back(glm::vec3(-m_size.x / 2, -m_size.y / 2, -m_size.z / 2), glm::vec3( m_size.x / 2,  m_size.y / 2, -m_size.z / 2), glm::vec3(-m_size.x / 2,  m_size.y / 2,  m_size.z / 2));
+		m_coliders.emplace_back(glm::vec3(-m_size.x / 2, -m_size.y / 2, -m_size.z / 2) + m_position, glm::vec3( m_size.x / 2,  m_size.y / 2, -m_size.z / 2) + m_position, glm::vec3(-m_size.x / 2,  m_size.y / 2,  m_size.z / 2) + m_position);
 	}
 
 	void Cube::render()
@@ -59,6 +59,10 @@ namespace Game
 	void Cube::setPosition(const glm::vec3 position)
 	{
 		m_position = position;
+
+		m_coliders[0].BottomLeftFront = (glm::vec3(-m_size.x / 2, -m_size.y / 2, -m_size.z / 2) + m_position);
+		m_coliders[0].TopRightFront = (glm::vec3(m_size.x / 2, m_size.y / 2, -m_size.z / 2) + m_position);
+		m_coliders[0].TopLeftBack = (glm::vec3(-m_size.x / 2, m_size.y / 2, m_size.z / 2) + m_position);
 	}
 
 	void Cube::setSize(const glm::vec3 size)

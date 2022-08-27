@@ -22,8 +22,6 @@ namespace Physics
 		glm::vec3 BottomLeftFront;
 		glm::vec3 TopRightFront;
 		glm::vec3 TopLeftBack;
-		
-
 	};
 
 	class PhysicsEngine
