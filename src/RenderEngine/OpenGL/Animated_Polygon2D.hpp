@@ -20,7 +20,7 @@ namespace Game
 
 		void insertState(std::string state, std::vector<std::pair<std::string, uint64_t>> subTextureDuration);
 
-		void render() const override;
+		void render(glm::vec3 normal) const override;
 
 		void setState(const std::string& newState);
 		void update(const uint64_t delta);

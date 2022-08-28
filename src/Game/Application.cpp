@@ -20,14 +20,17 @@ namespace Game {
 
     bool Game::m_keys_pressed[static_cast<size_t>(KeyCode::KEY_LAST)] = {};
 
-    bool menu_is_open = true;
-
     Application::Application() {
 
     }
 
     Application::~Application() {
 
+    }
+
+    void Application::openMenu()
+    {
+        m_game.m_eCurrentGameState = Game::EGameState::StartScreen;
     }
 
     int Application::start(unsigned int window_width, unsigned int window_height, const char* title, char** argv) {
@@ -95,14 +98,17 @@ namespace Game {
             m_game.update(duration);
             Physics::PhysicsEngine::update(duration);
 
-            if (menu_is_open)
+            if (m_game.m_eCurrentGameState == Game::EGameState::StartScreen)
             {
                 perspective_camera = false;
                 isLockCursor = false;
+                camera.set_position(glm::vec3(0.f, 2.f, 0.f));
+                camera.set_rotation(glm::vec3(0.f, 0.f, 0.f));
             }
-            else
+            else if (m_game.m_eCurrentGameState == Game::EGameState::Game)
             {
                 perspective_camera = true;
+                isLockCursor = true;
                 on_update(duration, horizontalAngleRad, verticalAngleRad);
             }
 
@@ -192,7 +198,6 @@ namespace Game {
                 if (Game::Game::m_keys_pressed[static_cast<size_t>(KeyCode::KEY_ENTER)])
                 {
                     m_eCurrentGameState = EGameState::Game;
-                    menu_is_open = false;
                 }
                 break;
             }

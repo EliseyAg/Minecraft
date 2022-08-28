@@ -9,6 +9,6 @@ namespace GameStates
 
 	void StartScreen::render() const
 	{
-		m_pScreen->render();
+		m_pScreen->render(glm::vec3(0.f));
 	}
 }

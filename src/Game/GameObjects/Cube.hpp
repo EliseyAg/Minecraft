@@ -1,5 +1,5 @@
 #pragma once
-#include "../../RenderEngine/OpenGL/Animated_Polygon2D.hpp"
+#include "../../RenderEngine/OpenGL/Polygon2D.hpp"
 #include "../../Physics/PhysicsEngine.hpp"
 
 #include "glm/vec3.hpp"
@@ -41,6 +41,7 @@ namespace Game
 		glm::vec3 m_polygones_positions[6];
 		glm::vec3 m_polygones_rotations[6];
 		bool m_polygones[6];
+		glm::vec3 m_normals[6];
 		std::vector<std::string> m_SubTextures;
 		std::vector<Physics::AABB> m_coliders;
 	};

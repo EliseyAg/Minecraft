@@ -3,11 +3,18 @@ in vec2 texCoords;
 out vec4 texColor;
 
 uniform sampler2D tex;
+uniform vec3 n;
 
 void main()
 {
+   vec3 light = normalize(vec3(0.75, 0.75, 0.75));
+   float diffuse = max(0.0, dot(light, n)) * 0.5;
+   vec4 color = vec4(diffuse, diffuse, diffuse, 0.0);
    texColor = texture(tex, texCoords);
-   if (texColor.rgb == vec3(1.0, 1.0, 1.0))
+   vec3 pre_texColor = texColor.rgb;
+   color -= vec4(0.25, 0.25, 0.25, 0.0);
+   texColor += color;
+   if (pre_texColor == vec3(1.0, 1.0, 1.0))
    {
 		discard;
    }

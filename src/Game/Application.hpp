@@ -28,6 +28,8 @@ namespace Game {
         virtual void on_update(uint64_t duration, float horizontalAngleRad, float verticalAngleRad) {};
         virtual void CloseWindow() { m_bCloseWindow = true; };
 
+        void openMenu();
+
         bool perspective_camera = false;
         Player::Camera camera;
 
@@ -53,7 +55,7 @@ namespace Game {
         bool init();
 
         static bool m_keys_pressed[static_cast<size_t>(KeyCode::KEY_LAST)];
-    private:
+
         enum class EGameState {
             Game,
             StartScreen,
@@ -61,8 +63,9 @@ namespace Game {
             Pause
         };
 
-        glm::ivec2 m_windowSize;
         EGameState m_eCurrentGameState;
+    private:
+        glm::ivec2 m_windowSize;
 
         std::unique_ptr<GameStates::StartScreen> m_pStartScreen;
     };

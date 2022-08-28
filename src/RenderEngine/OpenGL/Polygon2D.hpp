@@ -30,7 +30,7 @@ namespace Game
 		Polygon2D(const Polygon2D&) = delete;
 		Polygon2D& operator=(const Polygon2D&) = delete;
 
-		virtual void render() const;
+		virtual void render(glm::vec3 normal) const;
 		void setPosition(const glm::vec3& position);
 		void setSize(const glm::vec2& size);
 		void setRotation(const glm::vec4& rotation);

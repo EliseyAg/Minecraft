@@ -53,7 +53,7 @@ namespace Game
 		}
 	}
 
-	void Animated_Polygon2D::render() const {
+	void Animated_Polygon2D::render(glm::vec3 normal) const {
 		if (m_dirty)
 		{
 			auto subTexture = m_pTexture->getSubTexture(m_pCurrentAnimationDurations->second[m_currentFrame].first);
@@ -69,6 +69,6 @@ namespace Game
 			m_textureCoordsBuffer.update(textureCoords, 2 * 4 * sizeof(GLfloat));
 			m_dirty = false;
 		}
-		Polygon2D::render();
+		Polygon2D::render(normal);
 	}
 }

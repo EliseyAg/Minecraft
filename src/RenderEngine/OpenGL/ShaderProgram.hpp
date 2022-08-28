@@ -23,6 +23,7 @@ namespace RenderEngine {
         void bind() const;
         static void unbind();
         void setInt(const std::string& name, const GLint value);
+        void setVec3(const std::string& name, const glm::vec3& value);
         bool isCompiled() const { return m_isCompiled; }
         void setMatrix4(const char* name, const glm::mat4& matrix) const;
 

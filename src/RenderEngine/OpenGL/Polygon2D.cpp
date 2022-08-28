@@ -64,7 +64,7 @@ namespace Game
 	Polygon2D::~Polygon2D() {
 	}
 
-	void Polygon2D::render() const {
+	void Polygon2D::render(glm::vec3 normal) const {
 		m_pShaderProgram->bind();
 
 		glm::mat4 model(1.f);
@@ -85,6 +85,7 @@ namespace Game
 		model = glm::scale(model, glm::vec3(m_size, 1.f));
 
 		m_pShaderProgram->setMatrix4("modelMat", model);
+		m_pShaderProgram->setVec3("n", normal);
 
 		glActiveTexture(GL_TEXTURE0);
 		m_pTexture->bind();

@@ -21,44 +21,50 @@ namespace Game
 			   , m_rotation(std::move(rotation))
 	{
 
-		auto m_pPol = ResourceManager::loadAnimatedPolygon(   "Polygon",    "BlockTextureAtlas", "PolygonShader", m_size.x, m_size.z, initialSubTexture[0]);
+		auto m_pPol = ResourceManager::loadPolygon(   "Polygon",    "BlockTextureAtlas", "PolygonShader", m_size.x, m_size.z, initialSubTexture[0]);
 		m_coliders.emplace_back(glm::vec3(-m_size.x / 2, -m_size.y / 2, -m_size.z / 2) + m_position, glm::vec3( m_size.x / 2,  m_size.y / 2, -m_size.z / 2) + m_position, glm::vec3(-m_size.x / 2,  m_size.y / 2,  m_size.z / 2) + m_position);
 	}
 
 	void Cube::render()
 	{
-		m_polygones_positions[0] = glm::vec3(0, m_size.y / 2, 0) + m_position;
-		m_polygones_positions[1] = glm::vec3(0, -m_size.y / 2, 0) + m_position;
-		m_polygones_positions[2] = glm::vec3(0, 0, m_size.z / 2) + m_position;
-		m_polygones_positions[3] = glm::vec3(0, 0, -m_size.z / 2) + m_position;
-		m_polygones_positions[4] = glm::vec3(m_size.x / 2, 0, 0) + m_position;
-		m_polygones_positions[5] = glm::vec3(-m_size.x / 2, 0, 0) + m_position;
 		m_polygones_rotations[0] = glm::vec3( 90,  0,   0);
 		m_polygones_rotations[1] = glm::vec3(-90,  0,   0);
 		m_polygones_rotations[2] = glm::vec3( 0,   0,   0);
 		m_polygones_rotations[3] = glm::vec3( 0, 180,   0);
 		m_polygones_rotations[4] = glm::vec3( 0,  90,   0);
-		m_polygones_rotations[5] = glm::vec3( 0, -90,   0);
+		m_polygones_rotations[5] = glm::vec3( 0, -90,   0); 
+		m_normals[0] = glm::normalize(m_polygones_rotations[0]);
+		m_normals[1] = glm::normalize(m_polygones_rotations[1]);
+		m_normals[2] = glm::normalize(m_polygones_rotations[2]);
+		m_normals[3] = glm::normalize(m_polygones_rotations[3]);
+		m_normals[4] = glm::normalize(m_polygones_rotations[4]);
+		m_normals[5] = glm::normalize(m_polygones_rotations[5]);
 
 		for (int k = 0; k < 6; k++) {
 			if (!m_polygones[k])
 			{
-				ResourceManager::getAnimatedPolygon("Polygon")->setPosition(m_polygones_positions[k]);
-				ResourceManager::getAnimatedPolygon("Polygon")->setRotation(glm::vec4(m_polygones_rotations[k], 0));
-				ResourceManager::getAnimatedPolygon("Polygon")->setTexture(m_SubTextures[k]);
-				ResourceManager::getAnimatedPolygon("Polygon")->render();
+				ResourceManager::getPolygon("Polygon")->setPosition(m_polygones_positions[k]);
+				ResourceManager::getPolygon("Polygon")->setRotation(glm::vec4(m_polygones_rotations[k], 0));
+				ResourceManager::getPolygon("Polygon")->setTexture(m_SubTextures[k]);
+				ResourceManager::getPolygon("Polygon")->render(m_normals[k]);
 			}
 		}
 	}
 
 	void Cube::update(uint64_t delta)
 	{
-		ResourceManager::getAnimatedPolygon("Polygon")->update(delta);
+		
 	}
 
 	void Cube::setPosition(const glm::vec3 position)
 	{
 		m_position = position;
+		m_polygones_positions[0] = glm::vec3(0, m_size.y / 2, 0) + m_position;
+		m_polygones_positions[1] = glm::vec3(0, -m_size.y / 2, 0) + m_position;
+		m_polygones_positions[2] = glm::vec3(0, 0, m_size.z / 2) + m_position;
+		m_polygones_positions[3] = glm::vec3(0, 0, -m_size.z / 2) + m_position;
+		m_polygones_positions[4] = glm::vec3(m_size.x / 2, 0, 0) + m_position;
+		m_polygones_positions[5] = glm::vec3(-m_size.x / 2, 0, 0) + m_position;
 
 		m_coliders[0].BottomLeftFront = (glm::vec3(-m_size.x / 2, -m_size.y / 2, -m_size.z / 2) + m_position);
 		m_coliders[0].TopRightFront = (glm::vec3(m_size.x / 2, m_size.y / 2, -m_size.z / 2) + m_position);
@@ -68,6 +74,12 @@ namespace Game
 	void Cube::setSize(const glm::vec3 size)
 	{
 		m_size = size;
+		m_polygones_positions[0] = glm::vec3(0, m_size.y / 2, 0) + m_position;
+		m_polygones_positions[1] = glm::vec3(0, -m_size.y / 2, 0) + m_position;
+		m_polygones_positions[2] = glm::vec3(0, 0, m_size.z / 2) + m_position;
+		m_polygones_positions[3] = glm::vec3(0, 0, -m_size.z / 2) + m_position;
+		m_polygones_positions[4] = glm::vec3(m_size.x / 2, 0, 0) + m_position;
+		m_polygones_positions[5] = glm::vec3(-m_size.x / 2, 0, 0) + m_position;
 	}
 
 	void Cube::setTexture(std::vector<std::string>& SubTextures)
