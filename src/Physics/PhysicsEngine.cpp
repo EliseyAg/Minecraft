@@ -1,11 +1,11 @@
 #include "PhysicsEngine.hpp"
 #include "../Game/GameObjects/Cube.hpp"
-#include "../Player/Camera.hpp"
+#include "../Player/Player.hpp"
 #include "../Game/Renderer/ChunkRenderer.hpp"
 
 namespace Physics
 {
-	std::unordered_set<Player::Camera*> PhysicsEngine::m_dynamicObjects;
+	std::unordered_set<Player::Player*> PhysicsEngine::m_dynamicObjects;
 
 	void PhysicsEngine::init()
 	{
@@ -34,7 +34,7 @@ namespace Physics
 		}
 	}
 
-	void PhysicsEngine::addDynamicGameObject(Player::Camera* pGameObject)
+	void PhysicsEngine::addDynamicGameObject(Player::Player* pGameObject)
 	{
 		m_dynamicObjects.insert(std::move(pGameObject));
 	}

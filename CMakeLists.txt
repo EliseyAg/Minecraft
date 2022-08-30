@@ -24,6 +24,7 @@ set(PUBLIC_INCLUDES
 	src/Events/Keys.hpp
 
 	src/Player/Camera.hpp
+	src/Player/Player.hpp
 
 	src/Physics/PhysicsEngine.hpp
 
@@ -51,6 +52,7 @@ set(PUBLIC_SOURCES
 	src/Game/Renderer/ChunkRenderer.cpp
 
 	src/Player/Camera.cpp
+	src/Player/Player.cpp
 
 	src/Physics/PhysicsEngine.cpp
 

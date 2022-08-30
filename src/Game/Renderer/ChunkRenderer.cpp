@@ -82,6 +82,8 @@ namespace Renderer
 			}
 		}
 		m_blocks[0].push_back(std::make_shared<std::pair<std::string, glm::vec3>>(std::make_pair("Wood", glm::vec3(1, 1, 0))));
+		m_blocks[0].push_back(std::make_shared<std::pair<std::string, glm::vec3>>(std::make_pair("Wood", glm::vec3(1, 2, 0))));
+		m_blocks[0].push_back(std::make_shared<std::pair<std::string, glm::vec3>>(std::make_pair("Wood", glm::vec3(1, 3, 0))));
 
 		for (int k = 0; k < size(m_blocks); k++)
 		{

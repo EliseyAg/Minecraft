@@ -5,7 +5,7 @@
 #include "GameStates/StartScreen.hpp"
 #include "GameObjects/Button2D.hpp"
 #include "../Physics/PhysicsEngine.hpp"
-#include "../Player/Camera.hpp"
+#include "../Player/Player.hpp"
 
 #include <memory>
 #include <array>
@@ -26,13 +26,13 @@ namespace Game {
 
         virtual int start(unsigned int window_width, unsigned int window_height, const char* title, char** argv);
 
-        virtual void on_update(uint64_t duration, float horizontalAngleRad, float verticalAngleRad) {};
+        virtual void on_update(uint64_t duration) {};
         virtual void CloseWindow() { m_bCloseWindow = true; };
 
         void openMenu();
 
         bool perspective_camera = false;
-        Player::Camera camera;
+        Player::Player player;
 
         bool isLockCursor = true;
 

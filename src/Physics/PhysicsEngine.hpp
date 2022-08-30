@@ -5,7 +5,7 @@
 
 namespace Player
 {
-	class Camera;
+	class Player;
 }
 
 namespace Physics
@@ -38,9 +38,9 @@ namespace Physics
 		static void shutdown();
 
 		static void update(const double delta);
-		static void addDynamicGameObject(Player::Camera* pGameObject);
+		static void addDynamicGameObject(Player::Player* pGameObject);
 
 	private:
-		static std::unordered_set<Player::Camera*> m_dynamicObjects;
+		static std::unordered_set<Player::Player*> m_dynamicObjects;
 	};
 }

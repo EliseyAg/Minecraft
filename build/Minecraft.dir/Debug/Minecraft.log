@@ -5,4 +5,6 @@ C:\Users\Elisey\Games on C++\Minecraft\src\Game\Application.cpp(66,45): warning 
 C:\Users\Elisey\Games on C++\Minecraft\src\Game\Application.cpp(67,53): warning C4244: =: преобразование "double" в "int", возможна потеря данных
 C:\Users\Elisey\Games on C++\Minecraft\src\Game\Application.cpp(68,53): warning C4244: =: преобразование "double" в "int", возможна потеря данных
 C:\Users\Elisey\Games on C++\Minecraft\src\Game\Application.cpp(114,44): warning C4244: аргумент: преобразование "uint64_t" в "const double", возможна потеря данных
+  Player.cpp
+  Создание кода...
   Minecraft.vcxproj -> C:\Users\Elisey\Games on C++\Minecraft\build\bin\Debug\Minecraft.exe

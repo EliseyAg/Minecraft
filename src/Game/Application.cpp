@@ -101,9 +101,9 @@ namespace Game {
         RenderEngine::Renderer::setClearColor(0, 0.5, 1, 0);
         RenderEngine::Renderer::setDepth(true);
 
-        camera.set_position(glm::vec3(0.f, 2.f, 0.f));
+        player.set_position(glm::vec3(0.f, 2.f, 0.f));
 
-        Physics::PhysicsEngine::addDynamicGameObject(&camera);
+        Physics::PhysicsEngine::addDynamicGameObject(&player);
 
         while (!m_bCloseWindow)
         {
@@ -117,19 +117,20 @@ namespace Game {
             {
                 perspective_camera = false;
                 isLockCursor = false;
-                camera.set_position(glm::vec3(0.f, 2.f, 0.f));
-                camera.set_rotation(glm::vec3(0.f, 0.f, 0.f));
+                player.set_position(glm::vec3(0.f, 2.f, 0.f));
+                player.set_rotation(glm::vec3(0.f, 0.f, 0.f));
             }
             else if (m_game.m_eCurrentGameState == Game::EGameState::Game)
             {
                 perspective_camera = true;
                 isLockCursor = true;
-                on_update(duration, horizontalAngleRad, verticalAngleRad);
+                on_update(duration);
+                player.update(horizontalAngleRad, verticalAngleRad);
             }
 
             RenderEngine::Renderer::clear();
-            camera.set_projection_mode(perspective_camera ? Player::Camera::ProjectionMode::Perspective : Player::Camera::ProjectionMode::Orthographic);
-            m_game.render(camera.get_projection_matrix() * camera.get_view_matrix());
+            player.set_projection_mode(perspective_camera ? Player::Camera::ProjectionMode::Perspective : Player::Camera::ProjectionMode::Orthographic);
+            m_game.render(player.get_projection_matrix() * player.get_view_matrix());
 
             m_pWindow->on_update();
         }
