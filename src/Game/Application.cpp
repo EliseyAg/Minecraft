@@ -19,6 +19,7 @@ namespace Game {
     Game m_game(g_windowSize);
 
     bool Game::m_keys_pressed[static_cast<size_t>(KeyCode::KEY_LAST)] = {};
+    bool Game::m_mouse_buttons_pressed[static_cast<size_t>(MouseButton::MOUSE_BUTTON_LAST)] = {};
 
     Application::Application() {
 
@@ -63,12 +64,26 @@ namespace Game {
             {
                 horizontalAngleRad = 0.005f * (m_pWindow->get_width()  / 2 - event.x);
                 verticalAngleRad   = 0.005f * (m_pWindow->get_height() / 2 - event.y);
+                xpos = (m_pWindow->get_width()  / 2 - event.x);
+                ypos = (m_pWindow->get_height() / 2 - event.y);
                 if (isLockCursor)
                 {
                     m_pWindow->LockCursor();
                 }
             }
         );
+
+        m_event_dispatcher.add_event_listener<EventMouseButtonPressed>(
+            [&](EventMouseButtonPressed& event)
+            {
+                Game::m_mouse_buttons_pressed[static_cast<size_t>(event.mouse_button)] = true;
+            });
+
+        m_event_dispatcher.add_event_listener<EventMouseButtonReleased>(
+            [&](EventMouseButtonReleased& event)
+            {
+                Game::m_mouse_buttons_pressed[static_cast<size_t>(event.mouse_button)] = false;
+            });
 
         m_pWindow->set_event_callback(
             [&](BaseEvent& event)
@@ -95,7 +110,7 @@ namespace Game {
             auto currentTime = std::chrono::high_resolution_clock::now();
             uint64_t duration = std::chrono::duration_cast<std::chrono::nanoseconds>(currentTime - lastTime).count();
             lastTime = currentTime;
-            m_game.update(duration);
+            m_game.update(duration, xpos, ypos);
             Physics::PhysicsEngine::update(duration);
 
             if (m_game.m_eCurrentGameState == Game::EGameState::StartScreen)
@@ -149,17 +164,25 @@ namespace Game {
                                                      "Grass_Top",
                                                      "Grass_Left",
                                                      "Dirt",
-                                                     "Coblestone"
+                                                     "Coblestone",
+                                                     "Wood_Top",
+                                                     "Wood_Left"
         };
 
         std::vector<std::string> StartScreenSubTexturesNames = {
                                                      "StartScreen"
         };
 
+        std::vector<std::string> ButtonsSubTexturesNames = {
+                                                     "New_Game"
+        };
+
         auto pTextureAtlas = ResourceManager::loadTextureAtlas("BlockTextureAtlas", "res/textures/Blocks.png", std::move(BlocksSubTexturesNames), 64, 64);
         auto pStartScreenTextureAtlas = ResourceManager::loadTextureAtlas("StartScreenTextureAtlas", "res/textures/StartScreen.png", std::move(StartScreenSubTexturesNames), 1900, 1600);
+        auto pButtonsTextureAtlas = ResourceManager::loadTextureAtlas("ButtonsTextureAtlas", "res/textures/Buttons.png", std::move(ButtonsSubTexturesNames), 1200, 300);
 
         m_pStartScreen = std::make_unique<GameStates::StartScreen>(pStartScreenTextureAtlas, "StartScreen", pPolygonShaderProgram);
+        m_pButton2D = std::make_unique<Button2D>(pButtonsTextureAtlas, "New_Game", pPolygonShaderProgram);
         Renderer::ChunkRenderer::setTextureAtlas(pTextureAtlas);
         Renderer::ChunkRenderer::setShaderProgram(pPolygonShaderProgram);
         Renderer::ChunkRenderer::generate_world();
@@ -179,6 +202,7 @@ namespace Game {
             case EGameState::StartScreen:
             {
                 m_pStartScreen->render();
+                m_pButton2D->render();
                 break;
             }
             case EGameState::Game:
@@ -189,13 +213,13 @@ namespace Game {
         }
     }
 
-    void Game::update(const uint64_t delta)
+    void Game::update(const uint64_t delta, double x_pos, double y_pos)
     {
         switch (m_eCurrentGameState)
         {
             case EGameState::StartScreen:
             {
-                if (Game::Game::m_keys_pressed[static_cast<size_t>(KeyCode::KEY_ENTER)])
+                if (m_pButton2D->isPressed(x_pos, y_pos) && Game::Game::m_mouse_buttons_pressed[static_cast<size_t>(MouseButton::MOUSE_BUTTON_LEFT)])
                 {
                     m_eCurrentGameState = EGameState::Game;
                 }

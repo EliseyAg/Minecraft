@@ -3,6 +3,7 @@
 #include "../Events/Event.hpp"
 #include "../Resources/ResourceManager.hpp"
 #include "GameStates/StartScreen.hpp"
+#include "GameObjects/Button2D.hpp"
 #include "../Physics/PhysicsEngine.hpp"
 #include "../Player/Camera.hpp"
 
@@ -43,6 +44,9 @@ namespace Game {
 
         EventDispatcher m_event_dispatcher;
         bool m_bCloseWindow = false;
+
+        int xpos;
+        int ypos;
     };
 
     class Game {
@@ -51,10 +55,11 @@ namespace Game {
         ~Game();
 
         void render(glm::mat4 projectionMat);
-        void update(const uint64_t delta);
+        void update(const uint64_t delta, double x_pos, double y_pos);
         bool init();
 
         static bool m_keys_pressed[static_cast<size_t>(KeyCode::KEY_LAST)];
+        static bool m_mouse_buttons_pressed[static_cast<size_t>(MouseButton::MOUSE_BUTTON_LAST)];
 
         enum class EGameState {
             Game,
@@ -68,6 +73,7 @@ namespace Game {
         glm::ivec2 m_windowSize;
 
         std::unique_ptr<GameStates::StartScreen> m_pStartScreen;
+        std::unique_ptr<Button2D> m_pButton2D;
     };
 
 }

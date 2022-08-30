@@ -1,12 +1,8 @@
-﻿  Cube.cpp
-C:\Users\Elisey\Games on C++\Minecraft\src\Game\GameObjects\Cube.cpp(24,117): warning C4244: аргумент: преобразование "T" в "const unsigned int", возможна потеря данных
-          with
-          [
-              T=float
-          ]
-C:\Users\Elisey\Games on C++\Minecraft\src\Game\GameObjects\Cube.cpp(24,107): warning C4244: аргумент: преобразование "T" в "const unsigned int", возможна потеря данных
-          with
-          [
-              T=float
-          ]
+﻿  Application.cpp
+C:\Users\Elisey\Games on C++\Minecraft\src\Game\Renderer\../GameObjects/Chunk.hpp(24): warning C4091: static : пропускается слева от "Game::Chunk::s_blocks_polygones", когда ни одна переменная не объявлена
+C:\Users\Elisey\Games on C++\Minecraft\src\Game\Application.cpp(65,45): warning C4244: =: преобразование "double" в "float", возможна потеря данных
+C:\Users\Elisey\Games on C++\Minecraft\src\Game\Application.cpp(66,45): warning C4244: =: преобразование "double" в "float", возможна потеря данных
+C:\Users\Elisey\Games on C++\Minecraft\src\Game\Application.cpp(67,53): warning C4244: =: преобразование "double" в "int", возможна потеря данных
+C:\Users\Elisey\Games on C++\Minecraft\src\Game\Application.cpp(68,53): warning C4244: =: преобразование "double" в "int", возможна потеря данных
+C:\Users\Elisey\Games on C++\Minecraft\src\Game\Application.cpp(114,44): warning C4244: аргумент: преобразование "uint64_t" в "const double", возможна потеря данных
   Minecraft.vcxproj -> C:\Users\Elisey\Games on C++\Minecraft\build\bin\Debug\Minecraft.exe

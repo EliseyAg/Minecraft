@@ -19,6 +19,9 @@
     <ClCompile Include="C:\Users\Elisey\Games on C++\Minecraft\src\Game\GameObjects\Chunk.cpp">
       <Filter>src\Game\GameObjects</Filter>
     </ClCompile>
+    <ClCompile Include="C:\Users\Elisey\Games on C++\Minecraft\src\Game\GameObjects\Button2D.cpp">
+      <Filter>src\Game\GameObjects</Filter>
+    </ClCompile>
     <ClCompile Include="C:\Users\Elisey\Games on C++\Minecraft\src\Game\GameStates\StartScreen.cpp">
       <Filter>src\Game\GameStates</Filter>
     </ClCompile>
@@ -79,6 +82,9 @@
       <Filter>src\Game\GameObjects</Filter>
     </ClInclude>
     <ClInclude Include="C:\Users\Elisey\Games on C++\Minecraft\src\Game\GameObjects\Chunk.hpp">
+      <Filter>src\Game\GameObjects</Filter>
+    </ClInclude>
+    <ClInclude Include="C:\Users\Elisey\Games on C++\Minecraft\src\Game\GameObjects\Button2D.hpp">
       <Filter>src\Game\GameObjects</Filter>
     </ClInclude>
     <ClInclude Include="C:\Users\Elisey\Games on C++\Minecraft\src\Game\GameStates\StartScreen.hpp">

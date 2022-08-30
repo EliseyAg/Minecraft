@@ -16,6 +16,7 @@ set(PUBLIC_INCLUDES
 	src/Game/GameObjects/Cube.hpp
 	src/Game/GameObjects/Block.hpp
 	src/Game/GameObjects/Chunk.hpp
+	src/Game/GameObjects/Button2D.hpp
 	src/Game/GameStates/StartScreen.hpp
 	src/Game/Renderer/ChunkRenderer.hpp
 
@@ -45,6 +46,7 @@ set(PUBLIC_SOURCES
 	src/Game/GameObjects/Cube.cpp
 	src/Game/GameObjects/Block.cpp
 	src/Game/GameObjects/Chunk.cpp
+	src/Game/GameObjects/Button2D.cpp
 	src/Game/GameStates/StartScreen.cpp
 	src/Game/Renderer/ChunkRenderer.cpp
 

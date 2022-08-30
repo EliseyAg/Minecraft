@@ -1,5 +1,4 @@
 c:\users\elisey\games on c++\minecraft\build\minecraft.dir\debug\vc143.pdb
-c:\users\elisey\games on c++\minecraft\build\minecraft.dir\debug\resourcemanager.obj
 c:\users\elisey\games on c++\minecraft\build\minecraft.dir\debug\renderer.obj
 c:\users\elisey\games on c++\minecraft\build\minecraft.dir\debug\vertexarray.obj
 c:\users\elisey\games on c++\minecraft\build\minecraft.dir\debug\indexbuffer.obj
@@ -13,12 +12,14 @@ c:\users\elisey\games on c++\minecraft\build\minecraft.dir\debug\physicsengine.o
 c:\users\elisey\games on c++\minecraft\build\minecraft.dir\debug\camera.obj
 c:\users\elisey\games on c++\minecraft\build\minecraft.dir\debug\chunkrenderer.obj
 c:\users\elisey\games on c++\minecraft\build\minecraft.dir\debug\startscreen.obj
+c:\users\elisey\games on c++\minecraft\build\minecraft.dir\debug\button2d.obj
 c:\users\elisey\games on c++\minecraft\build\minecraft.dir\debug\chunk.obj
 c:\users\elisey\games on c++\minecraft\build\minecraft.dir\debug\block.obj
 c:\users\elisey\games on c++\minecraft\build\minecraft.dir\debug\cube.obj
 c:\users\elisey\games on c++\minecraft\build\minecraft.dir\debug\application.obj
 c:\users\elisey\games on c++\minecraft\build\minecraft.dir\debug\window.obj
 c:\users\elisey\games on c++\minecraft\build\minecraft.dir\debug\main.obj
+c:\users\elisey\games on c++\minecraft\build\minecraft.dir\debug\resourcemanager.obj
 c:\users\elisey\games on c++\minecraft\build\cmakefiles\generate.stamp
 c:\users\elisey\games on c++\minecraft\build\minecraft.dir\debug\minecraft.ilk
 c:\users\elisey\games on c++\minecraft\build\bin\debug\minecraft.exe

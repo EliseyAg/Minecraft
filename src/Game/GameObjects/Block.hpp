@@ -31,7 +31,7 @@ namespace Game
 		glm::vec3 m_position;
 		glm::vec3 m_size;
 		glm::vec4 m_rotation;
-		std::pair<std::string, std::vector<std::string>> types[3] = {
+		std::vector<std::pair<std::string, std::vector<std::string>>> types = {
 			{"Grass", {"Grass_Top",
 					  "Grass_Left",
 					  "Dirt"}},
@@ -41,6 +41,9 @@ namespace Game
 			{"Coblestone", {"Coblestone",
 						    "Coblestone",
 						    "Coblestone"}},
+			{"Wood", {"Wood_Top",
+					  "Wood_Left",
+					  "Wood_Top"}},
 		};
 		std::string m_type;
 	};
