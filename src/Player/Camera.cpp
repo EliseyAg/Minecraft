@@ -14,7 +14,7 @@ namespace Player
 		, m_projection_mode(projection_mode)
 	{
 		bool m_update_view_matrix = true;
-		m_coliders.emplace_back(glm::vec3(-0.5f, -1.f, -0.5f) + m_position, glm::vec3( 0.5f,  1.f, -0.5f) + m_position, glm::vec3(-0.5f,  1.f,  0.5f) + m_position);
+		m_coliders.emplace_back(glm::vec3(-0.4f, -1.4f, -0.4f) + m_position, glm::vec3( 0.4f,  0.4f, -0.4f) + m_position, glm::vec3(-0.4f, 0.4f,  0.4f) + m_position);
 		update_view_matrix();
 		update_projection_matrix();
 	}
@@ -128,11 +128,21 @@ namespace Player
 		const glm::vec3& rotation_delta)
 	{
 		m_velocity = movement_delta;
-
-		//m_position += m_direction * movement_delta.x;
-		//m_position += m_right * movement_delta.y;
-		//m_position += m_up * movement_delta.z;
 		m_rotation += rotation_delta;
+
+		if (m_rotation.x < 0)
+			m_rotation.x = 360;
+		if (m_rotation.y < 0)
+			m_rotation.y = 360;
+		if (m_rotation.z < 0)
+			m_rotation.z = 360;
+		if (m_rotation.x > 360)
+			m_rotation.x = 0;
+		if (m_rotation.y > 360)
+			m_rotation.y = 0;
+		if (m_rotation.z > 360)
+			m_rotation.z = 0;
+
 		m_update_view_matrix = true;
 	}
 }

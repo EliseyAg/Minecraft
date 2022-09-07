@@ -28,9 +28,15 @@ namespace Renderer
 		static void loadworld();
 
 		static bool getObjectsInArea(const glm::vec3& BottomLeftFront, const glm::vec3& TopRightFront, const glm::vec3& TopLeftBack);
+		static glm::vec3 getObjectsInArea() { return chunk->getObjectsInArea(); };
+
+		static void deleteBlock(const glm::vec3& coords);
+		static void placeBlock(const glm::vec3& coords, const std::string& type);
+
+		static void update_blocks(std::shared_ptr<std::pair<std::string, glm::vec3>>);
 
 	private:
-		static std::vector<std::vector<Game::Chunk::s_blocks_polygones>> blocks_polygones;
+		static std::vector<std::vector<Game::Chunk::s_blocks_polygones>> m_blocks_polygones;
 		static std::vector<glm::vec2> chunks_coords;
 		static std::unique_ptr<Game::Chunk> chunk;
 		static std::vector<std::vector<std::shared_ptr<std::pair<std::string, glm::vec3>>>> m_blocks;

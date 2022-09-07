@@ -14,7 +14,7 @@ class MyApp : public Game::Application
         {
             openMenu();
         }
-        std::cout << " FPS: " << 1000000000 / duration << std::endl;
+        std::cout << "FPS: " << 1000000000 / duration << std::endl;
         frame++;
   }
 };

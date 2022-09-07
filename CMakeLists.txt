@@ -25,6 +25,7 @@ set(PUBLIC_INCLUDES
 
 	src/Player/Camera.hpp
 	src/Player/Player.hpp
+	src/Player/Ray.hpp
 
 	src/Physics/PhysicsEngine.hpp
 
@@ -53,6 +54,7 @@ set(PUBLIC_SOURCES
 
 	src/Player/Camera.cpp
 	src/Player/Player.cpp
+	src/Player/Ray.cpp
 
 	src/Physics/PhysicsEngine.cpp
 

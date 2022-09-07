@@ -1,6 +1,7 @@
 #pragma once
 
 #include "Camera.hpp"
+#include "Ray.hpp"
 
 #include <glm/vec3.hpp>
 #include <glm/ext/matrix_float4x4.hpp>
@@ -35,6 +36,7 @@ namespace Player
 		void update(float horizontalAngleRad, float verticalAngleRad);
 	private:
 		Camera camera;
+		Ray ray;
 
 		glm::vec3 m_position;
 		glm::vec3 m_rotation;

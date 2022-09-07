@@ -25,7 +25,7 @@ namespace Game
 		{
 			block->setPosition(m_blocks[i]->second);
 			block->setType(m_blocks[i]->first);
-			block->setPolygones(m_blocks_polygones[i].blocks_polygones);
+			block->setPolygones(m_blocks_polygones[i].m_blocks_polygones);
 			block->render();
 		}
 	}
@@ -65,6 +65,7 @@ namespace Game
 			{
 				f = true;
 				std::cout << "Colide BottomLeftFront" << std::endl;
+				block_position_colide = m_blocks[i]->second + glm::vec3(m_position.x * 16, 0.f, m_position.y * 16);
 				break;
 			}
 			else if (block->getCube()->getColiders()[0].BottomLeftFront.x <= TopRightFront.x && block->getCube()->getColiders()[0].TopRightFront.x >= TopRightFront.x &&
@@ -73,6 +74,7 @@ namespace Game
 			{
 				f = true;
 				std::cout << "Colide TopRightFront" << std::endl;
+				block_position_colide = m_blocks[i]->second + glm::vec3(m_position.x * 16, 0.f, m_position.y * 16);
 				break;
 			}
 			else if (block->getCube()->getColiders()[0].BottomLeftFront.x <= TopLeftBack.x && block->getCube()->getColiders()[0].TopRightFront.x >= TopLeftBack.x &&
@@ -81,6 +83,7 @@ namespace Game
 			{
 				f = true;
 				std::cout << "Colide TopLeftBack" << std::endl;
+				block_position_colide = m_blocks[i]->second + glm::vec3(m_position.x * 16, 0.f, m_position.y * 16);
 				break;
 			}
 		}

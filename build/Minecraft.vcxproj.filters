@@ -34,6 +34,9 @@
     <ClCompile Include="C:\Users\Elisey\Games on C++\Minecraft\src\Player\Player.cpp">
       <Filter>src\Player</Filter>
     </ClCompile>
+    <ClCompile Include="C:\Users\Elisey\Games on C++\Minecraft\src\Player\Ray.cpp">
+      <Filter>src\Player</Filter>
+    </ClCompile>
     <ClCompile Include="C:\Users\Elisey\Games on C++\Minecraft\src\Physics\PhysicsEngine.cpp">
       <Filter>src\Physics</Filter>
     </ClCompile>
@@ -106,6 +109,9 @@
       <Filter>src\Player</Filter>
     </ClInclude>
     <ClInclude Include="C:\Users\Elisey\Games on C++\Minecraft\src\Player\Player.hpp">
+      <Filter>src\Player</Filter>
+    </ClInclude>
+    <ClInclude Include="C:\Users\Elisey\Games on C++\Minecraft\src\Player\Ray.hpp">
       <Filter>src\Player</Filter>
     </ClInclude>
     <ClInclude Include="C:\Users\Elisey\Games on C++\Minecraft\src\Physics\PhysicsEngine.hpp">

@@ -3,7 +3,7 @@
 
 namespace Renderer
 {
-	std::vector<std::vector<Game::Chunk::s_blocks_polygones>> ChunkRenderer::blocks_polygones = {};
+	std::vector<std::vector<Game::Chunk::s_blocks_polygones>> ChunkRenderer::m_blocks_polygones = {};
 	std::vector<glm::vec2> ChunkRenderer::chunks_coords = {};
 	std::unique_ptr<Game::Chunk> ChunkRenderer::chunk = {};
 	std::vector<std::vector<std::shared_ptr<std::pair<std::string, glm::vec3>>>> ChunkRenderer::m_blocks = {};
@@ -11,6 +11,9 @@ namespace Renderer
 
 	std::shared_ptr<RenderEngine::Texture2D> ChunkRenderer::m_pTexture = nullptr;
 	std::shared_ptr<RenderEngine::ShaderProgram> ChunkRenderer::m_pShaderProgram = nullptr;
+
+	static std::vector<std::shared_ptr<std::pair<std::string, glm::vec3>>> bl_pos;
+	static std::vector<Game::Chunk::s_blocks_polygones> bl_pol;
 
 	void ChunkRenderer::setTextureAtlas(std::shared_ptr<RenderEngine::Texture2D> pTexture)
 	{
@@ -22,13 +25,305 @@ namespace Renderer
 		m_pShaderProgram = pShaderProgram;
 	}
 
+
+	void ChunkRenderer::update_blocks(std::shared_ptr<std::pair<std::string, glm::vec3>> block)
+	{
+		Game::Chunk::s_blocks_polygones f = {};
+		for (int b = 0; b < size(m_blocks); b++)
+		{
+			for (int j = 0; j < size(m_blocks[b]); j++)
+			{
+				if (m_blocks[b][j]->first != "Leaves")
+				{
+					if ((block->second == m_blocks[b][j]->second - glm::vec3(0, 1, 0)))
+					{
+						f.m_blocks_polygones[0] = true;
+					}
+					else if ((block->second == m_blocks[b][j]->second - glm::vec3(0, -1, 0)))
+					{
+						f.m_blocks_polygones[1] = true;
+					}
+					else if ((block->second == m_blocks[b][j]->second - glm::vec3(0, 0, 1)))
+					{
+						f.m_blocks_polygones[2] = true;
+					}
+					else if ((block->second == m_blocks[b][j]->second - glm::vec3(0, 0, -1)))
+					{
+						f.m_blocks_polygones[3] = true;
+					}
+					else if ((block->second == m_blocks[b][j]->second - glm::vec3(1, 0, 0)))
+					{
+						f.m_blocks_polygones[4] = true;
+					}
+					else if ((block->second == m_blocks[b][j]->second - glm::vec3(-1, 0, 0)))
+					{
+						f.m_blocks_polygones[5] = true;
+					}
+				}
+			}
+		}
+		if (!(f.m_blocks_polygones[0] && f.m_blocks_polygones[1] && f.m_blocks_polygones[2] && f.m_blocks_polygones[3] && f.m_blocks_polygones[4] && f.m_blocks_polygones[5]))
+		{
+			bl_pos.push_back(block);
+			bl_pol.push_back(f);
+		}
+	}
+
+	void ChunkRenderer::deleteBlock(const glm::vec3& coords)
+	{
+		for (int i = 0; i < size(chunks_coords); i++)
+		{
+			int c = -1;
+			for (int j = 0; j < size(m_blocks[i]); j++)
+			{
+				for (int b = 0; b < size(blocks[i]); b++)
+				{
+					if (blocks[i][b] == m_blocks[i][j])
+					{
+						c = b;
+						break;
+					}
+				}
+				if (m_blocks[i][j]->second == coords)
+				{
+					m_blocks[i].erase(m_blocks[i].begin() + j);
+					blocks[i].erase(blocks[i].begin() + c);
+					m_blocks_polygones[i].erase(m_blocks_polygones[i].begin() + c);
+					break;
+				}
+			}
+		}
+		
+		for (int i = 0; i < size(chunks_coords); i++)
+		{
+			for (int j = 0; j < size(m_blocks[i]); j++)
+			{
+				int c = -1;
+				bl_pos.clear();
+				bl_pol.clear();
+				for (int b = 0; b < size(blocks[i]); b++)
+				{
+					if (blocks[i][b] == m_blocks[i][j])
+					{
+						c = b;
+						break;
+					}
+				}
+				if      ((coords == m_blocks[i][j]->second - glm::vec3(0, 1, 0)))
+				{
+					update_blocks(m_blocks[i][j]);
+					if (c != -1)
+					{
+						blocks[i][c] = bl_pos[0];
+						m_blocks_polygones[i][c] = bl_pol[0];
+					}
+					else
+					{
+						blocks[i].push_back(bl_pos[0]);
+						m_blocks_polygones[i].push_back(bl_pol[0]);
+					}
+				}
+				else if ((coords == m_blocks[i][j]->second - glm::vec3(0, -1, 0)))
+				{
+					update_blocks(m_blocks[i][j]);
+					if (c != -1)
+					{
+						blocks[i][c] = bl_pos[0];
+						m_blocks_polygones[i][c] = bl_pol[0];
+					}
+					else
+					{
+						blocks[i].push_back(bl_pos[0]);
+						m_blocks_polygones[i].push_back(bl_pol[0]);
+					}
+				}
+				else if ((coords == m_blocks[i][j]->second - glm::vec3(0, 0, 1)))
+				{
+					update_blocks(m_blocks[i][j]);
+					if (c != -1)
+					{
+						blocks[i][c] = bl_pos[0];
+						m_blocks_polygones[i][c] = bl_pol[0];
+					}
+					else
+					{
+						blocks[i].push_back(bl_pos[0]);
+						m_blocks_polygones[i].push_back(bl_pol[0]);
+					}
+				}
+				else if ((coords == m_blocks[i][j]->second - glm::vec3(0, 0, -1)))
+				{
+					update_blocks(m_blocks[i][j]);
+					if (c != -1)
+					{
+						blocks[i][c] = bl_pos[0];
+						m_blocks_polygones[i][c] = bl_pol[0];
+					}
+					else
+					{
+						blocks[i].push_back(bl_pos[0]);
+						m_blocks_polygones[i].push_back(bl_pol[0]);
+					}
+				}
+				else if ((coords == m_blocks[i][j]->second - glm::vec3(1, 0, 0)))
+				{
+					update_blocks(m_blocks[i][j]);
+					if (c != -1)
+					{
+						blocks[i][c] = bl_pos[0];
+						m_blocks_polygones[i][c] = bl_pol[0];
+					}
+					else
+					{
+						blocks[i].push_back(bl_pos[0]);
+						m_blocks_polygones[i].push_back(bl_pol[0]);
+					}
+				}
+				else if ((coords == m_blocks[i][j]->second - glm::vec3(-1, 0, 0)))
+				{
+					update_blocks(m_blocks[i][j]);
+					if (c != -1)
+					{
+						blocks[i][c] = bl_pos[0];
+						m_blocks_polygones[i][c] = bl_pol[0];
+					}
+					else
+					{
+						blocks[i].push_back(bl_pos[0]);
+						m_blocks_polygones[i].push_back(bl_pol[0]);
+					}
+				}
+			}
+		}
+	}
+
+	void ChunkRenderer::placeBlock(const glm::vec3& coords, const std::string& type)
+	{
+		for (int i = 0; i < size(chunks_coords); i++)
+		{
+			if (chunks_coords[i].x * 16 - 8 < coords.x && chunks_coords[i].x * 16 + 7 > coords.x &&
+				chunks_coords[i].y * 16 - 8 < coords.z && chunks_coords[i].y * 16 + 7 > coords.z)
+			{
+				bl_pos.clear();
+				bl_pol.clear();
+				update_blocks(std::make_shared<std::pair<std::string, glm::vec3>>(std::make_pair(type, coords)));
+				m_blocks[i].push_back(std::make_shared<std::pair<std::string, glm::vec3>>(std::make_pair(type, coords)));
+				blocks[i].push_back(bl_pos[0]);
+				m_blocks_polygones[i].push_back(bl_pol[0]);
+				break;
+			}
+		}
+		for (int i = 0; i < size(chunks_coords); i++)
+		{
+			for (int j = 0; j < size(m_blocks[i]); j++)
+			{
+				Game::Chunk::s_blocks_polygones f;
+				int c = 0;
+				bl_pos.clear();
+				bl_pol.clear();
+				for (int b = 0; b < size(blocks[i]); b++)
+				{
+					if (blocks[i][b] == m_blocks[i][j])
+					{
+						c = b;
+						break;
+					}
+				}
+				if ((coords == m_blocks[i][j]->second - glm::vec3(0, 1, 0)))
+				{
+					update_blocks(m_blocks[i][j]);
+					if (bl_pol[0].m_blocks_polygones != f.m_blocks_polygones)
+					{
+						blocks[i][c] = bl_pos[0];
+						m_blocks_polygones[i][c] = bl_pol[0];
+					}
+					else
+					{
+						blocks[i].erase(blocks[i].begin() + c);
+						m_blocks_polygones[i].erase(m_blocks_polygones[i].begin() + c);
+					}
+				}
+				else if ((coords == m_blocks[i][j]->second - glm::vec3(0, -1, 0)))
+				{
+					update_blocks(m_blocks[i][j]);
+					if (bl_pol[0].m_blocks_polygones != f.m_blocks_polygones)
+					{
+						blocks[i][c] = bl_pos[0];
+						m_blocks_polygones[i][c] = bl_pol[0];
+					}
+					else
+					{
+						blocks[i].erase(blocks[i].begin() + c);
+						m_blocks_polygones[i].erase(m_blocks_polygones[i].begin() + c);
+					}
+				}
+				else if ((coords == m_blocks[i][j]->second - glm::vec3(0, 0, 1)))
+				{
+					update_blocks(m_blocks[i][j]);
+					if (bl_pol[0].m_blocks_polygones != f.m_blocks_polygones)
+					{
+						blocks[i][c] = bl_pos[0];
+						m_blocks_polygones[i][c] = bl_pol[0];
+					}
+					else
+					{
+						blocks[i].erase(blocks[i].begin() + c);
+						m_blocks_polygones[i].erase(m_blocks_polygones[i].begin() + c);
+					}
+				}
+				else if ((coords == m_blocks[i][j]->second - glm::vec3(0, 0, -1)))
+				{
+					update_blocks(m_blocks[i][j]);
+					if (bl_pol[0].m_blocks_polygones != f.m_blocks_polygones)
+					{
+						blocks[i][c] = bl_pos[0];
+						m_blocks_polygones[i][c] = bl_pol[0];
+					}
+					else
+					{
+						blocks[i].erase(blocks[i].begin() + c);
+						m_blocks_polygones[i].erase(m_blocks_polygones[i].begin() + c);
+					}
+				}
+				else if ((coords == m_blocks[i][j]->second - glm::vec3(1, 0, 0)))
+				{
+					update_blocks(m_blocks[i][j]);
+					if (bl_pol[0].m_blocks_polygones != f.m_blocks_polygones)
+					{
+						blocks[i][c] = bl_pos[0];
+						m_blocks_polygones[i][c] = bl_pol[0];
+					}
+					else
+					{
+						blocks[i].erase(blocks[i].begin() + c);
+						m_blocks_polygones[i].erase(m_blocks_polygones[i].begin() + c);
+					}
+				}
+				else if ((coords == m_blocks[i][j]->second - glm::vec3(-1, 0, 0)))
+				{
+					update_blocks(m_blocks[i][j]);
+					if (bl_pol[0].m_blocks_polygones != f.m_blocks_polygones)
+					{
+						blocks[i][c] = bl_pos[0];
+						m_blocks_polygones[i][c] = bl_pol[0];
+					}
+					else
+					{
+						blocks[i].erase(blocks[i].begin() + c);
+						m_blocks_polygones[i].erase(m_blocks_polygones[i].begin() + c);
+					}
+				}
+			}
+		}
+	}
+
 	void ChunkRenderer::render()
 	{
 		for (int i = 0; i < size(chunks_coords); i++)
 		{
 			chunk->setPosition(chunks_coords[i]);
 			chunk->setBlocksPositions(blocks[i]);
-			chunk->setBlocksPolygones(blocks_polygones[i]);
+			chunk->setBlocksPolygones(m_blocks_polygones[i]);
 			chunk->render();
 		}
 	}
@@ -37,10 +332,8 @@ namespace Renderer
 	{
 		blocks.clear();
 		m_blocks.clear();
-		blocks_polygones.clear();
+		m_blocks_polygones.clear();
 		chunk = std::make_unique<Game::Chunk>(std::move(m_pTexture), std::move(m_pShaderProgram));
-		static std::vector<std::shared_ptr<std::pair<std::string, glm::vec3>>> bl_pos;
-		static std::vector<Game::Chunk::s_blocks_polygones> bl_pol;
 		for (int u = -1; u <= 0; u++)
 		{
 			for (int v = -1; v <= 0; v++)
@@ -81,9 +374,32 @@ namespace Renderer
 				m_blocks.push_back(bl_pos);
 			}
 		}
-		m_blocks[0].push_back(std::make_shared<std::pair<std::string, glm::vec3>>(std::make_pair("Wood", glm::vec3(1, 1, 0))));
-		m_blocks[0].push_back(std::make_shared<std::pair<std::string, glm::vec3>>(std::make_pair("Wood", glm::vec3(1, 2, 0))));
-		m_blocks[0].push_back(std::make_shared<std::pair<std::string, glm::vec3>>(std::make_pair("Wood", glm::vec3(1, 3, 0))));
+		m_blocks[3].push_back(std::make_shared<std::pair<std::string, glm::vec3>>(std::make_pair("Wood", glm::vec3(1, 1, 0))));
+		m_blocks[3].push_back(std::make_shared<std::pair<std::string, glm::vec3>>(std::make_pair("Wood", glm::vec3(1, 2, 0))));
+		m_blocks[3].push_back(std::make_shared<std::pair<std::string, glm::vec3>>(std::make_pair("Wood", glm::vec3(1, 3, 0))));
+		m_blocks[3].push_back(std::make_shared<std::pair<std::string, glm::vec3>>(std::make_pair("Wood", glm::vec3(1, 4, 0))));
+		m_blocks[3].push_back(std::make_shared<std::pair<std::string, glm::vec3>>(std::make_pair("Wood", glm::vec3(1, 5, 0))));
+		m_blocks[3].push_back(std::make_shared<std::pair<std::string, glm::vec3>>(std::make_pair("Leaves", glm::vec3( 1,  6,  0))));
+		m_blocks[3].push_back(std::make_shared<std::pair<std::string, glm::vec3>>(std::make_pair("Leaves", glm::vec3( 2,  6,  0))));
+		m_blocks[3].push_back(std::make_shared<std::pair<std::string, glm::vec3>>(std::make_pair("Leaves", glm::vec3( 0,  6,  0))));
+		m_blocks[3].push_back(std::make_shared<std::pair<std::string, glm::vec3>>(std::make_pair("Leaves", glm::vec3( 1,  6,  1))));
+		m_blocks[3].push_back(std::make_shared<std::pair<std::string, glm::vec3>>(std::make_pair("Leaves", glm::vec3( 1,  6, -1))));
+		m_blocks[3].push_back(std::make_shared<std::pair<std::string, glm::vec3>>(std::make_pair("Leaves", glm::vec3( 2,  5,  0))));
+		m_blocks[3].push_back(std::make_shared<std::pair<std::string, glm::vec3>>(std::make_pair("Leaves", glm::vec3( 2,  5, -1))));
+		m_blocks[3].push_back(std::make_shared<std::pair<std::string, glm::vec3>>(std::make_pair("Leaves", glm::vec3( 0,  5,  0))));
+		m_blocks[3].push_back(std::make_shared<std::pair<std::string, glm::vec3>>(std::make_pair("Leaves", glm::vec3( 0,  5,  1))));
+		m_blocks[3].push_back(std::make_shared<std::pair<std::string, glm::vec3>>(std::make_pair("Leaves", glm::vec3( 1,  5,  1))));
+		m_blocks[3].push_back(std::make_shared<std::pair<std::string, glm::vec3>>(std::make_pair("Leaves", glm::vec3( 2,  5,  1))));
+		m_blocks[3].push_back(std::make_shared<std::pair<std::string, glm::vec3>>(std::make_pair("Leaves", glm::vec3( 1,  5, -1))));
+		m_blocks[3].push_back(std::make_shared<std::pair<std::string, glm::vec3>>(std::make_pair("Leaves", glm::vec3( 0,  5, -1))));
+		m_blocks[3].push_back(std::make_shared<std::pair<std::string, glm::vec3>>(std::make_pair("Leaves", glm::vec3( 2,  4,  0))));
+		m_blocks[3].push_back(std::make_shared<std::pair<std::string, glm::vec3>>(std::make_pair("Leaves", glm::vec3( 2,  4, -1))));
+		m_blocks[3].push_back(std::make_shared<std::pair<std::string, glm::vec3>>(std::make_pair("Leaves", glm::vec3( 0,  4,  0))));
+		m_blocks[3].push_back(std::make_shared<std::pair<std::string, glm::vec3>>(std::make_pair("Leaves", glm::vec3( 0,  4,  1))));
+		m_blocks[3].push_back(std::make_shared<std::pair<std::string, glm::vec3>>(std::make_pair("Leaves", glm::vec3( 1,  4,  1))));
+		m_blocks[3].push_back(std::make_shared<std::pair<std::string, glm::vec3>>(std::make_pair("Leaves", glm::vec3( 2,  4,  1))));
+		m_blocks[3].push_back(std::make_shared<std::pair<std::string, glm::vec3>>(std::make_pair("Leaves", glm::vec3( 1,  4, -1))));
+		m_blocks[3].push_back(std::make_shared<std::pair<std::string, glm::vec3>>(std::make_pair("Leaves", glm::vec3( 0,  4, -1))));
 
 		for (int k = 0; k < size(m_blocks); k++)
 		{
@@ -91,58 +407,21 @@ namespace Renderer
 			bl_pol.clear();
 			for (int i = 0; i < size(m_blocks[k]); i++)
 			{
-				Game::Chunk::s_blocks_polygones f = {};
-				for (int b = 0; b < size(m_blocks); b++)
-				{
-					for (int j = 0; j < size(m_blocks[b]); j++)
-					{
-						if      ((m_blocks[k][i]->second == m_blocks[b][j]->second - glm::vec3( 0,  1,  0)))
-						{
-							f.blocks_polygones[0] = true;
-						}
-						else if ((m_blocks[k][i]->second == m_blocks[b][j]->second - glm::vec3( 0, -1,  0)))
-						{
-							f.blocks_polygones[1] = true;
-						}
-						else if ((m_blocks[k][i]->second == m_blocks[b][j]->second - glm::vec3( 0,  0,  1)))
-						{
-							f.blocks_polygones[2] = true;
-						}
-						else if ((m_blocks[k][i]->second == m_blocks[b][j]->second - glm::vec3( 0,  0, -1)))
-						{
-							f.blocks_polygones[3] = true;
-						}
-						else if ((m_blocks[k][i]->second == m_blocks[b][j]->second - glm::vec3( 1,  0,  0)))
-						{
-							f.blocks_polygones[4] = true;
-						}
-						else if ((m_blocks[k][i]->second == m_blocks[b][j]->second - glm::vec3(-1,  0,  0)))
-						{
-							f.blocks_polygones[5] = true;
-						}
-					}
-				}
-				if (!(f.blocks_polygones[0] && f.blocks_polygones[1] && f.blocks_polygones[2] && f.blocks_polygones[3] && f.blocks_polygones[4] && f.blocks_polygones[5]))
-				{
-					bl_pos.push_back(m_blocks[k][i]);
-					bl_pol.push_back(f);
-				}
+				update_blocks(m_blocks[k][i]);
 			}
 			blocks.push_back(bl_pos);
-			blocks_polygones.push_back(bl_pol);
+			m_blocks_polygones.push_back(bl_pol);
 		}
 	}
 
 	bool ChunkRenderer::getObjectsInArea(const glm::vec3& BottomLeftFront, const glm::vec3& TopRightFront, const glm::vec3& TopLeftBack)
 	{
+		bool is_colide = false;
 		for (int i = 0; i < size(chunks_coords); i++)
 		{
-			if (chunks_coords[i].x * 16 - 8 < TopRightFront.x && chunks_coords[i].x * 16 + 7 > TopRightFront.x && chunks_coords[i].y * 16 - 8 < TopRightFront.z && chunks_coords[i].y * 16 + 7 > TopRightFront.z)
-			{
-				chunk->setPosition(chunks_coords[i]);
-				return chunk->getObjectsInArea(BottomLeftFront, TopRightFront, TopLeftBack);
-			}
+			chunk->setPosition(chunks_coords[i]);
+			is_colide = chunk->getObjectsInArea(BottomLeftFront, TopRightFront, TopLeftBack) || is_colide;
 		}
-		return false;
+		return is_colide;
 	}
 }

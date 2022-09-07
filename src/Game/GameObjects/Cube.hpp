@@ -20,7 +20,7 @@ namespace Game
 			 const std::vector<std::string>& initialSubTexture,
 			 std::shared_ptr<RenderEngine::ShaderProgram> pShaderProgram,
 			 glm::vec3& position = glm::vec3(0.f),
-			 glm::vec3& size = glm::vec3(1.f),
+			 glm::vec3& size = glm::vec3(0.99f),
 			 glm::vec4& rotation = glm::vec4(0.f));
 
 		void render();

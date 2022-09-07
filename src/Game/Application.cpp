@@ -167,7 +167,10 @@ namespace Game {
                                                      "Dirt",
                                                      "Coblestone",
                                                      "Wood_Top",
-                                                     "Wood_Left"
+                                                     "Wood_Left",
+                                                     "Bruh1",
+                                                     "Bruh2",
+                                                     "Leaves",
         };
 
         std::vector<std::string> StartScreenSubTexturesNames = {

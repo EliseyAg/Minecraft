@@ -44,6 +44,9 @@ namespace Game
 			{"Wood", {"Wood_Top",
 					  "Wood_Left",
 					  "Wood_Top"}},
+		    {"Leaves", {"Leaves",
+		                "Leaves",
+		                "Leaves"}},
 		};
 		std::string m_type;
 	};
