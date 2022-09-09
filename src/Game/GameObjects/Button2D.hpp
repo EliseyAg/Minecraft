@@ -17,7 +17,7 @@ namespace Game
 	class Button2D
 	{
 	public:
-		Button2D(std::shared_ptr<RenderEngine::Texture2D> pTexture, std::string initialSubTexture, std::shared_ptr<RenderEngine::ShaderProgram> pShaderProgram, glm::vec2& position = glm::vec2(0.f, 2.f), glm::vec2& size = glm::vec2(0.5f, 0.125f));
+		Button2D(std::shared_ptr<RenderEngine::Texture2D> pTexture, std::string initialSubTexture, std::shared_ptr<RenderEngine::ShaderProgram> pShaderProgram, glm::vec2& position = glm::vec2(0.f, 10.f), glm::vec2& size = glm::vec2(0.5f, 0.125f));
 
 		virtual void render();
 		virtual void setPosition(glm::vec2& position);

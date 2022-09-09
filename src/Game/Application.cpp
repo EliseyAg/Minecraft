@@ -101,7 +101,7 @@ namespace Game {
         RenderEngine::Renderer::setClearColor(0, 0.5, 1, 0);
         RenderEngine::Renderer::setDepth(true);
 
-        player.set_position(glm::vec3(0.f, 2.f, 0.f));
+        player.set_position(glm::vec3(0.f, 10.f, 0.f));
 
         Physics::PhysicsEngine::addDynamicGameObject(&player);
 
@@ -117,7 +117,7 @@ namespace Game {
             {
                 perspective_camera = false;
                 isLockCursor = false;
-                player.set_position(glm::vec3(0.f, 2.f, 0.f));
+                player.set_position(glm::vec3(0.f, 10.f, 0.f));
                 player.set_rotation(glm::vec3(0.f, 0.f, 0.f));
             }
             else if (m_game.m_eCurrentGameState == Game::EGameState::Game)

@@ -58,14 +58,14 @@ namespace Game
 		bool f = false;
 		for (int i = 0; i < size(m_blocks); i++)
 		{
-			block->setPosition(m_blocks[i]->second + glm::vec3(m_position.x * 16, 0.f, m_position.y * 16));
+			block->setPosition(m_blocks[i]->second);
 			if      (block->getCube()->getColiders()[0].BottomLeftFront.x <= BottomLeftFront.x && block->getCube()->getColiders()[0].TopRightFront.x >= BottomLeftFront.x &&
 				     block->getCube()->getColiders()[0].BottomLeftFront.y <= BottomLeftFront.y && block->getCube()->getColiders()[0].TopLeftBack.y   >= BottomLeftFront.y &&
 				     block->getCube()->getColiders()[0].BottomLeftFront.z <= BottomLeftFront.z && block->getCube()->getColiders()[0].TopLeftBack.z   >= BottomLeftFront.z)
 			{
 				f = true;
 				std::cout << "Colide BottomLeftFront" << std::endl;
-				block_position_colide = m_blocks[i]->second + glm::vec3(m_position.x * 16, 0.f, m_position.y * 16);
+				block_position_colide = m_blocks[i]->second;
 				break;
 			}
 			else if (block->getCube()->getColiders()[0].BottomLeftFront.x <= TopRightFront.x && block->getCube()->getColiders()[0].TopRightFront.x >= TopRightFront.x &&
@@ -74,7 +74,7 @@ namespace Game
 			{
 				f = true;
 				std::cout << "Colide TopRightFront" << std::endl;
-				block_position_colide = m_blocks[i]->second + glm::vec3(m_position.x * 16, 0.f, m_position.y * 16);
+				block_position_colide = m_blocks[i]->second;
 				break;
 			}
 			else if (block->getCube()->getColiders()[0].BottomLeftFront.x <= TopLeftBack.x && block->getCube()->getColiders()[0].TopRightFront.x >= TopLeftBack.x &&
@@ -83,7 +83,7 @@ namespace Game
 			{
 				f = true;
 				std::cout << "Colide TopLeftBack" << std::endl;
-				block_position_colide = m_blocks[i]->second + glm::vec3(m_position.x * 16, 0.f, m_position.y * 16);
+				block_position_colide = m_blocks[i]->second;
 				break;
 			}
 		}

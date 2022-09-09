@@ -12,7 +12,7 @@ namespace Player
         double sc_mult = a.x * b.x + a.y * b.y + a.z * b.z;
         double len_a = sqrt((a.x) * (a.x) + (a.y) * (a.y) + (a.z) * (a.z));
         double len_b = sqrt((b.x) * (b.x) + (b.y) * (b.y) + (b.z) * (b.z));
-        return glm::acos(sc_mult / (len_a * len_b));
+        return glm::degrees(glm::acos(sc_mult / (len_a * len_b)));
     }
 
 	Player::Player(const glm::vec3& position,
@@ -97,7 +97,6 @@ namespace Player
             if (Renderer::ChunkRenderer::getObjectsInArea(r_p, r_p, r_p))
             {
                 r_p = Renderer::ChunkRenderer::getObjectsInArea();
-                std::cout << r_p.x << " " << r_p.y << " " << r_p.z << std::endl;
                 Renderer::ChunkRenderer::deleteBlock(r_p);
             }
         }
@@ -108,42 +107,41 @@ namespace Player
             glm::vec3 r_p = ray.getPosition();
             if (Renderer::ChunkRenderer::getObjectsInArea(r_p, r_p, r_p))
             {
-                glm::vec3 temp = r_p;
                 glm::vec3 b = glm::vec3(0.f);
-                glm::vec3 ir_p = floor(r_p);
-                double min_a = 360;
-                int a;
-                a = angle(ir_p, glm::vec3(0.f, 1.f, 0.f));
+                glm::vec3 ir_p = Renderer::ChunkRenderer::getObjectsInArea();
+                float min_a = 360;
+                float a;
+                a = angle(r_p, glm::vec3(0.f, 1.f, 0.f) + ir_p);
                 if (a < min_a)
                 {
                     min_a = a;
                     b = glm::vec3(0.f, 1.f, 0.f);
                 }
-                a = angle(ir_p, glm::vec3(0.f, -1.f, 0.f));
+                a = angle(r_p, glm::vec3(0.f, -1.f, 0.f) + ir_p);
                 if (a < min_a)
                 {
                     min_a = a;
                     b = glm::vec3(0.f, -1.f, 0.f);
                 }
-                a = angle(ir_p, glm::vec3(1.f, 0.f, 0.f));
+                a = angle(r_p, glm::vec3(1.f, 0.f, 0.f) + ir_p);
                 if (a < min_a)
                 {
                     min_a = a;
                     b = glm::vec3(1.f, 0.f, 0.f);
                 }
-                a = angle(ir_p, glm::vec3(-1.f, 0.f, 0.f));
+                a = angle(r_p, glm::vec3(-1.f, 0.f, 0.f) + ir_p);
                 if (a < min_a)
                 {
                     min_a = a;
                     b = glm::vec3(-1.f, 0.f, 0.f);
                 }
-                a = angle(ir_p, glm::vec3(0.f, 0.f, 1.f));
+                a = angle(r_p, glm::vec3(0.f, 0.f, 1.f) + ir_p);
                 if (a < min_a)
                 {
                     min_a = a;
                     b = glm::vec3(0.f, 0.f, 1.f);
                 }
-                a = angle(ir_p, glm::vec3(0.f, 0.f, -1.f));
+                a = angle(r_p, glm::vec3(0.f, 0.f, -1.f) + ir_p);
                 if (a < min_a)
                 {
                     min_a = a;
@@ -156,7 +154,6 @@ namespace Player
 
         rotation_delta += glm::vec3(verticalAngleRad * 180 / 3.14, horizontalAngleRad * 180 / 3.14, 0);
         camera.add_movement_and_rotation(movement_delta, rotation_delta);
-        std::cout << m_rotation.x << " " << m_rotation.y << std::endl;
         m_position = camera.get_camera_position();
         m_rotation = camera.get_camera_rotation();
 	}

@@ -80,6 +80,10 @@ namespace Game
 		m_polygones_positions[3] = glm::vec3(0, 0, -m_size.z / 2) + m_position;
 		m_polygones_positions[4] = glm::vec3(m_size.x / 2, 0, 0) + m_position;
 		m_polygones_positions[5] = glm::vec3(-m_size.x / 2, 0, 0) + m_position;
+
+		m_coliders[0].BottomLeftFront = (glm::vec3(-m_size.x / 2, -m_size.y / 2, -m_size.z / 2) + m_position);
+		m_coliders[0].TopRightFront = (glm::vec3(m_size.x / 2, m_size.y / 2, -m_size.z / 2) + m_position);
+		m_coliders[0].TopLeftBack = (glm::vec3(-m_size.x / 2, m_size.y / 2, m_size.z / 2) + m_position);
 	}
 
 	void Cube::setTexture(std::vector<std::string>& SubTextures)
