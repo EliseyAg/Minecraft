@@ -3,6 +3,7 @@
 #include "Camera.hpp"
 #include "Ray.hpp"
 
+#include <string>
 #include <glm/vec3.hpp>
 #include <glm/ext/matrix_float4x4.hpp>
 
@@ -40,5 +41,7 @@ namespace Player
 
 		glm::vec3 m_position;
 		glm::vec3 m_rotation;
+
+		std::string current_item_type = "Grass";
 	};
 }

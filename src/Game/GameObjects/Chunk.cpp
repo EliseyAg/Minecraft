@@ -19,14 +19,14 @@ namespace Game
 		m_position = glm::vec2(0.f);
 	}
 
-	void Chunk::render()
+	void Chunk::render(const glm::vec3& camera_position)
 	{
 		for (int i = 0; i < size(m_blocks); i++)
 		{
 			block->setPosition(m_blocks[i]->second);
 			block->setType(m_blocks[i]->first);
 			block->setPolygones(m_blocks_polygones[i].m_blocks_polygones);
-			block->render();
+			block->render(camera_position);
 		}
 	}
 

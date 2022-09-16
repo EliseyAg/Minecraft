@@ -17,9 +17,9 @@ namespace Game
 		block = std::make_shared<Cube>(m_pTexture, initialSubTexture, m_pShaderProgram, m_position, m_size, m_rotation);
 	}
 
-	void Block::render()
+	void Block::render(const glm::vec3& camera_position)
 	{
-		block->render();
+		block->render(camera_position);
 	}
 
 	void Block::update(const uint64_t delta)

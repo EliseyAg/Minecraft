@@ -148,8 +148,44 @@ namespace Player
                     b = glm::vec3(0.f, 0.f, -1.f);
                 }
                 std::cout << ir_p.x << " " << ir_p.y << " " << ir_p.z << std::endl;
-                Renderer::ChunkRenderer::placeBlock(b + ir_p, "Coblestone");
+                Renderer::ChunkRenderer::placeBlock(b + ir_p, current_item_type);
             }
+        }
+        if (Game::Game::m_keys_pressed[static_cast<size_t>(Game::KeyCode::KEY_1)])
+        {
+            current_item_type = "Grass";
+        }
+        if (Game::Game::m_keys_pressed[static_cast<size_t>(Game::KeyCode::KEY_2)])
+        {
+            current_item_type = "Dirt";
+        }
+        if (Game::Game::m_keys_pressed[static_cast<size_t>(Game::KeyCode::KEY_3)])
+        {
+            current_item_type = "Coblestone";
+        }
+        if (Game::Game::m_keys_pressed[static_cast<size_t>(Game::KeyCode::KEY_4)])
+        {
+            current_item_type = "Wood";
+        }
+        if (Game::Game::m_keys_pressed[static_cast<size_t>(Game::KeyCode::KEY_5)])
+        {
+            current_item_type = "Leaves";
+        }
+        if (Game::Game::m_keys_pressed[static_cast<size_t>(Game::KeyCode::KEY_6)])
+        {
+            current_item_type = "Grass";
+        }
+        if (Game::Game::m_keys_pressed[static_cast<size_t>(Game::KeyCode::KEY_7)])
+        {
+            current_item_type = "Grass";
+        }
+        if (Game::Game::m_keys_pressed[static_cast<size_t>(Game::KeyCode::KEY_8)])
+        {
+            current_item_type = "Grass";
+        }
+        if (Game::Game::m_keys_pressed[static_cast<size_t>(Game::KeyCode::KEY_9)])
+        {
+            current_item_type = "Grass";
         }
 
         rotation_delta += glm::vec3(verticalAngleRad * 180 / 3.14, horizontalAngleRad * 180 / 3.14, 0);

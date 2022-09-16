@@ -18,7 +18,7 @@ namespace Game
 		Chunk(std::shared_ptr<RenderEngine::Texture2D> pTexture,
 			  std::shared_ptr<RenderEngine::ShaderProgram> pShaderProgram);
 
-		void render();
+		void render(const glm::vec3& camera_position);
 		void update(const uint64_t delta);
 
 		static struct s_blocks_polygones { bool m_blocks_polygones[6]; };

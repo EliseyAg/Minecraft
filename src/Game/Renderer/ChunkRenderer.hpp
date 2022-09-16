@@ -22,7 +22,7 @@ namespace Renderer
 		ChunkRenderer& operator=(const ChunkRenderer&) = delete;
 		ChunkRenderer& operator=(ChunkRenderer&&) = delete;
 
-		static void render();
+		static void render(const glm::vec3& camera_position, const glm::vec3& camera_rotation);
 		static void generate_world();
 		static void saveworld();
 		static void loadworld();

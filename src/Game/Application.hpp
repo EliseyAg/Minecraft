@@ -54,7 +54,7 @@ namespace Game {
         Game(const glm::ivec2& windowSize);
         ~Game();
 
-        void render(glm::mat4 projectionMat);
+        void render(glm::mat4 projectionMat, const glm::vec3& camera_position, const glm::vec3& camera_rotation);
         void update(const uint64_t delta, double x_pos, double y_pos);
         bool init();
 

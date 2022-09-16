@@ -8,6 +8,14 @@
 
 namespace Game
 {
+	double angle(const glm::vec3& a, const glm::vec3& b)
+	{
+		double sc_mult = a.x * b.x + a.y * b.y + a.z * b.z;
+		double len_a = sqrt((a.x) * (a.x) + (a.y) * (a.y) + (a.z) * (a.z));
+		double len_b = sqrt((b.x) * (b.x) + (b.y) * (b.y) + (b.z) * (b.z));
+		return glm::degrees(glm::acos(sc_mult / (len_a * len_b)));
+	}
+
 	Cube::Cube(std::shared_ptr<RenderEngine::Texture2D> pTexture,
 			   const std::vector<std::string>& initialSubTexture,
 			   std::shared_ptr<RenderEngine::ShaderProgram> pShaderProgram,
@@ -25,7 +33,7 @@ namespace Game
 		m_coliders.emplace_back(glm::vec3(-m_size.x / 2, -m_size.y / 2, -m_size.z / 2) + m_position, glm::vec3( m_size.x / 2,  m_size.y / 2, -m_size.z / 2) + m_position, glm::vec3(-m_size.x / 2,  m_size.y / 2,  m_size.z / 2) + m_position);
 	}
 
-	void Cube::render()
+	void Cube::render(const glm::vec3& camera_position)
 	{
 		m_polygones_rotations[0] = glm::vec3( 90,  0,   0);
 		m_polygones_rotations[1] = glm::vec3(-90,  0,   0);
@@ -33,15 +41,15 @@ namespace Game
 		m_polygones_rotations[3] = glm::vec3( 0, 180,   0);
 		m_polygones_rotations[4] = glm::vec3( 0,  90,   0);
 		m_polygones_rotations[5] = glm::vec3( 0, -90,   0); 
-		m_normals[0] = glm::normalize(m_polygones_rotations[0]);
-		m_normals[1] = glm::normalize(m_polygones_rotations[1]);
-		m_normals[2] = glm::normalize(m_polygones_rotations[2]);
-		m_normals[3] = glm::normalize(m_polygones_rotations[3]);
-		m_normals[4] = glm::normalize(m_polygones_rotations[4]);
-		m_normals[5] = glm::normalize(m_polygones_rotations[5]);
+		m_normals[0] = glm::vec3( 0,  1,  0);
+		m_normals[1] = glm::vec3( 0, -1,  0);
+		m_normals[2] = glm::vec3( 0,  0,  1);
+		m_normals[3] = glm::vec3( 0,  0, -1);
+		m_normals[4] = glm::vec3( 1,  0,  0);
+		m_normals[5] = glm::vec3(-1,  0,  0);
 
 		for (int k = 0; k < 6; k++) {
-			if (!m_polygones[k])
+			if (!m_polygones[k] && angle(m_normals[k] + m_position, camera_position) < 90)
 			{
 				ResourceManager::getPolygon("Polygon")->setPosition(m_polygones_positions[k]);
 				ResourceManager::getPolygon("Polygon")->setRotation(glm::vec4(m_polygones_rotations[k], 0));

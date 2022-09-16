@@ -12,6 +12,7 @@
 #include <glm/gtc/matrix_transform.hpp>
 #include <iostream>
 #include <chrono>
+#include <thread>
 
 namespace Game {
     glm::ivec2 g_windowSize(512, 512);
@@ -130,7 +131,7 @@ namespace Game {
 
             RenderEngine::Renderer::clear();
             player.set_projection_mode(perspective_camera ? Player::Camera::ProjectionMode::Perspective : Player::Camera::ProjectionMode::Orthographic);
-            m_game.render(player.get_projection_matrix() * player.get_view_matrix());
+            m_game.render(player.get_projection_matrix() * player.get_view_matrix(), player.get_camera_position(), player.get_camera_rotation());
 
             m_pWindow->on_update();
         }
@@ -197,7 +198,7 @@ namespace Game {
         return true;
     }
 
-    void Game::render(glm::mat4 projectionMat)
+    void Game::render(glm::mat4 projectionMat, const glm::vec3& camera_position, const glm::vec3& camera_rotation)
     {
         ResourceManager::getShader("PolygonShader")->setMatrix4("projectionMat", projectionMat);
         ResourceManager::getShader("PolygonShader")->bind();
@@ -211,7 +212,7 @@ namespace Game {
             }
             case EGameState::Game:
             {
-                Renderer::ChunkRenderer::render();
+                Renderer::ChunkRenderer::render(camera_position, camera_rotation);
                 break;
             }
         }

@@ -3,6 +3,8 @@
 
 #include <glm/gtc/noise.hpp>
 #include <ctime>
+#include <cmath>
+#include <thread>
 
 namespace Renderer
 {
@@ -335,14 +337,55 @@ namespace Renderer
 		}
 	}
 
-	void ChunkRenderer::render()
+	double angle(const glm::vec2& a, const glm::vec2& b)
 	{
+		double sc_mult = a.x * b.x + a.y * b.y;
+		double len_a = sqrt((a.x) * (a.x) + (a.y) * (a.y));
+		double len_b = sqrt((b.x) * (b.x) + (b.y) * (b.y));
+		return glm::degrees(glm::acos(sc_mult / (len_a * len_b)));
+	}
+
+	void ChunkRenderer::render(const glm::vec3& camera_position, const glm::vec3& camera_rotation)
+	{
+		glm::vec2 pos = glm::vec2(0.f);
+		float yaw = glm::radians(camera_rotation.y + 90.f);
+		pos.x += glm::cos(yaw) * 16;
+		pos.y -= glm::sin(yaw) * 16;
 		for (int i = 0; i < size(chunks_coords); i++)
 		{
-			chunk->setPosition(chunks_coords[i]);
-			chunk->setBlocksPositions(blocks[i]);
-			chunk->setBlocksPolygones(m_blocks_polygones[i]);
-			chunk->render();
+			if (chunks_coords[i].x * 16 - 8 <= camera_position.x && chunks_coords[i].x * 16 + 7 >= camera_position.x &&
+				chunks_coords[i].y * 16 - 8 <= camera_position.z && chunks_coords[i].y * 16 + 7 >= camera_position.z)
+			{
+				chunk->setPosition(chunks_coords[i]);
+				chunk->setBlocksPositions(blocks[i]);
+				chunk->setBlocksPolygones(m_blocks_polygones[i]);
+				chunk->render(camera_position);
+				continue;
+			}
+			else
+			{
+				if ((chunks_coords[i].x * 16 - 8) - camera_position.x <= pos.x && (chunks_coords[i].x * 16 + 7) - camera_position.x >= pos.x &&
+					(chunks_coords[i].y * 16 - 8) - camera_position.z <= pos.y && (chunks_coords[i].y * 16 + 7) - camera_position.z >= pos.y)
+				{
+					chunk->setPosition(chunks_coords[i]);
+					chunk->setBlocksPositions(blocks[i]);
+					chunk->setBlocksPolygones(m_blocks_polygones[i]);
+					chunk->render(camera_position);
+					continue;
+				}
+
+				if (angle(glm::vec2(chunks_coords[i].x * 16 - camera_position.x, chunks_coords[i].y * 16 - camera_position.z), pos) <= 100)
+				{
+					if (chunks_coords[i].x * 16 - camera_position.x < 1 * 16 && chunks_coords[i].y * 16 - camera_position.z < 1 * 16)
+					{
+						chunk->setPosition(chunks_coords[i]);
+						chunk->setBlocksPositions(blocks[i]);
+						chunk->setBlocksPolygones(m_blocks_polygones[i]);
+						chunk->render(camera_position);
+						continue;
+					}
+				}
+			}
 		}
 	}
 
@@ -354,9 +397,9 @@ namespace Renderer
 		chunk = std::make_unique<Game::Chunk>(std::move(m_pTexture), std::move(m_pShaderProgram));
 		srand(time(0));
 		float SEED = rand();
-		for (int u = -1; u <= 0; u++)
+		for (int u = -2; u <= 1; u++)
 		{
-			for (int v = -1; v <= 0; v++)
+			for (int v = -2; v <= 1; v++)
 			{
 				chunks_coords.push_back(glm::vec2(u, v));
 				bl_pos.clear();
@@ -386,7 +429,7 @@ namespace Renderer
 						bl_pos.push_back(std::make_shared<std::pair<std::string, glm::vec3>>(std::make_pair("Dirt",	      glm::vec3(_u, height - 1, _v))));
 						bl_pos.push_back(std::make_shared<std::pair<std::string, glm::vec3>>(std::make_pair("Dirt",	      glm::vec3(_u, height - 2, _v))));
 						bl_pos.push_back(std::make_shared<std::pair<std::string, glm::vec3>>(std::make_pair("Dirt",	      glm::vec3(_u, height - 3, _v))));
-						for (int i = height - 4; i > -12; i--)
+						for (int i = height - 4; i >= -10; i--)
 							bl_pos.push_back(std::make_shared<std::pair<std::string, glm::vec3>>(std::make_pair("Coblestone", glm::vec3(_u, i, _v))));
 					}
 				}
