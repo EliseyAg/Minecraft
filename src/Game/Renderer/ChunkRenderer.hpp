@@ -23,9 +23,13 @@ namespace Renderer
 		ChunkRenderer& operator=(ChunkRenderer&&) = delete;
 
 		static void render(const glm::vec3& camera_position, const glm::vec3& camera_rotation);
-		static void generate_world();
+		static void generate_world(const int u, const int v);
+		static void unload_world();
 		static void saveworld();
 		static void loadworld();
+
+		static void generate_seed();
+		static void update_world();
 
 		static bool getObjectsInArea(const glm::vec3& BottomLeftFront, const glm::vec3& TopRightFront, const glm::vec3& TopLeftBack);
 		static glm::vec3 getObjectsInArea() { return chunk->getObjectsInArea(); };
@@ -33,16 +37,16 @@ namespace Renderer
 		static void deleteBlock(const glm::vec3& coords);
 		static void placeBlock(const glm::vec3& coords, const std::string& type);
 
-		static void update_blocks(std::shared_ptr<std::pair<std::string, glm::vec3>>);
+		static void update_blocks(std::pair<std::string, glm::vec3>);
 
 	private:
 		static std::vector<std::vector<Game::Chunk::s_blocks_polygones>> m_blocks_polygones;
 		static std::vector<glm::vec2> chunks_coords;
 		static std::unique_ptr<Game::Chunk> chunk;
-		static std::vector<std::vector<std::shared_ptr<std::pair<std::string, glm::vec3>>>> m_blocks;
-		static std::vector<std::vector<std::shared_ptr<std::pair<std::string, glm::vec3>>>> blocks;
+		static std::vector<std::vector<std::string>> m_blocks;
 
 		static std::shared_ptr<RenderEngine::Texture2D> m_pTexture;
-		static std::shared_ptr<RenderEngine::ShaderProgram> m_pShaderProgram;
+
+		static unsigned long long int SEED;
 	};
 }

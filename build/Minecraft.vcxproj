@@ -417,6 +417,7 @@ if %errorlevel% neq 0 goto :VCEnd</Command>
     <ClInclude Include="C:\Users\Elisey\Games on C++\Minecraft\src\Player\Player.hpp" />
     <ClInclude Include="C:\Users\Elisey\Games on C++\Minecraft\src\Player\Ray.hpp" />
     <ClInclude Include="C:\Users\Elisey\Games on C++\Minecraft\src\Physics\PhysicsEngine.hpp" />
+    <ClInclude Include="C:\Users\Elisey\Games on C++\Minecraft\src\RenderEngine\OpenGL\Mesh.hpp" />
     <ClInclude Include="C:\Users\Elisey\Games on C++\Minecraft\src\RenderEngine\OpenGL\Polygon2D.hpp" />
     <ClInclude Include="C:\Users\Elisey\Games on C++\Minecraft\src\RenderEngine\OpenGL\Animated_Polygon2D.hpp" />
     <ClInclude Include="C:\Users\Elisey\Games on C++\Minecraft\src\RenderEngine\OpenGL\Texture2D.hpp" />
@@ -439,6 +440,7 @@ if %errorlevel% neq 0 goto :VCEnd</Command>
     <ClCompile Include="C:\Users\Elisey\Games on C++\Minecraft\src\Player\Player.cpp" />
     <ClCompile Include="C:\Users\Elisey\Games on C++\Minecraft\src\Player\Ray.cpp" />
     <ClCompile Include="C:\Users\Elisey\Games on C++\Minecraft\src\Physics\PhysicsEngine.cpp" />
+    <ClCompile Include="C:\Users\Elisey\Games on C++\Minecraft\src\RenderEngine\OpenGL\Mesh.cpp" />
     <ClCompile Include="C:\Users\Elisey\Games on C++\Minecraft\src\RenderEngine\OpenGL\Polygon2D.cpp" />
     <ClCompile Include="C:\Users\Elisey\Games on C++\Minecraft\src\RenderEngine\OpenGL\Animated_Polygon2D.cpp" />
     <ClCompile Include="C:\Users\Elisey\Games on C++\Minecraft\src\RenderEngine\OpenGL\Texture2D.cpp" />

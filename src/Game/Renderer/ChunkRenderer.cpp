@@ -5,95 +5,104 @@
 #include <ctime>
 #include <cmath>
 #include <thread>
+#include <iostream>
+
+#define CHUNK_SIZE_X 16
+#define CHUNK_SIZE_Y 16
+#define CHUNK_HEIGHT 64
 
 namespace Renderer
 {
 	std::vector<std::vector<Game::Chunk::s_blocks_polygones>> ChunkRenderer::m_blocks_polygones = {};
 	std::vector<glm::vec2> ChunkRenderer::chunks_coords = {};
 	std::unique_ptr<Game::Chunk> ChunkRenderer::chunk = {};
-	std::vector<std::vector<std::shared_ptr<std::pair<std::string, glm::vec3>>>> ChunkRenderer::m_blocks = {};
-	std::vector<std::vector<std::shared_ptr<std::pair<std::string, glm::vec3>>>> ChunkRenderer::blocks = {};
+	std::vector<std::vector<std::string>> ChunkRenderer::m_blocks = {};
+
+	unsigned long long int ChunkRenderer::SEED = 0;
 
 	std::shared_ptr<RenderEngine::Texture2D> ChunkRenderer::m_pTexture = nullptr;
-	std::shared_ptr<RenderEngine::ShaderProgram> ChunkRenderer::m_pShaderProgram = nullptr;
 
-	static std::vector<std::shared_ptr<std::pair<std::string, glm::vec3>>> bl_pos;
+	static std::vector<std::string> bl_pos;
 	static std::vector<Game::Chunk::s_blocks_polygones> bl_pol;
+
+	void ChunkRenderer::generate_seed()
+	{
+		srand(time(0));
+		unsigned long long int max = pow(2, 64);
+		SEED = rand() % max;
+	}
 
 	void ChunkRenderer::setTextureAtlas(std::shared_ptr<RenderEngine::Texture2D> pTexture)
 	{
 		m_pTexture = pTexture;
+		chunk = std::make_unique<Game::Chunk>(std::move(m_pTexture));
 	}
 
-	void ChunkRenderer::setShaderProgram(std::shared_ptr<RenderEngine::ShaderProgram> pShaderProgram)
-	{
-		m_pShaderProgram = pShaderProgram;
-	}
-
-
-	void ChunkRenderer::update_blocks(std::shared_ptr<std::pair<std::string, glm::vec3>> block)
+	void ChunkRenderer::update_blocks(std::pair<std::string, glm::vec3> block)
 	{
 		Game::Chunk::s_blocks_polygones f = {};
+		f.m_blocks_polygones[0] = false;
+		f.m_blocks_polygones[1] = false;
+		f.m_blocks_polygones[2] = false;
+		f.m_blocks_polygones[3] = false;
+		f.m_blocks_polygones[4] = false;
+		f.m_blocks_polygones[5] = false;
 		for (int b = 0; b < size(m_blocks); b++)
 		{
-			for (int c = 0; c < size(m_blocks[b]); c++)
+			int c = 0;
+			for (int x = 0; x < CHUNK_SIZE_X; x++)
 			{
-				if (m_blocks[b][c]->first != "Leaves")
+				for (int z = 0; z < CHUNK_SIZE_Y; z++)
 				{
-					if ((block->second == m_blocks[b][c]->second - glm::vec3(0, 1, 0)))
+					for (int y = 0; y < CHUNK_HEIGHT; y++)
 					{
-						f.m_blocks_polygones[0] = true;
-					}
-					else if ((block->second == m_blocks[b][c]->second - glm::vec3(0, -1, 0)))
-					{
-						f.m_blocks_polygones[1] = true;
-					}
-					else if ((block->second == m_blocks[b][c]->second - glm::vec3(0, 0, 1)))
-					{
-						f.m_blocks_polygones[2] = true;
-					}
-					else if ((block->second == m_blocks[b][c]->second - glm::vec3(0, 0, -1)))
-					{
-						f.m_blocks_polygones[3] = true;
-					}
-					else if ((block->second == m_blocks[b][c]->second - glm::vec3(1, 0, 0)))
-					{
-						f.m_blocks_polygones[4] = true;
-					}
-					else if ((block->second == m_blocks[b][c]->second - glm::vec3(-1, 0, 0)))
-					{
-						f.m_blocks_polygones[5] = true;
+						if (m_blocks[b][c] != "Leaves" && m_blocks[b][c] != "Air")
+						{
+							if ((block.second == glm::vec3(x, y, z) - glm::vec3(0, 1, 0)))
+							{
+								f.m_blocks_polygones[0] = true;
+							}
+							else if ((block.second == glm::vec3(x, y, z) - glm::vec3(0, -1, 0)))
+							{
+								f.m_blocks_polygones[1] = true;
+							}
+							else if ((block.second == glm::vec3(x, y, z) - glm::vec3(0, 0, 1)))
+							{
+								f.m_blocks_polygones[2] = true;
+							}
+							else if ((block.second == glm::vec3(x, y, z) - glm::vec3(0, 0, -1)))
+							{
+								f.m_blocks_polygones[3] = true;
+							}
+							else if ((block.second == glm::vec3(x, y, z) - glm::vec3(1, 0, 0)))
+							{
+								f.m_blocks_polygones[4] = true;
+							}
+							else if ((block.second == glm::vec3(x, y, z) - glm::vec3(-1, 0, 0)))
+							{
+								f.m_blocks_polygones[5] = true;
+							}
+						}
+						c++;
 					}
 				}
 			}
 		}
-		if (!(f.m_blocks_polygones[0] && f.m_blocks_polygones[1] && f.m_blocks_polygones[2] && f.m_blocks_polygones[3] && f.m_blocks_polygones[4] && f.m_blocks_polygones[5]))
-		{
-			bl_pos.push_back(block);
-			bl_pol.push_back(f);
-		}
+		bl_pol.push_back(f);
 	}
 
-	void ChunkRenderer::deleteBlock(const glm::vec3& coords)
+	/*void ChunkRenderer::deleteBlock(const glm::vec3& coords)
 	{
 		for (int i = 0; i < size(chunks_coords); i++)
 		{
-			int c = -1;
 			for (int j = 0; j < size(m_blocks[i]); j++)
 			{
-				for (int b = 0; b < size(blocks[i]); b++)
+				if (m_blocks[i][j]->second == coords)
 				{
-					if (blocks[i][b] == m_blocks[i][j])
-					{
-						c = b;
-						break;
-					}
-				}
-				if (m_blocks[i][j]->second == coords && c != -1)
-				{
-					m_blocks[i].erase(m_blocks[i].begin() + j);
-					blocks[i].erase(blocks[i].begin() + c);
-					m_blocks_polygones[i].erase(m_blocks_polygones[i].begin() + c);
+					m_blocks[i][j]->first = "Air";
+					m_blocks[i][j]->first = "Air";
+					update_blocks(m_blocks[i][j]);
+					m_blocks_polygones[i][j] = bl_pol[0];
 					break;
 				}
 			}
@@ -103,100 +112,45 @@ namespace Renderer
 		{
 			for (int j = 0; j < size(m_blocks[i]); j++)
 			{
-				int c = -1;
 				bl_pos.clear();
 				bl_pol.clear();
-				for (int b = 0; b < size(blocks[i]); b++)
-				{
-					if (blocks[i][b] == m_blocks[i][j])
-					{
-						c = b;
-						break;
-					}
-				}
 				if      ((coords == m_blocks[i][j]->second - glm::vec3(0, 1, 0)))
 				{
 					update_blocks(m_blocks[i][j]);
-					if (c != -1)
-					{
-						blocks[i][c] = bl_pos[0];
-						m_blocks_polygones[i][c] = bl_pol[0];
-					}
-					else
-					{
-						blocks[i].push_back(bl_pos[0]);
-						m_blocks_polygones[i].push_back(bl_pol[0]);
-					}
+					m_blocks[i][j] = bl_pos[0];
+					m_blocks_polygones[i][j] = bl_pol[0];
 				}
 				else if ((coords == m_blocks[i][j]->second - glm::vec3(0, -1, 0)))
 				{
 					update_blocks(m_blocks[i][j]);
-					if (c != -1)
-					{
-						blocks[i][c] = bl_pos[0];
-						m_blocks_polygones[i][c] = bl_pol[0];
-					}
-					else
-					{
-						blocks[i].push_back(bl_pos[0]);
-						m_blocks_polygones[i].push_back(bl_pol[0]);
-					}
+					update_blocks(m_blocks[i][j]);
+					m_blocks[i][j] = bl_pos[0];
+					m_blocks_polygones[i][j] = bl_pol[0];
 				}
 				else if ((coords == m_blocks[i][j]->second - glm::vec3(0, 0, 1)))
 				{
 					update_blocks(m_blocks[i][j]);
-					if (c != -1)
-					{
-						blocks[i][c] = bl_pos[0];
-						m_blocks_polygones[i][c] = bl_pol[0];
-					}
-					else
-					{
-						blocks[i].push_back(bl_pos[0]);
-						m_blocks_polygones[i].push_back(bl_pol[0]);
-					}
+					update_blocks(m_blocks[i][j]);
+					m_blocks[i][j] = bl_pos[0];
+					m_blocks_polygones[i][j] = bl_pol[0];
 				}
 				else if ((coords == m_blocks[i][j]->second - glm::vec3(0, 0, -1)))
 				{
 					update_blocks(m_blocks[i][j]);
-					if (c != -1)
-					{
-						blocks[i][c] = bl_pos[0];
-						m_blocks_polygones[i][c] = bl_pol[0];
-					}
-					else
-					{
-						blocks[i].push_back(bl_pos[0]);
-						m_blocks_polygones[i].push_back(bl_pol[0]);
-					}
+					m_blocks[i][j] = bl_pos[0];
+					m_blocks_polygones[i][j] = bl_pol[0];
 				}
 				else if ((coords == m_blocks[i][j]->second - glm::vec3(1, 0, 0)))
 				{
 					update_blocks(m_blocks[i][j]);
-					if (c != -1)
-					{
-						blocks[i][c] = bl_pos[0];
-						m_blocks_polygones[i][c] = bl_pol[0];
-					}
-					else
-					{
-						blocks[i].push_back(bl_pos[0]);
-						m_blocks_polygones[i].push_back(bl_pol[0]);
-					}
+					m_blocks[i][j] = bl_pos[0];
+					m_blocks_polygones[i][j] = bl_pol[0];
 				}
 				else if ((coords == m_blocks[i][j]->second - glm::vec3(-1, 0, 0)))
 				{
 					update_blocks(m_blocks[i][j]);
-					if (c != -1)
-					{
-						blocks[i][c] = bl_pos[0];
-						m_blocks_polygones[i][c] = bl_pol[0];
-					}
-					else
-					{
-						blocks[i].push_back(bl_pos[0]);
-						m_blocks_polygones[i].push_back(bl_pol[0]);
-					}
+					m_blocks[i][j] = bl_pos[0];
+					m_blocks_polygones[i][j] = bl_pol[0];
 				}
 			}
 		}
@@ -206,15 +160,27 @@ namespace Renderer
 	{
 		for (int i = 0; i < size(chunks_coords); i++)
 		{
-			if (chunks_coords[i].x * 16 - 8 <= coords.x && chunks_coords[i].x * 16 + 7 >= coords.x &&
-				chunks_coords[i].y * 16 - 8 <= coords.z && chunks_coords[i].y * 16 + 7 >= coords.z)
+			if (chunks_coords[i].x * CHUNK_SIZE_X <= coords.x && chunks_coords[i].x * CHUNK_SIZE_X + CHUNK_SIZE_X - 1 >= coords.x &&
+				chunks_coords[i].y * CHUNK_SIZE_Y <= coords.z && chunks_coords[i].y * CHUNK_SIZE_Y + CHUNK_SIZE_Y - 1 >= coords.z)
 			{
-				bl_pos.clear();
-				bl_pol.clear();
-				update_blocks(std::make_shared<std::pair<std::string, glm::vec3>>(std::make_pair(type, coords)));
-				m_blocks[i].push_back(bl_pos[0]);
-				blocks[i].push_back(bl_pos[0]);
-				m_blocks_polygones[i].push_back(bl_pol[0]);
+				for (int j = 0; j < size(m_blocks[i]); j++)
+				{
+					int lx = coords.x - chunks_coords[i].x * CHUNK_SIZE_X - 1;
+					int ly = coords.y + CHUNK_HEIGHT / 2;
+					int lz = coords.z - chunks_coords[i].y * CHUNK_SIZE_Y - 1;
+					if (m_blocks[i][j]->second == coords && m_blocks[i][j]->first == "Air")
+					{
+						if ((lz * CHUNK_SIZE_Y + lx) * CHUNK_HEIGHT + ly == j)
+						{
+							std::cout << "URA!!";
+						}
+						m_blocks[i][j]->first = type;
+						m_blocks[i][j]->first = type;
+						update_blocks(m_blocks[i][j]);
+						m_blocks_polygones[i][j] = bl_pol[0];
+						break;
+					}
+				}
 				break;
 			}
 		}
@@ -229,113 +195,53 @@ namespace Renderer
 				f.m_blocks_polygones[3] = true;
 				f.m_blocks_polygones[4] = true;
 				f.m_blocks_polygones[5] = true;
-				int c = -1;
 				bl_pos.clear();
 				bl_pol.clear();
-				for (int b = 0; b < size(blocks[i]); b++)
+				if ((coords == m_blocks[i][j]->second - glm::vec3(0, 1, 0)))
 				{
-					if (blocks[i][b] == m_blocks[i][j])
-					{
-						c = b;
-						break;
-					}
+					update_blocks(m_blocks[i][j]);
+					m_blocks[i][j] = bl_pos[0];
+					m_blocks_polygones[i][j] = bl_pol[0];
+					continue;
 				}
-				if (c != -1)
+				else if ((coords == m_blocks[i][j]->second - glm::vec3(0, -1, 0)))
 				{
-					if ((coords == m_blocks[i][j]->second - glm::vec3(0, 1, 0)))
-					{
-						update_blocks(m_blocks[i][j]);
-						if (bl_pol[0].m_blocks_polygones == f.m_blocks_polygones)
-						{
-							blocks[i].erase(blocks[i].begin() + c);
-							m_blocks_polygones[i].erase(m_blocks_polygones[i].begin() + c);
-						}
-						else
-						{
-							blocks[i][c] = bl_pos[0];
-							m_blocks_polygones[i][c] = bl_pol[0];
-						}
-						continue;
-					}
-					else if ((coords == m_blocks[i][j]->second - glm::vec3(0, -1, 0)))
-					{
-						update_blocks(m_blocks[i][j]);
-						if (bl_pol[0].m_blocks_polygones == f.m_blocks_polygones)
-						{
-							blocks[i].erase(blocks[i].begin() + c);
-							m_blocks_polygones[i].erase(m_blocks_polygones[i].begin() + c);
-						}
-						else
-						{
-							blocks[i][c] = bl_pos[0];
-							m_blocks_polygones[i][c] = bl_pol[0];
-						}
-						continue;
-					}
-					else if ((coords == m_blocks[i][j]->second - glm::vec3(0, 0, 1)))
-					{
-						update_blocks(m_blocks[i][j]);
-						if (bl_pol[0].m_blocks_polygones == f.m_blocks_polygones)
-						{
-							blocks[i].erase(blocks[i].begin() + c);
-							m_blocks_polygones[i].erase(m_blocks_polygones[i].begin() + c);
-						}
-						else
-						{
-							blocks[i][c] = bl_pos[0];
-							m_blocks_polygones[i][c] = bl_pol[0];
-						}
-						continue;
-					}
-					else if ((coords == m_blocks[i][j]->second - glm::vec3(0, 0, -1)))
-					{
-						update_blocks(m_blocks[i][j]);
-						if (bl_pol[0].m_blocks_polygones == f.m_blocks_polygones)
-						{
-							blocks[i].erase(blocks[i].begin() + c);
-							m_blocks_polygones[i].erase(m_blocks_polygones[i].begin() + c);
-						}
-						else
-						{
-							blocks[i][c] = bl_pos[0];
-							m_blocks_polygones[i][c] = bl_pol[0];
-						}
-						continue;
-					}
-					else if ((coords == m_blocks[i][j]->second - glm::vec3(1, 0, 0)))
-					{
-						update_blocks(m_blocks[i][j]);
-						if (bl_pol[0].m_blocks_polygones == f.m_blocks_polygones)
-						{
-							blocks[i].erase(blocks[i].begin() + c);
-							m_blocks_polygones[i].erase(m_blocks_polygones[i].begin() + c);
-						}
-						else
-						{
-							blocks[i][c] = bl_pos[0];
-							m_blocks_polygones[i][c] = bl_pol[0];
-						}
-						continue;
-					}
-					else if ((coords == m_blocks[i][j]->second - glm::vec3(-1, 0, 0)))
-					{
-						update_blocks(m_blocks[i][j]);
-						if (bl_pol[0].m_blocks_polygones == f.m_blocks_polygones)
-						{
-							blocks[i].erase(blocks[i].begin() + c);
-							m_blocks_polygones[i].erase(m_blocks_polygones[i].begin() + c);
-						}
-						else
-						{
-							blocks[i][c] = bl_pos[0];
-							m_blocks_polygones[i][c] = bl_pol[0];
-						}
-						continue;
-					}
+					update_blocks(m_blocks[i][j]);
+					m_blocks[i][j] = bl_pos[0];
+					m_blocks_polygones[i][j] = bl_pol[0];
+					continue;
+				}
+				else if ((coords == m_blocks[i][j]->second - glm::vec3(0, 0, 1)))
+				{
+					update_blocks(m_blocks[i][j]);
+					m_blocks[i][j] = bl_pos[0];
+					m_blocks_polygones[i][j] = bl_pol[0];
+					continue;
+				}
+				else if ((coords == m_blocks[i][j]->second - glm::vec3(0, 0, -1)))
+				{
+					update_blocks(m_blocks[i][j]);
+					m_blocks[i][j] = bl_pos[0];
+					m_blocks_polygones[i][j] = bl_pol[0];
+					continue;
+				}
+				else if ((coords == m_blocks[i][j]->second - glm::vec3(1, 0, 0)))
+				{
+					update_blocks(m_blocks[i][j]);
+					m_blocks[i][j] = bl_pos[0];
+					m_blocks_polygones[i][j] = bl_pol[0];
+					continue;
+				}
+				else if ((coords == m_blocks[i][j]->second - glm::vec3(-1, 0, 0)))
+				{
+					update_blocks(m_blocks[i][j]);
+					m_blocks[i][j] = bl_pos[0];
+					m_blocks_polygones[i][j] = bl_pol[0];
+					continue;
 				}
 			}
 		}
-	}
+	}*/
 
 	double angle(const glm::vec2& a, const glm::vec2& b)
 	{
@@ -349,132 +255,104 @@ namespace Renderer
 	{
 		glm::vec2 pos = glm::vec2(0.f);
 		float yaw = glm::radians(camera_rotation.y + 90.f);
-		pos.x += glm::cos(yaw) * 16;
-		pos.y -= glm::sin(yaw) * 16;
+		pos.x += glm::cos(yaw) * CHUNK_SIZE_X;
+		pos.y -= glm::sin(yaw) * CHUNK_SIZE_Y;
 		for (int i = 0; i < size(chunks_coords); i++)
 		{
-			if (chunks_coords[i].x * 16 - 8 <= camera_position.x && chunks_coords[i].x * 16 + 7 >= camera_position.x &&
-				chunks_coords[i].y * 16 - 8 <= camera_position.z && chunks_coords[i].y * 16 + 7 >= camera_position.z)
-			{
-				chunk->setPosition(chunks_coords[i]);
-				chunk->setBlocksPositions(blocks[i]);
-				chunk->setBlocksPolygones(m_blocks_polygones[i]);
-				chunk->render(camera_position);
-				continue;
-			}
-			else
-			{
-				if ((chunks_coords[i].x * 16 - 8) - camera_position.x <= pos.x && (chunks_coords[i].x * 16 + 7) - camera_position.x >= pos.x &&
-					(chunks_coords[i].y * 16 - 8) - camera_position.z <= pos.y && (chunks_coords[i].y * 16 + 7) - camera_position.z >= pos.y)
-				{
-					chunk->setPosition(chunks_coords[i]);
-					chunk->setBlocksPositions(blocks[i]);
-					chunk->setBlocksPolygones(m_blocks_polygones[i]);
-					chunk->render(camera_position);
-					continue;
-				}
-
-				if (angle(glm::vec2(chunks_coords[i].x * 16 - camera_position.x, chunks_coords[i].y * 16 - camera_position.z), pos) <= 100)
-				{
-					if (chunks_coords[i].x * 16 - camera_position.x < 1 * 16 && chunks_coords[i].y * 16 - camera_position.z < 1 * 16)
-					{
-						chunk->setPosition(chunks_coords[i]);
-						chunk->setBlocksPositions(blocks[i]);
-						chunk->setBlocksPolygones(m_blocks_polygones[i]);
-						chunk->render(camera_position);
-						continue;
-					}
-				}
-			}
+			chunk->setPosition(chunks_coords[i]);
+			chunk->setBlocksPositions(m_blocks[i]);
+			chunk->setBlocksPolygones(m_blocks_polygones[i]);
+			chunk->render(camera_position);
 		}
 	}
 
-	void ChunkRenderer::generate_world()
+	void ChunkRenderer::unload_world()
 	{
-		blocks.clear();
+		m_blocks.clear();
+		chunks_coords.clear();
 		m_blocks.clear();
 		m_blocks_polygones.clear();
-		chunk = std::make_unique<Game::Chunk>(std::move(m_pTexture), std::move(m_pShaderProgram));
-		srand(time(0));
-		float SEED = rand();
-		for (int u = -2; u <= 1; u++)
+		bl_pos.clear();
+		bl_pol.clear();
+	}
+
+	void ChunkRenderer::generate_world(const int u, const int v)
+	{
+		chunks_coords.push_back(glm::vec2(u, v));
+		bl_pos.clear();
+
+		for (int x = 0; x <= 15; x++)
 		{
-			for (int v = -2; v <= 1; v++)
+			for (int y = 0; y <= 15; y++)
 			{
-				chunks_coords.push_back(glm::vec2(u, v));
-				bl_pos.clear();
-				for (int x = -8; x <= 7; x++)
-				{
-					for (int y = -8; y <= 7; y++)
-					{
-						int _u, _v = 0;
-						if (u >= 0)
-						{
-							_u = x + u * 16;
-						}
-						else
-						{
-							_u = x + u * 16;
-						}
-						if (v >= 0)
-						{
-							_v = y + v * 16;
-						}
-						else
-						{
-							_v = y + v * 16;
-						}
-						float height = (int)(-glm::perlin(glm::vec3(_u * 0.05f, _v * 0.05f, SEED)) * 20) + 5;
-						bl_pos.push_back(std::make_shared<std::pair<std::string, glm::vec3>>(std::make_pair("Grass",      glm::vec3(_u, height, _v))));
-						bl_pos.push_back(std::make_shared<std::pair<std::string, glm::vec3>>(std::make_pair("Dirt",	      glm::vec3(_u, height - 1, _v))));
-						bl_pos.push_back(std::make_shared<std::pair<std::string, glm::vec3>>(std::make_pair("Dirt",	      glm::vec3(_u, height - 2, _v))));
-						bl_pos.push_back(std::make_shared<std::pair<std::string, glm::vec3>>(std::make_pair("Dirt",	      glm::vec3(_u, height - 3, _v))));
-						for (int i = height - 4; i >= -10; i--)
-							bl_pos.push_back(std::make_shared<std::pair<std::string, glm::vec3>>(std::make_pair("Coblestone", glm::vec3(_u, i, _v))));
-					}
-				}
-				m_blocks.push_back(bl_pos);
+				int _u = x + u * CHUNK_SIZE_X;
+				int _v = y + v * CHUNK_SIZE_Y;
+				int height = (int)(-glm::perlin(glm::vec3(_u * 0.05f, _v * 0.05f, SEED)) * 10) + 10;
+				for (int h = 0; h < height - 4; h++)
+					bl_pos.push_back("Coblestone");
+
+				bl_pos.push_back("Dirt");
+				bl_pos.push_back("Dirt");
+				bl_pos.push_back("Dirt");
+				bl_pos.push_back("Dirt");
+				bl_pos.push_back("Grass");
+
+				for (int h = height + 1; h < CHUNK_HEIGHT; h++)
+					bl_pos.push_back("Air");
 			}
 		}
-		//int height = (int)(-glm::perlin(glm::vec3(1 * 0.05f, 0 * 0.05f, SEED)) * 20) + 5;
-		//m_blocks[3].push_back(std::make_shared<std::pair<std::string, glm::vec3>>(std::make_pair("Wood",   glm::vec3( 1,  height + 1,  0))));
-		//m_blocks[3].push_back(std::make_shared<std::pair<std::string, glm::vec3>>(std::make_pair("Wood",   glm::vec3( 1,  height + 2,  0))));
-		//m_blocks[3].push_back(std::make_shared<std::pair<std::string, glm::vec3>>(std::make_pair("Wood",   glm::vec3( 1,  height + 3,  0))));
-		//m_blocks[3].push_back(std::make_shared<std::pair<std::string, glm::vec3>>(std::make_pair("Wood",   glm::vec3( 1,  height + 4,  0))));
-		//m_blocks[3].push_back(std::make_shared<std::pair<std::string, glm::vec3>>(std::make_pair("Wood",   glm::vec3( 1,  height + 5,  0))));
-		//m_blocks[3].push_back(std::make_shared<std::pair<std::string, glm::vec3>>(std::make_pair("Leaves", glm::vec3( 1,  height + 6,  0))));
-		//m_blocks[3].push_back(std::make_shared<std::pair<std::string, glm::vec3>>(std::make_pair("Leaves", glm::vec3( 2,  height + 6,  0))));
-		//m_blocks[3].push_back(std::make_shared<std::pair<std::string, glm::vec3>>(std::make_pair("Leaves", glm::vec3( 0,  height + 6,  0))));
-		//m_blocks[3].push_back(std::make_shared<std::pair<std::string, glm::vec3>>(std::make_pair("Leaves", glm::vec3( 1,  height + 6,  1))));
-		//m_blocks[3].push_back(std::make_shared<std::pair<std::string, glm::vec3>>(std::make_pair("Leaves", glm::vec3( 1,  height + 6, -1))));
-		//m_blocks[3].push_back(std::make_shared<std::pair<std::string, glm::vec3>>(std::make_pair("Leaves", glm::vec3( 2,  height + 5,  0))));
-		//m_blocks[3].push_back(std::make_shared<std::pair<std::string, glm::vec3>>(std::make_pair("Leaves", glm::vec3( 2,  height + 5, -1))));
-		//m_blocks[3].push_back(std::make_shared<std::pair<std::string, glm::vec3>>(std::make_pair("Leaves", glm::vec3( 0,  height + 5,  0))));
-		//m_blocks[3].push_back(std::make_shared<std::pair<std::string, glm::vec3>>(std::make_pair("Leaves", glm::vec3( 0,  height + 5,  1))));
-		//m_blocks[3].push_back(std::make_shared<std::pair<std::string, glm::vec3>>(std::make_pair("Leaves", glm::vec3( 1,  height + 5,  1))));
-		//m_blocks[3].push_back(std::make_shared<std::pair<std::string, glm::vec3>>(std::make_pair("Leaves", glm::vec3( 2,  height + 5,  1))));
-		//m_blocks[3].push_back(std::make_shared<std::pair<std::string, glm::vec3>>(std::make_pair("Leaves", glm::vec3( 1,  height + 5, -1))));
-		//m_blocks[3].push_back(std::make_shared<std::pair<std::string, glm::vec3>>(std::make_pair("Leaves", glm::vec3( 0,  height + 5, -1))));
-		//m_blocks[3].push_back(std::make_shared<std::pair<std::string, glm::vec3>>(std::make_pair("Leaves", glm::vec3( 2,  height + 4,  0))));
-		//m_blocks[3].push_back(std::make_shared<std::pair<std::string, glm::vec3>>(std::make_pair("Leaves", glm::vec3( 2,  height + 4, -1))));
-		//m_blocks[3].push_back(std::make_shared<std::pair<std::string, glm::vec3>>(std::make_pair("Leaves", glm::vec3( 0,  height + 4,  0))));
-		//m_blocks[3].push_back(std::make_shared<std::pair<std::string, glm::vec3>>(std::make_pair("Leaves", glm::vec3( 0,  height + 4,  1))));
-		//m_blocks[3].push_back(std::make_shared<std::pair<std::string, glm::vec3>>(std::make_pair("Leaves", glm::vec3( 1,  height + 4,  1))));
-		//m_blocks[3].push_back(std::make_shared<std::pair<std::string, glm::vec3>>(std::make_pair("Leaves", glm::vec3( 2,  height + 4,  1))));
-		//m_blocks[3].push_back(std::make_shared<std::pair<std::string, glm::vec3>>(std::make_pair("Leaves", glm::vec3( 1,  height + 4, -1))));
-		//m_blocks[3].push_back(std::make_shared<std::pair<std::string, glm::vec3>>(std::make_pair("Leaves", glm::vec3( 0,  height + 4, -1))));
+		m_blocks.push_back(bl_pos);
 
+		//int height = (int)(-glm::perlin(glm::vec3(1 * 0.05f, 0 * 0.05f, SEED)) * 30);
+		//m_blocks[0].push_back(std::make_shared<std::pair<std::string, glm::vec3>>(std::make_pair("Wood",   glm::vec3( 1,  height + 1,  0))));
+		//m_blocks[0].push_back(std::make_shared<std::pair<std::string, glm::vec3>>(std::make_pair("Wood",   glm::vec3( 1,  height + 2,  0))));
+		//m_blocks[0].push_back(std::make_shared<std::pair<std::string, glm::vec3>>(std::make_pair("Wood",   glm::vec3( 1,  height + 3,  0))));
+		//m_blocks[0].push_back(std::make_shared<std::pair<std::string, glm::vec3>>(std::make_pair("Wood",   glm::vec3( 1,  height + 4,  0))));
+		//m_blocks[0].push_back(std::make_shared<std::pair<std::string, glm::vec3>>(std::make_pair("Wood",   glm::vec3( 1,  height + 5,  0))));
+		//m_blocks[0].push_back(std::make_shared<std::pair<std::string, glm::vec3>>(std::make_pair("Leaves", glm::vec3( 1,  height + 6,  0))));
+		//m_blocks[0].push_back(std::make_shared<std::pair<std::string, glm::vec3>>(std::make_pair("Leaves", glm::vec3( 2,  height + 6,  0))));
+		//m_blocks[0].push_back(std::make_shared<std::pair<std::string, glm::vec3>>(std::make_pair("Leaves", glm::vec3( 0,  height + 6,  0))));
+		//m_blocks[0].push_back(std::make_shared<std::pair<std::string, glm::vec3>>(std::make_pair("Leaves", glm::vec3( 1,  height + 6,  1))));
+		//m_blocks[0].push_back(std::make_shared<std::pair<std::string, glm::vec3>>(std::make_pair("Leaves", glm::vec3( 1,  height + 6, -1))));
+		//m_blocks[0].push_back(std::make_shared<std::pair<std::string, glm::vec3>>(std::make_pair("Leaves", glm::vec3( 2,  height + 5,  0))));
+		//m_blocks[0].push_back(std::make_shared<std::pair<std::string, glm::vec3>>(std::make_pair("Leaves", glm::vec3( 2,  height + 5, -1))));
+		//m_blocks[0].push_back(std::make_shared<std::pair<std::string, glm::vec3>>(std::make_pair("Leaves", glm::vec3( 0,  height + 5,  0))));
+		//m_blocks[0].push_back(std::make_shared<std::pair<std::string, glm::vec3>>(std::make_pair("Leaves", glm::vec3( 0,  height + 5,  1))));
+		//m_blocks[0].push_back(std::make_shared<std::pair<std::string, glm::vec3>>(std::make_pair("Leaves", glm::vec3( 1,  height + 5,  1))));
+		//m_blocks[0].push_back(std::make_shared<std::pair<std::string, glm::vec3>>(std::make_pair("Leaves", glm::vec3( 2,  height + 5,  1))));
+		//m_blocks[0].push_back(std::make_shared<std::pair<std::string, glm::vec3>>(std::make_pair("Leaves", glm::vec3( 1,  height + 5, -1))));
+		//m_blocks[0].push_back(std::make_shared<std::pair<std::string, glm::vec3>>(std::make_pair("Leaves", glm::vec3( 0,  height + 5, -1))));
+		//m_blocks[0].push_back(std::make_shared<std::pair<std::string, glm::vec3>>(std::make_pair("Leaves", glm::vec3( 2,  height + 4,  0))));
+		//m_blocks[0].push_back(std::make_shared<std::pair<std::string, glm::vec3>>(std::make_pair("Leaves", glm::vec3( 2,  height + 4, -1))));
+		//m_blocks[0].push_back(std::make_shared<std::pair<std::string, glm::vec3>>(std::make_pair("Leaves", glm::vec3( 0,  height + 4,  0))));
+		//m_blocks[0].push_back(std::make_shared<std::pair<std::string, glm::vec3>>(std::make_pair("Leaves", glm::vec3( 0,  height + 4,  1))));
+		//m_blocks[0].push_back(std::make_shared<std::pair<std::string, glm::vec3>>(std::make_pair("Leaves", glm::vec3( 1,  height + 4,  1))));
+		//m_blocks[0].push_back(std::make_shared<std::pair<std::string, glm::vec3>>(std::make_pair("Leaves", glm::vec3( 2,  height + 4,  1))));
+		//m_blocks[0].push_back(std::make_shared<std::pair<std::string, glm::vec3>>(std::make_pair("Leaves", glm::vec3( 1,  height + 4, -1))));
+		//m_blocks[0].push_back(std::make_shared<std::pair<std::string, glm::vec3>>(std::make_pair("Leaves", glm::vec3( 0,  height + 4, -1))));
+	}
+
+	void ChunkRenderer::update_world()
+	{
+		m_blocks_polygones.clear();
 		for (int k = 0; k < size(m_blocks); k++)
 		{
-			bl_pos.clear();
 			bl_pol.clear();
-			for (int i = 0; i < size(m_blocks[k]); i++)
+			int i = 0;
+			for (int x = 0; x < CHUNK_SIZE_X; x++)
 			{
-				update_blocks(m_blocks[k][i]);
+				for (int z = 0; z < CHUNK_SIZE_Y; z++)
+				{
+					for (int y = 0; y < CHUNK_HEIGHT; y++)
+					{
+						update_blocks(std::make_pair(m_blocks[k][i], glm::vec3(chunks_coords[k].x * CHUNK_SIZE_X + x, y, chunks_coords[k].y * CHUNK_SIZE_Y + z)));
+						i++;
+					}
+				}
 			}
-			blocks.push_back(bl_pos);
 			m_blocks_polygones.push_back(bl_pol);
 		}
+		bl_pol.clear();
 	}
 
 	bool ChunkRenderer::getObjectsInArea(const glm::vec3& BottomLeftFront, const glm::vec3& TopRightFront, const glm::vec3& TopLeftBack)
@@ -482,11 +360,11 @@ namespace Renderer
 		bool is_colide = false;
 		for (int i = 0; i < size(chunks_coords); i++)
 		{
-			if (chunks_coords[i].x * 16 - 8 <= BottomLeftFront.x && chunks_coords[i].x * 16 + 7 >= BottomLeftFront.x &&
-				chunks_coords[i].y * 16 - 8 <= TopRightFront.z && chunks_coords[i].y * 16 + 7 >= TopRightFront.z)
+			if (chunks_coords[i].x * CHUNK_SIZE_X <= BottomLeftFront.x && chunks_coords[i].x * CHUNK_SIZE_X + CHUNK_SIZE_X - 1 >= BottomLeftFront.x &&
+				chunks_coords[i].y * CHUNK_SIZE_Y <= TopRightFront.z   && chunks_coords[i].y * CHUNK_SIZE_Y + CHUNK_SIZE_Y - 1 >= TopRightFront.z)
 			{
-				chunk->setBlocksPositions(m_blocks[i]);
-				is_colide = chunk->getObjectsInArea(BottomLeftFront, TopRightFront, TopLeftBack);
+				//chunk->setBlocksPositions(m_blocks[i]);
+				//is_colide = chunk->getObjectsInArea(BottomLeftFront, TopRightFront, TopLeftBack);
 			}
 		}
 		return is_colide;

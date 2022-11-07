@@ -40,6 +40,9 @@
     <ClCompile Include="C:\Users\Elisey\Games on C++\Minecraft\src\Physics\PhysicsEngine.cpp">
       <Filter>src\Physics</Filter>
     </ClCompile>
+    <ClCompile Include="C:\Users\Elisey\Games on C++\Minecraft\src\RenderEngine\OpenGL\Mesh.cpp">
+      <Filter>src\RenderEngine\OpenGL</Filter>
+    </ClCompile>
     <ClCompile Include="C:\Users\Elisey\Games on C++\Minecraft\src\RenderEngine\OpenGL\Polygon2D.cpp">
       <Filter>src\RenderEngine\OpenGL</Filter>
     </ClCompile>
@@ -116,6 +119,9 @@
     </ClInclude>
     <ClInclude Include="C:\Users\Elisey\Games on C++\Minecraft\src\Physics\PhysicsEngine.hpp">
       <Filter>src\Physics</Filter>
+    </ClInclude>
+    <ClInclude Include="C:\Users\Elisey\Games on C++\Minecraft\src\RenderEngine\OpenGL\Mesh.hpp">
+      <Filter>src\RenderEngine\OpenGL</Filter>
     </ClInclude>
     <ClInclude Include="C:\Users\Elisey\Games on C++\Minecraft\src\RenderEngine\OpenGL\Polygon2D.hpp">
       <Filter>src\RenderEngine\OpenGL</Filter>

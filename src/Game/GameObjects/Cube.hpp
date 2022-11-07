@@ -18,7 +18,6 @@ namespace Game
 	public:
 		Cube(std::shared_ptr<RenderEngine::Texture2D> pTexture,
 			 const std::vector<std::string>& initialSubTexture,
-			 std::shared_ptr<RenderEngine::ShaderProgram> pShaderProgram,
 			 glm::vec3& position = glm::vec3(0.f),
 			 glm::vec3& size = glm::vec3(0.99f),
 			 glm::vec4& rotation = glm::vec4(0.f));
@@ -34,7 +33,6 @@ namespace Game
 		const std::vector<Physics::AABB>& getColiders() const { return m_coliders; };
 	private:
 		std::shared_ptr<RenderEngine::Texture2D> m_pTexture;
-		std::shared_ptr<RenderEngine::ShaderProgram> m_pShaderProgram;
 		glm::vec3 m_position;
 		glm::vec3 m_size;
 		glm::vec4 m_rotation;

@@ -29,6 +29,7 @@ set(PUBLIC_INCLUDES
 
 	src/Physics/PhysicsEngine.hpp
 
+	src/RenderEngine/OpenGL/Mesh.hpp
 	src/RenderEngine/OpenGL/Polygon2D.hpp
 	src/RenderEngine/OpenGL/Animated_Polygon2D.hpp
 	src/RenderEngine/OpenGL/Texture2D.hpp
@@ -58,6 +59,7 @@ set(PUBLIC_SOURCES
 
 	src/Physics/PhysicsEngine.cpp
 
+	src/RenderEngine/OpenGL/Mesh.cpp
 	src/RenderEngine/OpenGL/Polygon2D.cpp
 	src/RenderEngine/OpenGL/Animated_Polygon2D.cpp
 	src/RenderEngine/OpenGL/Texture2D.cpp

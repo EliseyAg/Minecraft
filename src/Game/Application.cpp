@@ -33,6 +33,7 @@ namespace Game {
     void Application::openMenu()
     {
         m_game.m_eCurrentGameState = Game::EGameState::StartScreen;
+        Renderer::ChunkRenderer::unload_world();
     }
 
     int Application::start(unsigned int window_width, unsigned int window_height, const char* title, char** argv) {
@@ -136,6 +137,7 @@ namespace Game {
             m_pWindow->on_update();
         }
         ResourceManager::unloadAllResources();
+        Renderer::ChunkRenderer::unload_world();
 
         m_pWindow = nullptr;
 
@@ -189,8 +191,6 @@ namespace Game {
         m_pStartScreen = std::make_unique<GameStates::StartScreen>(pStartScreenTextureAtlas, "StartScreen", pPolygonShaderProgram);
         m_pButton2D = std::make_unique<Button2D>(pButtonsTextureAtlas, "New_Game", pPolygonShaderProgram);
         Renderer::ChunkRenderer::setTextureAtlas(pTextureAtlas);
-        Renderer::ChunkRenderer::setShaderProgram(pPolygonShaderProgram);
-        Renderer::ChunkRenderer::generate_world();
 
         pPolygonShaderProgram->bind();
         pPolygonShaderProgram->setInt("tex", 0);
@@ -227,6 +227,15 @@ namespace Game {
                 if (m_pButton2D->isPressed(x_pos, y_pos) && Game::Game::m_mouse_buttons_pressed[static_cast<size_t>(MouseButton::MOUSE_BUTTON_LEFT)])
                 {
                     m_eCurrentGameState = EGameState::Game;
+                    Renderer::ChunkRenderer::generate_seed();
+                    //Renderer::ChunkRenderer::generate_world(-1, -1);
+                    //Renderer::ChunkRenderer::generate_world(-1,  0);
+                    Renderer::ChunkRenderer::generate_world( 0, -1);
+                    Renderer::ChunkRenderer::generate_world( 0,  0);
+                    //Renderer::ChunkRenderer::generate_world( 1,  0);
+                    //Renderer::ChunkRenderer::generate_world( 0,  1);
+                    //Renderer::ChunkRenderer::generate_world( 1,  1);
+                    Renderer::ChunkRenderer::update_world();
                 }
                 break;
             }

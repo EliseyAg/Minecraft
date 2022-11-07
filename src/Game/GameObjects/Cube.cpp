@@ -18,12 +18,10 @@ namespace Game
 
 	Cube::Cube(std::shared_ptr<RenderEngine::Texture2D> pTexture,
 			   const std::vector<std::string>& initialSubTexture,
-			   std::shared_ptr<RenderEngine::ShaderProgram> pShaderProgram,
 			   glm::vec3& position,
 			   glm::vec3& size,
 			   glm::vec4& rotation)
 			   : m_pTexture(std::move(pTexture))
-			   , m_pShaderProgram(std::move(pShaderProgram))
 			   , m_position(std::move(position))
 			   , m_size(std::move(size))
 			   , m_rotation(std::move(rotation))

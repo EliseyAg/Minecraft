@@ -97,7 +97,7 @@ namespace Player
             if (Renderer::ChunkRenderer::getObjectsInArea(r_p, r_p, r_p))
             {
                 r_p = Renderer::ChunkRenderer::getObjectsInArea();
-                Renderer::ChunkRenderer::deleteBlock(r_p);
+                //Renderer::ChunkRenderer::deleteBlock(r_p);
             }
         }
         if (Game::Game::m_mouse_buttons_pressed[static_cast<size_t>(Game::MouseButton::MOUSE_BUTTON_LEFT)])
@@ -148,7 +148,7 @@ namespace Player
                     b = glm::vec3(0.f, 0.f, -1.f);
                 }
                 std::cout << ir_p.x << " " << ir_p.y << " " << ir_p.z << std::endl;
-                Renderer::ChunkRenderer::placeBlock(b + ir_p, current_item_type);
+                //Renderer::ChunkRenderer::placeBlock(b + ir_p, current_item_type);
             }
         }
         if (Game::Game::m_keys_pressed[static_cast<size_t>(Game::KeyCode::KEY_1)])
