@@ -1,207 +1,207 @@
 ﻿<?xml version="1.0" encoding="utf-8"?>
 <Project ToolsVersion="17.0" xmlns="http://schemas.microsoft.com/developer/msbuild/2003">
   <ItemGroup>
-    <ClCompile Include="C:\Users\Elisey\Games on C++\Minecraft\src\main.cpp">
+    <ClCompile Include="C:\Users\Elisey\Desktop\Projects\C++\Minecraft\src\main.cpp">
       <Filter>Source Files</Filter>
     </ClCompile>
-    <ClCompile Include="C:\Users\Elisey\Games on C++\Minecraft\src\Window\Window.cpp">
+    <ClCompile Include="C:\Users\Elisey\Desktop\Projects\C++\Minecraft\src\Window\Window.cpp">
       <Filter>src\Window</Filter>
     </ClCompile>
-    <ClCompile Include="C:\Users\Elisey\Games on C++\Minecraft\src\Game\Application.cpp">
+    <ClCompile Include="C:\Users\Elisey\Desktop\Projects\C++\Minecraft\src\Game\Application.cpp">
       <Filter>src\Game</Filter>
     </ClCompile>
-    <ClCompile Include="C:\Users\Elisey\Games on C++\Minecraft\src\Game\GameObjects\Cube.cpp">
+    <ClCompile Include="C:\Users\Elisey\Desktop\Projects\C++\Minecraft\src\Game\GameObjects\Cube.cpp">
       <Filter>src\Game\GameObjects</Filter>
     </ClCompile>
-    <ClCompile Include="C:\Users\Elisey\Games on C++\Minecraft\src\Game\GameObjects\Block.cpp">
+    <ClCompile Include="C:\Users\Elisey\Desktop\Projects\C++\Minecraft\src\Game\GameObjects\Block.cpp">
       <Filter>src\Game\GameObjects</Filter>
     </ClCompile>
-    <ClCompile Include="C:\Users\Elisey\Games on C++\Minecraft\src\Game\GameObjects\Chunk.cpp">
+    <ClCompile Include="C:\Users\Elisey\Desktop\Projects\C++\Minecraft\src\Game\GameObjects\Chunk.cpp">
       <Filter>src\Game\GameObjects</Filter>
     </ClCompile>
-    <ClCompile Include="C:\Users\Elisey\Games on C++\Minecraft\src\Game\GameObjects\Button2D.cpp">
+    <ClCompile Include="C:\Users\Elisey\Desktop\Projects\C++\Minecraft\src\Game\GameObjects\Button2D.cpp">
       <Filter>src\Game\GameObjects</Filter>
     </ClCompile>
-    <ClCompile Include="C:\Users\Elisey\Games on C++\Minecraft\src\Game\GameStates\StartScreen.cpp">
+    <ClCompile Include="C:\Users\Elisey\Desktop\Projects\C++\Minecraft\src\Game\GameStates\StartScreen.cpp">
       <Filter>src\Game\GameStates</Filter>
     </ClCompile>
-    <ClCompile Include="C:\Users\Elisey\Games on C++\Minecraft\src\Game\Renderer\ChunkRenderer.cpp">
+    <ClCompile Include="C:\Users\Elisey\Desktop\Projects\C++\Minecraft\src\Game\Renderer\ChunkRenderer.cpp">
       <Filter>src\Game\Renderer</Filter>
     </ClCompile>
-    <ClCompile Include="C:\Users\Elisey\Games on C++\Minecraft\src\Player\Camera.cpp">
+    <ClCompile Include="C:\Users\Elisey\Desktop\Projects\C++\Minecraft\src\Player\Camera.cpp">
       <Filter>src\Player</Filter>
     </ClCompile>
-    <ClCompile Include="C:\Users\Elisey\Games on C++\Minecraft\src\Player\Player.cpp">
+    <ClCompile Include="C:\Users\Elisey\Desktop\Projects\C++\Minecraft\src\Player\Player.cpp">
       <Filter>src\Player</Filter>
     </ClCompile>
-    <ClCompile Include="C:\Users\Elisey\Games on C++\Minecraft\src\Player\Ray.cpp">
+    <ClCompile Include="C:\Users\Elisey\Desktop\Projects\C++\Minecraft\src\Player\Ray.cpp">
       <Filter>src\Player</Filter>
     </ClCompile>
-    <ClCompile Include="C:\Users\Elisey\Games on C++\Minecraft\src\Physics\PhysicsEngine.cpp">
+    <ClCompile Include="C:\Users\Elisey\Desktop\Projects\C++\Minecraft\src\Physics\PhysicsEngine.cpp">
       <Filter>src\Physics</Filter>
     </ClCompile>
-    <ClCompile Include="C:\Users\Elisey\Games on C++\Minecraft\src\RenderEngine\OpenGL\Mesh.cpp">
+    <ClCompile Include="C:\Users\Elisey\Desktop\Projects\C++\Minecraft\src\RenderEngine\OpenGL\Mesh.cpp">
       <Filter>src\RenderEngine\OpenGL</Filter>
     </ClCompile>
-    <ClCompile Include="C:\Users\Elisey\Games on C++\Minecraft\src\RenderEngine\OpenGL\Polygon2D.cpp">
+    <ClCompile Include="C:\Users\Elisey\Desktop\Projects\C++\Minecraft\src\RenderEngine\OpenGL\Polygon2D.cpp">
       <Filter>src\RenderEngine\OpenGL</Filter>
     </ClCompile>
-    <ClCompile Include="C:\Users\Elisey\Games on C++\Minecraft\src\RenderEngine\OpenGL\Animated_Polygon2D.cpp">
+    <ClCompile Include="C:\Users\Elisey\Desktop\Projects\C++\Minecraft\src\RenderEngine\OpenGL\Animated_Polygon2D.cpp">
       <Filter>src\RenderEngine\OpenGL</Filter>
     </ClCompile>
-    <ClCompile Include="C:\Users\Elisey\Games on C++\Minecraft\src\RenderEngine\OpenGL\Texture2D.cpp">
+    <ClCompile Include="C:\Users\Elisey\Desktop\Projects\C++\Minecraft\src\RenderEngine\OpenGL\Texture2D.cpp">
       <Filter>src\RenderEngine\OpenGL</Filter>
     </ClCompile>
-    <ClCompile Include="C:\Users\Elisey\Games on C++\Minecraft\src\RenderEngine\OpenGL\ShaderProgram.cpp">
+    <ClCompile Include="C:\Users\Elisey\Desktop\Projects\C++\Minecraft\src\RenderEngine\OpenGL\ShaderProgram.cpp">
       <Filter>src\RenderEngine\OpenGL</Filter>
     </ClCompile>
-    <ClCompile Include="C:\Users\Elisey\Games on C++\Minecraft\src\RenderEngine\OpenGL\VertexBuffer.cpp">
+    <ClCompile Include="C:\Users\Elisey\Desktop\Projects\C++\Minecraft\src\RenderEngine\OpenGL\VertexBuffer.cpp">
       <Filter>src\RenderEngine\OpenGL</Filter>
     </ClCompile>
-    <ClCompile Include="C:\Users\Elisey\Games on C++\Minecraft\src\RenderEngine\OpenGL\VertexBufferLayout.cpp">
+    <ClCompile Include="C:\Users\Elisey\Desktop\Projects\C++\Minecraft\src\RenderEngine\OpenGL\VertexBufferLayout.cpp">
       <Filter>src\RenderEngine\OpenGL</Filter>
     </ClCompile>
-    <ClCompile Include="C:\Users\Elisey\Games on C++\Minecraft\src\RenderEngine\OpenGL\IndexBuffer.cpp">
+    <ClCompile Include="C:\Users\Elisey\Desktop\Projects\C++\Minecraft\src\RenderEngine\OpenGL\IndexBuffer.cpp">
       <Filter>src\RenderEngine\OpenGL</Filter>
     </ClCompile>
-    <ClCompile Include="C:\Users\Elisey\Games on C++\Minecraft\src\RenderEngine\OpenGL\VertexArray.cpp">
+    <ClCompile Include="C:\Users\Elisey\Desktop\Projects\C++\Minecraft\src\RenderEngine\OpenGL\VertexArray.cpp">
       <Filter>src\RenderEngine\OpenGL</Filter>
     </ClCompile>
-    <ClCompile Include="C:\Users\Elisey\Games on C++\Minecraft\src\RenderEngine\OpenGL\Renderer.cpp">
+    <ClCompile Include="C:\Users\Elisey\Desktop\Projects\C++\Minecraft\src\RenderEngine\OpenGL\Renderer.cpp">
       <Filter>src\RenderEngine\OpenGL</Filter>
     </ClCompile>
-    <ClCompile Include="C:\Users\Elisey\Games on C++\Minecraft\src\Resources\ResourceManager.cpp">
+    <ClCompile Include="C:\Users\Elisey\Desktop\Projects\C++\Minecraft\src\Resources\ResourceManager.cpp">
       <Filter>src\Resources</Filter>
     </ClCompile>
   </ItemGroup>
   <ItemGroup>
-    <ClInclude Include="C:\Users\Elisey\Games on C++\Minecraft\external\stb_image\stb_image.h">
+    <ClInclude Include="C:\Users\Elisey\Desktop\Projects\C++\Minecraft\external\stb_image\stb_image.h">
       <Filter>external\stb_image</Filter>
     </ClInclude>
-    <ClInclude Include="C:\Users\Elisey\Games on C++\Minecraft\src\Window\Window.hpp">
+    <ClInclude Include="C:\Users\Elisey\Desktop\Projects\C++\Minecraft\src\Window\Window.hpp">
       <Filter>src\Window</Filter>
     </ClInclude>
-    <ClInclude Include="C:\Users\Elisey\Games on C++\Minecraft\src\Game\Application.hpp">
+    <ClInclude Include="C:\Users\Elisey\Desktop\Projects\C++\Minecraft\src\Game\Application.hpp">
       <Filter>src\Game</Filter>
     </ClInclude>
-    <ClInclude Include="C:\Users\Elisey\Games on C++\Minecraft\src\Game\GameObjects\Cube.hpp">
+    <ClInclude Include="C:\Users\Elisey\Desktop\Projects\C++\Minecraft\src\Game\GameObjects\Cube.hpp">
       <Filter>src\Game\GameObjects</Filter>
     </ClInclude>
-    <ClInclude Include="C:\Users\Elisey\Games on C++\Minecraft\src\Game\GameObjects\Block.hpp">
+    <ClInclude Include="C:\Users\Elisey\Desktop\Projects\C++\Minecraft\src\Game\GameObjects\Block.hpp">
       <Filter>src\Game\GameObjects</Filter>
     </ClInclude>
-    <ClInclude Include="C:\Users\Elisey\Games on C++\Minecraft\src\Game\GameObjects\Chunk.hpp">
+    <ClInclude Include="C:\Users\Elisey\Desktop\Projects\C++\Minecraft\src\Game\GameObjects\Chunk.hpp">
       <Filter>src\Game\GameObjects</Filter>
     </ClInclude>
-    <ClInclude Include="C:\Users\Elisey\Games on C++\Minecraft\src\Game\GameObjects\Button2D.hpp">
+    <ClInclude Include="C:\Users\Elisey\Desktop\Projects\C++\Minecraft\src\Game\GameObjects\Button2D.hpp">
       <Filter>src\Game\GameObjects</Filter>
     </ClInclude>
-    <ClInclude Include="C:\Users\Elisey\Games on C++\Minecraft\src\Game\GameStates\StartScreen.hpp">
+    <ClInclude Include="C:\Users\Elisey\Desktop\Projects\C++\Minecraft\src\Game\GameStates\StartScreen.hpp">
       <Filter>src\Game\GameStates</Filter>
     </ClInclude>
-    <ClInclude Include="C:\Users\Elisey\Games on C++\Minecraft\src\Game\Renderer\ChunkRenderer.hpp">
+    <ClInclude Include="C:\Users\Elisey\Desktop\Projects\C++\Minecraft\src\Game\Renderer\ChunkRenderer.hpp">
       <Filter>src\Game\Renderer</Filter>
     </ClInclude>
-    <ClInclude Include="C:\Users\Elisey\Games on C++\Minecraft\src\Events\Event.hpp">
+    <ClInclude Include="C:\Users\Elisey\Desktop\Projects\C++\Minecraft\src\Events\Event.hpp">
       <Filter>src\Events</Filter>
     </ClInclude>
-    <ClInclude Include="C:\Users\Elisey\Games on C++\Minecraft\src\Events\Keys.hpp">
+    <ClInclude Include="C:\Users\Elisey\Desktop\Projects\C++\Minecraft\src\Events\Keys.hpp">
       <Filter>src\Events</Filter>
     </ClInclude>
-    <ClInclude Include="C:\Users\Elisey\Games on C++\Minecraft\src\Player\Camera.hpp">
+    <ClInclude Include="C:\Users\Elisey\Desktop\Projects\C++\Minecraft\src\Player\Camera.hpp">
       <Filter>src\Player</Filter>
     </ClInclude>
-    <ClInclude Include="C:\Users\Elisey\Games on C++\Minecraft\src\Player\Player.hpp">
+    <ClInclude Include="C:\Users\Elisey\Desktop\Projects\C++\Minecraft\src\Player\Player.hpp">
       <Filter>src\Player</Filter>
     </ClInclude>
-    <ClInclude Include="C:\Users\Elisey\Games on C++\Minecraft\src\Player\Ray.hpp">
+    <ClInclude Include="C:\Users\Elisey\Desktop\Projects\C++\Minecraft\src\Player\Ray.hpp">
       <Filter>src\Player</Filter>
     </ClInclude>
-    <ClInclude Include="C:\Users\Elisey\Games on C++\Minecraft\src\Physics\PhysicsEngine.hpp">
+    <ClInclude Include="C:\Users\Elisey\Desktop\Projects\C++\Minecraft\src\Physics\PhysicsEngine.hpp">
       <Filter>src\Physics</Filter>
     </ClInclude>
-    <ClInclude Include="C:\Users\Elisey\Games on C++\Minecraft\src\RenderEngine\OpenGL\Mesh.hpp">
+    <ClInclude Include="C:\Users\Elisey\Desktop\Projects\C++\Minecraft\src\RenderEngine\OpenGL\Mesh.hpp">
       <Filter>src\RenderEngine\OpenGL</Filter>
     </ClInclude>
-    <ClInclude Include="C:\Users\Elisey\Games on C++\Minecraft\src\RenderEngine\OpenGL\Polygon2D.hpp">
+    <ClInclude Include="C:\Users\Elisey\Desktop\Projects\C++\Minecraft\src\RenderEngine\OpenGL\Polygon2D.hpp">
       <Filter>src\RenderEngine\OpenGL</Filter>
     </ClInclude>
-    <ClInclude Include="C:\Users\Elisey\Games on C++\Minecraft\src\RenderEngine\OpenGL\Animated_Polygon2D.hpp">
+    <ClInclude Include="C:\Users\Elisey\Desktop\Projects\C++\Minecraft\src\RenderEngine\OpenGL\Animated_Polygon2D.hpp">
       <Filter>src\RenderEngine\OpenGL</Filter>
     </ClInclude>
-    <ClInclude Include="C:\Users\Elisey\Games on C++\Minecraft\src\RenderEngine\OpenGL\Texture2D.hpp">
+    <ClInclude Include="C:\Users\Elisey\Desktop\Projects\C++\Minecraft\src\RenderEngine\OpenGL\Texture2D.hpp">
       <Filter>src\RenderEngine\OpenGL</Filter>
     </ClInclude>
-    <ClInclude Include="C:\Users\Elisey\Games on C++\Minecraft\src\RenderEngine\OpenGL\ShaderProgram.hpp">
+    <ClInclude Include="C:\Users\Elisey\Desktop\Projects\C++\Minecraft\src\RenderEngine\OpenGL\ShaderProgram.hpp">
       <Filter>src\RenderEngine\OpenGL</Filter>
     </ClInclude>
-    <ClInclude Include="C:\Users\Elisey\Games on C++\Minecraft\src\RenderEngine\OpenGL\VertexBuffer.hpp">
+    <ClInclude Include="C:\Users\Elisey\Desktop\Projects\C++\Minecraft\src\RenderEngine\OpenGL\VertexBuffer.hpp">
       <Filter>src\RenderEngine\OpenGL</Filter>
     </ClInclude>
-    <ClInclude Include="C:\Users\Elisey\Games on C++\Minecraft\src\RenderEngine\OpenGL\VertexBufferLayout.hpp">
+    <ClInclude Include="C:\Users\Elisey\Desktop\Projects\C++\Minecraft\src\RenderEngine\OpenGL\VertexBufferLayout.hpp">
       <Filter>src\RenderEngine\OpenGL</Filter>
     </ClInclude>
-    <ClInclude Include="C:\Users\Elisey\Games on C++\Minecraft\src\RenderEngine\OpenGL\IndexBuffer.hpp">
+    <ClInclude Include="C:\Users\Elisey\Desktop\Projects\C++\Minecraft\src\RenderEngine\OpenGL\IndexBuffer.hpp">
       <Filter>src\RenderEngine\OpenGL</Filter>
     </ClInclude>
-    <ClInclude Include="C:\Users\Elisey\Games on C++\Minecraft\src\RenderEngine\OpenGL\VertexArray.hpp">
+    <ClInclude Include="C:\Users\Elisey\Desktop\Projects\C++\Minecraft\src\RenderEngine\OpenGL\VertexArray.hpp">
       <Filter>src\RenderEngine\OpenGL</Filter>
     </ClInclude>
-    <ClInclude Include="C:\Users\Elisey\Games on C++\Minecraft\src\RenderEngine\OpenGL\Renderer.hpp">
+    <ClInclude Include="C:\Users\Elisey\Desktop\Projects\C++\Minecraft\src\RenderEngine\OpenGL\Renderer.hpp">
       <Filter>src\RenderEngine\OpenGL</Filter>
     </ClInclude>
-    <ClInclude Include="C:\Users\Elisey\Games on C++\Minecraft\src\Resources\ResourceManager.hpp">
+    <ClInclude Include="C:\Users\Elisey\Desktop\Projects\C++\Minecraft\src\Resources\ResourceManager.hpp">
       <Filter>src\Resources</Filter>
     </ClInclude>
   </ItemGroup>
   <ItemGroup>
-    <CustomBuild Include="C:\Users\Elisey\Games on C++\Minecraft\CMakeLists.txt" />
+    <CustomBuild Include="C:\Users\Elisey\Desktop\Projects\C++\Minecraft\CMakeLists.txt" />
   </ItemGroup>
   <ItemGroup>
     <Filter Include="Source Files">
-      <UniqueIdentifier>{34ED2B16-AC64-3D91-8744-A0924A3B05C7}</UniqueIdentifier>
+      <UniqueIdentifier>{39B67731-9B20-3180-A8C6-477CEBCF01A8}</UniqueIdentifier>
     </Filter>
     <Filter Include="external">
-      <UniqueIdentifier>{A5CA11A8-5727-315D-BEA2-D41093C4C0BF}</UniqueIdentifier>
+      <UniqueIdentifier>{5AB6E476-175C-3BA2-A57A-F16DBC67F59D}</UniqueIdentifier>
     </Filter>
     <Filter Include="external\stb_image">
-      <UniqueIdentifier>{93791694-CEA1-3AEB-9120-B28903524CCE}</UniqueIdentifier>
+      <UniqueIdentifier>{50C3AC8C-F2C0-37F0-A39A-5CB71E29DBCD}</UniqueIdentifier>
     </Filter>
     <Filter Include="src">
-      <UniqueIdentifier>{CC52659C-6AE6-3BEC-81AA-AADC9F2030FA}</UniqueIdentifier>
+      <UniqueIdentifier>{28F505E8-1EE5-351C-AD65-4490174991F1}</UniqueIdentifier>
     </Filter>
     <Filter Include="src\Events">
-      <UniqueIdentifier>{53AB9DE4-7B78-38A9-A6FA-FDC4AD6EAD46}</UniqueIdentifier>
+      <UniqueIdentifier>{811D5C29-3D2B-3A4E-BDAE-8104ED2B9891}</UniqueIdentifier>
     </Filter>
     <Filter Include="src\Game">
-      <UniqueIdentifier>{D57D0BAE-A238-3D6C-8DEE-0C81027BA3D0}</UniqueIdentifier>
+      <UniqueIdentifier>{D44B1462-A0AB-3153-B007-76456CABC60E}</UniqueIdentifier>
     </Filter>
     <Filter Include="src\Game\GameObjects">
-      <UniqueIdentifier>{8519BEF7-50FD-303C-BE8F-BC175595DB4A}</UniqueIdentifier>
+      <UniqueIdentifier>{7135B407-19DD-3FD9-B6A3-5456D99437AC}</UniqueIdentifier>
     </Filter>
     <Filter Include="src\Game\GameStates">
-      <UniqueIdentifier>{A064F034-7A5C-300D-A457-94AC63547610}</UniqueIdentifier>
+      <UniqueIdentifier>{7609E58A-0822-387D-9BF9-A524D5C477B3}</UniqueIdentifier>
     </Filter>
     <Filter Include="src\Game\Renderer">
-      <UniqueIdentifier>{C160DFA1-F353-387E-BF07-C28FD075A8D4}</UniqueIdentifier>
+      <UniqueIdentifier>{C6E51F35-4ADB-32F4-872B-8CD1E93D30BA}</UniqueIdentifier>
     </Filter>
     <Filter Include="src\Physics">
-      <UniqueIdentifier>{9CB3983F-4D7F-388E-BF60-BCDCA0451A53}</UniqueIdentifier>
+      <UniqueIdentifier>{B780DB92-E02B-30CC-9D03-EF93AD89059A}</UniqueIdentifier>
     </Filter>
     <Filter Include="src\Player">
-      <UniqueIdentifier>{BEDE7DE3-B4CC-3B6E-B280-EA59F91489A0}</UniqueIdentifier>
+      <UniqueIdentifier>{6A4DD812-4D6E-3AE0-A542-0ED925E60B91}</UniqueIdentifier>
     </Filter>
     <Filter Include="src\RenderEngine">
-      <UniqueIdentifier>{8C598B78-D795-3540-9D35-1B2E1847A125}</UniqueIdentifier>
+      <UniqueIdentifier>{99AEA85F-578D-3CE9-9B63-15544870840F}</UniqueIdentifier>
     </Filter>
     <Filter Include="src\RenderEngine\OpenGL">
-      <UniqueIdentifier>{DCC60672-2F83-33CC-95D2-8EECD8CD35AF}</UniqueIdentifier>
+      <UniqueIdentifier>{4A9AD50E-35C9-3790-99F1-2F9810AE05F0}</UniqueIdentifier>
     </Filter>
     <Filter Include="src\Resources">
-      <UniqueIdentifier>{FB86D747-323B-3D5D-8E04-A26F198671BE}</UniqueIdentifier>
+      <UniqueIdentifier>{1FF21CEE-6B59-3237-A609-98A7A3DC745C}</UniqueIdentifier>
     </Filter>
     <Filter Include="src\Window">
-      <UniqueIdentifier>{A24DA3D9-1D77-3F00-AA21-E0E4FC280028}</UniqueIdentifier>
+      <UniqueIdentifier>{A9E81A16-CDB0-303F-A3D6-366DD0B01D3B}</UniqueIdentifier>
     </Filter>
   </ItemGroup>
 </Project>

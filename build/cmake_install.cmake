@@ -1,4 +1,4 @@
-# Install script for directory: C:/Users/Elisey/Games on C++/Minecraft
+# Install script for directory: C:/Users/Elisey/Desktop/Projects/C++/Minecraft
 
 # Set the install prefix
 if(NOT DEFINED CMAKE_INSTALL_PREFIX)
@@ -34,9 +34,9 @@ endif()
 
 if(NOT CMAKE_INSTALL_LOCAL_ONLY)
   # Include the install script for each subdirectory.
-  include("C:/Users/Elisey/Games on C++/Minecraft/build/glfw/cmake_install.cmake")
-  include("C:/Users/Elisey/Games on C++/Minecraft/build/glad/cmake_install.cmake")
-  include("C:/Users/Elisey/Games on C++/Minecraft/build/glm/cmake_install.cmake")
+  include("C:/Users/Elisey/Desktop/Projects/C++/Minecraft/build/glfw/cmake_install.cmake")
+  include("C:/Users/Elisey/Desktop/Projects/C++/Minecraft/build/glad/cmake_install.cmake")
+  include("C:/Users/Elisey/Desktop/Projects/C++/Minecraft/build/glm/cmake_install.cmake")
 
 endif()
 
@@ -48,5 +48,5 @@ endif()
 
 string(REPLACE ";" "\n" CMAKE_INSTALL_MANIFEST_CONTENT
        "${CMAKE_INSTALL_MANIFEST_FILES}")
-file(WRITE "C:/Users/Elisey/Games on C++/Minecraft/build/${CMAKE_INSTALL_MANIFEST}"
+file(WRITE "C:/Users/Elisey/Desktop/Projects/C++/Minecraft/build/${CMAKE_INSTALL_MANIFEST}"
      "${CMAKE_INSTALL_MANIFEST_CONTENT}")

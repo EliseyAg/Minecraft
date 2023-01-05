@@ -45,6 +45,10 @@ namespace Game {
         EventDispatcher m_event_dispatcher;
         bool m_bCloseWindow = false;
 
+        float camera_fov = 60.f;
+        float camera_near_plane = 0.1f;
+        float camera_far_plane = 100.f;
+
         int xpos;
         int ypos;
     };

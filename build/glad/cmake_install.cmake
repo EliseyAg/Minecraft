@@ -1,4 +1,4 @@
-# Install script for directory: C:/Users/Elisey/Games on C++/Minecraft/external/glad
+# Install script for directory: C:/Users/Elisey/Desktop/Projects/C++/Minecraft/external/glad
 
 # Set the install prefix
 if(NOT DEFINED CMAKE_INSTALL_PREFIX)

@@ -3,7 +3,7 @@
 #include "IndexBuffer.hpp"
 #include "VertexArray.hpp"
 
-namespace Rendering
+namespace Renderer
 {
 	class Renderer;
 
@@ -15,8 +15,8 @@ namespace Rendering
 
 	private:
 		size_t vertices;
-		Rendering::VertexArray m_vertexArray;
-		Rendering::VertexBuffer m_vertexCoordsBuffer;
-		Rendering::VertexBuffer m_textureCoordsBuffer;
+		Renderer::VertexArray m_vertexArray;
+		Renderer::VertexBuffer m_vertexCoordsBuffer;
+		Renderer::VertexBuffer m_textureCoordsBuffer;
 	};
 }

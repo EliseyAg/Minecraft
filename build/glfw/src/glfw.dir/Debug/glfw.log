@@ -1,4 +1,4 @@
-﻿  Building Custom Rule C:/Users/Elisey/Games on C++/Minecraft/external/glfw/src/CMakeLists.txt
+﻿  Building Custom Rule C:/Users/Elisey/Desktop/Projects/C++/Minecraft/external/glfw/src/CMakeLists.txt
   context.c
   init.c
   input.c
@@ -23,4 +23,4 @@
   Компиляция...
   wgl_context.c
   Создание кода...
-  glfw.vcxproj -> C:\Users\Elisey\Games on C++\Minecraft\build\glfw\src\Debug\glfw3.lib
+  glfw.vcxproj -> C:\Users\Elisey\Desktop\Projects\C++\Minecraft\build\glfw\src\Debug\glfw3.lib

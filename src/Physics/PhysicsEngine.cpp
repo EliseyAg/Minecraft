@@ -23,7 +23,7 @@ namespace Physics
 		{
 			if (currentObject->getCurrentVelocity() != glm::vec3(0.f))
 			{
-				const auto newPosition = currentObject->get_camera_position()
+				const auto newPosition = currentObject->get_position()
 					+ (currentObject->get_direction() * static_cast<float>(currentObject->getCurrentVelocity().x * delta / 10000000))
 					+ (currentObject->get_right() * static_cast<float>(currentObject->getCurrentVelocity().y * delta / 10000000))
 					+ (currentObject->get_up() * static_cast<float>(currentObject->getCurrentVelocity().z * delta / 10000000));
@@ -31,7 +31,7 @@ namespace Physics
 				if (!Renderer::ChunkRenderer::getObjectsInArea(newPosition + currentObject->getColiders()[0].BottomLeftFront,
 															  newPosition + currentObject->getColiders()[0].TopLeftBack, 
 															  newPosition + currentObject->getColiders()[0].TopRightFront))
-					currentObject->get_camera_position() = newPosition;
+					currentObject->get_position() = newPosition;
 			}
 		}
 	}

@@ -1,5 +1,23 @@
-﻿  ChunkRenderer.cpp
-C:\Users\Elisey\Games on C++\Minecraft\src\Game\Renderer\../GameObjects/Chunk.hpp(23): warning C4091: static : пропускается слева от "Game::Chunk::s_blocks_polygones", когда ни одна переменная не объявлена
-C:\Users\Elisey\Games on C++\Minecraft\src\Game\Renderer\ChunkRenderer.cpp(30,13): warning C4244: аргумент: преобразование "time_t" в "unsigned int", возможна потеря данных
-C:\Users\Elisey\Games on C++\Minecraft\src\Game\Renderer\ChunkRenderer.cpp(31,30): warning C4244: инициализация: преобразование "double" в "unsigned __int64", возможна потеря данных
-  Minecraft.vcxproj -> C:\Users\Elisey\Games on C++\Minecraft\build\bin\Debug\Minecraft.exe
+﻿  Application.cpp
+C:\Users\Elisey\Desktop\Projects\C++\Minecraft\src\Game\Renderer\../GameObjects/Chunk.hpp(23,67): warning C4091: static : пропускается слева от "Game::Chunk::s_blocks_polygones", когда ни одна переменная не объявлена
+C:\Users\Elisey\Desktop\Projects\C++\Minecraft\src\Game\Application.cpp(67,60): warning C4244: аргумент: преобразование "unsigned int" в "const float", возможна потеря данных
+C:\Users\Elisey\Desktop\Projects\C++\Minecraft\src\Game\Application.cpp(67,47): warning C4244: аргумент: преобразование "unsigned int" в "const float", возможна потеря данных
+C:\Users\Elisey\Desktop\Projects\C++\Minecraft\src\Game\Application.cpp(74,45): warning C4244: =: преобразование "double" в "float", возможна потеря данных
+C:\Users\Elisey\Desktop\Projects\C++\Minecraft\src\Game\Application.cpp(75,45): warning C4244: =: преобразование "double" в "float", возможна потеря данных
+C:\Users\Elisey\Desktop\Projects\C++\Minecraft\src\Game\Application.cpp(76,53): warning C4244: =: преобразование "double" в "int", возможна потеря данных
+C:\Users\Elisey\Desktop\Projects\C++\Minecraft\src\Game\Application.cpp(77,53): warning C4244: =: преобразование "double" в "int", возможна потеря данных
+C:\Users\Elisey\Desktop\Projects\C++\Minecraft\src\Game\Application.cpp(123,44): warning C4244: аргумент: преобразование "uint64_t" в "const double", возможна потеря данных
+  PhysicsEngine.cpp
+C:\Users\Elisey\Desktop\Projects\C++\Minecraft\src\Game\Renderer\../GameObjects/Chunk.hpp(23,67): warning C4091: static : пропускается слева от "Game::Chunk::s_blocks_polygones", когда ни одна переменная не объявлена
+  Camera.cpp
+  Player.cpp
+C:\Users\Elisey\Desktop\Projects\C++\Minecraft\src\Game\Renderer\../GameObjects/Chunk.hpp(23,67): warning C4091: static : пропускается слева от "Game::Chunk::s_blocks_polygones", когда ни одна переменная не объявлена
+C:\Users\Elisey\Desktop\Projects\C++\Minecraft\src\Player\Player.cpp(114,26): warning C4244: =: преобразование "double" в "float", возможна потеря данных
+C:\Users\Elisey\Desktop\Projects\C++\Minecraft\src\Player\Player.cpp(120,26): warning C4244: =: преобразование "double" в "float", возможна потеря данных
+C:\Users\Elisey\Desktop\Projects\C++\Minecraft\src\Player\Player.cpp(126,26): warning C4244: =: преобразование "double" в "float", возможна потеря данных
+C:\Users\Elisey\Desktop\Projects\C++\Minecraft\src\Player\Player.cpp(132,26): warning C4244: =: преобразование "double" в "float", возможна потеря данных
+C:\Users\Elisey\Desktop\Projects\C++\Minecraft\src\Player\Player.cpp(138,26): warning C4244: =: преобразование "double" в "float", возможна потеря данных
+C:\Users\Elisey\Desktop\Projects\C++\Minecraft\src\Player\Player.cpp(144,26): warning C4244: =: преобразование "double" в "float", возможна потеря данных
+  main.cpp
+  Создание кода...
+  Minecraft.vcxproj -> C:\Users\Elisey\Desktop\Projects\C++\Minecraft\build\bin\Debug\Minecraft.exe

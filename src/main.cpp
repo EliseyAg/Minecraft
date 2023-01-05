@@ -22,7 +22,7 @@ class MyApp : public Game::Application
 int main(int argc, char** argv)
 {
     auto myApp = std::make_unique<MyApp>();
-    int returnCode = myApp->start(1024, 1024, "Minecraft", argv);
+    int returnCode = myApp->start(800, 800, "Minecraft", argv);
 
     return returnCode;
 }

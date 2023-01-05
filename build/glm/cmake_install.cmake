@@ -1,4 +1,4 @@
-# Install script for directory: C:/Users/Elisey/Games on C++/Minecraft/external/glm
+# Install script for directory: C:/Users/Elisey/Desktop/Projects/C++/Minecraft/external/glm
 
 # Set the install prefix
 if(NOT DEFINED CMAKE_INSTALL_PREFIX)
@@ -34,7 +34,7 @@ endif()
 
 if(NOT CMAKE_INSTALL_LOCAL_ONLY)
   # Include the install script for each subdirectory.
-  include("C:/Users/Elisey/Games on C++/Minecraft/build/glm/glm/cmake_install.cmake")
+  include("C:/Users/Elisey/Desktop/Projects/C++/Minecraft/build/glm/glm/cmake_install.cmake")
 
 endif()
 

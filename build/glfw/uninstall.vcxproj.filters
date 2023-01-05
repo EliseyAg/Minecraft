@@ -1,17 +1,17 @@
 ﻿<?xml version="1.0" encoding="utf-8"?>
 <Project ToolsVersion="17.0" xmlns="http://schemas.microsoft.com/developer/msbuild/2003">
   <ItemGroup>
-    <CustomBuild Include="C:\Users\Elisey\Games on C++\Minecraft\build\CMakeFiles\fae55c3c3dc1a4570b928497f9c4d28c\uninstall.rule">
+    <CustomBuild Include="C:\Users\Elisey\Desktop\Projects\C++\Minecraft\build\CMakeFiles\4a24002c245920caf1db6d2369706384\uninstall.rule">
       <Filter>CMake Rules</Filter>
     </CustomBuild>
-    <CustomBuild Include="C:\Users\Elisey\Games on C++\Minecraft\external\glfw\CMakeLists.txt" />
+    <CustomBuild Include="C:\Users\Elisey\Desktop\Projects\C++\Minecraft\external\glfw\CMakeLists.txt" />
   </ItemGroup>
   <ItemGroup>
-    <None Include="C:\Users\Elisey\Games on C++\Minecraft\build\glfw\CMakeFiles\uninstall" />
+    <None Include="C:\Users\Elisey\Desktop\Projects\C++\Minecraft\build\glfw\CMakeFiles\uninstall" />
   </ItemGroup>
   <ItemGroup>
     <Filter Include="CMake Rules">
-      <UniqueIdentifier>{2E09C2C2-5841-3A62-A4E1-87F837DEEED2}</UniqueIdentifier>
+      <UniqueIdentifier>{5833E210-7A55-3FF3-A842-2CA69E412523}</UniqueIdentifier>
     </Filter>
   </ItemGroup>
 </Project>

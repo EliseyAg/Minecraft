@@ -1,6 +1,6 @@
-^C:\USERS\ELISEY\GAMES ON C++\MINECRAFT\EXTERNAL\GLAD\CMAKELISTS.TXT
+^C:\USERS\ELISEY\DESKTOP\PROJECTS\C++\MINECRAFT\EXTERNAL\GLAD\CMAKELISTS.TXT
 setlocal
-"C:\Program Files\CMake\bin\cmake.exe" "-SC:/Users/Elisey/Games on C++/Minecraft" "-BC:/Users/Elisey/Games on C++/Minecraft/build" --check-stamp-file "C:/Users/Elisey/Games on C++/Minecraft/build/glad/CMakeFiles/generate.stamp"
+"C:\Program Files\CMake\bin\cmake.exe" -SC:/Users/Elisey/Desktop/Projects/C++/Minecraft -BC:/Users/Elisey/Desktop/Projects/C++/Minecraft/build --check-stamp-file C:/Users/Elisey/Desktop/Projects/C++/Minecraft/build/glad/CMakeFiles/generate.stamp
 if %errorlevel% neq 0 goto :cmEnd
 :cmEnd
 endlocal & call :cmErrorLevel %errorlevel% & goto :cmDone

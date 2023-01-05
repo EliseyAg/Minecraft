@@ -61,6 +61,13 @@ namespace Game {
             }
         );
 
+        m_event_dispatcher.add_event_listener<EventWindowResize>(
+            [&](EventWindowResize& event)
+            {
+                player.set_viewport_size(event.width, event.height);
+            }
+        );
+
         m_event_dispatcher.add_event_listener<EventMouseMoved>(
             [&](EventMouseMoved& event)
             {
@@ -132,7 +139,7 @@ namespace Game {
 
             RenderEngine::Renderer::clear();
             player.set_projection_mode(perspective_camera ? Player::Camera::ProjectionMode::Perspective : Player::Camera::ProjectionMode::Orthographic);
-            m_game.render(player.get_projection_matrix() * player.get_view_matrix(), player.get_camera_position(), player.get_camera_rotation());
+            m_game.render(player.get_projection_matrix() * player.get_view_matrix(), player.get_position(), player.get_rotation());
 
             m_pWindow->on_update();
         }
@@ -230,7 +237,7 @@ namespace Game {
                     Renderer::ChunkRenderer::generate_seed();
                     //Renderer::ChunkRenderer::generate_world(-1, -1);
                     //Renderer::ChunkRenderer::generate_world(-1,  0);
-                    Renderer::ChunkRenderer::generate_world( 0, -1);
+                    //Renderer::ChunkRenderer::generate_world( 0, -1);
                     Renderer::ChunkRenderer::generate_world( 0,  0);
                     //Renderer::ChunkRenderer::generate_world( 1,  0);
                     //Renderer::ChunkRenderer::generate_world( 0,  1);

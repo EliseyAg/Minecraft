@@ -1,14 +1,57 @@
-Determining if the include file pthread.h exists failed with the following output:
-Change Dir: C:/Users/Elisey/Games on C++/Minecraft/build/CMakeFiles/CMakeTmp
+Performing C SOURCE FILE Test CMAKE_HAVE_LIBC_PTHREAD failed with the following output:
+Change Dir: C:/Users/Elisey/Desktop/Projects/C++/Minecraft/build/CMakeFiles/CMakeScratch/TryCompile-5gm7pw
 
-Run Build Command(s):C:/Program Files/Microsoft Visual Studio/2022/Community/MSBuild/Current/Bin/amd64/MSBuild.exe cmTC_a0f9e.vcxproj /p:Configuration=Debug /p:Platform=x64 /p:VisualStudioVersion=17.0 /v:m && Microsoft (R) Build Engine версии 17.2.1+52cd2da31 для .NET Framework
-(C) Корпорация Майкрософт (Microsoft Corporation). Все права защищены.
-
-  Оптимизирующий компилятор Microsoft (R) C/C++ версии 19.32.31329 для x64
-  CheckIncludeFile.c
+Run Build Command(s):C:/Program Files/Microsoft Visual Studio/2022/Community/MSBuild/Current/Bin/amd64/MSBuild.exe cmTC_decd9.vcxproj /p:Configuration=Debug /p:Platform=x64 /p:VisualStudioVersion=17.0 /v:m && MSBuild version 17.4.0+18d5aef85 for .NET Framework
+  Оптимизирующий компилятор Microsoft (R) C/C++ версии 19.34.31935 для x64
+  src.c
   (C) Корпорация Майкрософт (Microsoft Corporation).  Все права защищены.
-  cl /c /Zi /W3 /WX- /diagnostics:column /Od /Ob0 /D _MBCS /D WIN32 /D _WINDOWS /D "CMAKE_INTDIR=\"Debug\"" /Gm- /RTC1 /MDd /GS /fp:precise /Zc:wchar_t /Zc:forScope /Zc:inline /Fo"cmTC_a0f9e.dir\Debug\\" /Fd"cmTC_a0f9e.dir\Debug\vc143.pdb" /external:W3 /Gd /TC /errorReport:queue "C:\Users\Elisey\Games on C++\Minecraft\build\CMakeFiles\CMakeTmp\CheckIncludeFile.c"
-C:\Users\Elisey\Games on C++\Minecraft\build\CMakeFiles\CMakeTmp\CheckIncludeFile.c(1,10): fatal error C1083: Не удается открыть файл включение: pthread.h: No such file or directory, [C:\Users\Elisey\Games on C++\Minecraft\build\CMakeFiles\CMakeTmp\cmTC_a0f9e.vcxproj]
+  cl /c /Zi /W3 /WX- /diagnostics:column /Od /Ob0 /D _MBCS /D WIN32 /D _WINDOWS /D CMAKE_HAVE_LIBC_PTHREAD /D "CMAKE_INTDIR=\"Debug\"" /Gm- /RTC1 /MDd /GS /fp:precise /Zc:wchar_t /Zc:forScope /Zc:inline /Fo"cmTC_decd9.dir\Debug\\" /Fd"cmTC_decd9.dir\Debug\vc143.pdb" /external:W3 /Gd /TC /errorReport:queue "C:\Users\Elisey\Desktop\Projects\C++\Minecraft\build\CMakeFiles\CMakeScratch\TryCompile-5gm7pw\src.c"
+C:\Users\Elisey\Desktop\Projects\C++\Minecraft\build\CMakeFiles\CMakeScratch\TryCompile-5gm7pw\src.c(1,10): fatal  error C1083: Не удается открыть файл включение: pthread.h: No such file or directory, [C:\Users\Elisey\Desktop\Projects\C++\Minecraft\build\CMakeFiles\CMakeScratch\TryCompile-5gm7pw\cmTC_decd9.vcxproj]
+
+
+Source file was:
+#include <pthread.h>
+
+static void* test_func(void* data)
+{
+  return data;
+}
+
+int main(void)
+{
+  pthread_t thread;
+  pthread_create(&thread, NULL, test_func, NULL);
+  pthread_detach(thread);
+  pthread_cancel(thread);
+  pthread_join(thread, NULL);
+  pthread_atfork(NULL, NULL, NULL);
+  pthread_exit(NULL);
+
+  return 0;
+}
+
+
+Determining if the function pthread_create exists in the pthreads failed with the following output:
+Change Dir: C:/Users/Elisey/Desktop/Projects/C++/Minecraft/build/CMakeFiles/CMakeScratch/TryCompile-abtk22
+
+Run Build Command(s):C:/Program Files/Microsoft Visual Studio/2022/Community/MSBuild/Current/Bin/amd64/MSBuild.exe cmTC_173f0.vcxproj /p:Configuration=Debug /p:Platform=x64 /p:VisualStudioVersion=17.0 /v:m && MSBuild version 17.4.0+18d5aef85 for .NET Framework
+  Оптимизирующий компилятор Microsoft (R) C/C++ версии 19.34.31935 для x64
+  CheckFunctionExists.c
+  (C) Корпорация Майкрософт (Microsoft Corporation).  Все права защищены.
+  cl /c /Zi /W3 /WX- /diagnostics:column /Od /Ob0 /D _MBCS /D WIN32 /D _WINDOWS /D CHECK_FUNCTION_EXISTS=pthread_create /D "CMAKE_INTDIR=\"Debug\"" /Gm- /RTC1 /MDd /GS /fp:precise /Zc:wchar_t /Zc:forScope /Zc:inline /Fo"cmTC_173f0.dir\Debug\\" /Fd"cmTC_173f0.dir\Debug\vc143.pdb" /external:W3 /Gd /TC /errorReport:queue "C:\Users\Elisey\Desktop\Projects\C++\Minecraft\build\CMakeFiles\CMakeScratch\TryCompile-abtk22\CheckFunctionExists.c"
+LINK : fatal error LNK1104: не удается открыть файл "pthreads.lib" [C:\Users\Elisey\Desktop\Projects\C++\Minecraft\build\CMakeFiles\CMakeScratch\TryCompile-abtk22\cmTC_173f0.vcxproj]
+
+
+
+Determining if the function pthread_create exists in the pthread failed with the following output:
+Change Dir: C:/Users/Elisey/Desktop/Projects/C++/Minecraft/build/CMakeFiles/CMakeScratch/TryCompile-3vzdlb
+
+Run Build Command(s):C:/Program Files/Microsoft Visual Studio/2022/Community/MSBuild/Current/Bin/amd64/MSBuild.exe cmTC_a7962.vcxproj /p:Configuration=Debug /p:Platform=x64 /p:VisualStudioVersion=17.0 /v:m && MSBuild version 17.4.0+18d5aef85 for .NET Framework
+  Оптимизирующий компилятор Microsoft (R) C/C++ версии 19.34.31935 для x64
+  CheckFunctionExists.c
+  (C) Корпорация Майкрософт (Microsoft Corporation).  Все права защищены.
+  cl /c /Zi /W3 /WX- /diagnostics:column /Od /Ob0 /D _MBCS /D WIN32 /D _WINDOWS /D CHECK_FUNCTION_EXISTS=pthread_create /D "CMAKE_INTDIR=\"Debug\"" /Gm- /RTC1 /MDd /GS /fp:precise /Zc:wchar_t /Zc:forScope /Zc:inline /Fo"cmTC_a7962.dir\Debug\\" /Fd"cmTC_a7962.dir\Debug\vc143.pdb" /external:W3 /Gd /TC /errorReport:queue "C:\Users\Elisey\Desktop\Projects\C++\Minecraft\build\CMakeFiles\CMakeScratch\TryCompile-3vzdlb\CheckFunctionExists.c"
+LINK : fatal error LNK1104: не удается открыть файл "pthread.lib" [C:\Users\Elisey\Desktop\Projects\C++\Minecraft\build\CMakeFiles\CMakeScratch\TryCompile-3vzdlb\cmTC_a7962.vcxproj]
 
 
 

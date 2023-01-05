@@ -1,24 +1,24 @@
 ﻿<?xml version="1.0" encoding="utf-8"?>
 <Project ToolsVersion="17.0" xmlns="http://schemas.microsoft.com/developer/msbuild/2003">
   <ItemGroup>
-    <ClCompile Include="C:\Users\Elisey\Games on C++\Minecraft\external\glad\src\glad.c">
+    <ClCompile Include="C:\Users\Elisey\Desktop\Projects\C++\Minecraft\external\glad\src\glad.c">
       <Filter>Source Files</Filter>
     </ClCompile>
   </ItemGroup>
   <ItemGroup>
-    <ClInclude Include="C:\Users\Elisey\Games on C++\Minecraft\external\glad\include\glad\glad.h">
+    <ClInclude Include="C:\Users\Elisey\Desktop\Projects\C++\Minecraft\external\glad\include\glad\glad.h">
       <Filter>Header Files</Filter>
     </ClInclude>
   </ItemGroup>
   <ItemGroup>
-    <CustomBuild Include="C:\Users\Elisey\Games on C++\Minecraft\external\glad\CMakeLists.txt" />
+    <CustomBuild Include="C:\Users\Elisey\Desktop\Projects\C++\Minecraft\external\glad\CMakeLists.txt" />
   </ItemGroup>
   <ItemGroup>
     <Filter Include="Header Files">
-      <UniqueIdentifier>{6EF861DD-112A-3598-AF83-45A484612ED3}</UniqueIdentifier>
+      <UniqueIdentifier>{448442B3-D3A0-33CE-9ABD-383917F50C13}</UniqueIdentifier>
     </Filter>
     <Filter Include="Source Files">
-      <UniqueIdentifier>{34ED2B16-AC64-3D91-8744-A0924A3B05C7}</UniqueIdentifier>
+      <UniqueIdentifier>{39B67731-9B20-3180-A8C6-477CEBCF01A8}</UniqueIdentifier>
     </Filter>
   </ItemGroup>
 </Project>

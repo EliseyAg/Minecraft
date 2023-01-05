@@ -1,114 +1,114 @@
 ﻿<?xml version="1.0" encoding="utf-8"?>
 <Project ToolsVersion="17.0" xmlns="http://schemas.microsoft.com/developer/msbuild/2003">
   <ItemGroup>
-    <ClCompile Include="C:\Users\Elisey\Games on C++\Minecraft\external\glfw\src\context.c">
+    <ClCompile Include="C:\Users\Elisey\Desktop\Projects\C++\Minecraft\external\glfw\src\context.c">
       <Filter>Source Files</Filter>
     </ClCompile>
-    <ClCompile Include="C:\Users\Elisey\Games on C++\Minecraft\external\glfw\src\init.c">
+    <ClCompile Include="C:\Users\Elisey\Desktop\Projects\C++\Minecraft\external\glfw\src\init.c">
       <Filter>Source Files</Filter>
     </ClCompile>
-    <ClCompile Include="C:\Users\Elisey\Games on C++\Minecraft\external\glfw\src\input.c">
+    <ClCompile Include="C:\Users\Elisey\Desktop\Projects\C++\Minecraft\external\glfw\src\input.c">
       <Filter>Source Files</Filter>
     </ClCompile>
-    <ClCompile Include="C:\Users\Elisey\Games on C++\Minecraft\external\glfw\src\monitor.c">
+    <ClCompile Include="C:\Users\Elisey\Desktop\Projects\C++\Minecraft\external\glfw\src\monitor.c">
       <Filter>Source Files</Filter>
     </ClCompile>
-    <ClCompile Include="C:\Users\Elisey\Games on C++\Minecraft\external\glfw\src\platform.c">
+    <ClCompile Include="C:\Users\Elisey\Desktop\Projects\C++\Minecraft\external\glfw\src\platform.c">
       <Filter>Source Files</Filter>
     </ClCompile>
-    <ClCompile Include="C:\Users\Elisey\Games on C++\Minecraft\external\glfw\src\vulkan.c">
+    <ClCompile Include="C:\Users\Elisey\Desktop\Projects\C++\Minecraft\external\glfw\src\vulkan.c">
       <Filter>Source Files</Filter>
     </ClCompile>
-    <ClCompile Include="C:\Users\Elisey\Games on C++\Minecraft\external\glfw\src\window.c">
+    <ClCompile Include="C:\Users\Elisey\Desktop\Projects\C++\Minecraft\external\glfw\src\window.c">
       <Filter>Source Files</Filter>
     </ClCompile>
-    <ClCompile Include="C:\Users\Elisey\Games on C++\Minecraft\external\glfw\src\egl_context.c">
+    <ClCompile Include="C:\Users\Elisey\Desktop\Projects\C++\Minecraft\external\glfw\src\egl_context.c">
       <Filter>Source Files</Filter>
     </ClCompile>
-    <ClCompile Include="C:\Users\Elisey\Games on C++\Minecraft\external\glfw\src\osmesa_context.c">
+    <ClCompile Include="C:\Users\Elisey\Desktop\Projects\C++\Minecraft\external\glfw\src\osmesa_context.c">
       <Filter>Source Files</Filter>
     </ClCompile>
-    <ClCompile Include="C:\Users\Elisey\Games on C++\Minecraft\external\glfw\src\null_init.c">
+    <ClCompile Include="C:\Users\Elisey\Desktop\Projects\C++\Minecraft\external\glfw\src\null_init.c">
       <Filter>Source Files</Filter>
     </ClCompile>
-    <ClCompile Include="C:\Users\Elisey\Games on C++\Minecraft\external\glfw\src\null_monitor.c">
+    <ClCompile Include="C:\Users\Elisey\Desktop\Projects\C++\Minecraft\external\glfw\src\null_monitor.c">
       <Filter>Source Files</Filter>
     </ClCompile>
-    <ClCompile Include="C:\Users\Elisey\Games on C++\Minecraft\external\glfw\src\null_window.c">
+    <ClCompile Include="C:\Users\Elisey\Desktop\Projects\C++\Minecraft\external\glfw\src\null_window.c">
       <Filter>Source Files</Filter>
     </ClCompile>
-    <ClCompile Include="C:\Users\Elisey\Games on C++\Minecraft\external\glfw\src\null_joystick.c">
+    <ClCompile Include="C:\Users\Elisey\Desktop\Projects\C++\Minecraft\external\glfw\src\null_joystick.c">
       <Filter>Source Files</Filter>
     </ClCompile>
-    <ClCompile Include="C:\Users\Elisey\Games on C++\Minecraft\external\glfw\src\win32_module.c">
+    <ClCompile Include="C:\Users\Elisey\Desktop\Projects\C++\Minecraft\external\glfw\src\win32_module.c">
       <Filter>Source Files</Filter>
     </ClCompile>
-    <ClCompile Include="C:\Users\Elisey\Games on C++\Minecraft\external\glfw\src\win32_time.c">
+    <ClCompile Include="C:\Users\Elisey\Desktop\Projects\C++\Minecraft\external\glfw\src\win32_time.c">
       <Filter>Source Files</Filter>
     </ClCompile>
-    <ClCompile Include="C:\Users\Elisey\Games on C++\Minecraft\external\glfw\src\win32_thread.c">
+    <ClCompile Include="C:\Users\Elisey\Desktop\Projects\C++\Minecraft\external\glfw\src\win32_thread.c">
       <Filter>Source Files</Filter>
     </ClCompile>
-    <ClCompile Include="C:\Users\Elisey\Games on C++\Minecraft\external\glfw\src\win32_init.c">
+    <ClCompile Include="C:\Users\Elisey\Desktop\Projects\C++\Minecraft\external\glfw\src\win32_init.c">
       <Filter>Source Files</Filter>
     </ClCompile>
-    <ClCompile Include="C:\Users\Elisey\Games on C++\Minecraft\external\glfw\src\win32_joystick.c">
+    <ClCompile Include="C:\Users\Elisey\Desktop\Projects\C++\Minecraft\external\glfw\src\win32_joystick.c">
       <Filter>Source Files</Filter>
     </ClCompile>
-    <ClCompile Include="C:\Users\Elisey\Games on C++\Minecraft\external\glfw\src\win32_monitor.c">
+    <ClCompile Include="C:\Users\Elisey\Desktop\Projects\C++\Minecraft\external\glfw\src\win32_monitor.c">
       <Filter>Source Files</Filter>
     </ClCompile>
-    <ClCompile Include="C:\Users\Elisey\Games on C++\Minecraft\external\glfw\src\win32_window.c">
+    <ClCompile Include="C:\Users\Elisey\Desktop\Projects\C++\Minecraft\external\glfw\src\win32_window.c">
       <Filter>Source Files</Filter>
     </ClCompile>
-    <ClCompile Include="C:\Users\Elisey\Games on C++\Minecraft\external\glfw\src\wgl_context.c">
+    <ClCompile Include="C:\Users\Elisey\Desktop\Projects\C++\Minecraft\external\glfw\src\wgl_context.c">
       <Filter>Source Files</Filter>
     </ClCompile>
   </ItemGroup>
   <ItemGroup>
-    <ClInclude Include="C:\Users\Elisey\Games on C++\Minecraft\external\glfw\include\GLFW\glfw3.h">
+    <ClInclude Include="C:\Users\Elisey\Desktop\Projects\C++\Minecraft\external\glfw\include\GLFW\glfw3.h">
       <Filter>Header Files</Filter>
     </ClInclude>
-    <ClInclude Include="C:\Users\Elisey\Games on C++\Minecraft\external\glfw\include\GLFW\glfw3native.h">
+    <ClInclude Include="C:\Users\Elisey\Desktop\Projects\C++\Minecraft\external\glfw\include\GLFW\glfw3native.h">
       <Filter>Header Files</Filter>
     </ClInclude>
-    <ClInclude Include="C:\Users\Elisey\Games on C++\Minecraft\external\glfw\src\internal.h">
+    <ClInclude Include="C:\Users\Elisey\Desktop\Projects\C++\Minecraft\external\glfw\src\internal.h">
       <Filter>Header Files</Filter>
     </ClInclude>
-    <ClInclude Include="C:\Users\Elisey\Games on C++\Minecraft\external\glfw\src\platform.h">
+    <ClInclude Include="C:\Users\Elisey\Desktop\Projects\C++\Minecraft\external\glfw\src\platform.h">
       <Filter>Header Files</Filter>
     </ClInclude>
-    <ClInclude Include="C:\Users\Elisey\Games on C++\Minecraft\external\glfw\src\mappings.h">
+    <ClInclude Include="C:\Users\Elisey\Desktop\Projects\C++\Minecraft\external\glfw\src\mappings.h">
       <Filter>Header Files</Filter>
     </ClInclude>
-    <ClInclude Include="C:\Users\Elisey\Games on C++\Minecraft\external\glfw\src\null_platform.h">
+    <ClInclude Include="C:\Users\Elisey\Desktop\Projects\C++\Minecraft\external\glfw\src\null_platform.h">
       <Filter>Header Files</Filter>
     </ClInclude>
-    <ClInclude Include="C:\Users\Elisey\Games on C++\Minecraft\external\glfw\src\null_joystick.h">
+    <ClInclude Include="C:\Users\Elisey\Desktop\Projects\C++\Minecraft\external\glfw\src\null_joystick.h">
       <Filter>Header Files</Filter>
     </ClInclude>
-    <ClInclude Include="C:\Users\Elisey\Games on C++\Minecraft\external\glfw\src\win32_time.h">
+    <ClInclude Include="C:\Users\Elisey\Desktop\Projects\C++\Minecraft\external\glfw\src\win32_time.h">
       <Filter>Header Files</Filter>
     </ClInclude>
-    <ClInclude Include="C:\Users\Elisey\Games on C++\Minecraft\external\glfw\src\win32_thread.h">
+    <ClInclude Include="C:\Users\Elisey\Desktop\Projects\C++\Minecraft\external\glfw\src\win32_thread.h">
       <Filter>Header Files</Filter>
     </ClInclude>
-    <ClInclude Include="C:\Users\Elisey\Games on C++\Minecraft\external\glfw\src\win32_platform.h">
+    <ClInclude Include="C:\Users\Elisey\Desktop\Projects\C++\Minecraft\external\glfw\src\win32_platform.h">
       <Filter>Header Files</Filter>
     </ClInclude>
-    <ClInclude Include="C:\Users\Elisey\Games on C++\Minecraft\external\glfw\src\win32_joystick.h">
+    <ClInclude Include="C:\Users\Elisey\Desktop\Projects\C++\Minecraft\external\glfw\src\win32_joystick.h">
       <Filter>Header Files</Filter>
     </ClInclude>
   </ItemGroup>
   <ItemGroup>
-    <CustomBuild Include="C:\Users\Elisey\Games on C++\Minecraft\external\glfw\src\CMakeLists.txt" />
+    <CustomBuild Include="C:\Users\Elisey\Desktop\Projects\C++\Minecraft\external\glfw\src\CMakeLists.txt" />
   </ItemGroup>
   <ItemGroup>
     <Filter Include="Header Files">
-      <UniqueIdentifier>{6EF861DD-112A-3598-AF83-45A484612ED3}</UniqueIdentifier>
+      <UniqueIdentifier>{448442B3-D3A0-33CE-9ABD-383917F50C13}</UniqueIdentifier>
     </Filter>
     <Filter Include="Source Files">
-      <UniqueIdentifier>{34ED2B16-AC64-3D91-8744-A0924A3B05C7}</UniqueIdentifier>
+      <UniqueIdentifier>{39B67731-9B20-3180-A8C6-477CEBCF01A8}</UniqueIdentifier>
     </Filter>
   </ItemGroup>
 </Project>

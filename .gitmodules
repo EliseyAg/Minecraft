@@ -4,3 +4,9 @@
 [submodule "external/glm"]
 	path = external/glm
 	url = https://github.com/g-truc/glm.git
+[submodule "extenal/glfw"]
+	path = extenal/glfw
+	url = https://github.com/glfw/glfw.git
+[submodule "extenal/glm"]
+	path = extenal/glm
+	url = https://github.com/g-truc/glm.git

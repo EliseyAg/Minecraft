@@ -1,6 +1,6 @@
-^C:\USERS\ELISEY\GAMES ON C++\MINECRAFT\BUILD\CMAKEFILES\0A4D32948086A59343F2F3A789C58B2B\GENERATE.STAMP.RULE
+^C:\USERS\ELISEY\DESKTOP\PROJECTS\C++\MINECRAFT\BUILD\CMAKEFILES\BE7017240E17E126F786B229A5308FF8\GENERATE.STAMP.RULE
 setlocal
-"C:\Program Files\CMake\bin\cmake.exe" "-SC:/Users/Elisey/Games on C++/Minecraft" "-BC:/Users/Elisey/Games on C++/Minecraft/build" --check-stamp-list CMakeFiles/generate.stamp.list --vs-solution-file "C:/Users/Elisey/Games on C++/Minecraft/build/Minecraft.sln"
+"C:\Program Files\CMake\bin\cmake.exe" -SC:/Users/Elisey/Desktop/Projects/C++/Minecraft -BC:/Users/Elisey/Desktop/Projects/C++/Minecraft/build --check-stamp-list CMakeFiles/generate.stamp.list --vs-solution-file C:/Users/Elisey/Desktop/Projects/C++/Minecraft/build/Minecraft.sln
 if %errorlevel% neq 0 goto :cmEnd
 :cmEnd
 endlocal & call :cmErrorLevel %errorlevel% & goto :cmDone

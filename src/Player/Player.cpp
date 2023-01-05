@@ -189,8 +189,8 @@ namespace Player
         }
 
         rotation_delta += glm::vec3(verticalAngleRad * 180 / 3.14, horizontalAngleRad * 180 / 3.14, 0);
-        camera.add_movement_and_rotation(movement_delta, rotation_delta);
-        m_position = camera.get_camera_position();
-        m_rotation = camera.get_camera_rotation();
+        camera.add_movement_and_rotation(movement_delta * m_speed, rotation_delta);
+        m_position = camera.get_position();
+        m_rotation = camera.get_rotation();
 	}
 }
